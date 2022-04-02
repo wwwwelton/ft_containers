@@ -30,6 +30,14 @@ iterator_type::~vector_iterator(void) {
   std::cout << "Vector_iterator default destructor called." << std::endl;
 }
 
+template <typename T, class Category, typename Distance, typename Pointer, typename Reference>
+iterator_type& iterator_type::operator=(const iterator& x) {
+  if (this != &x) {
+    this->_current = const_cast<pointer>(x._current);
+  }
+  return (*this);
+}
+
 }  // namespace ft
 
 #endif  // VECTOR_ITERATORS_TPP_

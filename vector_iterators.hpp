@@ -32,6 +32,8 @@ class vector_iterator {
   explicit vector_iterator(const iterator& x);
   ~vector_iterator(void);
 
+  iterator_type& operator=(const iterator& x);
+
   pointer _current;
 };
 
