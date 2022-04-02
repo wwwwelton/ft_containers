@@ -5,7 +5,7 @@
 
 #include "vector.hpp"
 
-using namespace ft;
+namespace ft {
 
 template <typename T, class Alloc>
 vector<T, Alloc>& vector<T, Alloc>::operator=(const vector<T, Alloc>& rhs) {
@@ -19,5 +19,17 @@ vector<T, Alloc>& vector<T, Alloc>::operator=(const vector<T, Alloc>& rhs) {
   }
   return (*this);
 }
+
+template <typename T, class Alloc>
+typename vector<T, Alloc>::reference vector<T, Alloc>::operator[](size_type n) {
+  return (this->_data[n]);
+}
+
+template <typename T, class Alloc>
+typename vector<T, Alloc>::const_reference vector<T, Alloc>::operator[](size_type n) const {
+  return (this->_data[n]);
+}
+
+}  // namespace ft
 
 #endif  // VECTOR_OPERATORS_TPP_

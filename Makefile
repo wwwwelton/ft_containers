@@ -4,7 +4,10 @@ OBJ_DIR				=	objects
 
 SRC_DIR				=	./
 
-HEADERS				=	vector.hpp vector.tpp vector_operators.tpp
+HEADERS				=	vector.hpp \
+						vector.tpp \
+						vector_operators.tpp \
+						vector_iterators.hpp \
 
 SRC_FILES			=	main2.cpp
 
