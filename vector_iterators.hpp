@@ -8,14 +8,10 @@
 
 namespace ft {
 
-#define iterator_type vector_iterator<T, Category, Distance, Pointer, Reference>
+#define vector_iterator_class vector_iterator<T, Category, Distance, Pointer, Reference>
+#define vector_iterator_typenames typename T, class Category, typename Distance, typename Pointer, typename Reference
 
-template <
-    typename T,
-    class Category = std::random_access_iterator_tag,
-    typename Distance = std::ptrdiff_t,
-    typename Pointer = T*,
-    typename Reference = T&>
+template <typename T, class Category = std::random_access_iterator_tag, typename Distance = std::ptrdiff_t, typename Pointer = T*, typename Reference = T&>
 class vector_iterator {
  public:
   typedef vector_iterator<T, T*, T&> iterator;
@@ -28,11 +24,18 @@ class vector_iterator {
   typedef Category iterator_category;
 
   vector_iterator(void);
-  explicit vector_iterator(const pointer elem);
-  explicit vector_iterator(const iterator& x);
+  explicit vector_iterator(const pointer current);
+  explicit vector_iterator(const iterator& src);
   ~vector_iterator(void);
 
-  iterator_type& operator=(const iterator& x);
+  vector_iterator_class& operator=(const iterator& rhs);
+
+  bool operator>(const iterator& rhs);
+  bool operator<(const iterator& rhs);
+  bool operator>=(const iterator& rhs);
+  bool operator<=(const iterator& rhs);
+  bool operator==(const iterator& rhs);
+  bool operator!=(const iterator& rhs);
 
   pointer _current;
 };

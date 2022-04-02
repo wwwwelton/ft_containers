@@ -5,7 +5,7 @@
 
 #include "vector.hpp"
 
-using namespace ft;
+namespace ft {
 
 template <typename T, class Alloc>
 vector<T, Alloc>::vector(const allocator_type& alloc) {
@@ -46,6 +46,8 @@ vector<T, Alloc>::~vector(void) {
   this->_size = 0;
   this->_capacity = 0;
 }
+
+}  // namespace ft
 
 #endif  // VECTOR_TPP_
 

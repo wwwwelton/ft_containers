@@ -1,52 +1,36 @@
 // Copyright (c) 2022 Welton Leite, wleite. All rights reserved.
 
 #include <iostream>
+
+#if 0
 #include <vector>
-
+namespace ft = std;
+#else
 #include "./vector.hpp"
-
-// namespace ft = std;
+#endif
 
 int main(void) {
-  ft::vector<int> FTvec(2);
-  ft::vector<int> FTvecX(FTvec);
-  std::vector<int> ORvec(2);
-  std::vector<int> ORvecX(ORvec);
+  ft::vector<int> vec1(2);
+  ft::vector<int> vec2(vec1);
 
   size_t count = 4;
 
   std::cout << "\n===========[ ADDING VALUES ]==========\n";
 
-  std::cout << "\n[ FTvec ]\n";
+  std::cout << "\n[ vec1 ]\n";
   for (size_t i = 0; i < count; i++) {
-    FTvec[i] = static_cast<int>(i);
+    vec1[i] = static_cast<int>(i);
   }
   for (size_t i = 0; i < count; i++) {
-    std::cout << "index[" << i << "]: " << FTvec[i] << std::endl;
-  }
-
-  std::cout << "\n[ FTvecX ]\n";
-  for (size_t i = 0; i < count; i++) {
-    FTvecX[i] = static_cast<int>(i);
-  }
-  for (size_t i = 0; i < count; i++) {
-    std::cout << "index[" << i << "]: " << FTvecX[i] << std::endl;
+    std::cout << "index[" << i << "]: " << vec1[i] << std::endl;
   }
 
-  std::cout << "\n[ ORvec ]\n";
+  std::cout << "\n[ vec2 ]\n";
   for (size_t i = 0; i < count; i++) {
-    ORvec[i] = static_cast<int>(i);
+    vec2[i] = static_cast<int>(i);
   }
   for (size_t i = 0; i < count; i++) {
-    std::cout << "index[" << i << "]: " << ORvec[i] << std::endl;
-  }
-
-  std::cout << "\n[ ORvecX ]\n";
-  for (size_t i = 0; i < count; i++) {
-    ORvecX[i] = static_cast<int>(i);
-  }
-  for (size_t i = 0; i < count; i++) {
-    std::cout << "index[" << i << "]: " << ORvecX[i] << std::endl;
+    std::cout << "index[" << i << "]: " << vec2[i] << std::endl;
   }
 
   std::cout << "\n======================================\n";
