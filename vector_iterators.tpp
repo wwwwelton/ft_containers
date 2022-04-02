@@ -7,16 +7,27 @@
 
 namespace ft {
 
-vector_iterator(void) {
+template <typename T, class Category, typename Distance, typename Pointer, typename Reference>
+iterator_type::vector_iterator(void) {
+  std::cout << "Vector_iterator default constructor called." << std::endl;
+  this->_current = NULL;
 }
 
-explicit vector_iterator(const pointer elem) {
+template <typename T, class Category, typename Distance, typename Pointer, typename Reference>
+iterator_type::vector_iterator(const pointer elem) {
+  std::cout << "Vector_iterator parametric constructor called." << std::endl;
+  this->_current = elem;
 }
 
-explicit vector_iterator(const iterator& x) {
+template <typename T, class Category, typename Distance, typename Pointer, typename Reference>
+iterator_type::vector_iterator(const iterator& x) {
+  std::cout << "Vector_iterator copy constructor called." << std::endl;
+  this = *x;
 }
 
-~vector_iterator(void) {
+template <typename T, class Category, typename Distance, typename Pointer, typename Reference>
+iterator_type::~vector_iterator(void) {
+  std::cout << "Vector_iterator default destructor called." << std::endl;
 }
 
 }  // namespace ft

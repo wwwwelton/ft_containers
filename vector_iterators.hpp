@@ -8,6 +8,8 @@
 
 namespace ft {
 
+#define iterator_type vector_iterator<T, Category, Distance, Pointer, Reference>
+
 template <
     typename T,
     class Category = std::random_access_iterator_tag,
@@ -16,7 +18,6 @@ template <
     typename Reference = T&>
 class vector_iterator {
  public:
-  typedef vector_iterator<T, Category, Distance, T*, T&> iterator_type;
   typedef vector_iterator<T, T*, T&> iterator;
   typedef vector_iterator<T, const T*, const T&> const_iterator;
   typedef T value_type;
@@ -31,10 +32,11 @@ class vector_iterator {
   explicit vector_iterator(const iterator& x);
   ~vector_iterator(void);
 
- private:
   pointer _current;
 };
 
 }  // namespace ft
+
+#include "vector_iterators.tpp"
 
 #endif  // VECTOR_ITERATORS_HPP_

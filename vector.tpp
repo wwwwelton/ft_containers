@@ -9,7 +9,7 @@ using namespace ft;
 
 template <typename T, class Alloc>
 vector<T, Alloc>::vector(const allocator_type& alloc) {
-  std::cout << "Default constructor called." << std::endl;
+  std::cout << "Vector default constructor called." << std::endl;
   this->_alloc = alloc;
   this->_size = 0;
   this->_capacity = 0;
@@ -20,7 +20,7 @@ template <typename T, class Alloc>
 vector<T, Alloc>::vector(size_type n,
                          const value_type& val,
                          const allocator_type& alloc) {
-  std::cout << "Parametric constructor called." << std::endl;
+  std::cout << "Vector parametric constructor called." << std::endl;
   this->_alloc = alloc;
   this->_size = n;
   this->_capacity = n;
@@ -32,13 +32,13 @@ vector<T, Alloc>::vector(size_type n,
 
 template <typename T, class Alloc>
 vector<T, Alloc>::vector(const vector& x) {
-  std::cout << "Copy constructor called." << std::endl;
+  std::cout << "Vector copy constructor called." << std::endl;
   *this = x;
 }
 
 template <typename T, class Alloc>
 vector<T, Alloc>::~vector(void) {
-  std::cout << "Default destructor called." << std::endl;
+  std::cout << "Vector default destructor called." << std::endl;
   for (size_type i = 0; i < this->_size; i++) {
     this->_alloc.destroy(this->_data + i);
   }
