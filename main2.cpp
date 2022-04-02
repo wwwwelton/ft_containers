@@ -9,7 +9,8 @@
 
 int main(void) {
   ft::vector<int> vec(2, 42);
-  std::vector<int> vec2;
+  ft::vector<int> vecX(vec);
+  std::vector<int> vec2(2);
 
   std::cout << "Hello Wordl\n";
   return (0);
