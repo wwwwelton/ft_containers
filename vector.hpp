@@ -7,6 +7,8 @@
 #include <iostream>
 #include <memory>
 
+#include "./vector_iterators.hpp"
+
 namespace ft {
 
 template <typename T, class Alloc = std::allocator<T> >
@@ -21,19 +23,15 @@ class vector {
   typedef typename Alloc::size_type size_type;
   typedef typename Alloc::difference_type difference_type;
 
-  //   typedef typename Alloc::difference_type iterator;
-  //   typedef typename Alloc::difference_type const_iterator;
-  //   typedef typename Alloc::difference_type reverse_iterator;
-  //   typedef typename Alloc::difference_type const_reverse_iterator;
+  typedef vector_iterator<T, T*, T&> iterator;
+  typedef vector_iterator<T, const T*, const T&> const_iterator;
 
   explicit vector(const allocator_type& alloc = allocator_type());
   vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type());
   vector(const vector& x);
-
   ~vector(void);
 
   vector& operator=(const vector& rhs);
-
   reference operator[](size_type n);
   const_reference operator[](size_type n) const;
 
