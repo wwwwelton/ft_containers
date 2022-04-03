@@ -33,7 +33,7 @@ vector_iterator_class::~vector_iterator(void) {
 template <vector_iterator_typenames>
 vector_iterator_class& vector_iterator_class::operator=(const iterator& rhs) {
   if (this != &rhs) {
-    this->_current = const_cast<pointer>(rhs._current);
+    this->_current = rhs._current;
   }
   return (*this);
 }
@@ -120,7 +120,7 @@ vector_iterator_class& vector_iterator_class::operator--(void) {
 template <vector_iterator_typenames>
 vector_iterator_class vector_iterator_class::operator--(int) {
   vector_iterator_class temp(*this);
-  this->_current;
+  this->_current--;
   return (temp);
 }
 
@@ -131,7 +131,7 @@ typename vector_iterator_class::reference vector_iterator_class::operator*(void)
 
 template <vector_iterator_typenames>
 typename vector_iterator_class::pointer vector_iterator_class::operator->(void) {
-  return (this->_current);
+   return (*(&this->_current));
 }
 
 template <vector_iterator_typenames>
