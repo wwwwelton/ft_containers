@@ -37,13 +37,13 @@ class vector_iterator {
   bool operator==(const iterator& rhs);
   bool operator!=(const iterator& rhs);
 
-  iterator operator+(difference_type n);
-  iterator operator-(difference_type n);
+  vector_iterator_class operator+(difference_type n);
+  vector_iterator_class operator-(difference_type n);
 
-  iterator& operator++(void);  // Prefix increment operator.
-  iterator operator++(int);    // Postfix increment operator.
-  iterator& operator--(void);  // Prefix decrement operator.
-  iterator operator--(int);    // Postfix decrement operator.
+  vector_iterator_class& operator++(void);  // Prefix increment operator.
+  vector_iterator_class operator++(int);    // Postfix increment operator.
+  vector_iterator_class& operator--(void);  // Prefix decrement operator.
+  vector_iterator_class operator--(int);    // Postfix decrement operator.
 
   pointer _current;
 };

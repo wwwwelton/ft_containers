@@ -69,14 +69,14 @@ bool vector_iterator_class::operator!=(const iterator& rhs) {
 }
 
 template <vector_iterator_typenames>
-typename vector_iterator_class::iterator vector_iterator_class::operator+(difference_type n) {
+vector_iterator_class vector_iterator_class::operator+(difference_type n) {
   vector_iterator_class temp(*this);
   this->_current += n;
   return (temp);
 }
 
 template <vector_iterator_typenames>
-typename vector_iterator_class::iterator vector_iterator_class::operator-(difference_type n) {
+vector_iterator_class vector_iterator_class::operator-(difference_type n) {
   vector_iterator_class temp(*this);
   this->_current -= n;
   return (temp);
@@ -84,14 +84,14 @@ typename vector_iterator_class::iterator vector_iterator_class::operator-(differ
 
 // Prefix increment operator.
 template <vector_iterator_typenames>
-typename vector_iterator_class::iterator& vector_iterator_class::operator++(void) {
+vector_iterator_class& vector_iterator_class::operator++(void) {
   ++this->_current;
   return (*this);
 }
 
 // Postfix increment operator.
 template <vector_iterator_typenames>
-typename vector_iterator_class::iterator vector_iterator_class::operator++(int) {
+vector_iterator_class vector_iterator_class::operator++(int) {
   vector_iterator_class temp(*this);
   this->_current++;
   return (temp);
@@ -99,16 +99,16 @@ typename vector_iterator_class::iterator vector_iterator_class::operator++(int) 
 
 // Prefix decrement operator.
 template <vector_iterator_typenames>
-typename vector_iterator_class::iterator& vector_iterator_class::operator--(void) {
+vector_iterator_class& vector_iterator_class::operator--(void) {
   --this->_current;
   return (*this);
 }
 
 // Postfix decrement operator.
 template <vector_iterator_typenames>
-typename vector_iterator_class::iterator vector_iterator_class::operator--(int) {
+vector_iterator_class vector_iterator_class::operator--(int) {
   vector_iterator_class temp(*this);
-  this->_current--;
+  this->_current;
   return (temp);
 }
 
