@@ -16,12 +16,12 @@ class vector_iterator {
  public:
   typedef vector_iterator<T, T*, T&> iterator;
   typedef vector_iterator<T, const T*, const T&> const_iterator;
+  typedef Category iterator_category;
   typedef T value_type;
+  typedef ptrdiff_t difference_type;
+  typedef size_t size_type;
   typedef Pointer pointer;
   typedef Reference reference;
-  typedef size_t size_type;
-  typedef ptrdiff_t difference_type;
-  typedef Category iterator_category;
 
   vector_iterator(void);
   explicit vector_iterator(const pointer current);
@@ -37,13 +37,20 @@ class vector_iterator {
   bool operator==(const iterator& rhs);
   bool operator!=(const iterator& rhs);
 
-  vector_iterator_class operator+(difference_type n);
-  vector_iterator_class operator-(difference_type n);
+  vector_iterator_class operator+(difference_type n) const;
+  vector_iterator_class operator-(difference_type n) const;
+
+  vector_iterator_class& operator+=(difference_type n);
+  vector_iterator_class& operator-=(difference_type n);
 
   vector_iterator_class& operator++(void);  // Prefix increment operator.
   vector_iterator_class operator++(int);    // Postfix increment operator.
   vector_iterator_class& operator--(void);  // Prefix decrement operator.
   vector_iterator_class operator--(int);    // Postfix decrement operator.
+
+  reference operator*(void);
+  pointer operator->(void);
+  reference operator[](difference_type n);
 
   pointer _current;
 };

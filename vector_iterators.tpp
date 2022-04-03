@@ -69,17 +69,29 @@ bool vector_iterator_class::operator!=(const iterator& rhs) {
 }
 
 template <vector_iterator_typenames>
-vector_iterator_class vector_iterator_class::operator+(difference_type n) {
+vector_iterator_class vector_iterator_class::operator+(difference_type n) const {
   vector_iterator_class temp(*this);
-  this->_current += n;
+  temp->_current += n;
   return (temp);
 }
 
 template <vector_iterator_typenames>
-vector_iterator_class vector_iterator_class::operator-(difference_type n) {
+vector_iterator_class vector_iterator_class::operator-(difference_type n) const {
   vector_iterator_class temp(*this);
-  this->_current -= n;
+  temp->_current -= n;
   return (temp);
+}
+
+template <vector_iterator_typenames>
+vector_iterator_class& vector_iterator_class::operator+=(difference_type n) {
+  this->_current += n;
+  return (*this);
+}
+
+template <vector_iterator_typenames>
+vector_iterator_class& vector_iterator_class::operator-=(difference_type n) {
+  this->_current -= n;
+  return (*this);
 }
 
 // Prefix increment operator.
@@ -110,6 +122,21 @@ vector_iterator_class vector_iterator_class::operator--(int) {
   vector_iterator_class temp(*this);
   this->_current;
   return (temp);
+}
+
+template <vector_iterator_typenames>
+typename vector_iterator_class::reference vector_iterator_class::operator*(void) {
+  return (*this->_current);
+}
+
+template <vector_iterator_typenames>
+typename vector_iterator_class::pointer vector_iterator_class::operator->(void) {
+  return (this->_current);
+}
+
+template <vector_iterator_typenames>
+typename vector_iterator_class::reference vector_iterator_class::operator[](difference_type n) {
+  return (*(this->_current + n));
 }
 
 }  // namespace ft
