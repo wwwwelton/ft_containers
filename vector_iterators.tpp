@@ -40,32 +40,76 @@ vector_iterator_class& vector_iterator_class::operator=(const iterator& rhs) {
 
 template <vector_iterator_typenames>
 bool vector_iterator_class::operator>(const iterator& rhs) {
-	return(this->_current > rhs._current);
+  return (this->_current > rhs._current);
 }
 
 template <vector_iterator_typenames>
 bool vector_iterator_class::operator<(const iterator& rhs) {
-	return(this->_current < rhs._current);
+  return (this->_current < rhs._current);
 }
 
 template <vector_iterator_typenames>
 bool vector_iterator_class::operator>=(const iterator& rhs) {
-	return(this->_current >= rhs._current);
+  return (this->_current >= rhs._current);
 }
 
 template <vector_iterator_typenames>
 bool vector_iterator_class::operator<=(const iterator& rhs) {
-	return(this->_current <= rhs._current);
+  return (this->_current <= rhs._current);
 }
 
 template <vector_iterator_typenames>
 bool vector_iterator_class::operator==(const iterator& rhs) {
-	return(this->_current == rhs._current);
+  return (this->_current == rhs._current);
 }
 
 template <vector_iterator_typenames>
 bool vector_iterator_class::operator!=(const iterator& rhs) {
-	return(this->_current != rhs._current);
+  return (this->_current != rhs._current);
+}
+
+template <vector_iterator_typenames>
+typename vector_iterator_class::iterator vector_iterator_class::operator+(difference_type n) {
+  vector_iterator_class temp(*this);
+  this->_current += n;
+  return (temp);
+}
+
+template <vector_iterator_typenames>
+typename vector_iterator_class::iterator vector_iterator_class::operator-(difference_type n) {
+  vector_iterator_class temp(*this);
+  this->_current -= n;
+  return (temp);
+}
+
+// Prefix increment operator.
+template <vector_iterator_typenames>
+typename vector_iterator_class::iterator& vector_iterator_class::operator++(void) {
+  ++this->_current;
+  return (*this);
+}
+
+// Postfix increment operator.
+template <vector_iterator_typenames>
+typename vector_iterator_class::iterator vector_iterator_class::operator++(int) {
+  vector_iterator_class temp(*this);
+  this->_current++;
+  return (temp);
+}
+
+// Prefix decrement operator.
+template <vector_iterator_typenames>
+typename vector_iterator_class::iterator& vector_iterator_class::operator--(void) {
+  --this->_current;
+  return (*this);
+}
+
+// Postfix decrement operator.
+template <vector_iterator_typenames>
+typename vector_iterator_class::iterator vector_iterator_class::operator--(int) {
+  vector_iterator_class temp(*this);
+  this->_current--;
+  return (temp);
 }
 
 }  // namespace ft
