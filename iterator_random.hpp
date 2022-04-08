@@ -24,7 +24,7 @@ class random_access_iterator : public iterator<random_access_iterator_tag,
  public:
   random_access_iterator() : current() {}
   explicit random_access_iterator(const Iterator& i) : current(i) {}
-  random_access_iterator(const random_access_iterator& i) : current(i.current) {}
+  random_access_iterator(const random_access_iterator& i) : current(i.base()) {}
   template <typename Iter>
   random_access_iterator(const random_access_iterator<Iter>& i) : current(i.base()) {}
   ~random_access_iterator() {}
