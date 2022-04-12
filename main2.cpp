@@ -2,37 +2,79 @@
 
 #include <iostream>
 
-#if 1
+#define KO "\033[1;31mKO\033[0m"
+#define OK "\033[1;32mOK\033[0m"
+
+// #if 1
+// #include <vector>
+// namespace ft = std;
+// #else
+// #include "./vector.hpp"
+// #endif
+
 #include <vector>
-namespace ft = std;
-#else
+
 #include "./vector.hpp"
-#endif
 
 int main(void) {
-  ft::vector<int> vec1(2);
-  ft::vector<int> vec2(vec1);
+  std::cout << "\n===========[ VECTOR ]==========\n";
+  {
+      {std::cout << "\n[ SIZE ]\n";
+  ft::vector<int> FTvec;
+  std::vector<int> ORvec;
+  if (FTvec.size() == ORvec.size())
+    std::cout << OK " ";
+  else
+    std::cout << KO " ";
+}
+{
+  ft::vector<int> FTvec(10);
+  std::vector<int> ORvec(10);
+  if (FTvec.size() == ORvec.size())
+    std::cout << OK " ";
+  else
+    std::cout << KO " ";
+}
+}
 
-  size_t count = 4;
+{
+    {std::cout << "\n[ CAPACITY ]\n";
+ft::vector<int> FTvec;
+std::vector<int> ORvec;
+if (FTvec.capacity() == FTvec.capacity())
+  std::cout << OK " ";
+else
+  std::cout << KO " ";
+}
+{
+  ft::vector<int> FTvec(10);
+  std::vector<int> ORvec(10);
+  if (FTvec.capacity() == FTvec.capacity())
+    std::cout << OK " ";
+  else
+    std::cout << KO " ";
+}
+}
 
-  std::cout << "\n===========[ ADDING VALUES ]==========\n";
-
-  std::cout << "\n[ vec1 ]\n";
-  for (size_t i = 0; i < count; i++) {
-    vec1[i] = static_cast<int>(i);
+{
+  {
+    std::cout << "\n[ MAX_SIZE ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    if (FTvec.max_size() == ORvec.max_size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
   }
-  for (size_t i = 0; i < count; i++) {
-    std::cout << "index[" << i << "]: " << vec1[i] << std::endl;
+  {
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    if (FTvec.max_size() == ORvec.max_size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
   }
+}
 
-  std::cout << "\n[ vec2 ]\n";
-  for (size_t i = 0; i < count; i++) {
-    vec2[i] = static_cast<int>(i);
-  }
-  for (size_t i = 0; i < count; i++) {
-    std::cout << "index[" << i << "]: " << vec2[i] << std::endl;
-  }
-
-  std::cout << "\n======================================\n";
-  return (0);
+return (0);
 }
