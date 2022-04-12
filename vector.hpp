@@ -39,7 +39,6 @@ class vector {
 
  public:
   explicit vector(const allocator_type& alloc = allocator_type()) {
-    std::cout << "Vector default constructor called." << std::endl;
     _alloc = alloc;
     _data = NULL;
     _size = 0;
@@ -49,7 +48,6 @@ class vector {
   explicit vector(size_type n,
                   const value_type& val = value_type(),
                   const allocator_type& alloc = allocator_type()) {
-    std::cout << "Vector parametric constructor called." << std::endl;
     _alloc = alloc;
     _data = _alloc.allocate(n);
     _capacity = n;
@@ -69,7 +67,6 @@ class vector {
   }
 
   ~vector(void) {
-    std::cout << "Vector default destructor called." << std::endl;
     for (size_type i = 0; i < this->_size; i++) {
       this->_alloc.destroy(this->_data + i);
     }

@@ -4,7 +4,13 @@ OBJ_DIR				=	objects
 
 SRC_DIR				=	./
 
-HEADERS				=
+HEADERS				=	algorithm.hpp \
+						iterator_funcs.hpp \
+						iterator_random.hpp \
+						iterator_reverse.hpp \
+						iterator_traits.hpp \
+						type_traits.hpp \
+						vector.hpp \
 
 SRC_FILES			=	main2.cpp
 
