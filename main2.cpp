@@ -19,7 +19,7 @@
 int main(void) {
   std::cout << "\n===========[ VECTOR ]==========\n";
   {
-    std::cout << "\n[ BEGIN ITERATOR]\n";
+    std::cout << "\n[ BEGIN ITERATOR ]\n";
     ft::vector<int> FTvec(10);
     std::vector<int> ORvec(10);
     for (int i = 0; i < 10; i++) {
@@ -35,7 +35,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ BEGIN CONST ITERATOR]\n";
+    std::cout << "\n[ BEGIN CONST ITERATOR ]\n";
     ft::vector<int> FTvec(10);
     std::vector<int> ORvec(10);
     for (int i = 0; i < 10; i++) {
@@ -53,7 +53,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ END ITERATOR]\n";
+    std::cout << "\n[ END ITERATOR ]\n";
     int size = 10;
     ft::vector<int> FTvec(size);
     std::vector<int> ORvec(size);
@@ -72,7 +72,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ END CONST ITERATOR]\n";
+    std::cout << "\n[ END CONST ITERATOR ]\n";
     int size = 10;
     ft::vector<int> FTvec(size);
     std::vector<int> ORvec(size);
@@ -85,6 +85,23 @@ int main(void) {
     ft::vector<int>::iterator FTite = FTvec.end();
     std::vector<int>::iterator ORite = ORvec.end();
     if ((FTit == FTite) && (ORit == ORite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ RBEGIN ]\n";
+    int size = 10;
+    ft::vector<int> FTvec(size);
+    std::vector<int> ORvec(size);
+    for (int i = 0; i < size; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::reverse_iterator FTitrb = FTvec.rbegin();
+    std::vector<int>::reverse_iterator ORitrb = ORvec.rbegin();
+    if (*FTitrb == *ORitrb)
       std::cout << OK " ";
     else
       std::cout << KO " ";
