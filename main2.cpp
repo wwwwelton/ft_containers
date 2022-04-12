@@ -19,44 +19,57 @@
 int main(void) {
   std::cout << "\n===========[ VECTOR ]==========\n";
   {
-      {std::cout << "\n[ SIZE ]\n";
-  ft::vector<int> FTvec;
-  std::vector<int> ORvec;
-  if (FTvec.size() == ORvec.size())
-    std::cout << OK " ";
-  else
-    std::cout << KO " ";
-}
-{
-  ft::vector<int> FTvec(10);
-  std::vector<int> ORvec(10);
-  if (FTvec.size() == ORvec.size())
-    std::cout << OK " ";
-  else
-    std::cout << KO " ";
-}
-}
+    std::cout << "\n[ BEGIN ITERATOR]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::iterator Fit = FTvec.begin();
+    std::vector<int>::iterator Oit = ORvec.begin();
+    if (*Fit == *Oit)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
-{
-    {std::cout << "\n[ CAPACITY ]\n";
-ft::vector<int> FTvec;
-std::vector<int> ORvec;
-if (FTvec.capacity() == FTvec.capacity())
-  std::cout << OK " ";
-else
-  std::cout << KO " ";
-}
-{
-  ft::vector<int> FTvec(10);
-  std::vector<int> ORvec(10);
-  if (FTvec.capacity() == FTvec.capacity())
-    std::cout << OK " ";
-  else
-    std::cout << KO " ";
-}
-}
+  {
+    std::cout << "\n[ SIZE ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    if (FTvec.size() == ORvec.size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    if (FTvec.size() == ORvec.size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
-{
+  {
+    std::cout << "\n[ CAPACITY ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    if (FTvec.capacity() == FTvec.capacity())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    if (FTvec.capacity() == FTvec.capacity())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   {
     std::cout << "\n[ MAX_SIZE ]\n";
     ft::vector<int> FTvec;
@@ -74,7 +87,5 @@ else
     else
       std::cout << KO " ";
   }
-}
-
-return (0);
+  return (0);
 }
