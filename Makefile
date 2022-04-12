@@ -19,7 +19,7 @@ SRCS				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS				=	$(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC					=	c++
-CFLAGS				=	-Wall -Wextra -Werror -Wshadow -Wconversion
+CFLAGS				=	-Wall -Wextra -Werror -Wshadow -Wconversion -Wno-long-long
 CFLAGS				+=	-std=c++98 -pedantic-errors -g
 
 RM					=	rm -rf
