@@ -26,9 +26,27 @@ int main(void) {
       FTvec[i] = i;
       ORvec[i] = i;
     }
-    ft::vector<int>::iterator Fit = FTvec.begin();
-    std::vector<int>::iterator Oit = ORvec.begin();
-    if (*Fit == *Oit)
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    if (*FTit == *ORit)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ BEGIN CONST ITERATOR]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    ft::vector<int>::const_iterator FCit = FTit;
+    std::vector<int>::const_iterator ORCit = ORit;
+    if ((FTit == FCit) && (ORit == ORCit))
       std::cout << OK " ";
     else
       std::cout << KO " ";
