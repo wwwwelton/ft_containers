@@ -92,11 +92,11 @@ class vector {
   }
 
   reverse_iterator rbegin() {
-    return (reverse_iterator(_data + _size - 1));
+    return (reverse_iterator(end()));
   }
 
   const_reverse_iterator rbegin() const {
-    return (const_reverse_iterator(_data + _size - 1));
+    return (const_reverse_iterator(end()));
   }
 
   reverse_iterator rend() {
