@@ -112,7 +112,7 @@ class vector {
   }
 
   size_type max_size() const {
-    return size_type(-1) / sizeof(value_type);
+    return (_alloc.max_size());
   }
 
   void resize(size_type n, value_type val = value_type());
