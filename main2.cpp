@@ -91,7 +91,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ RBEGIN ]\n";
+    std::cout << "\n[ RBEGIN ITERATOR ]\n";
     int size = 10;
     ft::vector<int> FTvec(size);
     std::vector<int> ORvec(size);
@@ -102,6 +102,25 @@ int main(void) {
     ft::vector<int>::reverse_iterator FTitrb = FTvec.rbegin();
     std::vector<int>::reverse_iterator ORitrb = ORvec.rbegin();
     if (*FTitrb == *ORitrb)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ RBEGIN CONST ITERATOR ]\n";
+    int size = 10;
+    ft::vector<int> FTvec(size);
+    std::vector<int> ORvec(size);
+    for (int i = 0; i < size; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::reverse_iterator FTitrb = FTvec.rbegin();
+    std::vector<int>::reverse_iterator ORitrb = ORvec.rbegin();
+    ft::vector<int>::const_reverse_iterator FTitrbc = FTvec.rbegin();
+    std::vector<int>::const_reverse_iterator ORitrbc = ORvec.rbegin();
+    if ((FTitrb == FTitrbc) && (ORitrb == ORitrbc))
       std::cout << OK " ";
     else
       std::cout << KO " ";
