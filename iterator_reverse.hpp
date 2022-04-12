@@ -98,10 +98,22 @@ class reverse_iterator
   }
 };
 
+template <typename IteratorL, typename IteratorR>
+inline bool operator==(const reverse_iterator<IteratorL>& x,
+                       const reverse_iterator<IteratorR>& y) {
+  return (x.base() == y.base());
+}
+
 template <typename Iterator>
 inline bool operator==(const reverse_iterator<Iterator>& x,
                        const reverse_iterator<Iterator>& y) {
   return (x.base() == y.base());
+}
+
+template <typename IteratorL, typename IteratorR>
+inline bool operator!=(const reverse_iterator<IteratorL>& x,
+                       const reverse_iterator<IteratorR>& y) {
+  return (!(x == y));
 }
 
 template <typename Iterator>
@@ -110,10 +122,22 @@ inline bool operator!=(const reverse_iterator<Iterator>& x,
   return (!(x == y));
 }
 
+template <typename IteratorL, typename IteratorR>
+inline bool operator<(const reverse_iterator<IteratorL>& x,
+                      const reverse_iterator<IteratorR>& y) {
+  return (y.base() < x.base());
+}
+
 template <typename Iterator>
 inline bool operator<(const reverse_iterator<Iterator>& x,
                       const reverse_iterator<Iterator>& y) {
   return (y.base() < x.base());
+}
+
+template <typename IteratorL, typename IteratorR>
+inline bool operator<=(const reverse_iterator<IteratorL>& x,
+                       const reverse_iterator<IteratorR>& y) {
+  return (!(y < x));
 }
 
 template <typename Iterator>
@@ -122,10 +146,22 @@ inline bool operator<=(const reverse_iterator<Iterator>& x,
   return (!(y < x));
 }
 
+template <typename IteratorL, typename IteratorR>
+inline bool operator>(const reverse_iterator<IteratorL>& x,
+                      const reverse_iterator<IteratorR>& y) {
+  return (y < x);
+}
+
 template <typename Iterator>
 inline bool operator>(const reverse_iterator<Iterator>& x,
                       const reverse_iterator<Iterator>& y) {
   return (y < x);
+}
+
+template <typename IteratorL, typename IteratorR>
+inline bool operator>=(const reverse_iterator<IteratorL>& x,
+                       const reverse_iterator<IteratorR>& y) {
+  return (!(x < y));
 }
 
 template <typename Iterator>
