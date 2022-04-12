@@ -72,6 +72,25 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ END CONST ITERATOR]\n";
+    int size = 10;
+    ft::vector<int> FTvec(size);
+    std::vector<int> ORvec(size);
+    for (int i = 0; i < size; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::const_iterator FTit = FTvec.begin() + size;
+    std::vector<int>::const_iterator ORit = ORvec.begin() + size;
+    ft::vector<int>::iterator FTite = FTvec.end();
+    std::vector<int>::iterator ORite = ORvec.end();
+    if ((FTit == FTite) && (ORit == ORite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
     std::cout << "\n[ SIZE ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
