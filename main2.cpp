@@ -127,6 +127,23 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ REND ITERATOR ]\n";
+    int size = 10;
+    ft::vector<int> FTvec(size);
+    std::vector<int> ORvec(size);
+    for (int i = 0; i < size; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::reverse_iterator FTitre = FTvec.rend();
+    std::vector<int>::reverse_iterator ORitre = ORvec.rend();
+    if (*FTitre == *ORitre)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
     std::cout << "\n[ SIZE ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
