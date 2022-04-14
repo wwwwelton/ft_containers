@@ -182,13 +182,15 @@ class vector {
 
   iterator erase(iterator first, iterator last) {
     iterator it(first);
-    while (last != (end() - 1)) {
+    while (last != end()) {
       *first = *last;
       ++first;
       ++last;
     }
-    --_size;
-    _alloc.destroy(_data + _size);
+    _size -= ft::distance(first, last);
+    for (size_t i = ft::distance(first, last); i > _size; i--) {
+      _alloc.destroy(_data + i);
+    }
     return (it);
   }
 
