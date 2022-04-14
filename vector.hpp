@@ -170,19 +170,27 @@ class vector {
   void insert(iterator position, InputIterator first, InputIterator last);
 
   iterator erase(iterator position) {
-    if (position + 1 != end()) {
-      iterator it(position);
-      while ((it + 1) != end()) {
-        *it = *(it + 1);
-        it++;
-      }
+    iterator it(position);
+    while (position != (end() - 1)) {
+      *position = *(position + 1);
+      position++;
     }
     --_size;
     _alloc.destroy(_data + _size);
-    return (position);
+    return (it);
   }
 
-  iterator erase(iterator first, iterator last);
+  iterator erase(iterator first, iterator last) {
+    iterator it(first);
+    while (last != (end() - 1)) {
+      *first = *last;
+      ++first;
+      ++last;
+    }
+    --_size;
+    _alloc.destroy(_data + _size);
+    return (it);
+  }
 
   void swap(vector& x);
 
