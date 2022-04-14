@@ -17,7 +17,7 @@
 #include "./vector.hpp"
 
 int main(void) {
-  std::cout << "\n===========[ VECTOR ]==========\n";
+  std::cout << "\n===========[ VECTOR ITERATORS ]===========\n";
   {
     std::cout << "\n[ BEGIN ITERATOR ]\n";
     ft::vector<int> FTvec(10);
@@ -162,6 +162,8 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ VECTOR CAPACITY ]===========\n";
+
   {
     std::cout << "\n[ SIZE ]\n";
     ft::vector<int> FTvec;
@@ -181,6 +183,43 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ MAX_SIZE ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    if (FTvec.max_size() == ORvec.max_size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    if (FTvec.max_size() == ORvec.max_size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  //   {
+  //     std::cout << "\n[ RESIZE ]\n";
+  //     int size = 10;
+  //     ft::vector<int> FTvec(size);
+  //     std::vector<int> ORvec(size);
+  //     for (int i = 0; i < size; i++) {
+  //       FTvec[i] = i;
+  //       ORvec[i] = i;
+  //     }
+  //     FTvec.resize(5);
+  //     ORvec.resize(5);
+  //     ft::vector<int>::iterator FTit = FTvec.begin();
+  //     std::vector<int>::iterator ORit = ORvec.begin();
+  //     if ((FTvec.size() == ORvec.size()) && (*FTit == *ORit))
+  //       std::cout << OK " ";
+  //     else
+  //       std::cout << KO " ";
+  //   }
+
+  {
     std::cout << "\n[ CAPACITY ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
@@ -198,19 +237,21 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ VECTOR MODIFIERS ]===========\n";
+
   {
-    std::cout << "\n[ MAX_SIZE ]\n";
-    ft::vector<int> FTvec;
-    std::vector<int> ORvec;
-    if (FTvec.max_size() == ORvec.max_size())
-      std::cout << OK " ";
-    else
-      std::cout << KO " ";
-  }
-  {
+    std::cout << "\n[ ERASE ]\n";
     ft::vector<int> FTvec(10);
     std::vector<int> ORvec(10);
-    if (FTvec.max_size() == ORvec.max_size())
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    ft::vector<int>::iterator FTite = FTvec.erase(FTit);
+    std::vector<int>::iterator ORite = ORvec.erase(ORit);
+    if ((*FTit == *ORit) && (*FTite == *ORite))
       std::cout << OK " ";
     else
       std::cout << KO " ";
