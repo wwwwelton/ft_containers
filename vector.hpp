@@ -3,8 +3,6 @@
 #ifndef VECTOR_HPP_
 #define VECTOR_HPP_
 
-#include <cstring>
-#include <iostream>
 #include <memory>
 
 #include "iterator_funcs.hpp"
@@ -137,12 +135,7 @@ class vector {
 
   reference at(size_type n);
 
-  const_reference at(size_type n) const {
-    if (n < 0 || n >= _size) {
-      throw std::out_of_range("The index is out of range");
-    }
-    return (_data[n]);
-  }
+  const_reference at(size_type n) const;
 
   reference front() {
     return (*begin());
@@ -176,7 +169,18 @@ class vector {
   template <class InputIterator>
   void insert(iterator position, InputIterator first, InputIterator last);
 
-  iterator erase(iterator position);
+  iterator erase(iterator position) {
+    if (position + 1 != end()) {
+      iterator it(position);
+      while ((it + 1) != end()) {
+        *it = *(it + 1);
+        it++;
+      }
+    }
+    --_size;
+    _alloc.destroy(_data + _size);
+    return (position);
+  }
 
   iterator erase(iterator first, iterator last);
 
