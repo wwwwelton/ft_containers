@@ -4,6 +4,7 @@
 #define VECTOR_HPP_
 
 #include <memory>
+#include <stdexcept>
 
 #include "iterator_funcs.hpp"
 #include "iterator_random.hpp"
@@ -116,14 +117,33 @@ class vector {
   void resize(size_type n, value_type val = value_type());
 
   size_type capacity() const {
-    return (size_type(const_iterator(end()) - begin()));
+    return (_capacity);
   }
 
   bool empty() const {
     return begin() == end();
   }
 
-  void reserve(size_type n);
+  void reserve(size_type n) {
+    if (n > _capacity) {
+      if (n > max_size()) {
+        throw std::length_error("Exceeded maximum supported size");
+      }
+      pointer tmp = _alloc.allocate(n);
+      if (tmp == NULL) {
+        throw std::bad_alloc();
+      }
+      for (size_t i = 0; i < _size; i++) {
+        _alloc.construct(tmp + i, _data[i]);
+      }
+      for (size_t i = 0; i < _size; i++) {
+        _alloc.destroy(_data + i);
+      }
+      _alloc.deallocate(_data, _capacity);
+      _data = tmp;
+      _capacity = n;
+    }
+  }
 
   reference operator[](size_type n) {
     return (*(begin() + n));
