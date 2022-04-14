@@ -267,11 +267,12 @@ int main(void) {
     }
     ft::vector<int>::iterator FTit1 = FTvec.begin();
     std::vector<int>::iterator ORit1 = ORvec.begin();
-    ft::vector<int>::iterator FTit2 = FTvec.begin() + 1;
-    std::vector<int>::iterator ORit2 = ORvec.begin() + 1;
+    ft::vector<int>::iterator FTit2 = FTvec.begin() + 5;
+    std::vector<int>::iterator ORit2 = ORvec.begin() + 5;
     ft::vector<int>::iterator FTite = FTvec.erase(FTit1, FTit2);
     std::vector<int>::iterator ORite = ORvec.erase(ORit1, ORit2);
-    if ((*FTit1 == *ORit1) && (*FTite == *ORite))
+    if ((*FTit1 == *ORit1) && (*FTite == *ORite) &&
+        (FTvec.size() == ORvec.size()))
       std::cout << OK " ";
     else
       std::cout << KO " ";
