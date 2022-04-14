@@ -127,7 +127,7 @@ class vector {
   void reserve(size_type n) {
     if (n > _capacity) {
       if (n > max_size()) {
-        throw std::length_error("Exceeded maximum supported size");
+        throw std::length_error("length_error");
       }
       pointer tmp = _alloc.allocate(n);
       if (tmp == NULL) {
