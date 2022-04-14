@@ -107,7 +107,7 @@ class vector {
   }
 
   size_type size() const {
-    return (size_type(end() - begin()));
+    return (_size);
   }
 
   size_type max_size() const {
