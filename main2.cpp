@@ -258,7 +258,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ ERASE ITERATOR]\n";
+    std::cout << "\n[ ERASE ITERATOR ]\n";
     ft::vector<int> FTvec(10);
     std::vector<int> ORvec(10);
     for (int i = 0; i < 10; i++) {
@@ -277,5 +277,28 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+
+  {
+    std::cout << "\n[ RESERVE ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    FTvec.reserve(10);
+    ORvec.reserve(10);
+    if ((FTvec.capacity() == ORvec.capacity()) && (FTvec.size() == ORvec.size()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    ft::vector<int> FTvec;
+    try {
+      FTvec.reserve(1111111111111111);
+      std::cout << KO " ";
+    } catch (const std::exception& e) {
+      std::cout << OK " ";
+    }
+  }
+
   return (0);
 }
