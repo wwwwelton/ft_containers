@@ -256,5 +256,25 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+
+  {
+    std::cout << "\n[ ERASE ITERATOR]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::iterator FTit1 = FTvec.begin();
+    std::vector<int>::iterator ORit1 = ORvec.begin();
+    ft::vector<int>::iterator FTit2 = FTvec.begin() + 1;
+    std::vector<int>::iterator ORit2 = ORvec.begin() + 1;
+    ft::vector<int>::iterator FTite = FTvec.erase(FTit1, FTit2);
+    std::vector<int>::iterator ORite = ORvec.erase(ORit1, ORit2);
+    if ((*FTit1 == *ORit1) && (*FTite == *ORite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
   return (0);
 }
