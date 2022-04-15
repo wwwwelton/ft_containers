@@ -441,5 +441,25 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  {
+    std::cout << "\n[ SWAP ]\n";
+    ft::vector<int> FTveca(10);
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i + 2;
+      FTveca[i] = i + 2;
+    }
+    FTvec.swap(FTveca);
+    ft::vector<int>::iterator FTit1 = FTvec.begin();
+    std::vector<int>::iterator ORit1 = ORvec.begin();
+    if ((*FTit1 == *ORit1) && (FTvec.size() == ORvec.size()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+    std::cout << "\n";
+  }
+
   return (0);
 }
