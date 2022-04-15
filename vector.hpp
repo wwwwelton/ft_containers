@@ -247,7 +247,19 @@ class vector {
     return (it);
   }
 
-  void swap(vector& x);
+  void swap(vector& x) {
+    pointer tmp_data = x._data;
+    size_type tmp_capacity = x._capacity;
+    size_type tmp_size = x._size;
+
+    x._data = _data;
+    x._capacity = _capacity;
+    x._size = _size;
+
+    _data = tmp_data;
+    _capacity = tmp_capacity;
+    _size = tmp_size;
+  }
 
   void clear();
 
