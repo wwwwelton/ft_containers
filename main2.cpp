@@ -250,6 +250,22 @@ int main(void) {
     }
   }
 
+  std::cout << "\n\n===========[ VECTOR ELEMENT ACCESS ]===========\n";
+
+  {
+    std::cout << "\n[ OPERATOR[] ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    if (FTvec[5] == ORvec[5])
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   std::cout << "\n\n===========[ VECTOR MODIFIERS ]===========\n";
 
   {
