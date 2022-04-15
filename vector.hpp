@@ -188,7 +188,25 @@ class vector {
 
   void assign(size_type n, const value_type& val);
 
-  void push_back(const value_type& val);
+  void push_back(const value_type& val) {
+    if (_size + 1 > _capacity) {
+      _capacity ? _capacity *= 2 : 1;
+      pointer tmp = _alloc.allocate(_capacity);
+      if (tmp == NULL) {
+        throw std::bad_alloc();
+      }
+      for (size_t i = 0; i < _size; i++) {
+        _alloc.construct(tmp + i, _data[i]);
+      }
+      for (size_t i = 0; i < _size; i++) {
+        _alloc.destroy(_data + i);
+      }
+      _alloc.deallocate(_data, _capacity);
+      _data = tmp;
+    }
+    _alloc.construct(_data + _size, val);
+    _size++;
+  }
 
   void pop_back();
 
