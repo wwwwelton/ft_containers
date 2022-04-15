@@ -135,8 +135,8 @@ int main(void) {
       FTvec[i] = i;
       ORvec[i] = i;
     }
-    ft::vector<int>::reverse_iterator FTitre = FTvec.rend();
-    std::vector<int>::reverse_iterator ORitre = ORvec.rend();
+    ft::vector<int>::reverse_iterator FTitre = FTvec.rend() - 1;
+    std::vector<int>::reverse_iterator ORitre = ORvec.rend() - 1;
     if (*FTitre == *ORitre)
       std::cout << OK " ";
     else
@@ -240,16 +240,6 @@ int main(void) {
       std::cout << KO " ";
   }
 
-  {
-    ft::vector<int> FTvec;
-    try {
-      FTvec.reserve(1111111111111111);
-      std::cout << KO " ";
-    } catch (const std::exception& e) {
-      std::cout << OK " ";
-    }
-  }
-
   std::cout << "\n\n===========[ VECTOR ELEMENT ACCESS ]===========\n";
 
   {
@@ -349,8 +339,8 @@ int main(void) {
     FTvec.push_back(22);
     ORvec.push_back(11);
     ORvec.push_back(22);
-    ft::vector<int>::iterator FTit = FTvec.end();
-    std::vector<int>::iterator ORit = ORvec.end();
+    ft::vector<int>::iterator FTit = FTvec.end() - 1;
+    std::vector<int>::iterator ORit = ORvec.end() - 1;
     if (*FTit == *ORit)
       std::cout << OK " ";
     else
