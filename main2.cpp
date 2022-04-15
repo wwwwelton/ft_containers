@@ -306,6 +306,20 @@ int main(void) {
     }
   }
 
+  {
+    std::cout << "\n[ FRONT ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    if (FTvec.front() == ORvec.front())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   std::cout << "\n\n===========[ VECTOR MODIFIERS ]===========\n";
 
   {
