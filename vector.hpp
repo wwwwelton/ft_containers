@@ -48,13 +48,21 @@ class vector {
                   const value_type& val = value_type(),
                   const allocator_type& alloc = allocator_type()) {
     _alloc = alloc;
-    _data = _alloc.allocate(n);
-    _capacity = n;
+    _data = NULL;
     _size = 0;
-    for (size_type i = 0; i < n; i++) {
-      _alloc.construct(this->_data + i, val);
+    _capacity = 0;
+    if (n > max_size()) {
+      throw std::length_error("length_error");
+    }
+    _data = _alloc.allocate(n);
+    if (_data == NULL) {
+      throw std::bad_alloc();
+    }
+    for (size_t i = 0; i < n; i++) {
+      _alloc.construct(_data + i, val);
       _size++;
     }
+    _capacity = n;
   }
 
   template <class InputIterator>
