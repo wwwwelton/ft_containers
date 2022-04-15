@@ -458,6 +458,20 @@ int main(void) {
       std::cout << OK " ";
     else
       std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ CLEAR ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    if ((FTvec.size() == ORvec.size()) && (FTvec.capacity() == ORvec.capacity()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
     std::cout << "\n";
   }
 
