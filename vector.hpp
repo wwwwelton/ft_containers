@@ -208,7 +208,12 @@ class vector {
     _size++;
   }
 
-  void pop_back();
+  void pop_back() {
+    if (_size) {
+      _alloc.destroy(_data + _size - 1);
+      _size--;
+    }
+  }
 
   iterator insert(iterator position, const value_type& val);
 
