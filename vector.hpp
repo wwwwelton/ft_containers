@@ -265,7 +265,9 @@ class vector {
     erase(begin(), end());
   }
 
-  allocator_type get_allocator() const;
+  allocator_type get_allocator() const {
+    return (_alloc);
+  }
 };
 
 template <class T, class Alloc>
