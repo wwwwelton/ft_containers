@@ -200,25 +200,6 @@ int main(void) {
       std::cout << KO " ";
   }
 
-  //   {
-  //     std::cout << "\n[ RESIZE ]\n";
-  //     int size = 10;
-  //     ft::vector<int> FTvec(size);
-  //     std::vector<int> ORvec(size);
-  //     for (int i = 0; i < size; i++) {
-  //       FTvec[i] = i;
-  //       ORvec[i] = i;
-  //     }
-  //     FTvec.resize(5);
-  //     ORvec.resize(5);
-  //     ft::vector<int>::iterator FTit = FTvec.begin();
-  //     std::vector<int>::iterator ORit = ORvec.begin();
-  //     if ((FTvec.size() == ORvec.size()) && (*FTit == *ORit))
-  //       std::cout << OK " ";
-  //     else
-  //       std::cout << KO " ";
-  //   }
-
   {
     std::cout << "\n[ CAPACITY ]\n";
     ft::vector<int> FTvec;
@@ -235,6 +216,38 @@ int main(void) {
       std::cout << OK " ";
     else
       std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ EMPTY ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    if (FTvec.empty() == FTvec.empty())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ RESERVE ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    FTvec.reserve(10);
+    ORvec.reserve(10);
+    if ((FTvec.capacity() == ORvec.capacity()) && (FTvec.size() == ORvec.size()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    ft::vector<int> FTvec;
+    try {
+      FTvec.reserve(1111111111111111);
+      std::cout << KO " ";
+    } catch (const std::exception& e) {
+      std::cout << OK " ";
+    }
   }
 
   std::cout << "\n\n===========[ VECTOR MODIFIERS ]===========\n";
@@ -276,28 +289,6 @@ int main(void) {
       std::cout << OK " ";
     else
       std::cout << KO " ";
-  }
-
-  {
-    std::cout << "\n[ RESERVE ]\n";
-    ft::vector<int> FTvec;
-    std::vector<int> ORvec;
-    FTvec.reserve(10);
-    ORvec.reserve(10);
-    if ((FTvec.capacity() == ORvec.capacity()) && (FTvec.size() == ORvec.size()))
-      std::cout << OK " ";
-    else
-      std::cout << KO " ";
-  }
-
-  {
-    ft::vector<int> FTvec;
-    try {
-      FTvec.reserve(1111111111111111);
-      std::cout << KO " ";
-    } catch (const std::exception& e) {
-      std::cout << OK " ";
-    }
   }
 
   return (0);
