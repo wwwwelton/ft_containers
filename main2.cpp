@@ -266,6 +266,46 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  {
+    std::cout << "\n[ AT ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    if (FTvec.at(5) == ORvec.at(5))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    ft::vector<int> FTvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+    }
+    try {
+      int FTvecVal = FTvec.at(100);
+      (void)FTvecVal;
+      std::cout << KO " ";
+    } catch (const std::exception& e) {
+      std::cout << OK " ";
+    }
+  }
+  {
+    ft::vector<int> FTvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+    }
+    try {
+      int FTvecVal = FTvec.at(-1);
+      (void)FTvecVal;
+      std::cout << KO " ";
+    } catch (const std::exception& e) {
+      std::cout << OK " ";
+    }
+  }
+
   std::cout << "\n\n===========[ VECTOR MODIFIERS ]===========\n";
 
   {
