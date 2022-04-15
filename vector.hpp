@@ -121,7 +121,7 @@ class vector {
   }
 
   bool empty() const {
-    return begin() == end();
+    return (begin() == end());
   }
 
   void reserve(size_type n) {
