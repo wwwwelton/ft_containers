@@ -160,7 +160,12 @@ class vector {
     return (*(begin() + n));
   }
 
-  const_reference at(size_type n) const;
+  const_reference at(size_type n) const {
+    if (n < 0 || n >= _size) {
+      throw std::out_of_range("out_of_range");
+    }
+    return (*(begin() + n));
+  }
 
   reference front() {
     return (*begin());
