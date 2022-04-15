@@ -380,6 +380,28 @@ int main(void) {
   }
   // PUSH_BACK
 
+  // POP_BACK
+  {
+    std::cout << "\n[ POP_BACK ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.pop_back();
+    ORvec.pop_back();
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    ft::vector<int>::iterator FTite = FTvec.end() - 1;
+    std::vector<int>::iterator ORite = ORvec.end() - 1;
+    if ((*FTit == *ORit) && (FTvec.size() == ORvec.size()) && *FTite == *ORite)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  // POP_BACK
+
   {
     std::cout << "\n[ ERASE ]\n";
     ft::vector<int> FTvec(10);
