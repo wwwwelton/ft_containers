@@ -268,6 +268,11 @@ class vector {
   allocator_type get_allocator() const;
 };
 
+template <class T, class Alloc>
+void swap(vector<T, Alloc>& x, vector<T, Alloc>& y) {
+  x.swap(y);
+}
+
 }  // namespace ft
 
 #endif  // VECTOR_HPP_
