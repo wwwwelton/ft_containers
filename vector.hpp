@@ -261,7 +261,9 @@ class vector {
     _size = tmp_size;
   }
 
-  void clear();
+  void clear() {
+    erase(begin(), end());
+  }
 
   allocator_type get_allocator() const;
 };
