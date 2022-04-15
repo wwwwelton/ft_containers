@@ -336,6 +336,60 @@ int main(void) {
 
   std::cout << "\n\n===========[ VECTOR MODIFIERS ]===========\n";
 
+  // PUSH_BACK
+  {
+    std::cout << "\n[ PUSH_BACK ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.push_back(11);
+    FTvec.push_back(22);
+    ORvec.push_back(11);
+    ORvec.push_back(22);
+    ft::vector<int>::iterator FTit = FTvec.end();
+    std::vector<int>::iterator ORit = ORvec.end();
+    if (*FTit == *ORit)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.push_back(11);
+    FTvec.push_back(22);
+    ORvec.push_back(11);
+    ORvec.push_back(22);
+    if (FTvec.size() == ORvec.size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.push_back(11);
+    FTvec.push_back(22);
+    ORvec.push_back(11);
+    ORvec.push_back(22);
+    if (FTvec.capacity() == ORvec.capacity())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  // PUSH_BACK
+
   {
     std::cout << "\n[ ERASE ]\n";
     ft::vector<int> FTvec(10);
