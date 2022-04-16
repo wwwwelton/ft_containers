@@ -17,6 +17,36 @@
 #include "./vector.hpp"
 
 int main(void) {
+  std::cout << "\n===========[ CONSTRUCTORS ]===========\n";
+  {
+    std::cout << "\n[ RANGE CONSTRUCTOR 1 ]\n";
+    ft::vector<int> FTvec(10, 20);
+    std::vector<int> ORvec(10, 20);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    ft::vector<int>::iterator FTite = FTvec.end() - 1;
+    std::vector<int>::iterator ORite = ORvec.end() - 1;
+    if ((*FTit == *ORit) && (*FTite == *ORite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ RANGE CONSTRUCTOR 2 ]\n";
+    int n[] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
+    ft::vector<int> FTvec(n, n + 9);
+    std::vector<int> ORvec(n, n + 9);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    ft::vector<int>::iterator FTite = FTvec.end() - 1;
+    std::vector<int>::iterator ORite = ORvec.end() - 1;
+    if ((*FTit == *ORit) && (*FTite == *ORite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   std::cout << "\n===========[ VECTOR ITERATORS ]===========\n";
   {
     std::cout << "\n[ BEGIN ITERATOR ]\n";
@@ -472,7 +502,6 @@ int main(void) {
       std::cout << OK " ";
     else
       std::cout << KO " ";
-    std::cout << "\n";
   }
 
   return (0);
