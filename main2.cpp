@@ -538,5 +538,69 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  {
+    std::cout << "\n[ INSERT 1 ]\n";
+    ft::vector<int> FTvec(30);
+    std::vector<int> ORvec(30);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.insert(FTvec.begin(), 5);
+    ORvec.insert(ORvec.begin(), 5);
+    std::cout << "\n";
+    for (size_t i = 0; i < 10; i++) {
+      std::cout << FTvec[i] << " ";
+    }
+    std::cout << "\n";
+    for (size_t i = 0; i < 10; i++) {
+      std::cout << ORvec[i] << " ";
+    }
+    std::cout << "\n";
+  }
+
+  //   {
+  //     std::cout << "\n[ INSERT ]\n";
+  //     ft::vector<int> FTvec;
+  //     std::vector<int> ORvec;
+  //     for (int i = 0; i < 13; i++) {
+  //       FTvec[i] = i;
+  //       ORvec[i] = i;
+  //     }
+  //     FTvec.reserve(35);
+  //     ORvec.reserve(35);
+  // FTvec.insert(FTvec.begin() + 0, 2, 30);
+  // ORvec.insert(ORvec.begin() + 0, 2, 30);
+  // std::cout << "\n";
+  // for (size_t i = 0; i < 13; i++) {
+  //   std::cout << FTvec[i] << " ";
+  // }
+  // std::cout << "\n";
+  // for (size_t i = 0; i < 13; i++) {
+  //   std::cout << ORvec[i] << " ";
+  // }
+  //   }
+
+  //   {
+  //     std::cout << "\n[ INSERT ]\n";
+  //     ft::vector<int> FTvec(13);
+  //     std::vector<int> ORvec(13);
+  //     for (int i = 0; i < 13; i++) {
+  //       FTvec[i] = i;
+  //       ORvec[i] = i;
+  //     }
+  //     int myarray[] = {501, 502, 503};
+  //     FTvec.insert(FTvec.begin() + 0, myarray, myarray + 3);
+  //     ORvec.insert(ORvec.begin() + 0, myarray, myarray + 3);
+  //     std::cout << "\n";
+  //     for (size_t i = 0; i < 13; i++) {
+  //       std::cout << FTvec[i] << " ";
+  //     }
+  //     std::cout << "\n";
+  //     for (size_t i = 0; i < 13; i++) {
+  //       std::cout << ORvec[i] << " ";
+  //     }
+  //   }
+
   return (0);
 }
