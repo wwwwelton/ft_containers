@@ -222,15 +222,19 @@ class vector {
     return (*(end() - 1));
   }
 
-  //   template <class InputIterator>
-  //   void assign(InputIterator first, InputIterator last) {}
+  template <class InputIterator>
+  void assign(InputIterator first, InputIterator last) {
+    typedef typename ft::is_integral<InputIterator>::type Integral;
+    assign_dispatch(first, last, Integral());
+  }
 
-  void assign(size_type n, const value_type& val) {
+  template <typename Integer>
+  void assign_dispatch(Integer n, Integer val, true_type) {
     for (size_t i = 0; i < _size; i++) {
       _alloc.destroy(&_data[i]);
     }
     _alloc.deallocate(_data, _capacity);
-    if (n > _capacity) {
+    if (static_cast<size_type>(n) > _capacity) {
       _capacity = n;
     }
     _data = _alloc.allocate(n);
@@ -241,6 +245,23 @@ class vector {
     for (size_t i = 0; i < _size; i++) {
       _alloc.construct(&_data[i], val);
     }
+  }
+
+  template <typename InputIterator>
+  void assign_dispatch(InputIterator first, InputIterator last, false_type) {
+    for (size_t i = 0; i < _size; i++) {
+      _alloc.destroy(&_data[i]);
+    }
+    _alloc.deallocate(_data, _capacity);
+    if (static_cast<size_type>(ft::distance(first, last)) > _capacity) {
+      _capacity = ft::distance(first, last);
+    }
+    _data = _alloc.allocate(_capacity);
+    if (_data == NULL) {
+      throw std::bad_alloc();
+    }
+    _size = ft::distance(first, last);
+    std::uninitialized_copy(first, last, _data);
   }
 
   void push_back(const value_type& val) {
