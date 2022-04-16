@@ -355,6 +355,23 @@ int main(void) {
   }
 
   std::cout << "\n\n===========[ VECTOR MODIFIERS ]===========\n";
+  // ASSIGN
+  {
+    std::cout << "\n[ ASSIGN ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    FTvec.assign(10, 20);
+    ORvec.assign(10, 20);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    ft::vector<int>::iterator FTite = FTvec.end() - 1;
+    std::vector<int>::iterator ORite = ORvec.end() - 1;
+    if ((*FTit == *ORit) && (*FTite == *ORite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  // ASSIGN
 
   // PUSH_BACK
   {
