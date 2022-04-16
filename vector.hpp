@@ -222,10 +222,26 @@ class vector {
     return (*(end() - 1));
   }
 
-  template <class InputIterator>
-  void assign(InputIterator first, InputIterator last);
+  //   template <class InputIterator>
+  //   void assign(InputIterator first, InputIterator last) {}
 
-  void assign(size_type n, const value_type& val);
+  void assign(size_type n, const value_type& val) {
+    for (size_t i = 0; i < _size; i++) {
+      _alloc.destroy(&_data[i]);
+    }
+    _alloc.deallocate(_data, _capacity);
+    if (n > _capacity) {
+      _capacity = n;
+    }
+    _data = _alloc.allocate(n);
+    if (_data == NULL) {
+      throw std::bad_alloc();
+    }
+    _size = n;
+    for (size_t i = 0; i < _size; i++) {
+      _alloc.construct(&_data[i], val);
+    }
+  }
 
   void push_back(const value_type& val) {
     if (_size + 1 > _capacity) {
