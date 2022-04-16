@@ -67,7 +67,38 @@ class vector {
 
   template <class InputIterator>
   vector(InputIterator first, InputIterator last,
-         const allocator_type& alloc = allocator_type());
+         const allocator_type& alloc = allocator_type()) {
+    _alloc = alloc;
+    _data = NULL;
+    _size = 0;
+    _capacity = 0;
+    typedef typename ft::is_integral<InputIterator>::type Integral;
+    initialize_dispatch(first, last, Integral());
+  }
+
+  template <typename Integer>
+  void initialize_dispatch(Integer n, Integer value, true_type) {
+    _data = _alloc.allocate(n);
+    if (_data == NULL) {
+      throw std::bad_alloc();
+    }
+    for (Integer i = 0; i < n; i++) {
+      _alloc.construct(_data + i, value);
+      _size++;
+    }
+    _capacity = n;
+  }
+
+  template <typename InputIterator>
+  void initialize_dispatch(InputIterator first, InputIterator last, false_type) {
+    _size = ft::distance(first, last);
+    _capacity = _size;
+    _data = _alloc.allocate(_size);
+    if (_data == NULL) {
+      throw std::bad_alloc();
+    }
+    std::uninitialized_copy(first, last, _data);
+  }
 
   vector(const vector& x) {
     *this = x;
