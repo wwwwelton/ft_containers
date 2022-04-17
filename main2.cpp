@@ -231,6 +231,44 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ RESIZE 1 ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.resize(5);
+    ORvec.resize(5);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    if ((FTvec.size() == ORvec.size()) &&
+        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ RESIZE 2 ]\n";
+    ft::vector<int> FTvec(5);
+    std::vector<int> ORvec(5);
+    for (int i = 0; i < 5; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.resize(5, 10);
+    ORvec.resize(5, 10);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    if ((FTvec.size() == ORvec.size()) &&
+        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
     std::cout << "\n[ CAPACITY ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
@@ -467,78 +505,6 @@ int main(void) {
   // POP_BACK
 
   {
-    std::cout << "\n[ ERASE ]\n";
-    ft::vector<int> FTvec(10);
-    std::vector<int> ORvec(10);
-    for (int i = 0; i < 10; i++) {
-      FTvec[i] = i;
-      ORvec[i] = i;
-    }
-    ft::vector<int>::iterator FTit = FTvec.begin();
-    std::vector<int>::iterator ORit = ORvec.begin();
-    ft::vector<int>::iterator FTite = FTvec.erase(FTit);
-    std::vector<int>::iterator ORite = ORvec.erase(ORit);
-    if ((*FTit == *ORit) && (*FTite == *ORite))
-      std::cout << OK " ";
-    else
-      std::cout << KO " ";
-  }
-
-  {
-    std::cout << "\n[ ERASE ITERATOR ]\n";
-    ft::vector<int> FTvec(10);
-    std::vector<int> ORvec(10);
-    for (int i = 0; i < 10; i++) {
-      FTvec[i] = i;
-      ORvec[i] = i;
-    }
-    ft::vector<int>::iterator FTit1 = FTvec.begin();
-    std::vector<int>::iterator ORit1 = ORvec.begin();
-    ft::vector<int>::iterator FTit2 = FTvec.begin() + 5;
-    std::vector<int>::iterator ORit2 = ORvec.begin() + 5;
-    ft::vector<int>::iterator FTite = FTvec.erase(FTit1, FTit2);
-    std::vector<int>::iterator ORite = ORvec.erase(ORit1, ORit2);
-    if ((*FTit1 == *ORit1) && (*FTite == *ORite) &&
-        (FTvec.size() == ORvec.size()))
-      std::cout << OK " ";
-    else
-      std::cout << KO " ";
-  }
-
-  {
-    std::cout << "\n[ SWAP ]\n";
-    ft::vector<int> FTveca(10);
-    ft::vector<int> FTvec(10);
-    std::vector<int> ORvec(10);
-    for (int i = 0; i < 10; i++) {
-      FTvec[i] = i;
-      ORvec[i] = i + 2;
-      FTveca[i] = i + 2;
-    }
-    FTvec.swap(FTveca);
-    ft::vector<int>::iterator FTit1 = FTvec.begin();
-    std::vector<int>::iterator ORit1 = ORvec.begin();
-    if ((*FTit1 == *ORit1) && (FTvec.size() == ORvec.size()))
-      std::cout << OK " ";
-    else
-      std::cout << KO " ";
-  }
-
-  {
-    std::cout << "\n[ CLEAR ]\n";
-    ft::vector<int> FTvec(10);
-    std::vector<int> ORvec(10);
-    for (int i = 0; i < 10; i++) {
-      FTvec[i] = i;
-      ORvec[i] = i;
-    }
-    if ((FTvec.size() == ORvec.size()) && (FTvec.capacity() == ORvec.capacity()))
-      std::cout << OK " ";
-    else
-      std::cout << KO " ";
-  }
-
-  {
     std::cout << "\n[ INSERT 1 ]\n";
     ft::vector<int> FTvec(10);
     std::vector<int> ORvec(10);
@@ -627,6 +593,77 @@ int main(void) {
     std::vector<int>::iterator ORit = ORvec.begin();
     if ((FTvec.size() == ORvec.size()) &&
         (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ ERASE ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    ft::vector<int>::iterator FTite = FTvec.erase(FTit);
+    std::vector<int>::iterator ORite = ORvec.erase(ORit);
+    if ((*FTit == *ORit) && (*FTite == *ORite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    std::cout << "\n[ ERASE ITERATOR ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    ft::vector<int>::iterator FTit1 = FTvec.begin();
+    std::vector<int>::iterator ORit1 = ORvec.begin();
+    ft::vector<int>::iterator FTit2 = FTvec.begin() + 5;
+    std::vector<int>::iterator ORit2 = ORvec.begin() + 5;
+    ft::vector<int>::iterator FTite = FTvec.erase(FTit1, FTit2);
+    std::vector<int>::iterator ORite = ORvec.erase(ORit1, ORit2);
+    if ((*FTit1 == *ORit1) && (*FTite == *ORite) &&
+        (FTvec.size() == ORvec.size()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ SWAP ]\n";
+    ft::vector<int> FTveca(10);
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i + 2;
+      FTveca[i] = i + 2;
+    }
+    FTvec.swap(FTveca);
+    ft::vector<int>::iterator FTit1 = FTvec.begin();
+    std::vector<int>::iterator ORit1 = ORvec.begin();
+    if ((*FTit1 == *ORit1) && (FTvec.size() == ORvec.size()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ CLEAR ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    if ((FTvec.size() == ORvec.size()) && (FTvec.capacity() == ORvec.capacity()))
       std::cout << OK " ";
     else
       std::cout << KO " ";
