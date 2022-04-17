@@ -437,6 +437,36 @@ class vector {
 };
 
 template <class T, class Alloc>
+inline bool operator==(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
+  return ((x.size() == y.size() && std::equal(x.begin(), x.end(), y.begin())));
+}
+
+template <class T, class Alloc>
+inline bool operator!=(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
+  return (!(x == y));
+}
+
+template <class T, class Alloc>
+inline bool operator<(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
+  return (std::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end()));
+}
+
+template <class T, class Alloc>
+inline bool operator<=(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
+  return (!(y < x));
+}
+
+template <class T, class Alloc>
+inline bool operator>(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
+  return (y < x);
+}
+
+template <class T, class Alloc>
+inline bool operator>=(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
+  return (!(x < y));
+}
+
+template <class T, class Alloc>
 void swap(vector<T, Alloc>& x, vector<T, Alloc>& y) {
   x.swap(y);
 }
