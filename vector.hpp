@@ -113,43 +113,43 @@ class vector {
     this->_capacity = 0;
   }
 
-  iterator begin() {
+  iterator begin(void) {
     return (iterator(_data));
   }
 
-  const_iterator begin() const {
+  const_iterator begin(void) const {
     return (const_iterator(_data));
   }
 
-  iterator end() {
+  iterator end(void) {
     return (iterator(_data + _size));
   }
 
-  const_iterator end() const {
+  const_iterator end(void) const {
     return (const_iterator(_data + _size));
   }
 
-  reverse_iterator rbegin() {
+  reverse_iterator rbegin(void) {
     return (reverse_iterator(end()));
   }
 
-  const_reverse_iterator rbegin() const {
+  const_reverse_iterator rbegin(void) const {
     return (const_reverse_iterator(end()));
   }
 
-  reverse_iterator rend() {
+  reverse_iterator rend(void) {
     return (reverse_iterator(begin()));
   }
 
-  const_reverse_iterator rend() const {
+  const_reverse_iterator rend(void) const {
     return (const_reverse_iterator(begin()));
   }
 
-  size_type size() const {
+  size_type size(void) const {
     return (_size);
   }
 
-  size_type max_size() const {
+  size_type max_size(void) const {
     return (_alloc.max_size());
   }
 
@@ -165,11 +165,11 @@ class vector {
     }
   }
 
-  size_type capacity() const {
+  size_type capacity(void) const {
     return (_capacity);
   }
 
-  bool empty() const {
+  bool empty(void) const {
     return (begin() == end());
   }
 
@@ -216,19 +216,19 @@ class vector {
     return (*(begin() + n));
   }
 
-  reference front() {
+  reference front(void) {
     return (*begin());
   }
 
-  const_reference front() const {
+  const_reference front(void) const {
     return (*begin());
   }
 
-  reference back() {
+  reference back(void) {
     return (*(end() - 1));
   }
 
-  const_reference back() const {
+  const_reference back(void) const {
     return (*(end() - 1));
   }
 
@@ -294,7 +294,7 @@ class vector {
     _size++;
   }
 
-  void pop_back() {
+  void pop_back(void) {
     if (_size) {
       _alloc.destroy(_data + _size - 1);
       _size--;
@@ -427,11 +427,11 @@ class vector {
     _size = tmp_size;
   }
 
-  void clear() {
+  void clear(void) {
     erase(begin(), end());
   }
 
-  allocator_type get_allocator() const {
+  allocator_type get_allocator(void) const {
     return (_alloc);
   }
 };
