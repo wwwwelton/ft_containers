@@ -540,67 +540,97 @@ int main(void) {
 
   {
     std::cout << "\n[ INSERT 1 ]\n";
-    ft::vector<int> FTvec(30);
-    std::vector<int> ORvec(30);
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
     for (int i = 0; i < 10; i++) {
       FTvec[i] = i;
       ORvec[i] = i;
     }
-    FTvec.insert(FTvec.begin(), 5);
-    ORvec.insert(ORvec.begin(), 5);
-    std::cout << "\n";
-    for (size_t i = 0; i < 10; i++) {
-      std::cout << FTvec[i] << " ";
-    }
-    std::cout << "\n";
-    for (size_t i = 0; i < 10; i++) {
-      std::cout << ORvec[i] << " ";
-    }
-    std::cout << "\n";
+    ft::vector<int>::iterator FTiti = FTvec.insert(FTvec.begin() + 9, 5);
+    std::vector<int>::iterator ORiti = ORvec.insert(ORvec.begin() + 9, 5);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    if ((FTvec.size() == ORvec.size()) &&
+        (FTvec.capacity() == ORvec.capacity()) &&
+        (*FTit == *ORit) && (*FTiti == *ORiti))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
   }
 
-  //   {
-  //     std::cout << "\n[ INSERT ]\n";
-  //     ft::vector<int> FTvec;
-  //     std::vector<int> ORvec;
-  //     for (int i = 0; i < 13; i++) {
-  //       FTvec[i] = i;
-  //       ORvec[i] = i;
-  //     }
-  //     FTvec.reserve(35);
-  //     ORvec.reserve(35);
-  // FTvec.insert(FTvec.begin() + 0, 2, 30);
-  // ORvec.insert(ORvec.begin() + 0, 2, 30);
-  // std::cout << "\n";
-  // for (size_t i = 0; i < 13; i++) {
-  //   std::cout << FTvec[i] << " ";
-  // }
-  // std::cout << "\n";
-  // for (size_t i = 0; i < 13; i++) {
-  //   std::cout << ORvec[i] << " ";
-  // }
-  //   }
+  {
+    std::cout << "\n[ INSERT 2 ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.insert(FTvec.begin(), 3, 5);
+    ORvec.insert(ORvec.begin(), 3, 5);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    if ((FTvec.size() == ORvec.size()) &&
+        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
-  //   {
-  //     std::cout << "\n[ INSERT ]\n";
-  //     ft::vector<int> FTvec(13);
-  //     std::vector<int> ORvec(13);
-  //     for (int i = 0; i < 13; i++) {
-  //       FTvec[i] = i;
-  //       ORvec[i] = i;
-  //     }
-  //     int myarray[] = {501, 502, 503};
-  //     FTvec.insert(FTvec.begin() + 0, myarray, myarray + 3);
-  //     ORvec.insert(ORvec.begin() + 0, myarray, myarray + 3);
-  //     std::cout << "\n";
-  //     for (size_t i = 0; i < 13; i++) {
-  //       std::cout << FTvec[i] << " ";
-  //     }
-  //     std::cout << "\n";
-  //     for (size_t i = 0; i < 13; i++) {
-  //       std::cout << ORvec[i] << " ";
-  //     }
-  //   }
+  {
+    std::cout << "\n[ INSERT 3 ]\n";
+    ft::vector<int> FTvec(13);
+    std::vector<int> ORvec(13);
+    for (int i = 0; i < 13; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    FTvec.insert(FTvec.begin(), 5, 13);
+    ORvec.insert(ORvec.begin(), 5, 13);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    if ((FTvec.size() == ORvec.size()) &&
+        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ INSERT 4 / 1]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    int myarray[] = {501, 502, 503};
+    FTvec.insert(FTvec.begin() + 0, myarray, myarray + 3);
+    ORvec.insert(ORvec.begin() + 0, myarray, myarray + 3);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    if ((FTvec.size() == ORvec.size()) &&
+        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ INSERT 4 / 2 ]\n";
+    ft::vector<int> FTvec(13);
+    std::vector<int> ORvec(13);
+    for (int i = 0; i < 13; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    int myarray[] = {501, 502, 503};
+    FTvec.insert(FTvec.begin() + 0, myarray, myarray + 3);
+    ORvec.insert(ORvec.begin() + 0, myarray, myarray + 3);
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    std::vector<int>::iterator ORit = ORvec.begin();
+    if ((FTvec.size() == ORvec.size()) &&
+        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   return (0);
 }
