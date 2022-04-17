@@ -11,6 +11,7 @@
 #include "iterator_reverse.hpp"
 #include "iterator_traits.hpp"
 #include "type_traits.hpp"
+#include "algorithm.hpp"
 
 namespace ft {
 
@@ -438,7 +439,7 @@ class vector {
 
 template <class T, class Alloc>
 inline bool operator==(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
-  return ((x.size() == y.size() && std::equal(x.begin(), x.end(), y.begin())));
+  return ((x.size() == y.size() && ft::equal(x.begin(), x.end(), y.begin())));
 }
 
 template <class T, class Alloc>
@@ -448,7 +449,7 @@ inline bool operator!=(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
 
 template <class T, class Alloc>
 inline bool operator<(const vector<T, Alloc>& x, const vector<T, Alloc>& y) {
-  return (std::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end()));
+  return (ft::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end()));
 }
 
 template <class T, class Alloc>
