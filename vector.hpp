@@ -153,7 +153,17 @@ class vector {
     return (_alloc.max_size());
   }
 
-  void resize(size_type n, value_type val = value_type());
+  void resize(size_type n, value_type val = value_type()) {
+    while (n < _size) {
+      pop_back();
+    }
+    if (n > _capacity) {
+      reserve(n);
+    }
+    while (n > _size) {
+      push_back(val);
+    }
+  }
 
   size_type capacity() const {
     return (_capacity);
