@@ -711,7 +711,7 @@ int main(void) {
       ORvec[i] = i;
     }
     if (!ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
-                                    ORvec.begin(), ORvec.end()))
+                                     ORvec.begin(), ORvec.end()))
       std::cout << OK " ";
     else
       std::cout << KO " ";
@@ -726,7 +726,102 @@ int main(void) {
       ORvec[i] = i;
     }
     if (!ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
-                                    ORvec.begin(), ORvec.end()), pred)
+                                     ORvec.begin(), ORvec.end()),
+        pred)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  std::cout << "\n\n===========[ RELATIONAL OPERATORS ]===========\n";
+
+  {
+    std::cout << "\n[ OPERATOR == ]\n";
+    ft::vector<int> FTvec1(10);
+    ft::vector<int> FTvec2(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec1[i] = i;
+      FTvec2[i] = i;
+    }
+    if (FTvec1 == FTvec2)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ OPERATOR != ]\n";
+    ft::vector<int> FTvec1(10);
+    ft::vector<int> FTvec2(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec1[i] = i;
+      FTvec2[i] = i + 10;
+    }
+    if (FTvec1 != FTvec2)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ OPERATOR < ]\n";
+    ft::vector<int> FTvec1(9);
+    ft::vector<int> FTvec2(10);
+    for (int i = 0; i < 9; i++) {
+      FTvec1[i] = i;
+    }
+    for (int i = 0; i < 10; i++) {
+      FTvec2[i] = i;
+    }
+    if (FTvec1 < FTvec2)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ OPERATOR <= ]\n";
+    ft::vector<int> FTvec1(10);
+    ft::vector<int> FTvec2(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec1[i] = i;
+    }
+    for (int i = 0; i < 10; i++) {
+      FTvec2[i] = i;
+    }
+    if (FTvec1 <= FTvec2)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ OPERATOR > ]\n";
+    ft::vector<int> FTvec1(10);
+    ft::vector<int> FTvec2(9);
+    for (int i = 0; i < 10; i++) {
+      FTvec1[i] = i;
+    }
+    for (int i = 0; i < 9; i++) {
+      FTvec2[i] = i;
+    }
+    if (FTvec1 > FTvec2)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ OPERATOR >= ]\n";
+    ft::vector<int> FTvec1(10);
+    ft::vector<int> FTvec2(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec1[i] = i;
+    }
+    for (int i = 0; i < 10; i++) {
+      FTvec2[i] = i;
+    }
+    if (FTvec1 >= FTvec2)
       std::cout << OK " ";
     else
       std::cout << KO " ";
