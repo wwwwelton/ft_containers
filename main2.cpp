@@ -15,6 +15,11 @@
 #include <vector>
 
 #include "./vector.hpp"
+#include "algorithm.hpp"
+
+bool pred(int i, int j) {
+  return (i == j);
+}
 
 int main(void) {
   std::cout << "\n===========[ CONSTRUCTORS ]===========\n";
@@ -664,6 +669,64 @@ int main(void) {
       ORvec[i] = i;
     }
     if ((FTvec.size() == ORvec.size()) && (FTvec.capacity() == ORvec.capacity()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  std::cout << "\n===========[ COMPARE ]===========\n";
+
+  {
+    std::cout << "\n[ EQUAL ]\n";
+    int v1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    ft::vector<int> FTvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+    }
+    if (ft::equal(FTvec.begin(), FTvec.end(), v1))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ EQUAL PRED ]\n";
+    int v1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    ft::vector<int> FTvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+    }
+    if (ft::equal(FTvec.begin(), FTvec.end(), v1, pred))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ LEXICOGRAPHICAL ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    if (!ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
+                                    ORvec.begin(), ORvec.end()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
+  {
+    std::cout << "\n[ LEXICOGRAPHICAL PRED ]\n";
+    ft::vector<int> FTvec(10);
+    std::vector<int> ORvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+      ORvec[i] = i;
+    }
+    if (!ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
+                                    ORvec.begin(), ORvec.end()), pred)
       std::cout << OK " ";
     else
       std::cout << KO " ";
