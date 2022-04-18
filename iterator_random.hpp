@@ -22,12 +22,12 @@ class random_access_iterator : public iterator<random_access_iterator_tag,
   typedef typename iterator_traits<Iterator>::reference reference;
 
  public:
-  random_access_iterator() : current() {}
+  random_access_iterator(void) : current(NULL) {}
   explicit random_access_iterator(const Iterator& i) : current(i) {}
   random_access_iterator(const random_access_iterator& i) : current(i.base()) {}
   template <typename Iter>
   random_access_iterator(const random_access_iterator<Iter>& i) : current(i.base()) {}
-  ~random_access_iterator() {}
+  ~random_access_iterator(void) {}
 
   template <typename Iter>
   random_access_iterator& operator=(const random_access_iterator<Iter>& i) {
@@ -35,11 +35,11 @@ class random_access_iterator : public iterator<random_access_iterator_tag,
     return (*this);
   }
 
-  const Iterator& base() const {
+  const Iterator& base(void) const {
     return (current);
   }
 
-  reference operator*() const {
+  reference operator*(void) const {
     return (*current);
   }
 
@@ -47,7 +47,7 @@ class random_access_iterator : public iterator<random_access_iterator_tag,
     return (random_access_iterator(current + n));
   }
 
-  random_access_iterator& operator++() {
+  random_access_iterator& operator++(void) {
     ++current;
     return (*this);
   }
@@ -65,7 +65,7 @@ class random_access_iterator : public iterator<random_access_iterator_tag,
     return (random_access_iterator(current - n));
   }
 
-  random_access_iterator& operator--() {
+  random_access_iterator& operator--(void) {
     --current;
     return (*this);
   }
@@ -79,7 +79,7 @@ class random_access_iterator : public iterator<random_access_iterator_tag,
     return (*this);
   }
 
-  pointer operator->() const {
+  pointer operator->(void) const {
     return (current);
   }
 
@@ -89,86 +89,74 @@ class random_access_iterator : public iterator<random_access_iterator_tag,
 };
 
 template <typename IteratorL, typename IteratorR>
-inline bool
-operator==(const random_access_iterator<IteratorL>& lhs,
-           const random_access_iterator<IteratorR>& rhs) {
+inline bool operator==(const random_access_iterator<IteratorL>& lhs,
+                       const random_access_iterator<IteratorR>& rhs) {
   return (lhs.base() == rhs.base());
 }
 
 template <typename Iterator>
-inline bool
-operator==(const random_access_iterator<Iterator>& lhs,
-           const random_access_iterator<Iterator>& rhs) {
+inline bool operator==(const random_access_iterator<Iterator>& lhs,
+                       const random_access_iterator<Iterator>& rhs) {
   return (lhs.base() == rhs.base());
 }
 
 template <typename IteratorL, typename IteratorR>
-inline bool
-operator!=(const random_access_iterator<IteratorL>& lhs,
-           const random_access_iterator<IteratorR>& rhs) {
+inline bool operator!=(const random_access_iterator<IteratorL>& lhs,
+                       const random_access_iterator<IteratorR>& rhs) {
   return (lhs.base() != rhs.base());
 }
 
 template <typename Iterator>
-inline bool
-operator!=(const random_access_iterator<Iterator>& lhs,
-           const random_access_iterator<Iterator>& rhs) {
+inline bool operator!=(const random_access_iterator<Iterator>& lhs,
+                       const random_access_iterator<Iterator>& rhs) {
   return (lhs.base() != rhs.base());
 }
 
 template <typename IteratorL, typename IteratorR>
-inline bool
-operator<(const random_access_iterator<IteratorL>& lhs,
-          const random_access_iterator<IteratorR>& rhs) {
+inline bool operator<(const random_access_iterator<IteratorL>& lhs,
+                      const random_access_iterator<IteratorR>& rhs) {
   return (lhs.base() < rhs.base());
 }
 
 template <typename Iterator>
-inline bool
-operator<(const random_access_iterator<Iterator>& lhs,
-          const random_access_iterator<Iterator>& rhs) {
+inline bool operator<(const random_access_iterator<Iterator>& lhs,
+                      const random_access_iterator<Iterator>& rhs) {
   return (lhs.base() < rhs.base());
 }
 
 template <typename IteratorL, typename IteratorR>
-inline bool
-operator<=(const random_access_iterator<IteratorL>& lhs,
-           const random_access_iterator<IteratorR>& rhs) {
+inline bool operator<=(const random_access_iterator<IteratorL>& lhs,
+                       const random_access_iterator<IteratorR>& rhs) {
   return (lhs.base() <= rhs.base());
 }
 
 template <typename Iterator>
-inline bool
-operator<=(const random_access_iterator<Iterator>& lhs,
-           const random_access_iterator<Iterator>& rhs) {
+inline bool operator<=(const random_access_iterator<Iterator>& lhs,
+                       const random_access_iterator<Iterator>& rhs) {
   return (lhs.base() <= rhs.base());
 }
 
 template <typename IteratorL, typename IteratorR>
-inline bool
-operator>(const random_access_iterator<IteratorL>& lhs,
-          const random_access_iterator<IteratorR>& rhs) {
+inline bool operator>(const random_access_iterator<IteratorL>& lhs,
+                      const random_access_iterator<IteratorR>& rhs) {
   return (lhs.base() > rhs.base());
 }
 
 template <typename Iterator>
-inline bool
-operator>(const random_access_iterator<Iterator>& lhs,
-          const random_access_iterator<Iterator>& rhs) {
+inline bool operator>(const random_access_iterator<Iterator>& lhs,
+                      const random_access_iterator<Iterator>& rhs) {
   return (lhs.base() > rhs.base());
 }
 
 template <typename IteratorL, typename IteratorR>
-inline bool
-operator>=(const random_access_iterator<IteratorL>& lhs,
-           const random_access_iterator<IteratorR>& rhs) {
+inline bool operator>=(const random_access_iterator<IteratorL>& lhs,
+                       const random_access_iterator<IteratorR>& rhs) {
   return (lhs.base() >= rhs.base());
 }
 
 template <typename Iterator>
-inline bool
-operator>=(const random_access_iterator<Iterator>& lhs,
-           const random_access_iterator<Iterator>& rhs) {
+inline bool operator>=(const random_access_iterator<Iterator>& lhs,
+                       const random_access_iterator<Iterator>& rhs) {
   return (lhs.base() >= rhs.base());
 }
 
