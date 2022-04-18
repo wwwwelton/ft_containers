@@ -26,12 +26,12 @@ class reverse_iterator
   typedef typename iterator_traits<Iterator>::reference reference;
 
  public:
-  reverse_iterator() : current() {}
+  reverse_iterator(void) : current(NULL) {}
   explicit reverse_iterator(iterator_type x) : current(x) {}
   reverse_iterator(const reverse_iterator& x) : current(x.current) {}
   template <typename Iter>
   reverse_iterator(const reverse_iterator<Iter>& x) : current(x.base()) {}
-  ~reverse_iterator() {}
+  ~reverse_iterator(void) {}
 
   template <typename Iter>
   reverse_iterator& operator=(const reverse_iterator<Iter>& x) {
@@ -39,11 +39,11 @@ class reverse_iterator
     return (*this);
   }
 
-  iterator_type base() const {
+  iterator_type base(void) const {
     return (current);
   }
 
-  reference operator*() const {
+  reference operator*(void) const {
     Iterator tmp = current;
     return (*--tmp);
   }
@@ -52,7 +52,7 @@ class reverse_iterator
     return (reverse_iterator(current - n));
   }
 
-  reverse_iterator& operator++() {
+  reverse_iterator& operator++(void) {
     --current;
     return (*this);
   }
@@ -72,7 +72,7 @@ class reverse_iterator
     return (reverse_iterator(current + n));
   }
 
-  reverse_iterator& operator--() {
+  reverse_iterator& operator--(void) {
     ++current;
     return (*this);
   }
@@ -88,7 +88,7 @@ class reverse_iterator
     return (*this);
   }
 
-  pointer operator->() const {
+  pointer operator->(void) const {
     Iterator tmp = current;
     return (&--tmp);
   }
