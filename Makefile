@@ -11,6 +11,7 @@ HEADERS				=	algorithm.hpp \
 						iterator_traits.hpp \
 						type_traits.hpp \
 						vector.hpp \
+						vector.tpp \
 
 SRC_FILES			=	main2.cpp
 
