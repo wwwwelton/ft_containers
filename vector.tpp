@@ -80,6 +80,7 @@ void vector<T, Alloc>::initialize_dispatch(InputIterator first, InputIterator la
 
 template <typename T, class Alloc>
 vector<T, Alloc>::vector(const vector& x) {
+  _alloc = x._alloc;
   _data = NULL;
   _size = 0;
   _capacity = 0;
