@@ -4,7 +4,7 @@ OBJ_DIR				=	objects
 
 SRC_DIR				=	./
 
-HEADERS				=	algorithm.hpp \
+VECTOR_HEADERS		=	algorithm.hpp \
 						iterator_funcs.hpp \
 						iterator_random.hpp \
 						iterator_reverse.hpp \
@@ -13,11 +13,8 @@ HEADERS				=	algorithm.hpp \
 						vector.hpp \
 						vector.tpp \
 
-SRC_FILES			=	main3.cpp
-
-SRCS				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
-
-OBJS				=	$(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+VECTOR_TEST_1		=	vector_test_1.cpp
+VECTOR_TEST_2		=	vector_test_2.cpp
 
 CC					=	c++
 CFLAGS				=	-Wall -Wextra -Werror -Wshadow -Wconversion -Wno-long-long
@@ -25,19 +22,28 @@ CFLAGS				+=	-std=c++98 -pedantic-errors -g
 
 RM					=	rm -rf
 
-$(OBJ_DIR)/%.o:		$(SRCS) $(HEADERS)
-					$(CC) $(CFLAGS) -c $< -o $@
-
 all:				$(NAME)
 
 $(NAME):			$(OBJ_DIR) $(OBJS) $(HEADERS)
 					$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-$(OBJ_DIR):
-					mkdir -p $(OBJ_DIR)
+vector1:		$(VECTOR_HEADERS)
+					$(CC) $(CFLAGS) $(VECTOR_TEST_1) -o vector_test_1
+					./vector_test_1
+
+vector2:		$(VECTOR_HEADERS)
+					$(CC) $(CFLAGS) -DSTD=1 $(VECTOR_TEST_2) -o vector_test_STD_2
+					$(CC) $(CFLAGS) -DSTD=0 $(VECTOR_TEST_2) -o vector_test_FT_2
+					./vector_test_STD_2 > vector_test_STD_2_out
+					./vector_test_FT_2 > vector_test_FT_2_out
+					diff vector_test_STD_2_out vector_test_FT_2_out
+
 
 clean:
 					$(RM) $(OBJ_DIR)
+					$(RM) vector_test_1
+					$(RM) vector_test_STD_2 vector_test_STD_2_out
+					$(RM) vector_test_FT_2 vector_test_FT_2_out
 
 fclean:				clean
 					$(RM) $(NAME)

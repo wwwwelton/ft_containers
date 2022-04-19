@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#if 1
+#if STD == 1
 #include <vector>
 namespace ft = std;
 #else
@@ -158,12 +158,19 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ RESIZE ]\n";
+    std::cout << "\n[ RESIZE 1]\n";
     ft::vector<int> FTvec(10);
     fill_vector(FTvec, 10);
     print_vector(FTvec);
-    FTvec.resize(20);
+    FTvec.resize(5);
     std::cout << "\n";
+    print_vector(FTvec);
+  }
+  {
+    std::cout << "\n[ RESIZE 2 ]\n";
+    ft::vector<int> FTvec(5);
+    fill_vector(FTvec, 5);
+    FTvec.resize(5, 10);
     print_vector(FTvec);
   }
 

@@ -247,8 +247,7 @@ int main(void) {
     ORvec.resize(5);
     ft::vector<int>::iterator FTit = FTvec.begin();
     std::vector<int>::iterator ORit = ORvec.begin();
-    if ((FTvec.size() == ORvec.size()) &&
-        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+    if ((FTvec.size() == ORvec.size()) && (*FTit == *ORit))
       std::cout << OK " ";
     else
       std::cout << KO " ";
@@ -469,22 +468,6 @@ int main(void) {
     else
       std::cout << KO " ";
   }
-  {
-    ft::vector<int> FTvec(10);
-    std::vector<int> ORvec(10);
-    for (int i = 0; i < 10; i++) {
-      FTvec[i] = i;
-      ORvec[i] = i;
-    }
-    FTvec.push_back(11);
-    FTvec.push_back(22);
-    ORvec.push_back(11);
-    ORvec.push_back(22);
-    if (FTvec.capacity() == ORvec.capacity())
-      std::cout << OK " ";
-    else
-      std::cout << KO " ";
-  }
   // PUSH_BACK
 
   // POP_BACK
@@ -522,7 +505,6 @@ int main(void) {
     ft::vector<int>::iterator FTit = FTvec.begin();
     std::vector<int>::iterator ORit = ORvec.begin();
     if ((FTvec.size() == ORvec.size()) &&
-        (FTvec.capacity() == ORvec.capacity()) &&
         (*FTit == *ORit) && (*FTiti == *ORiti))
       std::cout << OK " ";
     else
@@ -541,8 +523,7 @@ int main(void) {
     ORvec.insert(ORvec.begin(), 3, 5);
     ft::vector<int>::iterator FTit = FTvec.begin();
     std::vector<int>::iterator ORit = ORvec.begin();
-    if ((FTvec.size() == ORvec.size()) &&
-        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+    if ((FTvec.size() == ORvec.size()) && (*FTit == *ORit))
       std::cout << OK " ";
     else
       std::cout << KO " ";
@@ -560,8 +541,7 @@ int main(void) {
     ORvec.insert(ORvec.begin(), 5, 13);
     ft::vector<int>::iterator FTit = FTvec.begin();
     std::vector<int>::iterator ORit = ORvec.begin();
-    if ((FTvec.size() == ORvec.size()) &&
-        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+    if ((FTvec.size() == ORvec.size()) && (*FTit == *ORit))
       std::cout << OK " ";
     else
       std::cout << KO " ";
@@ -596,8 +576,7 @@ int main(void) {
     ORvec.insert(ORvec.begin() + 0, myarray, myarray + 3);
     ft::vector<int>::iterator FTit = FTvec.begin();
     std::vector<int>::iterator ORit = ORvec.begin();
-    if ((FTvec.size() == ORvec.size()) &&
-        (FTvec.capacity() == ORvec.capacity()) && (*FTit == *ORit))
+    if ((FTvec.size() == ORvec.size()) && (*FTit == *ORit))
       std::cout << OK " ";
     else
       std::cout << KO " ";
