@@ -58,6 +58,8 @@ class vector {
 
   ~vector(void);
 
+  vector& operator=(const vector& x);
+
   iterator begin(void);
 
   const_iterator begin(void) const;

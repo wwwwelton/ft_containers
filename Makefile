@@ -13,7 +13,7 @@ HEADERS				=	algorithm.hpp \
 						vector.hpp \
 						vector.tpp \
 
-SRC_FILES			=	main2.cpp
+SRC_FILES			=	main3.cpp
 
 SRCS				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

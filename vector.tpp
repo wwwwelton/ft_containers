@@ -80,17 +80,41 @@ void vector<T, Alloc>::initialize_dispatch(InputIterator first, InputIterator la
 
 template <typename T, class Alloc>
 vector<T, Alloc>::vector(const vector& x) {
+  _data = NULL;
+  _size = 0;
+  _capacity = 0;
   *this = x;
 }
 
 template <typename T, class Alloc>
 vector<T, Alloc>::~vector(void) {
-  for (size_type i = 0; i < this->_size; i++) {
-    this->_alloc.destroy(this->_data + i);
+  for (size_type i = 0; i < _size; i++) {
+    _alloc.destroy(_data + i);
   }
-  this->_alloc.deallocate(this->_data, this->_size);
-  this->_size = 0;
-  this->_capacity = 0;
+  if (_capacity > 0) {
+    _alloc.deallocate(_data, _size);
+  }
+  _size = 0;
+  _capacity = 0;
+}
+
+template <typename T, class Alloc>
+vector<T, Alloc>& vector<T, Alloc>::operator=(const vector& x) {
+  if (*this != x) {
+    for (size_t i = 0; i < _size; i++) {
+      _alloc.destroy(&_data[i]);
+    }
+    if (_capacity > 0) {
+      _alloc.deallocate(_data, _size);
+    }
+    _size = x.size();
+    _capacity = x.capacity();
+    _data = _alloc.allocate(_capacity);
+    for (size_t i = 0; i < _size; i++) {
+      _alloc.construct(&_data[i], x._data[i]);
+    }
+  }
+  return (*this);
 }
 
 template <typename T, class Alloc>
@@ -282,7 +306,7 @@ void vector<T, Alloc>::assign_dispatch(InputIterator first, InputIterator last, 
 template <typename T, class Alloc>
 void vector<T, Alloc>::push_back(const value_type& val) {
   if (_size + 1 > _capacity) {
-    _capacity ? _capacity *= 2 : 1;
+    _capacity++;
     pointer tmp = _alloc.allocate(_capacity);
     if (tmp == NULL) {
       throw std::bad_alloc();
@@ -305,6 +329,7 @@ void vector<T, Alloc>::pop_back(void) {
   if (_size) {
     _alloc.destroy(_data + _size - 1);
     _size--;
+    _capacity--;
   }
 }
 
@@ -318,7 +343,7 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator position, 
     return (iterator(&_data[distance]));
   }
   if (_size >= _capacity) {
-    reserve(_capacity * 2);
+    reserve(_capacity + 1);
   }
   for (size_t i = _size; i > distance; i--) {
     _alloc.construct(&_data[i], _data[i - 1]);
@@ -339,10 +364,7 @@ void vector<T, Alloc>::insert(iterator position, size_type n, const value_type& 
       _alloc.construct(&_data[distance + i], val);
     return;
   }
-  if (n > _size)
-    reserve(_size + n);
-  else
-    reserve(_capacity * 2);
+  reserve(_size + n);
   for (size_t i = 0; i < n; i++) {
     insert(begin() + distance, val);
   }
@@ -366,10 +388,7 @@ void vector<T, Alloc>::insert_dispatch(iterator position, size_type n, const Int
       _alloc.construct(&_data[distance + i], val);
     return;
   }
-  if (n > _size)
-    reserve(_size + n);
-  else
-    reserve(_capacity * 2);
+  reserve(_size + n);
   for (size_t i = 0; i < n; i++) {
     insert(begin() + distance, val);
   }
@@ -389,11 +408,7 @@ void vector<T, Alloc>::insert_dispatch(iterator position, InputIterator first, I
     }
     return;
   }
-  if (n > _size) {
-    reserve(_size + n);
-  } else {
-    reserve(_capacity * 2);
-  }
+  reserve(_size + n);
   for (size_t i = 0; i < n; i++) {
     last--;
     insert(begin() + distance, *last);
@@ -408,6 +423,7 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator position) {
     position++;
   }
   --_size;
+  --_capacity;
   _alloc.destroy(_data + _size);
   return (it);
 }
@@ -421,6 +437,7 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator first, iter
     ++last;
   }
   _size -= ft::distance(first, last);
+  _capacity -= ft::distance(first, last);
   for (size_t i = ft::distance(first, last); i > _size; i--) {
     _alloc.destroy(_data + i);
   }
