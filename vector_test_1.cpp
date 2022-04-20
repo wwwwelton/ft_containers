@@ -710,8 +710,9 @@ int main(void) {
       FTvec[i] = i;
       ORvec[i] = i;
     }
-    if (!ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
-                                     ORvec.begin(), ORvec.end()))
+	bool result = !ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
+                                     ORvec.begin(), ORvec.end());
+    if (result)
       std::cout << OK " ";
     else
       std::cout << KO " ";
@@ -725,9 +726,9 @@ int main(void) {
       FTvec[i] = i;
       ORvec[i] = i;
     }
-    if (!ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
-                                     ORvec.begin(), ORvec.end()),
-        pred)
+	bool result = ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
+                                     ORvec.begin(), ORvec.end(), pred);
+    if (result)
       std::cout << OK " ";
     else
       std::cout << KO " ";
@@ -826,6 +827,8 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+
+  std::cout << "\n";
 
   return (0);
 }

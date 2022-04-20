@@ -17,7 +17,7 @@ VECTOR_TEST_1		=	vector_test_1.cpp
 VECTOR_TEST_2		=	vector_test_2.cpp
 
 CC					=	c++
-CFLAGS				=	-Wall -Wextra -Werror -Wshadow -Wconversion -Wno-long-long
+CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
 CFLAGS				+=	-std=c++98 -pedantic-errors -g
 
 RM					=	rm -rf
