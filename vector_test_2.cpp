@@ -14,7 +14,7 @@ bool pred(int i, int j) {
 }
 
 template <typename T>
-void print_vector(T vector) {
+void print_vector(T& vector) {
   for (size_t i = 0; i < vector.size(); i++) {
     std::cout << vector[i] << " ";
   }
