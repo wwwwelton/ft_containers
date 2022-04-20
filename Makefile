@@ -27,16 +27,17 @@ all:				$(NAME)
 $(NAME):			$(OBJ_DIR) $(OBJS) $(HEADERS)
 					$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-vector1:		$(VECTOR_HEADERS)
+vector1:			$(VECTOR_HEADERS)
 					$(CC) $(CFLAGS) $(VECTOR_TEST_1) -o vector_test_1
 					./vector_test_1
 
-vector2:		$(VECTOR_HEADERS)
+vector2:			$(VECTOR_HEADERS)
 					$(CC) $(CFLAGS) -DSTD=1 $(VECTOR_TEST_2) -o vector_test_STD_2
 					$(CC) $(CFLAGS) -DSTD=0 $(VECTOR_TEST_2) -o vector_test_FT_2
-					./vector_test_STD_2 > vector_test_STD_2_out
 					./vector_test_FT_2 > vector_test_FT_2_out
-					diff vector_test_STD_2_out vector_test_FT_2_out
+					./vector_test_STD_2 > vector_test_STD_2_out
+					diff -y vector_test_FT_2_out vector_test_STD_2_out
+					diff vector_test_FT_2_out vector_test_STD_2_out
 
 
 clean:
