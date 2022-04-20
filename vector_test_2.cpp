@@ -468,5 +468,7 @@ int main(void) {
     std::cout << "is bigger or equal? " << (FTvec1 >= FTvec2) << "\n";
   }
 
+  std::cout << "\n";
+
   return (0);
 }
