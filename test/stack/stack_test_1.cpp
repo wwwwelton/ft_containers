@@ -9,10 +9,6 @@
 
 #include "../../stack.hpp"
 
-bool pred(int i, int j) {
-  return (i == j);
-}
-
 int main(void) {
   std::cout << "\n===========[ CONSTRUCTORS ]===========\n";
   {
