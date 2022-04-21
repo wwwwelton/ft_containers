@@ -307,7 +307,7 @@ void vector<T, Alloc>::assign_dispatch(InputIterator first, InputIterator last, 
 template <typename T, class Alloc>
 void vector<T, Alloc>::push_back(const value_type& val) {
   if (_size + 1 > _capacity) {
-    _capacity ? _capacity *= 2 : 1;
+    _capacity ? _capacity *= 2 : _capacity++;
     pointer tmp = _alloc.allocate(_capacity);
     if (tmp == NULL) {
       throw std::bad_alloc();
