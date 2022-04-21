@@ -4,7 +4,7 @@ OBJ_DIR				=	objects
 
 SRC_DIR				=	./
 
-VECTOR_HEADERS		=	algorithm.hpp \
+HEADERS				=	algorithm.hpp \
 						iterator_funcs.hpp \
 						iterator_random.hpp \
 						iterator_reverse.hpp \
@@ -12,9 +12,14 @@ VECTOR_HEADERS		=	algorithm.hpp \
 						type_traits.hpp \
 						vector.hpp \
 						vector.tpp \
+						stack.hpp \
+						stack.tpp \
 
 VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
 VECTOR_TEST_2		=	test/vector/vector_test_2.cpp
+
+STACK_TEST_1		=	test/stack/stack_test_1.cpp
+STACK_TEST_2		=	test/stack/stack_test_2.cpp
 
 CC					=	c++
 CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
@@ -27,11 +32,11 @@ all:				$(NAME)
 $(NAME):			$(OBJ_DIR) $(OBJS) $(HEADERS)
 					$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-vector1:			$(VECTOR_HEADERS)
+vector1:			$(HEADERS)
 					$(CC) $(CFLAGS) $(VECTOR_TEST_1) -o vector_test_1
 					./vector_test_1
 
-vector2:			$(VECTOR_HEADERS)
+vector2:			$(HEADERS)
 					$(CC) $(CFLAGS) -DSTD=1 $(VECTOR_TEST_2) -o vector_test_STD_2
 					$(CC) $(CFLAGS) -DSTD=0 $(VECTOR_TEST_2) -o vector_test_FT_2
 					./vector_test_FT_2 > vector_test_FT_2_out
@@ -39,12 +44,27 @@ vector2:			$(VECTOR_HEADERS)
 					diff -y vector_test_FT_2_out vector_test_STD_2_out
 					diff vector_test_FT_2_out vector_test_STD_2_out
 
+stack1:				$(HEADERS)
+					$(CC) $(CFLAGS) $(STACK_TEST_1) -o stack_test_1
+					./stack_test_1
+
+stack2:				$(HEADERS)
+					$(CC) $(CFLAGS) -DSTD=1 $(STACK_TEST_2) -o stack_test_STD_2
+					$(CC) $(CFLAGS) -DSTD=0 $(STACK_TEST_2) -o stack_test_FT_2
+					./stack_test_FT_2 > stack_test_FT_2_out
+					./stack_test_STD_2 > stack_test_STD_2_out
+					diff -y stack_test_FT_2_out stack_test_STD_2_out
+					diff stack_test_FT_2_out stack_test_STD_2_out
+
 
 clean:
 					$(RM) $(OBJ_DIR)
 					$(RM) vector_test_1
 					$(RM) vector_test_STD_2 vector_test_STD_2_out
 					$(RM) vector_test_FT_2 vector_test_FT_2_out
+					$(RM) stack_test_1
+					$(RM) stack_test_STD_2 stack_test_STD_2_out
+					$(RM) stack_test_FT_2 stack_test_FT_2_out
 
 fclean:				clean
 					$(RM) $(NAME)
