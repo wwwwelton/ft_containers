@@ -3,4 +3,5 @@
 *.a
 objects
 container
-*vector_test*
+vector_test*
+!*.cpp

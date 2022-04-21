@@ -14,8 +14,8 @@
 
 #include <vector>
 
-#include "./vector.hpp"
-#include "algorithm.hpp"
+#include "../../vector.hpp"
+#include "../../algorithm.hpp"
 
 bool pred(int i, int j) {
   return (i == j);

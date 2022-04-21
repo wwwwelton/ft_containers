@@ -6,7 +6,7 @@
 #include <vector>
 namespace ft = std;
 #else
-#include "./vector.hpp"
+#include "../../vector.hpp"
 #endif
 
 bool pred(int i, int j) {

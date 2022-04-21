@@ -13,8 +13,8 @@ VECTOR_HEADERS		=	algorithm.hpp \
 						vector.hpp \
 						vector.tpp \
 
-VECTOR_TEST_1		=	vector_test_1.cpp
-VECTOR_TEST_2		=	vector_test_2.cpp
+VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
+VECTOR_TEST_2		=	test/vector/vector_test_2.cpp
 
 CC					=	c++
 CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
