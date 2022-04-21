@@ -13,6 +13,7 @@ template <typename T>
 void print_stack(T& stack) {
   for (size_t i = 0; i < stack.size(); i++) {
     std::cout << stack.top() << " ";
+    stack.pop();
   }
   std::cout << "\n";
   std::cout << "size: " << stack.size() << "\n";
