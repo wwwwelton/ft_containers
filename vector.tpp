@@ -404,7 +404,7 @@ template <typename T, class Alloc>
 template <class InputIterator>
 void vector<T, Alloc>::insert_dispatch(iterator position, InputIterator first, InputIterator last, false_type) {
   size_type distance = ft::distance(begin(), position);
-  size_type n = last - first;
+  size_type n = ft::distance(first, last);
   if (_capacity == 0) {
     reserve(n);
     _size = n;
