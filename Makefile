@@ -14,12 +14,16 @@ HEADERS				=	algorithm.hpp \
 						vector.tpp \
 						stack.hpp \
 						stack.tpp \
+						utility.hpp \
 
 VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
 VECTOR_TEST_2		=	test/vector/vector_test_2.cpp
 
 STACK_TEST_1		=	test/stack/stack_test_1.cpp
 STACK_TEST_2		=	test/stack/stack_test_2.cpp
+
+PAIR_TEST_1			=	test/pair/pair_test_1.cpp
+PAIR_TEST_2			=	test/pair/pair_test_2.cpp
 
 CC					=	c++
 CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
@@ -56,15 +60,33 @@ stack2:				$(HEADERS)
 					diff -y stack_test_FT_2_out stack_test_STD_2_out
 					diff stack_test_FT_2_out stack_test_STD_2_out
 
+pair1:				$(HEADERS)
+					$(CC) $(CFLAGS) $(PAIR_TEST_1) -o pair_test_1
+					./pair_test_1
+
+pair2:				$(HEADERS)
+					$(CC) $(CFLAGS) -DSTD=1 $(PAIR_TEST_2) -o pair_test_STD_2
+					$(CC) $(CFLAGS) -DSTD=0 $(PAIR_TEST_2) -o pair_test_FT_2
+					./pair_test_FT_2 > pair_test_FT_2_out
+					./pair_test_STD_2 > pair_test_STD_2_out
+					diff -y pair_test_FT_2_out pair_test_STD_2_out
+					diff pair_test_FT_2_out pair_test_STD_2_out
+
 
 clean:
 					$(RM) $(OBJ_DIR)
+
 					$(RM) vector_test_1
 					$(RM) vector_test_STD_2 vector_test_STD_2_out
 					$(RM) vector_test_FT_2 vector_test_FT_2_out
+
 					$(RM) stack_test_1
 					$(RM) stack_test_STD_2 stack_test_STD_2_out
 					$(RM) stack_test_FT_2 stack_test_FT_2_out
+
+					$(RM) pair_test_1
+					$(RM) pair_test_STD_2 pair_test_STD_2_out
+					$(RM) pair_test_FT_2 pair_test_FT_2_out
 
 fclean:				clean
 					$(RM) $(NAME)
