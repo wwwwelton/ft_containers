@@ -4,4 +4,5 @@
 objects
 container
 vector_test*
+stack_test*
 !*.cpp
