@@ -15,6 +15,7 @@ HEADERS				=	algorithm.hpp \
 						stack.hpp \
 						stack.tpp \
 						utility.hpp \
+						allocator.hpp \
 
 VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
 VECTOR_TEST_2		=	test/vector/vector_test_2.cpp
