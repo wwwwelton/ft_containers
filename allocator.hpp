@@ -4,7 +4,6 @@
 #define ALLOCATOR_HPP_
 
 #include <cstddef>
-#include <limits>
 
 namespace ft {
 
@@ -75,15 +74,16 @@ class allocator {
   }
 
   void deallocate(pointer p, size_type n) {
+    (void)n;
     ::operator delete(p);
   }
 
   size_type max_size(void) const {
-    return (std::numeric_limits<size_type>::max() / sizeof(value_type))
+    return (size_t(__PTRDIFF_MAX__) / sizeof(value_type));
   }
 
   void construct(pointer p, const_reference val) {
-    new (p) T(val)
+    new (p) T(val);
   }
 
   void destroy(pointer p) {
