@@ -51,6 +51,10 @@ class Rb_tree {
     delete (TNULL);
   }
 
+  Node_ptr search(int k) {
+    return (search_helper(root, k));
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
@@ -60,6 +64,17 @@ class Rb_tree {
       destructor_helper(node->_left);
       destructor_helper(node->_right);
       delete (node);
+    }
+  }
+
+  Node_ptr search_helper(Node_ptr node, int key) {
+    if (node == TNULL || key == node->_data) {
+      return (node);
+    }
+    if (key < node->_data) {
+      return (search_helper(node->_left, key));
+    } else {
+      return (search_helper(node->_right, key));
     }
   }
 };
