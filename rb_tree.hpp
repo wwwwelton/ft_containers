@@ -93,6 +93,32 @@ class Rb_tree {
     return (y);
   }
 
+  void left_rotate(Node_ptr x) {
+    Node_ptr y = x->_right;
+
+    x->_right = y->_left;
+    // If y has a left subtree,
+    // assign x as the parent of the left subtree of y.
+    if (y->_left != TNULL) {
+      y->_left->_parent = x;
+    }
+    y->_parent = x->_parent;
+    // If the parent of x is NULL, make y as the root of the tree.
+    if (x->_parent == NULL) {
+      root = y;
+      // Else if x is the left child of p,
+      // make y as the left child of p.
+    } else if (x == x->_parent->_left) {
+      x->_parent->_left = y;
+      // Else assign y as the right child of p.
+    } else {
+      x->_parent->_right = y;
+    }
+    y->_left = x;
+    // Make y as the parent of x.
+    x->_parent = y;
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
