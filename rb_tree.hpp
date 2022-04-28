@@ -207,6 +207,10 @@ class Rb_tree {
     delete_node_helper(z);
   }
 
+  Node_ptr get_root(void) {
+    return (root);
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
