@@ -81,6 +81,18 @@ class Rb_tree {
     return (y);
   }
 
+  Node_ptr predecessor(Node_ptr x) {
+    if (x->_left != TNULL) {
+      return (maximum(x->_left));
+    }
+    Node_ptr y = x->_parent;
+    while (y != TNULL && x == y->_left) {
+      x = y;
+      y = y->_parent;
+    }
+    return (y);
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
