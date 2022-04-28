@@ -16,6 +16,8 @@ HEADERS				=	algorithm.hpp \
 						stack.tpp \
 						utility.hpp \
 						allocator.hpp \
+						rb_tree.hpp \
+						rb_tree.tpp \
 
 VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
 VECTOR_TEST_2		=	test/vector/vector_test_2.cpp
@@ -26,7 +28,7 @@ STACK_TEST_2		=	test/stack/stack_test_2.cpp
 PAIR_TEST_1			=	test/pair/pair_test_1.cpp
 PAIR_TEST_2			=	test/pair/pair_test_2.cpp
 
-CC					=	c++
+CC					=	clang++
 CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
 CFLAGS				+=	-std=c++98 -pedantic-errors -g
 
@@ -89,9 +91,16 @@ clean:
 					$(RM) pair_test_STD_2 pair_test_STD_2_out
 					$(RM) pair_test_FT_2 pair_test_FT_2_out
 
+					$(RM) btree.out
+
 fclean:				clean
 					$(RM) $(NAME)
 
 re:					fclean all
+
+rbtree:
+					g++ -Wall -Wextra -Werror -std=c++98 \
+					-pedantic-errors -g rb_tree_main.cpp -o btree.out \
+					&& valgrind ./btree.out
 
 .PHONY:				all clean fclean re
