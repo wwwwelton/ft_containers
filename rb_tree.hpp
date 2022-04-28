@@ -69,6 +69,18 @@ class Rb_tree {
     return (node);
   }
 
+  Node_ptr successor(Node_ptr x) {
+    if (x->_right != TNULL) {
+      return (minimum(x->_right));
+    }
+    Node_ptr y = x->_parent;
+    while (y != TNULL && x == y->_right) {
+      x = y;
+      y = y->_parent;
+    }
+    return (y);
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
