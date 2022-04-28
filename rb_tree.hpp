@@ -199,6 +199,14 @@ class Rb_tree {
     insert_fix(newNode);
   }
 
+  void delete_node(int key) {
+    Node_ptr z = search(key);
+    if (z == TNULL || z == NULL) {
+      return;
+    }
+    delete_node_helper(z);
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
@@ -220,6 +228,53 @@ class Rb_tree {
     } else {
       return (search_helper(node->_right, key));
     }
+  }
+
+  void delete_node_helper(Node_ptr z) {
+    Node_ptr x, y;
+    Rb_tree_color y_original_color;
+
+    // makes y point to node z when z has fewer than two children
+    // and is therefore removed.
+    y = z;
+    // Save the color of nodeToBeDeleted
+    y_original_color = y->_color;
+    // If the left child of nodeToBeDeleted is TNULL
+    if (z->_left == TNULL) {
+      // Assign the right child of nodeToBeDeleted to x.
+      x = z->_right;
+      // Transplant nodeToBeDeleted with x.
+      transplant(z, z->_right);
+      // Else if the right child of nodeToBeDeleted is TNULL
+    } else if (z->_right == TNULL) {
+      // Assign the left child of nodeToBeDeleted into x.
+      x = z->_left;
+      // Transplant nodeToBeDeleted with x.
+      transplant(z, z->_left);
+    } else {
+      // Assign the minimum of right subtree of noteToBeDeleted into y.
+      y = minimum(z->_right);
+      // Save the color of y in originalColor.
+      y_original_color = y->_color;
+      // Assign the rightChild of y into x.
+      x = y->_right;
+      // If y is a child of nodeToBeDeleted, then set the parent of x as y.
+      if (y->_parent == z) {
+        x->_parent = y;
+        // Else, transplant y with rightChild of y.
+      } else {
+        // Transplant nodeToBeDeleted with y.
+        transplant(y, y->_right);
+        y->_right = z->_right;
+        y->_right->_parent = y;
+      }
+
+      transplant(z, y);
+      y->_left = z->_left;
+      y->_left->_parent = y;
+      y->_color = z->_color;
+    }
+    delete (z);
   }
 
   void insert_fix(Node_ptr newNode) {
