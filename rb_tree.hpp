@@ -230,6 +230,97 @@ class Rb_tree {
     }
   }
 
+  void delete_fix(Node_ptr x) {
+    Node_ptr s;
+
+    // Do the following until the x is not the root of the tree
+    // and the color of x is BLACK
+    while (x != root && x->_color == BLACK) {
+      // If x is the left child of its parent then,
+      if (x == x->_parent->_left) {
+        // Assign s to the sibling of x.
+        s = x->_parent->_right;
+        // If the sibling of x is RED,
+        // Case-I: x's brother s is red
+        if (s->_color == RED) {
+          // Set the color of the right child of the parent of x as BLACK.
+          s->_color = BLACK;
+          // Set the color of the parent of x as RED.
+          x->_parent->_color = RED;
+          // Left-Rotate the parent of x.
+          left_rotate(x->_parent);
+          // Assign the rightChild of the parent of x to s.
+          s = x->_parent->_right;
+        }
+
+        // If the color of both the right and the leftChild of s is BLACK,
+        // Case-II: x's brother s is black and s's children are black
+        if (s->_left->_color == BLACK && s->_right->_color == BLACK) {
+          // Set the color of s as RED
+          s->_color = RED;
+          // Assign the parent of x to x.
+          x = x->_parent;
+          // Else if the color of the rightChild of s is BLACK
+          // Case-III: the sibbling x s is black, the son on the left of
+          // s is red and the son on the right of s is black
+        } else {
+          if (s->_right->_color == BLACK) {
+            // Set the color of the leftChild of s as BLACK
+            s->_left->_color = BLACK;
+            // Set the color of s as RED
+            s->_color = RED;
+            // Right-Rotate s.
+            right_rotate(s);
+            // Assign the rightChild of the parent of x to s.
+            s = x->_parent->_right;
+          }
+
+          // If any of the above cases do not occur, then do the following.
+          // Case-IV: x's sibling s is black and s's right child is red
+
+          // Set the color of s as the color of the parent of x.
+          s->_color = x->_parent->_color;
+          // Set the color of the parent of parent of x as BLACK.
+          x->_parent->_color = BLACK;
+          // Set the color of the right child of s as BLACK.
+          s->_right->_color = BLACK;
+          // Left-Rotate the parent of x.
+          left_rotate(x->_parent);
+          // Set x as the root of the tree.
+          x = root;
+        }
+      } else {
+        s = x->_parent->_left;
+        if (s->_color == RED) {
+          s->_color = BLACK;
+          x->_parent->_color = RED;
+          right_rotate(x->_parent);
+          s = x->_parent->_left;
+        }
+
+        if (s->_right->_color == BLACK && s->_right->_color == BLACK) {
+          s->_color = RED;
+          x = x->_parent;
+        } else {
+          if (s->_left->_color == BLACK) {
+            s->_right->_color = BLACK;
+            s->_color = RED;
+            left_rotate(s);
+            s = x->_parent->_left;
+          }
+
+          s->_color = x->_parent->_color;
+          x->_parent->_color = BLACK;
+          s->_left->_color = BLACK;
+          right_rotate(x->_parent);
+          x = root;
+        }
+      }
+    }
+    // Set the color of x as BLACK.
+    x->_color = BLACK;
+  }
+
   void delete_node_helper(Node_ptr z) {
     Node_ptr x, y;
     Rb_tree_color y_original_color;
@@ -275,6 +366,9 @@ class Rb_tree {
       y->_color = z->_color;
     }
     delete (z);
+    if (y_original_color == BLACK) {
+      delete_fix(x);
+    }
   }
 
   void insert_fix(Node_ptr newNode) {
