@@ -195,6 +195,8 @@ class Rb_tree {
     if (newNode->_parent->_parent == NULL) {
       return;
     }
+
+    insert_fix(newNode);
   }
 
  private:
@@ -218,6 +220,76 @@ class Rb_tree {
     } else {
       return (search_helper(node->_right, key));
     }
+  }
+
+  void insert_fix(Node_ptr newNode) {
+    Node_ptr u;
+
+    // Do the following while the parent of newNode p is RED.
+    while (newNode->_parent->_color == RED) {
+      // If p is the right child of grandParent gP of newNode, do the following
+      if (newNode->_parent == newNode->_parent->_parent->_right) {
+        // Create uncle, left child gP of newNode
+        u = newNode->_parent->_parent->_left;
+        // If the color of the left child of gP (uncle) of newNode is RED
+        if (u->_color == RED) {
+          // Set the color of both the children of gP as BLACK
+          u->_color = BLACK;
+          newNode->_parent->_color = BLACK;
+          // and the color of gP as RED.
+          newNode->_parent->_parent->_color = RED;
+          // Assign gP to newNode.
+          newNode = newNode->_parent->_parent;
+        } else {
+          // Else if newNode is the left child of p
+          if (newNode == newNode->_parent->_left) {
+            // assign p to newNode
+            newNode = newNode->_parent;
+            // Right-Rotate newNode.
+            right_rotate(newNode);
+          }
+          // Set color of p as BLACK and color of gP as RED.
+          newNode->_parent->_color = BLACK;
+          // Set color of gP as RED.
+          newNode->_parent->_parent->_color = RED;
+          // Left-Rotate gP.
+          left_rotate(newNode->_parent->_parent);
+        }
+        // If p is the left child of grandParent gP of newNode, do the following
+      } else {
+        // Create uncle, right child gP of newNode
+        u = newNode->_parent->_parent->_right;
+        // If the color of the right child of gP (uncle) of newNode is RED
+        if (u->_color == RED) {
+          // Set the color of both the children of gP as BLACK
+          u->_color = BLACK;
+          newNode->_parent->_color = BLACK;
+          // and the color of gP as RED.
+          newNode->_parent->_parent->_color = RED;
+          // Assign gP to newNode.
+          newNode = newNode->_parent->_parent;
+        } else {
+          // Else if newNode is the right child of p
+          if (newNode == newNode->_parent->_right) {
+            // assign p to newNode
+            newNode = newNode->_parent;
+            // Left-Rotate newNode.
+            left_rotate(newNode);
+          }
+          // Set color of p as BLACK and color of gP as RED.
+          newNode->_parent->_color = BLACK;
+          // Set color of gP as RED.
+          newNode->_parent->_parent->_color = RED;
+          // Right-Rotate gP.
+          right_rotate(newNode->_parent->_parent);
+        }
+      }
+      // Set the root of the tree as BLACK.
+      if (newNode == root) {
+        break;
+      }
+    }
+    root->_color = BLACK;
   }
 };
 
