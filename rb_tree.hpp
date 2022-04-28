@@ -55,6 +55,13 @@ class Rb_tree {
     return (search_helper(root, k));
   }
 
+  Node_ptr minimum(Node_ptr node) {
+    while (node->_left != TNULL) {
+      node = node->_left;
+    }
+    return (node);
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
