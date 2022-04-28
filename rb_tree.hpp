@@ -145,6 +145,58 @@ class Rb_tree {
     x->_parent = y;
   }
 
+  void insert(int key) {
+    Node_ptr newNode = new Rb_tree_node(key, NULL, TNULL, TNULL, RED);
+
+    // Let y be the leaf (ie. TNULL) and x be the root of the tree.
+    Node_ptr y = NULL;
+    Node_ptr x = root;
+
+    // Check if the tree is empty (ie. whether x is TNULL).
+    // If yes, insert newNode as a root node and color it BLACK.
+    if (x == TNULL) {
+      root = newNode;
+      newNode->_color = BLACK;
+      return;
+    }
+
+    // Repeat steps following steps until leaf (TNULL) is reached.
+    while (x != TNULL) {
+      // When loop ends, y will be the last leaf on the way
+      y = x;
+      // Compare newNode key (newKey) with rootKey (x).
+      // If newKey is smaller than rootKey, traverse through the left subtree.
+      if (newNode->_data < x->_data) {
+        x = x->_left;
+        // Else traverse through the right subtree.
+      } else {
+        x = x->_right;
+      }
+    }
+
+    // Assign the parent of the leaf as a parent of newNode.
+    newNode->_parent = y;
+
+    // If newNode key is smaller than leaf key, make newNode as left child.
+    if (newNode->_data < y->_data) {
+      y->_left = newNode;
+      // Else, make newNode as rifht child.
+    } else {
+      y->_right = newNode;
+    }
+
+    // If newNode is the root paint it BLACK
+    if (newNode->_parent == NULL) {
+      newNode->_color = BLACK;
+      return;
+    }
+
+    // If newNode is in the first level, dont need fix the tree
+    if (newNode->_parent->_parent == NULL) {
+      return;
+    }
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
