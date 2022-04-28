@@ -62,6 +62,13 @@ class Rb_tree {
     return (node);
   }
 
+  Node_ptr maximum(Node_ptr node) {
+    while (node->_right != TNULL) {
+      node = node->_right;
+    }
+    return (node);
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
