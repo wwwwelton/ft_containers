@@ -46,9 +46,22 @@ class Rb_tree {
     root = TNULL;
   }
 
+  ~Rb_tree(void) {
+    destructor_helper(root);
+    delete (TNULL);
+  }
+
  private:
   Node_ptr root;
   Node_ptr TNULL;
+
+  void destructor_helper(Node_ptr node) {
+    if (node != TNULL) {
+      destructor_helper(node->_left);
+      destructor_helper(node->_right);
+      delete (node);
+    }
+  }
 };
 
 }  // namespace ft
