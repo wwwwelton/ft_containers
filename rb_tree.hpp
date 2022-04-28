@@ -291,6 +291,33 @@ class Rb_tree {
     }
     root->_color = BLACK;
   }
+
+  /* In order to move subtrees around within the binary search tree,
+we define a subroutine TRANSPLANT, which replaces one subtree as a child of
+its parent with another subtree. When TRANSPLANT replaces the subtree rooted
+at node u with the subtree rooted at node v, node u's parent becomes node v’s
+parent, and u's parent ends up having as its appropriate child. */
+  void transplant(Node_ptr u, Node_ptr v) {
+    // if u doesn't have a parent => u is the root
+    if (u->_parent == NULL) {
+      // then v must replace u as the root of the tree T
+      root = v;
+      // if u is a left subtree of its parent
+    } else if (u == u->_parent->_left) {
+      // then v must replace u as the left subtree of u's parent
+      u->_parent->_left = v;
+      // else, u is a right subtree
+    } else {
+      // (as the tree is binary) and v must replace u as the right subtre
+      //  of u's parent
+      u->_parent->_right = v;
+    }
+    // if v has replaced u (and thus is not NULL)
+    if (v != NULL) {
+      // v must have the same parent as u
+      v->_parent = u->_parent;
+    }
+  }
 };
 
 }  // namespace ft
