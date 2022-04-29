@@ -101,6 +101,11 @@ re:					fclean all
 rbtree:
 					g++ -Wall -Wextra -Werror -std=c++98 \
 					-pedantic-errors -g rb_tree_main.cpp -o btree.out \
+					&& ./btree.out
+
+rbtreev:
+					g++ -Wall -Wextra -Werror -std=c++98 \
+					-pedantic-errors -g rb_tree_main.cpp -o btree.out \
 					&& valgrind ./btree.out
 
 .PHONY:				all clean fclean re
