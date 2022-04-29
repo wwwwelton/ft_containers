@@ -345,11 +345,8 @@ class Rb_tree {
       //  of u's parent
       u->_parent->_right = v;
     }
-    // if v has replaced u (and thus is not NULL)
-    if (v != NULL) {
-      // v must have the same parent as u
-      v->_parent = u->_parent;
-    }
+    // v must have the same parent as u
+    v->_parent = u->_parent;
   }
 
   void delete_node_helper(Node_ptr z) {
