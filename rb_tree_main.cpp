@@ -4,6 +4,10 @@
 
 #include "./rb_tree.hpp"
 
+#define RESET "\033[0m"
+#define BOLDRED "\033[1m\033[31m"   /* Red */
+#define BOLDBLACK "\033[1m\033[30m" /* Bold Black */
+
 void print_helper(const ft::Rb_tree_node::Node_ptr& root,
                   std::string indent,
                   bool last) {
@@ -18,7 +22,8 @@ void print_helper(const ft::Rb_tree_node::Node_ptr& root,
       indent += "|    ";
     }
 
-    std::string scolor = root->color ? "RED" : "BLACK";
+    std::string scolor = root->color ? BOLDRED "RED" RESET
+                                     : BOLDBLACK "BLACK" RESET;
     std::cout << root->data << "(" << scolor << ")" << std::endl;
     print_helper(root->left, indent, false);
     print_helper(root->right, indent, true);
@@ -58,22 +63,23 @@ int main() {
 
   std::cout << "\nBefore delete: \n";
   pretty_print(bst.get_root());
-  //   bst.delete_node(8);
-  //   bst.delete_node(18);
-  //   bst.delete_node(5);
+  // bst.delete_node(8);
+  // bst.delete_node(18);
+  // bst.delete_node(5);
+  // bst.delete_node(15);
+  // bst.delete_node(17);
+  // bst.delete_node(25);
+  // bst.delete_node(40);
+  // bst.delete_node(80);
+  // bst.delete_node(1);
+  // bst.delete_node(25);
+  // bst.delete_node(40);
+  // bst.delete_node(2);
+  // bst.delete_node(17);
+  // bst.delete_node(15);
   //   bst.delete_node(15);
-  //   bst.delete_node(17);
-  //   bst.delete_node(25);
-  //   bst.delete_node(40);
-  //   bst.delete_node(80);
-  //   bst.delete_node(1);
-  //   bst.delete_node(25);
-  //   bst.delete_node(40);
-  //   bst.delete_node(17);
-  //   bst.delete_node(17);
-  //   bst.delete_node(15);
   //   bst.delete_node(8);
-  //   bst.delete_node(18);
+  bst.delete_node(25);
   std::cout << "\n";
   std::cout << "After delete: \n";
   pretty_print(bst.get_root());
