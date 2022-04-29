@@ -76,8 +76,8 @@ class Rb_tree {
       y->left->parent = x;
     }
     y->parent = x->parent;
-    // If the parent of x is NULL, make y as the root of the tree.
-    if (x->parent == NULL) {
+    // If the parent of x is TNULL, make y as the root of the tree.
+    if (x->parent == TNULL) {
       root = y;
       // Else if x is the left child of p,
       // make y as the left child of p.
@@ -103,8 +103,8 @@ class Rb_tree {
       y->right->parent = x;
     }
     y->parent = x->parent;
-    // If the parent of x is NULL, make y as the root of the tree.
-    if (x->parent == NULL) {
+    // If the parent of x is TNULL, make y as the root of the tree.
+    if (x->parent == TNULL) {
       root = y;
       // Else if x is the right child of its parent p,
       // make y as the right child of p.
@@ -120,10 +120,10 @@ class Rb_tree {
   }
 
   void insert(int key) {
-    Node_ptr newNode = new Rb_tree_node(key, NULL, TNULL, TNULL, RED);
+    Node_ptr newNode = new Rb_tree_node(key, TNULL, TNULL, TNULL, RED);
 
     // Let y be the leaf (ie. TNULL) and x be the root of the tree.
-    Node_ptr y = NULL;
+    Node_ptr y = TNULL;
     Node_ptr x = root;
 
     // Check if the tree is empty (ie. whether x is TNULL).
@@ -160,13 +160,13 @@ class Rb_tree {
     }
 
     // If newNode is the root paint it BLACK
-    if (newNode->parent == NULL) {
+    if (newNode->parent == TNULL) {
       newNode->color = BLACK;
       return;
     }
 
     // If newNode is in the first level, dont need fix the tree
-    if (newNode->parent->parent == NULL) {
+    if (newNode->parent->parent == TNULL) {
       return;
     }
 
@@ -175,7 +175,7 @@ class Rb_tree {
 
   void delete_node(int key) {
     Node_ptr z = search(key);
-    if (z == TNULL || z == NULL) {
+    if (z == TNULL) {
       return;
     }
     delete_node_helper(z);
@@ -306,7 +306,7 @@ class Rb_tree {
   parent, and u's parent ends up having as its appropriate child. */
   void transplant(Node_ptr u, Node_ptr v) {
     // if u doesn't have a parent => u is the root
-    if (u->parent == NULL) {
+    if (u->parent == TNULL) {
       // then v must replace u as the root of the tree T
       root = v;
       // if u is a left subtree of its parent
