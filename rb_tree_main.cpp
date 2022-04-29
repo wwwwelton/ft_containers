@@ -8,7 +8,7 @@ void print_helper(const ft::Rb_tree_node::Node_ptr& root,
                   std::string indent,
                   bool last) {
   // print the tree structure on the screen
-  if (root != NULL && root->_data != 0) {
+  if (root != NULL && root->data != 0) {
     std::cout << indent;
     if (last) {
       std::cout << "R----";
@@ -18,12 +18,12 @@ void print_helper(const ft::Rb_tree_node::Node_ptr& root,
       indent += "|    ";
     }
 
-    std::string s_color = root->_color ? "RED" : "BLACK";
-    std::cout << root->_data << "(" << s_color << ")" << std::endl;
-    print_helper(root->_left, indent, false);
-    print_helper(root->_right, indent, true);
+    std::string scolor = root->color ? "RED" : "BLACK";
+    std::cout << root->data << "(" << scolor << ")" << std::endl;
+    print_helper(root->left, indent, false);
+    print_helper(root->right, indent, true);
   }
-  // std::cout<<root->_left->_data<<std::endl;
+  // std::cout<<root->left->data<<std::endl;
 }
 
 // print the tree structure on the screen
@@ -34,10 +34,10 @@ void pretty_print(ft::Rb_tree_node::Node_ptr root) {
 }
 
 void inorderOrderHelper(ft::Rb_tree_node::Node_ptr node) {
-  if (node != NULL && node->_data != 0) {
-    inorderOrderHelper(node->_left);
-    std::cout << node->_data << " ";
-    inorderOrderHelper(node->_right);
+  if (node != NULL && node->data != 0) {
+    inorderOrderHelper(node->left);
+    std::cout << node->data << " ";
+    inorderOrderHelper(node->right);
   }
 }
 
@@ -70,17 +70,17 @@ int main() {
   //   bst.delete_node(25);
   //   bst.delete_node(40);
   //   bst.delete_node(17);
-  bst.delete_node(17);
-  bst.delete_node(15);
+  //   bst.delete_node(17);
+  //   bst.delete_node(15);
   //   bst.delete_node(8);
   //   bst.delete_node(18);
   std::cout << "\n";
   std::cout << "After delete: \n";
   pretty_print(bst.get_root());
   std::cout << "\n";
-  std::cout << "Search 17: " << bst.search(17)->_data << "\n";
-  std::cout << "Minimum: " << bst.minimum(bst.get_root())->_data << "\n";
-  std::cout << "Maximum: " << bst.maximum(bst.get_root())->_data << "\n";
+  std::cout << "Search 17: " << bst.search(17)->data << "\n";
+  std::cout << "Minimum: " << bst.minimum(bst.get_root())->data << "\n";
+  std::cout << "Maximum: " << bst.maximum(bst.get_root())->data << "\n";
   std::cout << "Inorder: ";
   inorderOrderHelper(bst.get_root());
   return 0;
