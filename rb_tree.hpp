@@ -70,25 +70,20 @@ class Rb_tree {
 
     y = x->right;
     x->right = y->left;
-    // If y has a left subtree,
-    // assign x as the parent of the left subtree of y.
     if (y->left != TNULL) {
       y->left->parent = x;
     }
+
     y->parent = x->parent;
-    // If the parent of x is TNULL, make y as the root of the tree.
     if (x->parent == TNULL) {
       root = y;
-      // Else if x is the left child of p,
-      // make y as the left child of p.
     } else if (x == x->parent->left) {
       x->parent->left = y;
-      // Else assign y as the right child of p.
     } else {
       x->parent->right = y;
     }
+
     y->left = x;
-    // Make y as the parent of x.
     x->parent = y;
   }
 
@@ -97,25 +92,20 @@ class Rb_tree {
 
     y = x->left;
     x->left = y->right;
-    // If y has a right subtree,
-    // assign x as the parent of the right subtree of y.
     if (y->right != TNULL) {
       y->right->parent = x;
     }
+
     y->parent = x->parent;
-    // If the parent of x is TNULL, make y as the root of the tree.
     if (x->parent == TNULL) {
       root = y;
-      // Else if x is the right child of its parent p,
-      // make y as the right child of p.
     } else if (x == x->parent->right) {
       x->parent->right = y;
-      // Else assign y as the left child of p.
     } else {
       x->parent->left = y;
     }
+
     y->right = x;
-    // Make y as the parent of x.
     x->parent = y;
   }
 
