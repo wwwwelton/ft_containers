@@ -302,7 +302,7 @@ class Rb_tree {
           s = x->_parent->_left;
         }
 
-        if (s->_right->_color == BLACK && s->_right->_color == BLACK) {
+        if (s->_right->_color == BLACK && s->_left->_color == BLACK) {
           s->_color = RED;
           x = x->_parent;
         } else {
