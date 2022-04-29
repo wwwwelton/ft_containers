@@ -268,7 +268,7 @@ class Rb_tree {
       transplant(z, z->left);
     } else {
       y = minimum(z->right);
-      y_original_color = y->color;  // joao falo que nao é pra mudar
+      y_original_color = y->color;
       x = y->right;
       if (z != z->right) {
         transplant(y, y->right);
