@@ -1,6 +1,8 @@
+// Copyright (c) 2022 Welton Leite, wleite. All rights reserved.
+
 #include <iostream>
 
-#include "rb_tree.hpp"
+#include "./rb_tree.hpp"
 
 void print_helper(const ft::Rb_tree_node::Node_ptr& root,
                   std::string indent,
@@ -67,11 +69,11 @@ int main() {
   //   bst.delete_node(1);
   //   bst.delete_node(25);
   //   bst.delete_node(40);
-//   bst.delete_node(17);
+  //   bst.delete_node(17);
   bst.delete_node(17);
   bst.delete_node(15);
-//   bst.delete_node(8);
-//   bst.delete_node(18);
+  //   bst.delete_node(8);
+  //   bst.delete_node(18);
   std::cout << "\n";
   std::cout << "After delete: \n";
   pretty_print(bst.get_root());
