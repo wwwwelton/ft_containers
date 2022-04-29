@@ -120,57 +120,33 @@ class Rb_tree {
   }
 
   void insert(int key) {
-    Node_ptr newNode = new Rb_tree_node(key, TNULL, TNULL, TNULL, RED);
-
-    // Let y be the leaf (ie. TNULL) and x be the root of the tree.
-    Node_ptr y = TNULL;
     Node_ptr x = root;
+    Node_ptr y = TNULL;
+    Node_ptr z = new Rb_tree_node(key, TNULL, TNULL, TNULL, RED);
 
-    // Check if the tree is empty (ie. whether x is TNULL).
-    // If yes, insert newNode as a root node and color it BLACK.
-    if (x == TNULL) {
-      root = newNode;
-      newNode->color = BLACK;
-      return;
-    }
-
-    // Repeat steps following steps until leaf (TNULL) is reached.
     while (x != TNULL) {
-      // When loop ends, y will be the last leaf on the way
       y = x;
-      // Compare newNode key (newKey) with rootKey (x).
-      // If newKey is smaller than rootKey, traverse through the left subtree.
-      if (newNode->data < x->data) {
+      if (z->data < x->data) {
         x = x->left;
-        // Else traverse through the right subtree.
       } else {
         x = x->right;
       }
     }
 
-    // Assign the parent of the leaf as a parent of newNode.
-    newNode->parent = y;
+    z->parent = y;
 
-    // If newNode key is smaller than leaf key, make newNode as left child.
-    if (newNode->data < y->data) {
-      y->left = newNode;
-      // Else, make newNode as rifht child.
+    if (y == TNULL) {
+      root = z;
+    } else if (z->data < y->data) {
+      y->left = z;
     } else {
-      y->right = newNode;
+      y->right = z;
+      z->left = TNULL;
+      z->right = TNULL;
+      z->color = RED;
     }
 
-    // If newNode is the root paint it BLACK
-    if (newNode->parent == TNULL) {
-      newNode->color = BLACK;
-      return;
-    }
-
-    // If newNode is in the first level, dont need fix the tree
-    if (newNode->parent->parent == TNULL) {
-      return;
-    }
-
-    insert_fix(newNode);
+    insert_fix(z);
   }
 
   void delete_node(int key) {
@@ -373,71 +349,42 @@ class Rb_tree {
     }
   }
 
-  void insert_fix(Node_ptr newNode) {
-    Node_ptr u;
+  void insert_fix(Node_ptr z) {
+    Node_ptr y;
 
-    // Do the following while the parent of newNode p is RED.
-    while (newNode->parent->color == RED) {
-      // If p is the right child of grandParent gP of newNode, do the following
-      if (newNode->parent == newNode->parent->parent->right) {
-        // Create uncle, left child gP of newNode
-        u = newNode->parent->parent->left;
-        // If the color of the left child of gP (uncle) of newNode is RED
-        if (u->color == RED) {
-          // Set the color of both the children of gP as BLACK
-          u->color = BLACK;
-          newNode->parent->color = BLACK;
-          // and the color of gP as RED.
-          newNode->parent->parent->color = RED;
-          // Assign gP to newNode.
-          newNode = newNode->parent->parent;
+    while (z->parent->color == RED) {
+      if (z->parent == z->parent->parent->left) {
+        y = z->parent->parent->right;
+        if (y->color == RED) {
+          z->parent->color = BLACK;
+          y->color = BLACK;
+          z->parent->parent->color = RED;
+          z = z->parent->parent;
         } else {
-          // Else if newNode is the left child of p
-          if (newNode == newNode->parent->left) {
-            // assign p to newNode
-            newNode = newNode->parent;
-            // Right-Rotate newNode.
-            right_rotate(newNode);
+          if (z == z->parent->right) {
+            z = z->parent;
+            left_rotate(z);
           }
-          // Set color of p as BLACK and color of gP as RED.
-          newNode->parent->color = BLACK;
-          // Set color of gP as RED.
-          newNode->parent->parent->color = RED;
-          // Left-Rotate gP.
-          left_rotate(newNode->parent->parent);
+          z->parent->color = BLACK;
+          z->parent->parent->color = RED;
+          right_rotate(z->parent->parent);
         }
-        // If p is the left child of grandParent gP of newNode, do the following
       } else {
-        // Create uncle, right child gP of newNode
-        u = newNode->parent->parent->right;
-        // If the color of the right child of gP (uncle) of newNode is RED
-        if (u->color == RED) {
-          // Set the color of both the children of gP as BLACK
-          u->color = BLACK;
-          newNode->parent->color = BLACK;
-          // and the color of gP as RED.
-          newNode->parent->parent->color = RED;
-          // Assign gP to newNode.
-          newNode = newNode->parent->parent;
+        y = z->parent->parent->left;
+        if (y->color == RED) {
+          z->parent->color = BLACK;
+          y->color = BLACK;
+          z->parent->parent->color = RED;
+          z = z->parent->parent;
         } else {
-          // Else if newNode is the right child of p
-          if (newNode == newNode->parent->right) {
-            // assign p to newNode
-            newNode = newNode->parent;
-            // Left-Rotate newNode.
-            left_rotate(newNode);
+          if (z == z->parent->left) {
+            z = z->parent;
+            right_rotate(z);
           }
-          // Set color of p as BLACK and color of gP as RED.
-          newNode->parent->color = BLACK;
-          // Set color of gP as RED.
-          newNode->parent->parent->color = RED;
-          // Right-Rotate gP.
-          right_rotate(newNode->parent->parent);
+          z->parent->color = BLACK;
+          z->parent->parent->color = RED;
+          left_rotate(z->parent->parent);
         }
-      }
-      // Set the root of the tree as BLACK.
-      if (newNode == root) {
-        break;
       }
     }
     root->color = BLACK;
