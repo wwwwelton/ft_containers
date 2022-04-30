@@ -41,7 +41,6 @@ class Rb_tree {
     TNULL->left = TNULL;
     TNULL->color = BLACK;
     _size = 0;
-    _compare = key_compare();
     root = TNULL;
   }
 
@@ -51,7 +50,8 @@ class Rb_tree {
     _alloc.deallocate(TNULL, 1);
   }
 
-  Node_ptr search(T k) {
+  template <typename _K>
+  Node_ptr search(_K k) {
     return (search_helper(root, k));
   }
 
@@ -149,7 +149,7 @@ class Rb_tree {
 
     while (x != TNULL) {
       y = x;
-      if (z->data < x->data) {
+      if (key_compare()(z->data, x->data)) {
         x = x->left;
       } else {
         x = x->right;
@@ -160,7 +160,7 @@ class Rb_tree {
 
     if (y == TNULL) {
       root = z;
-    } else if (z->data < y->data) {
+    } else if (key_compare()(z->data, y->data)) {
       y->left = z;
     } else {
       y->right = z;
@@ -172,7 +172,8 @@ class Rb_tree {
     insert_fix(z);
   }
 
-  void delete_node(T key) {
+  template <typename _K>
+  void delete_node(_K key) {
     Node_ptr z = search(key);
     if (z == TNULL) {
       return;
@@ -189,7 +190,6 @@ class Rb_tree {
   Node_ptr root;
   Node_ptr TNULL;
   size_type _size;
-  key_compare _compare;
 
   void destructor_helper(Node_ptr node) {
     if (node != TNULL) {
@@ -199,11 +199,12 @@ class Rb_tree {
     }
   }
 
-  Node_ptr search_helper(Node_ptr node, T key) {
-    if (node == TNULL || key == node->data) {
+  template <typename _K>
+  Node_ptr search_helper(Node_ptr node, _K key) {
+    if (node == TNULL || key == node->data.first) {
       return (node);
     }
-    if (key < node->data) {
+    if (key < node->data.first) {
       return (search_helper(node->left, key));
     } else {
       return (search_helper(node->right, key));
