@@ -3,27 +3,55 @@
 #ifndef RB_TREE_HPP_
 #define RB_TREE_HPP_
 
+#include <functional>
+#include <memory>
+
 #include "./rb_tree_node.hpp"
+#include "./utility.hpp"
 
 namespace ft {
 
+template <class T,
+          class Compare = std::less<T>,
+          class Alloc = std::allocator<_Rb_tree_node<T> > >
 class Rb_tree {
  protected:
+  typedef _Rb_tree_node<T> Rb_tree_node;
   typedef Rb_tree_node* Node_ptr;
   typedef const Rb_tree_node* Const_node_ptr;
 
  public:
-  Rb_tree(void) {
-    TNULL = new Rb_tree_node(0, NULL, NULL, NULL, BLACK);
+  typedef T value_type;
+  typedef Compare key_compare;
+  typedef value_type* pointer;
+  typedef const value_type* const_pointer;
+  typedef value_type& reference;
+  typedef const value_type& const_reference;
+  typedef size_t size_type;
+  typedef ptrdiff_t difference_type;
+  typedef Alloc allocator_type;
+
+ public:
+  explicit Rb_tree(const allocator_type& alloc = allocator_type()) {
+    _alloc = alloc;
+    TNULL = _alloc.allocate(1);
+    _alloc.construct(TNULL, Rb_tree_node(value_type()));
+    TNULL->parent = TNULL;
+    TNULL->right = TNULL;
+    TNULL->left = TNULL;
+    TNULL->color = BLACK;
+    _size = 0;
+    _compare = key_compare();
     root = TNULL;
   }
 
   ~Rb_tree(void) {
     destructor_helper(root);
-    delete (TNULL);
+    _alloc.destroy(TNULL);
+    _alloc.deallocate(TNULL, 1);
   }
 
-  Node_ptr search(int k) {
+  Node_ptr search(T k) {
     return (search_helper(root, k));
   }
 
@@ -109,10 +137,15 @@ class Rb_tree {
     x->parent = y;
   }
 
-  void insert(int key) {
+  void insert(T key) {
     Node_ptr x = root;
     Node_ptr y = TNULL;
-    Node_ptr z = new Rb_tree_node(key, TNULL, TNULL, TNULL, RED);
+    Node_ptr z = _alloc.allocate(1);
+    z->data = key;
+    z->parent = TNULL;
+    z->left = TNULL;
+    z->right = TNULL;
+    z->color = RED;
 
     while (x != TNULL) {
       y = x;
@@ -139,7 +172,7 @@ class Rb_tree {
     insert_fix(z);
   }
 
-  void delete_node(int key) {
+  void delete_node(T key) {
     Node_ptr z = search(key);
     if (z == TNULL) {
       return;
@@ -152,8 +185,11 @@ class Rb_tree {
   }
 
  private:
+  allocator_type _alloc;
   Node_ptr root;
   Node_ptr TNULL;
+  size_type _size;
+  key_compare _compare;
 
   void destructor_helper(Node_ptr node) {
     if (node != TNULL) {
@@ -163,7 +199,7 @@ class Rb_tree {
     }
   }
 
-  Node_ptr search_helper(Node_ptr node, int key) {
+  Node_ptr search_helper(Node_ptr node, T key) {
     if (node == TNULL || key == node->data) {
       return (node);
     }
@@ -273,7 +309,8 @@ class Rb_tree {
       y->color = z->color;
     }
 
-    delete z;
+    _alloc.destroy(z);
+    _alloc.deallocate(z, 1);
 
     if (y_original_color == BLACK) {
       delete_fix(x);
