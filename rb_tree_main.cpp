@@ -86,7 +86,7 @@ int main() {
   //   std::cout << "After delete: \n";
 //   pretty_print(bst.get_root());
   //   std::cout << "\n";
-  std::cout << "Search 10: " << bst.search(TYPE(10, 10))->data.first << "\n";
+  std::cout << "Search 10: " << bst.search(8)->data.first << "\n";
     std::cout << "Minimum: " << bst.minimum(bst.get_root())->data.first << "\n";
     std::cout << "Maximum: " << bst.maximum(bst.get_root())->data.first << "\n";
     std::cout << "Inorder: ";
