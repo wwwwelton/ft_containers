@@ -21,12 +21,16 @@ struct _Rb_tree_node {
   Node_ptr right;
   Rb_tree_color color;
 
-  explicit _Rb_tree_node(const T& _data)
+  explicit _Rb_tree_node(const T& _data,
+                         Node_ptr _parent = NULL,
+                         Node_ptr _left = NULL,
+                         Node_ptr _right = NULL,
+                         Rb_tree_color _color = BLACK)
       : data(_data),
-        parent(NULL),
-        left(NULL),
-        right(NULL),
-        color(BLACK) {}
+        parent(_parent),
+        left(_left),
+        right(_right),
+        color(_color) {}
 };
 
 }  // namespace ft
