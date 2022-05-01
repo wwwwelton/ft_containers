@@ -55,7 +55,7 @@ void inorderOrderHelper(ft::_Rb_tree_node<TYPE>::Node_ptr node) {
   }
 }
 
-int main() {
+int main(void) {
   ft::Rb_tree<std::string, int> bst;
 
   std::cout << "\nBefore delete: \n";
