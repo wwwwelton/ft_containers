@@ -11,17 +11,20 @@
 
 namespace ft {
 
-template <class T,
-          class Compare = std::less<T>,
-          class Alloc = std::allocator<_Rb_tree_node<T> > >
+template <class Key,
+          class Val,
+          class Compare = std::less<Key>,
+          class Alloc = std::allocator<_Rb_tree_node<ft::pair<Key, Val> > > >
 class Rb_tree {
  protected:
-  typedef _Rb_tree_node<T> Rb_tree_node;
+  typedef ft::pair<Key, Val> value_type;
+  typedef _Rb_tree_node<value_type> Rb_tree_node;
   typedef Rb_tree_node* Node_ptr;
   typedef const Rb_tree_node* Const_node_ptr;
 
  public:
-  typedef T value_type;
+  typedef Key key_type;
+  typedef Val mapped_type;
   typedef Compare key_compare;
   typedef value_type* pointer;
   typedef const value_type* const_pointer;
@@ -50,8 +53,7 @@ class Rb_tree {
     _alloc.deallocate(TNULL, 1);
   }
 
-  template <typename _K>
-  Node_ptr search(_K k) {
+  Node_ptr search(Key k) {
     return (search_helper(root, k));
   }
 
@@ -137,11 +139,11 @@ class Rb_tree {
     x->parent = y;
   }
 
-  void insert(T key) {
+  void insert(value_type key) {
     Node_ptr x = root;
     Node_ptr y = TNULL;
     Node_ptr z = _alloc.allocate(1);
-    z->data = key;
+    _alloc.construct(z, Rb_tree_node(key));
     z->parent = TNULL;
     z->left = TNULL;
     z->right = TNULL;
@@ -149,7 +151,7 @@ class Rb_tree {
 
     while (x != TNULL) {
       y = x;
-      if (key_compare()(z->data, x->data)) {
+      if (key_compare()(z->data.first, x->data.first)) {
         x = x->left;
       } else {
         x = x->right;
@@ -160,7 +162,7 @@ class Rb_tree {
 
     if (y == TNULL) {
       root = z;
-    } else if (key_compare()(z->data, y->data)) {
+    } else if (key_compare()(z->data.first, y->data.first)) {
       y->left = z;
     } else {
       y->right = z;
@@ -172,8 +174,7 @@ class Rb_tree {
     insert_fix(z);
   }
 
-  template <typename _K>
-  void delete_node(_K key) {
+  void delete_node(Key key) {
     Node_ptr z = search(key);
     if (z == TNULL) {
       return;
@@ -199,8 +200,7 @@ class Rb_tree {
     }
   }
 
-  template <typename _K>
-  Node_ptr search_helper(Node_ptr node, _K key) {
+  Node_ptr search_helper(Node_ptr node, Key key) {
     if (node == TNULL || key == node->data.first) {
       return (node);
     }
