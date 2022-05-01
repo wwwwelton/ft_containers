@@ -190,7 +190,8 @@ class Rb_tree {
     if (node != TNULL) {
       destructor_helper(node->left);
       destructor_helper(node->right);
-      delete (node);
+      _alloc.destroy(node);
+      _alloc.deallocate(node, 1);
     }
   }
 
