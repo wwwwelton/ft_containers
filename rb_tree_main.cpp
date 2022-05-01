@@ -14,6 +14,7 @@
 #define YELLOW "\033[1m\033[33m"    /* Bold Black */
 
 #define TYPE ft::pair<std::string, int>
+#define NEWLINE std::cout << "\n";
 
 void print_helper(const ft::_Rb_tree_node<TYPE>::Node_ptr& root,
                   std::string indent,
@@ -47,11 +48,27 @@ void pretty_print(ft::_Rb_tree_node<TYPE>::Node_ptr root) {
   }
 }
 
-void inorderOrderHelper(ft::_Rb_tree_node<TYPE>::Node_ptr node) {
+void preorder_print(ft::_Rb_tree_node<TYPE>::Node_ptr node) {
   if (node != NULL && node->data.first != "") {
-    inorderOrderHelper(node->left);
     std::cout << node->data.first << " ";
-    inorderOrderHelper(node->right);
+    preorder_print(node->left);
+    preorder_print(node->right);
+  }
+}
+
+void postorder_print(ft::_Rb_tree_node<TYPE>::Node_ptr node) {
+  if (node != NULL && node->data.first != "") {
+    postorder_print(node->left);
+    postorder_print(node->right);
+    std::cout << node->data.first << " ";
+  }
+}
+
+void inorder_print(ft::_Rb_tree_node<TYPE>::Node_ptr node) {
+  if (node != NULL && node->data.first != "") {
+    inorder_print(node->left);
+    std::cout << node->data.first << " ";
+    inorder_print(node->right);
   }
 }
 
@@ -70,6 +87,9 @@ int main(void) {
   bst.insert(TYPE("h", 1));
   pretty_print(bst.get_root());
 
+  std::cout << "\nDelete \"h\"\n";
+
+  bst.delete_node("h");
   bst.delete_node("h");
   // bst.delete_node(18);
   // bst.delete_node(5);
@@ -92,10 +112,10 @@ int main(void) {
   std::cout << "After delete: \n";
   pretty_print(bst.get_root());
   std::cout << "\n";
-  std::cout << "Search 17: " << bst.search("a")->data.first << "\n";
+  std::cout << "Search \"a\": " << bst.search("a")->data.second << "\n";
   std::cout << "Minimum: " << bst.minimum(bst.get_root())->data.first << "\n";
   std::cout << "Maximum: " << bst.maximum(bst.get_root())->data.first << "\n";
-  std::cout << "Inorder: ";
-  inorderOrderHelper(bst.get_root());
-  return 0;
+  std::cout << "Preorder:  ", preorder_print(bst.get_root()); NEWLINE
+  std::cout << "Inorder:   ", inorder_print(bst.get_root()); NEWLINE
+  std::cout << "Postorder: ", postorder_print(bst.get_root()); NEWLINE
 }
