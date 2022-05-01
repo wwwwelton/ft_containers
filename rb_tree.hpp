@@ -38,13 +38,10 @@ class Rb_tree {
   explicit Rb_tree(const allocator_type& alloc = allocator_type()) {
     _alloc = alloc;
     TNULL = _alloc.allocate(1);
-    _alloc.construct(TNULL, Rb_tree_node(value_type()));
-    TNULL->parent = TNULL;
-    TNULL->right = TNULL;
-    TNULL->left = TNULL;
-    TNULL->color = BLACK;
+    _alloc.construct(TNULL, Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
     _size = 0;
     root = TNULL;
+    comp = key_compare();
   }
 
   ~Rb_tree(void) {
@@ -139,19 +136,15 @@ class Rb_tree {
     x->parent = y;
   }
 
-  void insert(value_type key) {
+  void insert(value_type data) {
     Node_ptr x = root;
     Node_ptr y = TNULL;
     Node_ptr z = _alloc.allocate(1);
-    _alloc.construct(z, Rb_tree_node(key));
-    z->parent = TNULL;
-    z->left = TNULL;
-    z->right = TNULL;
-    z->color = RED;
+    _alloc.construct(z, Rb_tree_node(data, TNULL, TNULL, TNULL, RED));
 
     while (x != TNULL) {
       y = x;
-      if (key_compare()(z->data.first, x->data.first)) {
+      if (comp(z->data.first, x->data.first)) {
         x = x->left;
       } else {
         x = x->right;
@@ -162,7 +155,7 @@ class Rb_tree {
 
     if (y == TNULL) {
       root = z;
-    } else if (key_compare()(z->data.first, y->data.first)) {
+    } else if (comp(z->data.first, y->data.first)) {
       y->left = z;
     } else {
       y->right = z;
@@ -190,6 +183,7 @@ class Rb_tree {
   allocator_type _alloc;
   Node_ptr root;
   Node_ptr TNULL;
+  key_compare comp;
   size_type _size;
 
   void destructor_helper(Node_ptr node) {
@@ -201,10 +195,11 @@ class Rb_tree {
   }
 
   Node_ptr search_helper(Node_ptr node, Key key) {
-    if (node == TNULL || key == node->data.first) {
+    if (node == TNULL || (!comp(key, node->data.first) &&
+                          !comp(node->data.first, key))) {
       return (node);
     }
-    if (key < node->data.first) {
+    if (comp(key, node->data.first)) {
       return (search_helper(node->left, key));
     } else {
       return (search_helper(node->right, key));
