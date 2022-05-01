@@ -101,12 +101,12 @@ re:					fclean all
 
 rbtree:
 					clear && clang++ -Wall -Wextra -Werror -Wno-long-long -std=c++98 \
-					-pedantic-errors -g rb_tree_main.cpp -o btree.out \
+					-pedantic-errors -g3 rb_tree_main.cpp -o btree.out \
 					&& ./btree.out
 
 rbtreev:
 					clear && clang++ -Wall -Wextra -Werror -Wno-long-long -std=c++98 \
-					-pedantic-errors -g rb_tree_main.cpp -o btree.out \
+					-pedantic-errors -g3 rb_tree_main.cpp -o btree.out \
 					&& valgrind ./btree.out
 
 .PHONY:				all clean fclean re
