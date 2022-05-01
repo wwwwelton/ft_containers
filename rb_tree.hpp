@@ -35,13 +35,15 @@ class Rb_tree {
   typedef Alloc allocator_type;
 
  public:
-  explicit Rb_tree(const allocator_type& alloc = allocator_type()) {
+  explicit Rb_tree(const key_compare& _comp = key_compare(),
+                   const allocator_type& alloc = allocator_type()) {
     _alloc = alloc;
     TNULL = _alloc.allocate(1);
-    _alloc.construct(TNULL, Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
+    _alloc.construct(TNULL,
+                     Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
     _size = 0;
     root = TNULL;
-    comp = key_compare();
+    comp = _comp;
   }
 
   ~Rb_tree(void) {
