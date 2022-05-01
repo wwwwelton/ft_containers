@@ -139,34 +139,11 @@ class Rb_tree {
   }
 
   void insert(value_type data) {
-    Node_ptr x = root;
-    Node_ptr y = TNULL;
-    Node_ptr z = _alloc.allocate(1);
-    _alloc.construct(z, Rb_tree_node(data, TNULL, TNULL, TNULL, RED));
-
-    while (x != TNULL) {
-      y = x;
-      if (comp(z->data.first, x->data.first)) {
-        x = x->left;
-      } else {
-        x = x->right;
-      }
+    Node_ptr z = search(data.first);
+    if (z != TNULL) {
+      delete_node_helper(z);
     }
-
-    z->parent = y;
-
-    if (y == TNULL) {
-      root = z;
-    } else if (comp(z->data.first, y->data.first)) {
-      y->left = z;
-    } else {
-      y->right = z;
-      z->left = TNULL;
-      z->right = TNULL;
-      z->color = RED;
-    }
-
-    insert_fix(z);
+    insert_node_helper(data);
   }
 
   void delete_node(Key key) {
@@ -207,6 +184,37 @@ class Rb_tree {
     } else {
       return (search_helper(node->right, key));
     }
+  }
+
+  void insert_node_helper(value_type data) {
+    Node_ptr x = root;
+    Node_ptr y = TNULL;
+    Node_ptr z = _alloc.allocate(1);
+    _alloc.construct(z, Rb_tree_node(data, TNULL, TNULL, TNULL, RED));
+
+    while (x != TNULL) {
+      y = x;
+      if (comp(z->data.first, x->data.first)) {
+        x = x->left;
+      } else {
+        x = x->right;
+      }
+    }
+
+    z->parent = y;
+
+    if (y == TNULL) {
+      root = z;
+    } else if (comp(z->data.first, y->data.first)) {
+      y->left = z;
+    } else {
+      y->right = z;
+      z->left = TNULL;
+      z->right = TNULL;
+      z->color = RED;
+    }
+
+    insert_fix(z);
   }
 
   void delete_fix(Node_ptr x) {
