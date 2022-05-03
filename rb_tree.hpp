@@ -11,20 +11,23 @@
 
 namespace ft {
 
-template <class Key,
-          class Val,
-          class Compare = std::less<Key>,
-          class Alloc = std::allocator<_Rb_tree_node<ft::pair<Key, Val> > > >
+template <typename Key,
+          typename Val,
+          typename KeyOfValue,
+          typename Compare = std::less<Key>,
+          typename Alloc = std::allocator<Val> >
 class Rb_tree {
+  typedef typename Alloc::template rebind<_Rb_tree_node<Val> >::other
+      Node_allocator;
+
  protected:
-  typedef ft::pair<Key, Val> value_type;
-  typedef _Rb_tree_node<value_type> Rb_tree_node;
+  typedef _Rb_tree_node<Val> Rb_tree_node;
   typedef Rb_tree_node* Node_ptr;
   typedef const Rb_tree_node* Const_node_ptr;
 
  public:
   typedef Key key_type;
-  typedef Val mapped_type;
+  typedef Val value_type;
   typedef Compare key_compare;
   typedef value_type* pointer;
   typedef const value_type* const_pointer;
@@ -32,7 +35,8 @@ class Rb_tree {
   typedef const value_type& const_reference;
   typedef size_t size_type;
   typedef ptrdiff_t difference_type;
-  typedef Alloc allocator_type;
+  //   typedef Alloc allocator_type;
+  typedef Node_allocator allocator_type;
 
  public:
   explicit Rb_tree(const key_compare& _comp = key_compare(),
@@ -139,7 +143,7 @@ class Rb_tree {
   }
 
   void insert(value_type data) {
-    Node_ptr z = search(data.first);
+    Node_ptr z = search(KeyOfValue()(data));
     if (z != TNULL) {
       delete_node_helper(z);
     }
@@ -175,11 +179,11 @@ class Rb_tree {
   }
 
   Node_ptr search_helper(Node_ptr node, Key key) {
-    if (node == TNULL || (!comp(key, node->data.first) &&
-                          !comp(node->data.first, key))) {
+    if (node == TNULL || (!comp(key, KeyOfValue()(node->data)) &&
+                          !comp(KeyOfValue()(node->data), key))) {
       return (node);
     }
-    if (comp(key, node->data.first)) {
+    if (comp(key, KeyOfValue()(node->data))) {
       return (search_helper(node->left, key));
     } else {
       return (search_helper(node->right, key));
@@ -194,7 +198,7 @@ class Rb_tree {
 
     while (x != TNULL) {
       y = x;
-      if (comp(z->data.first, x->data.first)) {
+      if (comp(KeyOfValue()(z->data), KeyOfValue()(x->data))) {
         x = x->left;
       } else {
         x = x->right;
@@ -205,7 +209,7 @@ class Rb_tree {
 
     if (y == TNULL) {
       root = z;
-    } else if (comp(z->data.first, y->data.first)) {
+    } else if (comp(KeyOfValue()(z->data), KeyOfValue()(y->data))) {
       y->left = z;
     } else {
       y->right = z;
