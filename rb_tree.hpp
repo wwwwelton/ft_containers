@@ -61,6 +61,21 @@ class Rb_tree {
     _comp = src._comp;
   }
 
+  Rb_tree& operator=(const Rb_tree& rhs) {
+    if (this != &rhs) {
+      this->~Rb_tree();
+      _alloc = rhs._alloc;
+      TNULL = _alloc.allocate(1);
+      _alloc.construct(TNULL,
+                       Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
+      root = TNULL;
+      copy_rb_tree(rhs.root, rhs.TNULL);
+      _size = rhs._size;
+      _comp = rhs._comp;
+    }
+    return (*this);
+  }
+
   ~Rb_tree(void) {
     destructor_helper(root);
     _alloc.destroy(TNULL);
