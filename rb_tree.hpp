@@ -39,7 +39,7 @@ class Rb_tree {
   typedef Node_allocator allocator_type;
 
  public:
-  explicit Rb_tree(const key_compare& _comp = key_compare(),
+  explicit Rb_tree(const key_compare& comp = key_compare(),
                    const allocator_type& alloc = allocator_type()) {
     _alloc = alloc;
     TNULL = _alloc.allocate(1);
@@ -47,7 +47,18 @@ class Rb_tree {
                      Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
     _size = 0;
     root = TNULL;
-    comp = _comp;
+    _comp = comp;
+  }
+
+  Rb_tree(const Rb_tree& src) {
+    _alloc = src._alloc;
+    TNULL = _alloc.allocate(1);
+    _alloc.construct(TNULL,
+                     Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
+    root = TNULL;
+    copy_rb_tree(src.root, src.TNULL);
+    _size = src._size;
+    _comp = src._comp;
   }
 
   ~Rb_tree(void) {
@@ -166,7 +177,7 @@ class Rb_tree {
   allocator_type _alloc;
   Node_ptr root;
   Node_ptr TNULL;
-  key_compare comp;
+  key_compare _comp;
   size_type _size;
 
   void destructor_helper(Node_ptr node) {
@@ -179,11 +190,11 @@ class Rb_tree {
   }
 
   Node_ptr search_helper(Node_ptr node, Key key) {
-    if (node == TNULL || (!comp(key, KeyOfValue()(node->data)) &&
-                          !comp(KeyOfValue()(node->data), key))) {
+    if (node == TNULL || (!_comp(key, KeyOfValue()(node->data)) &&
+                          !_comp(KeyOfValue()(node->data), key))) {
       return (node);
     }
-    if (comp(key, KeyOfValue()(node->data))) {
+    if (_comp(key, KeyOfValue()(node->data))) {
       return (search_helper(node->left, key));
     } else {
       return (search_helper(node->right, key));
@@ -198,7 +209,7 @@ class Rb_tree {
 
     while (x != TNULL) {
       y = x;
-      if (comp(KeyOfValue()(z->data), KeyOfValue()(x->data))) {
+      if (_comp(KeyOfValue()(z->data), KeyOfValue()(x->data))) {
         x = x->left;
       } else {
         x = x->right;
@@ -209,7 +220,7 @@ class Rb_tree {
 
     if (y == TNULL) {
       root = z;
-    } else if (comp(KeyOfValue()(z->data), KeyOfValue()(y->data))) {
+    } else if (_comp(KeyOfValue()(z->data), KeyOfValue()(y->data))) {
       y->left = z;
     } else {
       y->right = z;
@@ -367,6 +378,14 @@ class Rb_tree {
       }
     }
     root->color = BLACK;
+  }
+
+  void copy_rb_tree(Node_ptr node, Node_ptr leaf) {
+    if (node != leaf) {
+      insert(node->data);
+      copy_rb_tree(node->left, leaf);
+      copy_rb_tree(node->right, leaf);
+    }
   }
 };
 
