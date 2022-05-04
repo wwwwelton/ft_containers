@@ -29,6 +29,8 @@ STACK_TEST_2		=	test/stack/stack_test_2.cpp
 PAIR_TEST_1			=	test/pair/pair_test_1.cpp
 PAIR_TEST_2			=	test/pair/pair_test_2.cpp
 
+RB_TREE_TEST		=	test/rb_tree/rb_tree_main.cpp
+
 CC					=	clang++
 CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
 CFLAGS				+=	-std=c++98 -pedantic-errors -g
@@ -76,6 +78,14 @@ pair2:				$(HEADERS)
 					diff -y pair_test_FT_2_out pair_test_STD_2_out
 					diff pair_test_FT_2_out pair_test_STD_2_out
 
+rbtree:
+					clear && $(CC) $(CFLAGS) $(RB_TREE_TEST) -o btree.out \
+					&& ./btree.out
+
+rbtreev:
+					clear && $(CC) $(CFLAGS) $(RB_TREE_TEST) -o btree.out \
+					&& valgrind ./btree.out
+
 
 clean:
 					$(RM) $(OBJ_DIR)
@@ -98,15 +108,5 @@ fclean:				clean
 					$(RM) $(NAME)
 
 re:					fclean all
-
-rbtree:
-					clear && clang++ -Wall -Wextra -Werror -Wno-long-long -std=c++98 \
-					-pedantic-errors -g3 rb_tree_main.cpp -o btree.out \
-					&& ./btree.out
-
-rbtreev:
-					clear && clang++ -Wall -Wextra -Werror -Wno-long-long -std=c++98 \
-					-pedantic-errors -g3 rb_tree_main.cpp -o btree.out \
-					&& valgrind ./btree.out
 
 .PHONY:				all clean fclean re

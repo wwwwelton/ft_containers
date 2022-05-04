@@ -6,8 +6,8 @@
 #include <iostream>
 #include <string>
 
-#include "./rb_tree.hpp"
-#include "./utility.hpp"
+#include "../../rb_tree.hpp"
+#include "../../utility.hpp"
 
 // #define KEY std::string
 #define KEY std::string

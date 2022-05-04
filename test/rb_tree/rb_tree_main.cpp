@@ -65,24 +65,27 @@ void inorder_print(ft::_Rb_tree_node<TYPE>::Node_ptr node) {
 }
 
 int main(void) {
+  ft::Rb_tree<KEY, TYPE, KOV<TYPE> > bst1;
   ft::Rb_tree<KEY, TYPE, KOV<TYPE> > bst;
 
   std::cout << "\nBefore delete: \n";
-  bst.insert(TYPE("a", 8));
-  bst.insert(TYPE("b", 18));
-  bst.insert(TYPE("c", 5));
-  bst.insert(TYPE("d", 15));
-  bst.insert(TYPE("e", 17));
-  bst.insert(TYPE("f", 25));
-  bst.insert(TYPE("g", 40));
-  bst.insert(TYPE("h", 80));
-  bst.insert(TYPE("i", 1));
+
+  bst1.insert(TYPE("a", 8));
+  bst1.insert(TYPE("b", 18));
+  bst1.insert(TYPE("c", 5));
+  bst1.insert(TYPE("d", 15));
+  bst1.insert(TYPE("e", 17));
+  bst1.insert(TYPE("f", 25));
+  bst1.insert(TYPE("g", 40));
+  bst1.insert(TYPE("h", 80));
+  bst1.insert(TYPE("i", 1));
+
+  bst = bst1;
   pretty_print(bst.get_root());
+  bst.delete_node("h");
 
   std::cout << "\nDelete \"h\"\n";
 
-  bst.delete_node("a");
-  bst.delete_node("b");
   // bst.delete_node(18);
   // bst.delete_node(5);
   // bst.delete_node(15);
@@ -104,7 +107,7 @@ int main(void) {
   std::cout << "After delete: \n";
   pretty_print(bst.get_root());
   std::cout << "\n";
-  std::cout << "Search \"a\": " << VOV<TYPE>()(bst.search("a")->data) << "\n";
+  std::cout << "Search \"h\": " << VOV<TYPE>()(bst.search("h")->data) << "\n";
   std::cout << "Minimum: " << KOV<TYPE>()(bst.minimum(bst.get_root())->data) << "\n";
   std::cout << "Maximum: " << KOV<TYPE>()(bst.maximum(bst.get_root())->data) << "\n";
   std::cout << "Preorder:  ", preorder_print(bst.get_root());
