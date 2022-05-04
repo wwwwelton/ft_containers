@@ -10,17 +10,25 @@
 #include "./utility.hpp"
 
 // #define KEY std::string
-#define KEY int
+#define KEY std::string
 #define VALUE int
 #define TYPE ft::pair<KEY, VALUE>
 #define NEWLINE std::cout << "\n";
-#define PRINT_EMPTY 0
+#define PRINT_EMPTY ""
 #define KOV _KeyOfValue
+#define VOV _ValueOfValue
 
-template <typename _Tp>
+template <typename T>
 struct _KeyOfValue {
-  KEY operator()(_Tp& x) const {
+  KEY operator()(T& x) const {
     return (x.first);
+  }
+};
+
+template <typename T>
+struct _ValueOfValue {
+  VALUE operator()(T& x) const {
+    return (x.second);
   }
 };
 

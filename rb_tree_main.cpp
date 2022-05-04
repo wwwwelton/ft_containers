@@ -27,7 +27,7 @@ void print_helper(const ft::_Rb_tree_node<TYPE>::Node_ptr& root,
                                      : BOLDBLACK "BLACK" RESET;
     std::cout << YELLOW << KOV<TYPE>()(root->data) << RESET << "(" << scolor << ")";
     std::cout << CYAN " K: [" << KOV<TYPE>()(root->data) << "] " RESET;
-    std::cout << GREEN "V: [" << root->data.second << "]" RESET << std::endl;
+    std::cout << GREEN "V: [" << VOV<TYPE>()(root->data) << "]" RESET << std::endl;
     print_helper(root->left, indent, false);
     print_helper(root->right, indent, true);
   }
@@ -68,21 +68,21 @@ int main(void) {
   ft::Rb_tree<KEY, TYPE, KOV<TYPE> > bst;
 
   std::cout << "\nBefore delete: \n";
-  bst.insert(TYPE(1, 8));
-  bst.insert(TYPE(2, 18));
-  bst.insert(TYPE(3, 5));
-  bst.insert(TYPE(4, 15));
-  bst.insert(TYPE(5, 17));
-  bst.insert(TYPE(6, 25));
-  bst.insert(TYPE(7, 40));
-  bst.insert(TYPE(8, 80));
-  bst.insert(TYPE(9, 1));
+  bst.insert(TYPE("a", 8));
+  bst.insert(TYPE("b", 18));
+  bst.insert(TYPE("c", 5));
+  bst.insert(TYPE("d", 15));
+  bst.insert(TYPE("e", 17));
+  bst.insert(TYPE("f", 25));
+  bst.insert(TYPE("g", 40));
+  bst.insert(TYPE("h", 80));
+  bst.insert(TYPE("i", 1));
   pretty_print(bst.get_root());
 
   std::cout << "\nDelete \"h\"\n";
 
-  bst.delete_node(1);
-  bst.delete_node(1);
+  bst.delete_node("a");
+  bst.delete_node("b");
   // bst.delete_node(18);
   // bst.delete_node(5);
   // bst.delete_node(15);
@@ -104,7 +104,7 @@ int main(void) {
   std::cout << "After delete: \n";
   pretty_print(bst.get_root());
   std::cout << "\n";
-  std::cout << "Search \"a\": " << bst.search(1)->data.second << "\n";
+  std::cout << "Search \"a\": " << VOV<TYPE>()(bst.search("a")->data) << "\n";
   std::cout << "Minimum: " << KOV<TYPE>()(bst.minimum(bst.get_root())->data) << "\n";
   std::cout << "Maximum: " << KOV<TYPE>()(bst.maximum(bst.get_root())->data) << "\n";
   std::cout << "Preorder:  ", preorder_print(bst.get_root());
