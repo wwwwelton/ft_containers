@@ -46,8 +46,7 @@ class Rb_tree {
                    const allocator_type& alloc = allocator_type()) {
     _alloc = alloc;
     TNULL = _alloc.allocate(1);
-    _alloc.construct(TNULL,
-                     Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
+    _alloc.construct(TNULL, create_node(value_type(), BLACK));
     _size = 0;
     root = TNULL;
     _comp = comp;
@@ -56,8 +55,7 @@ class Rb_tree {
   Rb_tree(const Rb_tree& src) {
     _alloc = src._alloc;
     TNULL = _alloc.allocate(1);
-    _alloc.construct(TNULL,
-                     Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
+    _alloc.construct(TNULL, create_node(value_type(), BLACK));
     root = TNULL;
     copy_rb_tree(src.root, src.TNULL);
     _size = src._size;
@@ -69,8 +67,7 @@ class Rb_tree {
       this->~Rb_tree();
       _alloc = rhs._alloc;
       TNULL = _alloc.allocate(1);
-      _alloc.construct(TNULL,
-                       Rb_tree_node(value_type(), TNULL, TNULL, TNULL, BLACK));
+      _alloc.construct(TNULL, create_node(value_type(), BLACK));
       root = TNULL;
       copy_rb_tree(rhs.root, rhs.TNULL);
       _size = rhs._size;
@@ -196,7 +193,7 @@ class Rb_tree {
   }
 
   iterator begin(void) {
-    return (iterator(root, root, TNULL));
+    return (iterator(root));
   }
 
   const_iterator begin(void) const {
@@ -235,7 +232,7 @@ class Rb_tree {
     Node_ptr x = root;
     Node_ptr y = TNULL;
     Node_ptr z = _alloc.allocate(1);
-    _alloc.construct(z, Rb_tree_node(data, TNULL, TNULL, TNULL, RED));
+    _alloc.construct(z, create_node(data, RED));
 
     while (x != TNULL) {
       y = x;
@@ -416,6 +413,10 @@ class Rb_tree {
       copy_rb_tree(node->left, leaf);
       copy_rb_tree(node->right, leaf);
     }
+  }
+
+  Rb_tree_node create_node(value_type data, Rb_tree_color color) {
+    return (Rb_tree_node(data, root, TNULL, TNULL, TNULL, TNULL, color));
   }
 };
 
