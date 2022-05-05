@@ -191,6 +191,10 @@ class Rb_tree {
     return (root);
   }
 
+  Const_node_ptr get_root(void) const {
+    return (root);
+  }
+
   iterator begin(void) {
     return (iterator(root, root, TNULL));
   }
