@@ -119,12 +119,33 @@ int main(void) {
   std::cout << "Postorder: ", postorder_print(bst.get_root());
   NEWLINE
 
-  std::cout << "\n[ Iterators: ] \n";
-  ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
-  ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
-  ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc0(bst.begin());
-  ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = itc0;
-  std::cout << "Begin:       " << it->first << "\n";
-  std::cout << "Begin Const: " << itc->first << "\n";
-  NEWLINE
+  std::cout << "\n\n===========[ MEMBER FUNCTIONS ]===========\n";
+  {
+    std::cout << "\n[ BEGIN ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.begin());
+    std::cout << "Begin Normal: " << KOV<TYPE>()(*it) << "\n";
+    std::cout << "Begin Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+
+  std::cout << "\n\n================[ ITERATOR ]================\n";
+  {
+    std::cout << "\n[ * ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc0(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = itc0;
+    std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
+    std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+
+//   {
+//     std::cout << "\n[ -> ]\n";
+//     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
+//     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
+//     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc0(bst.begin());
+//     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = itc0;
+//     std::cout << "Normal: " << it->first << "\n";
+//     std::cout << "Const:  " << itc->first << "\n";
+//   }
 }
