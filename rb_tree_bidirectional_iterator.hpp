@@ -36,12 +36,6 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
                                  Node_ptr _TNULL)
       : node(_node), root(_root), TNULL(_TNULL) {}
 
-//   rb_tree_bidirectional_iterator(const Iterator& i)
-//       : node(i->node), root(i->root), TNULL(i->TNULL) {}
-
-//   rb_tree_bidirectional_iterator(const rb_tree_bidirectional_iterator& i)
-//       : node(i.node), root(i.root), TNULL(i.TNULL) {}
-
   template <typename Iter>
   rb_tree_bidirectional_iterator(const rb_tree_bidirectional_iterator<Iter>& i)
       : node(i.node), root(i.root), TNULL(i.TNULL) {}
@@ -49,7 +43,8 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
   ~rb_tree_bidirectional_iterator(void) {}
 
   template <typename Iter>
-  rb_tree_bidirectional_iterator& operator=(const rb_tree_bidirectional_iterator<Iter>& i) {
+  rb_tree_bidirectional_iterator&
+  operator=(const rb_tree_bidirectional_iterator<Iter>& i) {
     node = i.node;
     root = i.root;
     TNULL = i.TNULL;
