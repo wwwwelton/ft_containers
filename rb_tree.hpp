@@ -6,6 +6,7 @@
 #include <functional>
 #include <memory>
 
+#include "./rb_tree_bidirectional_iterator.hpp"
 #include "./rb_tree_node.hpp"
 #include "./utility.hpp"
 
@@ -37,6 +38,8 @@ class Rb_tree {
   typedef ptrdiff_t difference_type;
   //   typedef Alloc allocator_type;
   typedef Node_allocator allocator_type;
+  typedef ft::rb_tree_bidirectional_iterator<pointer> iterator;
+  typedef ft::rb_tree_bidirectional_iterator<const_pointer> const_iterator;
 
  public:
   explicit Rb_tree(const key_compare& comp = key_compare(),
@@ -186,6 +189,14 @@ class Rb_tree {
 
   Node_ptr get_root(void) {
     return (root);
+  }
+
+  iterator begin(void) {
+    return (iterator(root, root, TNULL));
+  }
+
+  const_iterator begin(void) const {
+    return (const_iterator(root, root, TNULL));
   }
 
  private:
