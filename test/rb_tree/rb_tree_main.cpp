@@ -108,12 +108,23 @@ int main(void) {
   pretty_print(bst.get_root());
   std::cout << "\n";
   std::cout << "Search \"h\": " << VOV<TYPE>()(bst.search("h")->data) << "\n";
-  std::cout << "Minimum: " << KOV<TYPE>()(bst.minimum(bst.get_root())->data) << "\n";
-  std::cout << "Maximum: " << KOV<TYPE>()(bst.maximum(bst.get_root())->data) << "\n";
+  std::cout << "Minimum: " << KOV<TYPE>()(bst.minimum(bst.get_root())->data);
+  NEWLINE
+  std::cout << "Maximum: " << KOV<TYPE>()(bst.maximum(bst.get_root())->data);
+  NEWLINE
   std::cout << "Preorder:  ", preorder_print(bst.get_root());
   NEWLINE
   std::cout << "Inorder:   ", inorder_print(bst.get_root());
   NEWLINE
   std::cout << "Postorder: ", postorder_print(bst.get_root());
+  NEWLINE
+
+  std::cout << "\n[ Iterators: ] \n";
+  ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
+  ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
+  ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc0(bst.begin());
+  ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = itc0;
+  std::cout << "Begin:       " << it->first << "\n";
+  std::cout << "Begin Const: " << itc->first << "\n";
   NEWLINE
 }
