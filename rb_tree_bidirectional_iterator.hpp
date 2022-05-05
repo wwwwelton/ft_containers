@@ -19,8 +19,9 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
   typedef typename iterator_traits<Iterator>::pointer pointer;
   typedef typename iterator_traits<Iterator>::reference reference;
 
-  typedef _Rb_tree_node<value_type>* Node_ptr;
-  typedef const _Rb_tree_node<value_type>* Const_node_ptr;
+  typedef _Rb_tree_node<value_type> Rb_tree_node;
+  typedef Rb_tree_node* Node_ptr;
+  typedef const Rb_tree_node* Const_node_ptr;
 
  public:
   Node_ptr node;
