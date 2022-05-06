@@ -193,11 +193,11 @@ class Rb_tree {
   }
 
   iterator begin(void) {
-    return (iterator(root));
+    return (iterator(minimum(root)));
   }
 
   const_iterator begin(void) const {
-    return (const_iterator(root, root, TNULL));
+    return (const_iterator(minimum(root)));
   }
 
  private:
