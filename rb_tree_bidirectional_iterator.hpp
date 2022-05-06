@@ -59,6 +59,17 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
     return (rb_tree_bidirectional_iterator(tmp));
   }
 
+  rb_tree_bidirectional_iterator& operator--(void) {
+    node = predecessor(node);
+    return (*this);
+  }
+
+  rb_tree_bidirectional_iterator operator--(int) {
+    Node_ptr tmp = this->node;
+    node = predecessor(node);
+    return (rb_tree_bidirectional_iterator(tmp));
+  }
+
   reference operator*(void) const {
     return (node->data);
   }
