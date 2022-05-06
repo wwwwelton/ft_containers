@@ -55,7 +55,7 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
 
   rb_tree_bidirectional_iterator operator++(int) {
     Node_ptr tmp = this->node;
-    node = node = successor(node);
+    node = successor(node);
     return (rb_tree_bidirectional_iterator(tmp));
   }
 
