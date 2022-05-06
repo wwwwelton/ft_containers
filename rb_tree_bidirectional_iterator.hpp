@@ -23,7 +23,7 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
   typedef Rb_tree_node* Node_ptr;
   typedef const Rb_tree_node* Const_node_ptr;
 
- public:
+ protected:
   Node_ptr node;
 
  public:
@@ -48,12 +48,62 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
     return (node);
   }
 
+  rb_tree_bidirectional_iterator& operator++(void) {
+    node = successor(node);
+    return (*this);
+  }
+
+  rb_tree_bidirectional_iterator operator++(int) {
+    Node_ptr tmp = this->node;
+    node = node = successor(node);
+    return (rb_tree_bidirectional_iterator(tmp));
+  }
+
   reference operator*(void) const {
     return (node->data);
   }
 
   pointer operator->(void) const {
     return (&(operator*()));
+  }
+
+ private:
+  Node_ptr minimum(Node_ptr node) {
+    while (node->left != node->left) {
+      node = node->left;
+    }
+    return (node);
+  }
+
+  Node_ptr maximum(Node_ptr node) {
+    while (node->right != node->left) {
+      node = node->right;
+    }
+    return (node);
+  }
+
+  Node_ptr successor(Node_ptr x) {
+    if (x->right != x->leaf) {
+      return (minimum(x->right));
+    }
+    Node_ptr y = x->parent;
+    while (y != y->leaf && x == y->right) {
+      x = y;
+      y = y->parent;
+    }
+    return (y);
+  }
+
+  Node_ptr predecessor(Node_ptr x) {
+    if (x->left != x->leaf) {
+      return (maximum(x->left));
+    }
+    Node_ptr y = x->parent;
+    while (y != y->leaf && x == y->left) {
+      x = y;
+      y = y->parent;
+    }
+    return (y);
   }
 };
 
