@@ -8,3 +8,4 @@ stack_test*
 pair_test*
 !*.cpp
 btree.out
+*.out
