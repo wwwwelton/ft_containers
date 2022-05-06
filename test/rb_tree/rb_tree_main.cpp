@@ -191,5 +191,27 @@ int main(void) {
     std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
+  std::cout << "\n\n================[ RELATIONAL OPERATORS ]================\n";
+  {
+    std::cout << "\n[ EQUAL == (TRUE) ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it1(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it2(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc1(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc2(bst.begin());
+    std::cout << "Normal:           " << (it1 == it2) << "\n";
+    std::cout << "Const:            " << (itc1 == itc2) << "\n";
+    std::cout << "Normal == Const:  " << (it1 == itc1) << "\n";
+  }
+  {
+    std::cout << "\n[ EQUAL == (FALSE) ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it1(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it2(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc1(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc2(bst.begin());
+    std::cout << "Normal:           " << (++it1 == it2) << "\n";
+    std::cout << "Const:            " << (++itc1 == itc2) << "\n";
+    std::cout << "Normal == Const:  " << (++it2 == itc2) << "\n";
+  }
+
   NEWLINE
 }
