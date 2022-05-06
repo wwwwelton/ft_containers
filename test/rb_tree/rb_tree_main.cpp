@@ -139,13 +139,34 @@ int main(void) {
     std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
-//   {
-//     std::cout << "\n[ -> ]\n";
-//     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
-//     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
-//     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc0(bst.begin());
-//     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = itc0;
-//     std::cout << "Normal: " << it->first << "\n";
-//     std::cout << "Const:  " << itc->first << "\n";
-//   }
+  //   {
+  //     std::cout << "\n[ -> ]\n";
+  //     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
+  //     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
+  //     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc0(bst.begin());
+  //     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = itc0;
+  //     std::cout << "Normal: " << it->first << "\n";
+  //     std::cout << "Const:  " << itc->first << "\n";
+  //   }
+
+  {
+    std::cout << "\n[ PRE-INCREMENT ++ ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.begin());
+    ++it;
+    ++itc;
+    std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
+    std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+  {
+    std::cout << "\n[ POST-INCREMENT ++ ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.begin());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.begin());
+    it++;
+    itc++;
+    std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
+    std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+
+  NEWLINE
 }
