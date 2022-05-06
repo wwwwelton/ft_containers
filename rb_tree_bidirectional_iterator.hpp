@@ -48,6 +48,10 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
     return (node);
   }
 
+  reference operator*(void) const {
+    return (node->data);
+  }
+
   rb_tree_bidirectional_iterator& operator++(void) {
     node = successor(node);
     return (*this);
@@ -68,10 +72,6 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
     Node_ptr tmp = this->node;
     node = predecessor(node);
     return (rb_tree_bidirectional_iterator(tmp));
-  }
-
-  reference operator*(void) const {
-    return (node->data);
   }
 
   pointer operator->(void) const {
@@ -117,6 +117,18 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
     return (y);
   }
 };
+
+template <typename IteratorL, typename IteratorR>
+inline bool operator==(const rb_tree_bidirectional_iterator<IteratorL>& lhs,
+                       const rb_tree_bidirectional_iterator<IteratorR>& rhs) {
+  return (lhs.base() == rhs.base());
+}
+
+template <typename Iterator>
+inline bool operator==(const rb_tree_bidirectional_iterator<Iterator>& lhs,
+                       const rb_tree_bidirectional_iterator<Iterator>& rhs) {
+  return (lhs.base() == rhs.base());
+}
 
 }  // namespace ft
 
