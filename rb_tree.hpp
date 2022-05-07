@@ -200,6 +200,14 @@ class Rb_tree {
     return (const_iterator(minimum(root)));
   }
 
+  iterator end(void) {
+    return (iterator(root->leaf));
+  }
+
+  const_iterator end(void) const {
+    return (const_iterator(root->leaf));
+  }
+
  private:
   allocator_type _alloc;
   Node_ptr root;
