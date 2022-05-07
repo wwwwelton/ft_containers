@@ -140,6 +140,41 @@ int main(void) {
 
   std::cout << "\n\n================[ ITERATOR ]================\n";
   {
+    std::cout << "\n[ LOOP FROM (BEGIN) ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = bst.begin();
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = bst.begin();
+    std::cout << "Normal: ";
+    for (; it != bst.end(); it++) {
+      std::cout << KOV<TYPE>()(*it) << " ";
+    }
+    NEWLINE
+    std::cout << "Const:  ";
+    for (; itc != bst.end(); itc++) {
+      std::cout << KOV<TYPE>()(*itc) << " ";
+    }
+    NEWLINE
+  }
+  {
+    std::cout << "\n[ LOOP FROM (END) ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = bst.end();
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = bst.end();
+    it--;
+    itc--;
+    std::cout << "Normal: ";
+    for (; it != bst.begin(); it--) {
+      std::cout << KOV<TYPE>()(*it) << " ";
+    }
+    std::cout << KOV<TYPE>()(*it) << " ";
+    NEWLINE
+    std::cout << "Const:  ";
+    for (; itc != bst.begin(); itc--) {
+      std::cout << KOV<TYPE>()(*itc) << " ";
+    }
+    std::cout << KOV<TYPE>()(*itc) << " ";
+    NEWLINE
+  }
+
+  {
     std::cout << "\n[ * ]\n";
     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
