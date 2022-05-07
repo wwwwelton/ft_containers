@@ -57,7 +57,7 @@ class Rb_tree {
     TNULL = _alloc.allocate(1);
     _alloc.construct(TNULL, create_node(value_type(), BLACK));
     root = TNULL;
-    copy_rb_tree(src.root, src.TNULL);
+    copy_rb_tree(src.root);
     _size = src._size;
     _comp = src._comp;
   }
@@ -69,7 +69,7 @@ class Rb_tree {
       TNULL = _alloc.allocate(1);
       _alloc.construct(TNULL, create_node(value_type(), BLACK));
       root = TNULL;
-      copy_rb_tree(rhs.root, rhs.TNULL);
+      copy_rb_tree(rhs.root);
       _size = rhs._size;
       _comp = rhs._comp;
     }
@@ -407,11 +407,11 @@ class Rb_tree {
     root->color = BLACK;
   }
 
-  void copy_rb_tree(Node_ptr node, Node_ptr leaf) {
-    if (node != leaf) {
+  void copy_rb_tree(Node_ptr node) {
+    if (node != node->leaf) {
       insert(node->data);
-      copy_rb_tree(node->left, leaf);
-      copy_rb_tree(node->right, leaf);
+      copy_rb_tree(node->left);
+      copy_rb_tree(node->right);
     }
   }
 
