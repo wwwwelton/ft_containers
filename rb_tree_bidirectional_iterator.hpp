@@ -80,14 +80,14 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
 
  private:
   Node_ptr minimum(Node_ptr node) {
-    while (node->left != node->left) {
+    while (node->left != node->leaf) {
       node = node->left;
     }
     return (node);
   }
 
   Node_ptr maximum(Node_ptr node) {
-    while (node->right != node->left) {
+    while (node->right != node->leaf) {
       node = node->right;
     }
     return (node);
