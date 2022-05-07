@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Welton Leite, wleite. All rights reserved.
 
-#include "rb_tree_main.hpp"
+#include "./rb_tree_main.hpp"
 
 #define RESET "\033[0m"
 #define GREEN "\033[0m\033[32m"     /* Green */

@@ -7,7 +7,7 @@
 #include <string>
 
 #include "../../rb_tree.hpp"
-#include "../../rb_tree_bidirectional_iterator.hpp"
+#include "../../rb_tree_iterator.hpp"
 #include "../../utility.hpp"
 
 // #define KEY std::string

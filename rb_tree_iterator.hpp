@@ -1,7 +1,7 @@
 // Copyright (c) 2022 Welton Leite, wleite. All rights reserved.
 
-#ifndef RB_TREE_BIDIRECTIONAL_ITERATOR_HPP_
-#define RB_TREE_BIDIRECTIONAL_ITERATOR_HPP_
+#ifndef RB_TREE_ITERATOR_HPP_
+#define RB_TREE_ITERATOR_HPP_
 
 #include "./iterator_traits.hpp"
 #include "./rb_tree_node.hpp"
@@ -9,8 +9,8 @@
 namespace ft {
 
 template <typename Iterator>
-class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_tag,
-                                                       Iterator> {
+class rb_tree_iterator : public iterator<bidirectional_iterator_tag,
+                                         Iterator> {
  public:
   typedef Iterator iterator_type;
   typedef typename iterator_traits<Iterator>::iterator_category iterator_category;
@@ -27,19 +27,17 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
   Node_ptr node;
 
  public:
-  rb_tree_bidirectional_iterator(void) : node(NULL) {}
+  rb_tree_iterator(void) : node(NULL) {}
 
-  explicit rb_tree_bidirectional_iterator(Node_ptr _node) : node(_node) {}
-
-  template <typename Iter>
-  rb_tree_bidirectional_iterator(const rb_tree_bidirectional_iterator<Iter>& i)
-      : node(i.base()) {}
-
-  ~rb_tree_bidirectional_iterator(void) {}
+  explicit rb_tree_iterator(Node_ptr _node) : node(_node) {}
 
   template <typename Iter>
-  rb_tree_bidirectional_iterator&
-  operator=(const rb_tree_bidirectional_iterator<Iter>& i) {
+  rb_tree_iterator(const rb_tree_iterator<Iter>& i) : node(i.base()) {}
+
+  ~rb_tree_iterator(void) {}
+
+  template <typename Iter>
+  rb_tree_iterator& operator=(const rb_tree_iterator<Iter>& i) {
     node = i.base();
     return (*this);
   }
@@ -52,26 +50,26 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
     return (node->data);
   }
 
-  rb_tree_bidirectional_iterator& operator++(void) {
+  rb_tree_iterator& operator++(void) {
     node = successor(node);
     return (*this);
   }
 
-  rb_tree_bidirectional_iterator operator++(int) {
+  rb_tree_iterator operator++(int) {
     Node_ptr tmp = this->node;
     node = successor(node);
-    return (rb_tree_bidirectional_iterator(tmp));
+    return (rb_tree_iterator(tmp));
   }
 
-  rb_tree_bidirectional_iterator& operator--(void) {
+  rb_tree_iterator& operator--(void) {
     node = predecessor(node);
     return (*this);
   }
 
-  rb_tree_bidirectional_iterator operator--(int) {
+  rb_tree_iterator operator--(int) {
     Node_ptr tmp = this->node;
     node = predecessor(node);
-    return (rb_tree_bidirectional_iterator(tmp));
+    return (rb_tree_iterator(tmp));
   }
 
   pointer operator->(void) const {
@@ -119,29 +117,29 @@ class rb_tree_bidirectional_iterator : public iterator<bidirectional_iterator_ta
 };
 
 template <typename IteratorL, typename IteratorR>
-inline bool operator==(const rb_tree_bidirectional_iterator<IteratorL>& lhs,
-                       const rb_tree_bidirectional_iterator<IteratorR>& rhs) {
+inline bool operator==(const rb_tree_iterator<IteratorL>& lhs,
+                       const rb_tree_iterator<IteratorR>& rhs) {
   return (lhs.base() == rhs.base());
 }
 
 template <typename Iterator>
-inline bool operator==(const rb_tree_bidirectional_iterator<Iterator>& lhs,
-                       const rb_tree_bidirectional_iterator<Iterator>& rhs) {
+inline bool operator==(const rb_tree_iterator<Iterator>& lhs,
+                       const rb_tree_iterator<Iterator>& rhs) {
   return (lhs.base() == rhs.base());
 }
 
 template <typename IteratorL, typename IteratorR>
-inline bool operator!=(const rb_tree_bidirectional_iterator<IteratorL>& lhs,
-                       const rb_tree_bidirectional_iterator<IteratorR>& rhs) {
+inline bool operator!=(const rb_tree_iterator<IteratorL>& lhs,
+                       const rb_tree_iterator<IteratorR>& rhs) {
   return (lhs.base() != rhs.base());
 }
 
 template <typename Iterator>
-inline bool operator!=(const rb_tree_bidirectional_iterator<Iterator>& lhs,
-                       const rb_tree_bidirectional_iterator<Iterator>& rhs) {
+inline bool operator!=(const rb_tree_iterator<Iterator>& lhs,
+                       const rb_tree_iterator<Iterator>& rhs) {
   return (lhs.base() != rhs.base());
 }
 
 }  // namespace ft
 
-#endif  // RB_TREE_BIDIRECTIONAL_ITERATOR_HPP_
+#endif  // RB_TREE_ITERATOR_HPP_
