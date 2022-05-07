@@ -130,6 +130,18 @@ inline bool operator==(const rb_tree_bidirectional_iterator<Iterator>& lhs,
   return (lhs.base() == rhs.base());
 }
 
+template <typename IteratorL, typename IteratorR>
+inline bool operator!=(const rb_tree_bidirectional_iterator<IteratorL>& lhs,
+                       const rb_tree_bidirectional_iterator<IteratorR>& rhs) {
+  return (lhs.base() != rhs.base());
+}
+
+template <typename Iterator>
+inline bool operator!=(const rb_tree_bidirectional_iterator<Iterator>& lhs,
+                       const rb_tree_bidirectional_iterator<Iterator>& rhs) {
+  return (lhs.base() != rhs.base());
+}
+
 }  // namespace ft
 
 #endif  // RB_TREE_BIDIRECTIONAL_ITERATOR_HPP_
