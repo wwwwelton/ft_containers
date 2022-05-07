@@ -128,6 +128,16 @@ int main(void) {
     std::cout << "Begin Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
+  {
+    std::cout << "\n[ END - 1 ]\n";
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.end());
+    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.end());
+    it--;
+    itc--;
+    std::cout << "Begin Normal: " << KOV<TYPE>()(*it) << "\n";
+    std::cout << "Begin Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+
   std::cout << "\n\n================[ ITERATOR ]================\n";
   {
     std::cout << "\n[ * ]\n";
