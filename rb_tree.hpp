@@ -47,7 +47,6 @@ class Rb_tree {
     _alloc = alloc;
     TNULL = _alloc.allocate(1);
     _alloc.construct(TNULL, create_node(value_type(), BLACK));
-    _size = 0;
     root = TNULL;
     _comp = comp;
   }
@@ -58,7 +57,6 @@ class Rb_tree {
     _alloc.construct(TNULL, create_node(value_type(), BLACK));
     root = TNULL;
     copy_rb_tree(src.root);
-    _size = src._size;
     _comp = src._comp;
   }
 
@@ -70,7 +68,6 @@ class Rb_tree {
       _alloc.construct(TNULL, create_node(value_type(), BLACK));
       root = TNULL;
       copy_rb_tree(rhs.root);
-      _size = rhs._size;
       _comp = rhs._comp;
     }
     return (*this);
@@ -213,7 +210,6 @@ class Rb_tree {
   Node_ptr root;
   Node_ptr TNULL;
   key_compare _comp;
-  size_type _size;
 
   void destructor_helper(Node_ptr node) {
     if (node != TNULL) {
