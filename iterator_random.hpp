@@ -8,7 +8,7 @@
 namespace ft {
 
 template <typename Iterator>
-class random_access_iterator : public iterator<random_access_iterator_tag,
+class random_access_iterator : public iterator<std::random_access_iterator_tag,
                                                Iterator> {
  protected:
   Iterator current;

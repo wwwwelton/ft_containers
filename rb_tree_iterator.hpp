@@ -9,7 +9,7 @@
 namespace ft {
 
 template <typename Iterator>
-class rb_tree_iterator : public iterator<bidirectional_iterator_tag,
+class rb_tree_iterator : public iterator<std::bidirectional_iterator_tag,
                                          Iterator> {
  public:
   typedef Iterator iterator_type;
