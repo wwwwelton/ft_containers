@@ -3,6 +3,7 @@
 #ifndef TEST_RB_TREE_RB_TREE_MAIN_HPP_
 #define TEST_RB_TREE_RB_TREE_MAIN_HPP_
 
+#include <functional>
 #include <iostream>
 #include <string>
 
@@ -14,6 +15,7 @@
 #define KEY std::string
 #define VALUE int
 #define TYPE ft::pair<KEY, VALUE>
+#define COMPARE std::less<KEY>
 #define NEWLINE std::cout << "\n";
 #define PRINT_EMPTY ""
 #define KOV _KeyOfValue

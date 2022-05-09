@@ -11,6 +11,8 @@
 #define BOLDBLACK "\033[1m\033[30m" /* Bold Black */
 #define YELLOW "\033[1m\033[33m"    /* Bold Black */
 
+#define RB_TREE ft::Rb_tree<KEY, TYPE, KOV<TYPE>, COMPARE>
+
 void print_helper(const ft::_Rb_tree_node<TYPE>::Node_ptr& root,
                   std::string indent,
                   bool last) {
@@ -67,8 +69,8 @@ void inorder_print(ft::_Rb_tree_node<TYPE>::Node_ptr node) {
 }
 
 int main(void) {
-  ft::Rb_tree<KEY, TYPE, KOV<TYPE> > bst1;
-  ft::Rb_tree<KEY, TYPE, KOV<TYPE> > bst;
+  RB_TREE bst1;
+  RB_TREE bst;
 
   std::cout << "\nBefore delete: \n";
 
@@ -124,16 +126,16 @@ int main(void) {
   std::cout << "\n\n===========[ MEMBER FUNCTIONS ]===========\n";
   {
     std::cout << "\n[ BEGIN ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.begin());
+    RB_TREE::iterator it(bst.begin());
+    RB_TREE::const_iterator itc(bst.begin());
     std::cout << "Begin Normal: " << KOV<TYPE>()(*it) << "\n";
     std::cout << "Begin Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
   {
     std::cout << "\n[ END - 1 ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.end());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.end());
+    RB_TREE::iterator it(bst.end());
+    RB_TREE::const_iterator itc(bst.end());
     it--;
     itc--;
     std::cout << "Begin Normal: " << KOV<TYPE>()(*it) << "\n";
@@ -144,16 +146,18 @@ int main(void) {
   {
     std::cout << "\n[ TAG ]\n";
     std::cout << "Normal: ";
-    std::cout << typeid(ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator::iterator_category).name() << "\n";
+    std::cout << typeid(RB_TREE::iterator::iterator_category).name();
+    NEWLINE
     std::cout << "Const:  ";
-    std::cout << typeid(ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator::iterator_category).name() << "\n";
+    std::cout << typeid(RB_TREE::const_iterator::iterator_category).name();
+    NEWLINE
     NEWLINE
   }
 
   {
     std::cout << "\n[ LOOP FROM (BEGIN) ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = bst.begin();
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = bst.begin();
+    RB_TREE::iterator it = bst.begin();
+    RB_TREE::const_iterator itc = bst.begin();
     std::cout << "Normal: ";
     for (; it != bst.end(); it++) {
       std::cout << KOV<TYPE>()(*it) << " ";
@@ -167,8 +171,8 @@ int main(void) {
   }
   {
     std::cout << "\n[ LOOP FROM (END) ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = bst.end();
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = bst.end();
+    RB_TREE::iterator it = bst.end();
+    RB_TREE::const_iterator itc = bst.end();
     it--;
     itc--;
     std::cout << "Normal: ";
@@ -187,28 +191,28 @@ int main(void) {
 
   {
     std::cout << "\n[ * ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc0(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = itc0;
+    RB_TREE::iterator it0(bst.begin());
+    RB_TREE::iterator it = it0;
+    RB_TREE::const_iterator itc0(bst.begin());
+    RB_TREE::const_iterator itc = itc0;
     std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
     std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
   //   {
   //     std::cout << "\n[ -> ]\n";
-  //     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it0(bst.begin());
-  //     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = it0;
-  //     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc0(bst.begin());
-  //     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc = itc0;
+  //     RB_TREE::iterator it0(bst.begin());
+  //     RB_TREE::iterator it = it0;
+  //     RB_TREE::const_iterator itc0(bst.begin());
+  //     RB_TREE::const_iterator itc = itc0;
   //     std::cout << "Normal: " << it->first << "\n";
   //     std::cout << "Const:  " << itc->first << "\n";
   //   }
 
   {
     std::cout << "\n[ ++ PRE-INCREMENT ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.begin());
+    RB_TREE::iterator it(bst.begin());
+    RB_TREE::const_iterator itc(bst.begin());
     ++it;
     ++itc;
     std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
@@ -216,8 +220,8 @@ int main(void) {
   }
   {
     std::cout << "\n[ POST-INCREMENT ++ ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.begin());
+    RB_TREE::iterator it(bst.begin());
+    RB_TREE::const_iterator itc(bst.begin());
     it++;
     itc++;
     std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
@@ -226,8 +230,8 @@ int main(void) {
 
   {
     std::cout << "\n[ -- PRE-DECREMENT ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.begin());
+    RB_TREE::iterator it(bst.begin());
+    RB_TREE::const_iterator itc(bst.begin());
     ++it;
     ++itc;
     --it;
@@ -237,8 +241,8 @@ int main(void) {
   }
   {
     std::cout << "\n[ POST-DECREMENT -- ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc(bst.begin());
+    RB_TREE::iterator it(bst.begin());
+    RB_TREE::const_iterator itc(bst.begin());
     it++;
     itc++;
     it--;
@@ -250,20 +254,20 @@ int main(void) {
   std::cout << "\n\n================[ RELATIONAL OPERATORS ]================\n";
   {
     std::cout << "\n[ EQUAL == (TRUE) ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it1(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it2(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc1(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc2(bst.begin());
+    RB_TREE::iterator it1(bst.begin());
+    RB_TREE::iterator it2(bst.begin());
+    RB_TREE::const_iterator itc1(bst.begin());
+    RB_TREE::const_iterator itc2(bst.begin());
     std::cout << "Normal:           " << (it1 == it2) << "\n";
     std::cout << "Const:            " << (itc1 == itc2) << "\n";
     std::cout << "Normal == Const:  " << (it1 == itc1) << "\n";
   }
   {
     std::cout << "\n[ EQUAL == (FALSE) ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it1(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it2(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc1(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc2(bst.begin());
+    RB_TREE::iterator it1(bst.begin());
+    RB_TREE::iterator it2(bst.begin());
+    RB_TREE::const_iterator itc1(bst.begin());
+    RB_TREE::const_iterator itc2(bst.begin());
     std::cout << "Normal:           " << (++it1 == it2) << "\n";
     std::cout << "Const:            " << (++itc1 == itc2) << "\n";
     std::cout << "Normal == Const:  " << (++it2 == itc2) << "\n";
@@ -271,20 +275,20 @@ int main(void) {
 
   {
     std::cout << "\n[ DIFFERENT != (TRUE) ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it1(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it2(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc1(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc2(bst.begin());
+    RB_TREE::iterator it1(bst.begin());
+    RB_TREE::iterator it2(bst.begin());
+    RB_TREE::const_iterator itc1(bst.begin());
+    RB_TREE::const_iterator itc2(bst.begin());
     std::cout << "Normal:           " << (++it1 != it2) << "\n";
     std::cout << "Const:            " << (++itc1 != itc2) << "\n";
     std::cout << "Normal != Const:  " << (++it1 != itc1) << "\n";
   }
   {
     std::cout << "\n[ DIFFERENT != (FALSE) ]\n";
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it1(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it2(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc1(bst.begin());
-    ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator itc2(bst.begin());
+    RB_TREE::iterator it1(bst.begin());
+    RB_TREE::iterator it2(bst.begin());
+    RB_TREE::const_iterator itc1(bst.begin());
+    RB_TREE::const_iterator itc2(bst.begin());
     std::cout << "Normal:           " << (it1 != it2) << "\n";
     std::cout << "Const:            " << (itc1 != itc2) << "\n";
     std::cout << "Normal != Const:  " << (it2 != itc2) << "\n";
