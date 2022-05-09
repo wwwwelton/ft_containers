@@ -50,68 +50,29 @@ class rb_tree_iterator : public iterator<std::bidirectional_iterator_tag,
   }
 
   rb_tree_iterator& operator++(void) {
-    node = successor(node);
+    node = Rb_tree_node::successor(node);
     return (*this);
   }
 
   rb_tree_iterator operator++(int) {
     Node_ptr tmp = node;
-    node = successor(node);
+    node = Rb_tree_node::successor(node);
     return (rb_tree_iterator(tmp));
   }
 
   rb_tree_iterator& operator--(void) {
-    node = predecessor(node);
+    node = Rb_tree_node::predecessor(node);
     return (*this);
   }
 
   rb_tree_iterator operator--(int) {
     Node_ptr tmp = node;
-    node = predecessor(node);
+    node = Rb_tree_node::predecessor(node);
     return (rb_tree_iterator(tmp));
   }
 
   pointer operator->(void) const {
     return (&(operator*()));
-  }
-
- private:
-  Node_ptr minimum(Node_ptr node) {
-    while (node->left != node->leaf) {
-      node = node->left;
-    }
-    return (node);
-  }
-
-  Node_ptr maximum(Node_ptr node) {
-    while (node->right != node->leaf) {
-      node = node->right;
-    }
-    return (node);
-  }
-
-  Node_ptr successor(Node_ptr x) {
-    if (x->right != x->leaf) {
-      return (minimum(x->right));
-    }
-    Node_ptr y = x->parent;
-    while (y != y->leaf && x == y->right) {
-      x = y;
-      y = y->parent;
-    }
-    return (y);
-  }
-
-  Node_ptr predecessor(Node_ptr x) {
-    if (x->left != x->leaf) {
-      return (maximum(x->left));
-    }
-    Node_ptr y = x->parent;
-    while (y != y->leaf && x == y->left) {
-      x = y;
-      y = y->parent;
-    }
-    return (y);
   }
 };
 

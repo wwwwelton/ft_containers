@@ -83,41 +83,19 @@ class Rb_tree {
   }
 
   Node_ptr minimum(Node_ptr node) {
-    while (node->left != TNULL) {
-      node = node->left;
-    }
-    return (node);
+    return (Rb_tree_node::minimum(node));
   }
 
   Node_ptr maximum(Node_ptr node) {
-    while (node->right != TNULL) {
-      node = node->right;
-    }
-    return (node);
+    return (Rb_tree_node::maximum(node));
   }
 
   Node_ptr successor(Node_ptr x) {
-    if (x->right != TNULL) {
-      return (minimum(x->right));
-    }
-    Node_ptr y = x->parent;
-    while (y != TNULL && x == y->right) {
-      x = y;
-      y = y->parent;
-    }
-    return (y);
+    return (Rb_tree_node::successor(x));
   }
 
   Node_ptr predecessor(Node_ptr x) {
-    if (x->left != TNULL) {
-      return (maximum(x->left));
-    }
-    Node_ptr y = x->parent;
-    while (y != TNULL && x == y->left) {
-      x = y;
-      y = y->parent;
-    }
-    return (y);
+    return (Rb_tree_node::predecessor(x));
   }
 
   void left_rotate(Node_ptr x) {

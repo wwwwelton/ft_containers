@@ -38,6 +38,44 @@ struct _Rb_tree_node {
         left(_left),
         right(_right),
         color(_color) {}
+
+  static Node_ptr minimum(Node_ptr node) {
+    while (node->left != node->leaf) {
+      node = node->left;
+    }
+    return (node);
+  }
+
+  static Node_ptr maximum(Node_ptr node) {
+    while (node->right != node->leaf) {
+      node = node->right;
+    }
+    return (node);
+  }
+
+  static Node_ptr successor(Node_ptr x) {
+    if (x->right != x->leaf) {
+      return (minimum(x->right));
+    }
+    Node_ptr y = x->parent;
+    while (y != y->leaf && x == y->right) {
+      x = y;
+      y = y->parent;
+    }
+    return (y);
+  }
+
+  static Node_ptr predecessor(Node_ptr x) {
+    if (x->left != x->leaf) {
+      return (maximum(x->left));
+    }
+    Node_ptr y = x->parent;
+    while (y != y->leaf && x == y->left) {
+      x = y;
+      y = y->parent;
+    }
+    return (y);
+  }
 };
 
 }  // namespace ft
