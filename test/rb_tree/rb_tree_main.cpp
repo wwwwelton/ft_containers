@@ -2,6 +2,8 @@
 
 #include "./rb_tree_main.hpp"
 
+#include <typeinfo>
+
 #define RESET "\033[0m"
 #define GREEN "\033[0m\033[32m"     /* Green */
 #define CYAN "\033[0m\033[36m"      /* Cyan */
@@ -139,6 +141,15 @@ int main(void) {
   }
 
   std::cout << "\n\n================[ ITERATOR ]================\n";
+  {
+    std::cout << "\n[ TAG ]\n";
+    std::cout << "Normal: ";
+    std::cout << typeid(ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator::iterator_category).name() << "\n";
+    std::cout << "Const:  ";
+    std::cout << typeid(ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::const_iterator::iterator_category).name() << "\n";
+    NEWLINE
+  }
+
   {
     std::cout << "\n[ LOOP FROM (BEGIN) ]\n";
     ft::Rb_tree<KEY, TYPE, KOV<TYPE> >::iterator it = bst.begin();
