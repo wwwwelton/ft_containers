@@ -3,7 +3,6 @@
 #ifndef RB_TREE_HPP_
 #define RB_TREE_HPP_
 
-#include <functional>
 #include <memory>
 
 #include "./rb_tree_iterator.hpp"
@@ -15,7 +14,7 @@ namespace ft {
 template <typename Key,
           typename Val,
           typename KeyOfValue,
-          typename Compare = std::less<Key>,
+          typename Compare,
           typename Alloc = std::allocator<Val> >
 class Rb_tree {
   typedef typename Alloc::template rebind<_Rb_tree_node<Val> >::other
