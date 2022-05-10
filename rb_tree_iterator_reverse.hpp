@@ -69,6 +69,17 @@ class rb_tree_reverse_iterator
     node = Rb_tree_node::predecessor(node);
     return (rb_tree_reverse_iterator(tmp));
   }
+
+  rb_tree_reverse_iterator& operator--(void) {
+    node = Rb_tree_node::successor(node);
+    return (*this);
+  }
+
+  rb_tree_reverse_iterator operator--(int) {
+    Node_ptr tmp = node;
+    node = Rb_tree_node::successor(node);
+    return (rb_tree_reverse_iterator(tmp));
+  }
 };
 
 }  // namespace ft
