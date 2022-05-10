@@ -193,6 +193,14 @@ class Rb_tree {
     return (const_reverse_iterator(end()));
   }
 
+  reverse_iterator rend(void) {
+    return (reverse_iterator(begin()));
+  }
+
+  const_reverse_iterator rend(void) const {
+    return (const_reverse_iterator(begin()));
+  }
+
  private:
   allocator_type _alloc;
   Node_ptr root;
