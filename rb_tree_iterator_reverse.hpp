@@ -86,6 +86,18 @@ class rb_tree_reverse_iterator
   }
 };
 
+template <typename IteratorL, typename IteratorR>
+inline bool operator==(const rb_tree_reverse_iterator<IteratorL>& x,
+                       const rb_tree_reverse_iterator<IteratorR>& y) {
+  return (x.base() == y.base());
+}
+
+template <typename Iterator>
+inline bool operator==(const rb_tree_reverse_iterator<Iterator>& x,
+                       const rb_tree_reverse_iterator<Iterator>& y) {
+  return (x.base() == y.base());
+}
+
 }  // namespace ft
 
 #endif  // RB_TREE_ITERATOR_REVERSE_HPP_
