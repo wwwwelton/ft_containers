@@ -347,5 +347,32 @@ int main(void) {
     std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
+  {
+    std::cout << "\n[ -- PRE-DECREMENT ]\n";
+    RB_TREE::iterator it0(bst.begin());
+    RB_TREE::const_iterator itc0(bst.begin());
+    RB_TREE::reverse_iterator it(it0);
+    RB_TREE::const_reverse_iterator itc(itc0);
+    --it;
+    --itc;
+    --it;
+    --itc;
+    std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
+    std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+  {
+    std::cout << "\n[ POST-DECREMENT -- ]\n";
+    RB_TREE::iterator it0(bst.begin());
+    RB_TREE::const_iterator itc0(bst.begin());
+    RB_TREE::reverse_iterator it(it0);
+    RB_TREE::const_reverse_iterator itc(itc0);
+    it--;
+    itc--;
+    it--;
+    itc--;
+    std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
+    std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+
   NEWLINE
 }
