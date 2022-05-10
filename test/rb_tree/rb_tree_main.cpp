@@ -150,6 +150,16 @@ int main(void) {
     std::cout << "Begin Const:  " << KOV<TYPE>()(*itcr) << "\n";
   }
 
+  {
+    std::cout << "\n[ REND - 1 ]\n";
+    RB_TREE::reverse_iterator it(bst.rend());
+    RB_TREE::const_reverse_iterator itc(bst.rend());
+    it--;
+    itc--;
+    std::cout << "Begin Normal: " << KOV<TYPE>()(*it) << "\n";
+    std::cout << "Begin Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+
   std::cout << "\n\n================[ ITERATOR ]================\n";
   {
     std::cout << "\n[ TAG ]\n";
