@@ -53,6 +53,11 @@ class rb_tree_reverse_iterator
   const Node_ptr& base(void) const {
     return (node);
   }
+
+  reference operator*(void) const {
+    Node_ptr tmp = Rb_tree_node::predecessor(node);
+    return (tmp->data);
+  }
 };
 
 }  // namespace ft
