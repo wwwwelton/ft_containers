@@ -142,6 +142,14 @@ int main(void) {
     std::cout << "Begin Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
+  {
+    std::cout << "\n[ RBEGIN ]\n";
+    RB_TREE::reverse_iterator itr(bst.rbegin());
+    RB_TREE::const_reverse_iterator itcr(bst.rbegin());
+    std::cout << "Begin Normal: " << KOV<TYPE>()(*itr) << "\n";
+    std::cout << "Begin Const:  " << KOV<TYPE>()(*itcr) << "\n";
+  }
+
   std::cout << "\n\n================[ ITERATOR ]================\n";
   {
     std::cout << "\n[ TAG ]\n";
