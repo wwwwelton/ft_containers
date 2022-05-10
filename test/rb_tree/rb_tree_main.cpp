@@ -316,15 +316,15 @@ int main(void) {
     std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
-//   {
-//     std::cout << "\n[ -> ]\n";
-//     RB_TREE::reverse_iterator it0(bst.begin());
-//     RB_TREE::reverse_iterator it = it0;
-//     RB_TREE::const_reverse_iterator itc0(bst.begin());
-//     RB_TREE::const_reverse_iterator itc = itc0;
-//     std::cout << "Normal: " << it->first << "\n";
-//     std::cout << "Const:  " << itc->first << "\n";
-//   }
+  //   {
+  //     std::cout << "\n[ -> ]\n";
+  //     RB_TREE::reverse_iterator it0(bst.begin());
+  //     RB_TREE::reverse_iterator it = it0;
+  //     RB_TREE::const_reverse_iterator itc0(bst.begin());
+  //     RB_TREE::const_reverse_iterator itc = itc0;
+  //     std::cout << "Normal: " << it->first << "\n";
+  //     std::cout << "Const:  " << itc->first << "\n";
+  //   }
 
   {
     std::cout << "\n[ ++ PRE-INCREMENT ]\n";
@@ -382,6 +382,28 @@ int main(void) {
     itc--;
     std::cout << "Normal: " << KOV<TYPE>()(*it) << "\n";
     std::cout << "Const:  " << KOV<TYPE>()(*itc) << "\n";
+  }
+
+  std::cout << "\n\n================[ RELATIONAL OPERATORS ]================\n";
+  {
+    std::cout << "\n[ EQUAL == (TRUE) ]\n";
+    RB_TREE::reverse_iterator it1(bst.begin());
+    RB_TREE::reverse_iterator it2(bst.begin());
+    RB_TREE::const_reverse_iterator itc1(bst.begin());
+    RB_TREE::const_reverse_iterator itc2(bst.begin());
+    std::cout << "Normal:           " << (it1 == it2) << "\n";
+    std::cout << "Const:            " << (itc1 == itc2) << "\n";
+    std::cout << "Normal == Const:  " << (it1 == itc1) << "\n";
+  }
+  {
+    std::cout << "\n[ EQUAL == (FALSE) ]\n";
+    RB_TREE::reverse_iterator it1(bst.begin());
+    RB_TREE::reverse_iterator it2(bst.begin());
+    RB_TREE::const_reverse_iterator itc1(bst.begin());
+    RB_TREE::const_reverse_iterator itc2(bst.begin());
+    std::cout << "Normal:           " << (--it1 == it2) << "\n";
+    std::cout << "Const:            " << (--itc1 == itc2) << "\n";
+    std::cout << "Normal == Const:  " << (--it2 == itc2) << "\n";
   }
 
   NEWLINE
