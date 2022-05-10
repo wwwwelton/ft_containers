@@ -325,6 +325,41 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ LOOP FROM (RBEGIN) ]\n";
+    RB_TREE::reverse_iterator it = bst.rbegin();
+    RB_TREE::const_reverse_iterator itc = bst.rbegin();
+    std::cout << "Normal: ";
+    for (; it != bst.rend(); it++) {
+      std::cout << KOV<TYPE>()(*it) << " ";
+    }
+    NEWLINE
+    std::cout << "Const:  ";
+    for (; itc != bst.rend(); itc++) {
+      std::cout << KOV<TYPE>()(*itc) << " ";
+    }
+    NEWLINE
+  }
+  {
+    std::cout << "\n[ LOOP FROM (REND) ]\n";
+    RB_TREE::reverse_iterator it = bst.rend();
+    RB_TREE::const_reverse_iterator itc = bst.rend();
+    it--;
+    itc--;
+    std::cout << "Normal: ";
+    for (; it != bst.rbegin(); it--) {
+      std::cout << KOV<TYPE>()(*it) << " ";
+    }
+    std::cout << KOV<TYPE>()(*it) << " ";
+    NEWLINE
+    std::cout << "Const:  ";
+    for (; itc != bst.rbegin(); itc--) {
+      std::cout << KOV<TYPE>()(*itc) << " ";
+    }
+    std::cout << KOV<TYPE>()(*itc) << " ";
+    NEWLINE
+  }
+
+  {
     std::cout << "\n[ * ]\n";
     RB_TREE::reverse_iterator it0(bst.begin());
     RB_TREE::reverse_iterator it = it0;
