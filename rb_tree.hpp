@@ -6,6 +6,7 @@
 #include <memory>
 
 #include "./rb_tree_iterator.hpp"
+#include "./rb_tree_iterator_reverse.hpp"
 #include "./rb_tree_node.hpp"
 #include "./utility.hpp"
 
@@ -39,6 +40,8 @@ class Rb_tree {
   typedef Node_allocator allocator_type;
   typedef ft::rb_tree_iterator<pointer> iterator;
   typedef ft::rb_tree_iterator<const_pointer> const_iterator;
+  typedef ft::rb_tree_reverse_iterator<iterator> reverse_iterator;
+  typedef ft::rb_tree_reverse_iterator<const_iterator> const_reverse_iterator;
 
  public:
   explicit Rb_tree(const key_compare& comp = key_compare(),
