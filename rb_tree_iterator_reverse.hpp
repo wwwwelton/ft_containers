@@ -80,6 +80,10 @@ class rb_tree_reverse_iterator
     node = Rb_tree_node::successor(node);
     return (rb_tree_reverse_iterator(tmp));
   }
+
+  pointer operator->(void) const {
+    return (&(this->operator*()));
+  }
 };
 
 }  // namespace ft
