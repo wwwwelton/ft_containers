@@ -294,5 +294,17 @@ int main(void) {
     std::cout << "Normal != Const:  " << (it2 != itc2) << "\n";
   }
 
+  std::cout << "\n\n================[ REVERSE ITERATOR ]================\n";
+  {
+    std::cout << "\n[ TAG ]\n";
+    std::cout << "Normal: ";
+    std::cout << typeid(RB_TREE::reverse_iterator::iterator_category).name();
+    NEWLINE
+    std::cout << "Const:  ";
+    std::cout << typeid(RB_TREE::const_reverse_iterator::iterator_category).name();
+    NEWLINE
+    NEWLINE
+  }
+
   NEWLINE
 }
