@@ -134,6 +134,13 @@ int main(void) {
     std::cout << "False: " << bst.empty() << "\n";
   }
 
+  std::cout << "\n[ SIZE ]\n";
+  {
+    RB_TREE bstE;
+    std::cout << "Empty:  " << bstE.size() << "\n";
+    std::cout << "Filled: " << bst.size() << "\n";
+  }
+
   std::cout << "\n\n===========[ ITERATORS ]===========\n";
   {
     std::cout << "\n[ BEGIN ]\n";
