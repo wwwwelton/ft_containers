@@ -58,6 +58,9 @@ struct _Rb_tree_node {
   }
 
   static Node_ptr successor(Node_ptr x) {
+    if (x == x->leaf) {
+      return (maximum(get_root(x)));
+    }
     if (x->right != x->leaf) {
       return (minimum(x->right));
     }
@@ -70,6 +73,9 @@ struct _Rb_tree_node {
   }
 
   static Node_ptr predecessor(Node_ptr x) {
+    if (x == x->leaf) {
+      return (maximum(get_root(x)));
+    }
     if (x->left != x->leaf) {
       return (maximum(x->left));
     }
