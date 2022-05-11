@@ -123,6 +123,19 @@ int main(void) {
   std::cout << "Postorder: ", postorder_print(bst.get_root());
   NEWLINE
 
+  // std::cout << "\n\n===========[ MEMBER FUNCTIONS ]===========\n";
+
+  std::cout << "\n\n===========[ CAPACITY ]===========\n";
+  {
+    RB_TREE bstE;
+    std::cout << "\n[ EMPTY == (TRUE) ]\n";
+    std::cout << "Result:           " << bstE.empty() << "\n";
+  }
+  {
+    std::cout << "\n[ EMPTY == (FALSE) ]\n";
+    std::cout << "Result:           " << bst.empty() << "\n";
+  }
+
   std::cout << "\n\n===========[ ITERATORS ]===========\n";
   {
     std::cout << "\n[ BEGIN ]\n";
