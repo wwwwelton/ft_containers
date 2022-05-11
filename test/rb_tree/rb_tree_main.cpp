@@ -126,14 +126,12 @@ int main(void) {
   // std::cout << "\n\n===========[ MEMBER FUNCTIONS ]===========\n";
 
   std::cout << "\n\n===========[ CAPACITY ]===========\n";
+
+  std::cout << "\n[ EMPTY ]\n";
   {
     RB_TREE bstE;
-    std::cout << "\n[ EMPTY == (TRUE) ]\n";
-    std::cout << "Result:           " << bstE.empty() << "\n";
-  }
-  {
-    std::cout << "\n[ EMPTY == (FALSE) ]\n";
-    std::cout << "Result:           " << bst.empty() << "\n";
+    std::cout << "True:  " << bstE.empty() << "\n";
+    std::cout << "False: " << bst.empty() << "\n";
   }
 
   std::cout << "\n\n===========[ ITERATORS ]===========\n";
