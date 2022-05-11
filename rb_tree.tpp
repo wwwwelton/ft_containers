@@ -25,7 +25,7 @@ RB_TREE_CLASS::Rb_tree(const Rb_tree& src) {
   _alloc.construct(TNULL, create_node(value_type(), BLACK));
   root = TNULL;
   copy_rb_tree(src.root);
-  _size = src.size();
+  _size = src._size;
   _comp = src._comp;
 }
 
@@ -38,7 +38,7 @@ RB_TREE_CLASS& RB_TREE_CLASS::operator=(const Rb_tree& rhs) {
     _alloc.construct(TNULL, create_node(value_type(), BLACK));
     root = TNULL;
     copy_rb_tree(rhs.root);
-    _size = rhs.size();
+    _size = rhs._size;
     _comp = rhs._comp;
   }
   return (*this);
