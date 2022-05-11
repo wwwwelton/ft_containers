@@ -94,7 +94,7 @@ typename RB_TREE_CLASS::const_reverse_iterator RB_TREE_CLASS::rend(void) const {
 
 template <RB_TREE_TEMPLATE>
 bool RB_TREE_CLASS::empty(void) const {
-  return (root == TNULL);
+  return (_size == 0);
 }
 
 template <RB_TREE_TEMPLATE>
