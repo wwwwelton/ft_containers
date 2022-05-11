@@ -21,7 +21,7 @@ class Rb_tree {
   typedef typename Alloc::template rebind<_Rb_tree_node<Val> >::other
       Node_allocator;
 
- protected:
+ public:
   typedef _Rb_tree_node<Val> Rb_tree_node;
   typedef Rb_tree_node* Node_ptr;
   typedef const Rb_tree_node* Const_node_ptr;
