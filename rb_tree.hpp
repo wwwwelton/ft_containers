@@ -257,6 +257,7 @@ class Rb_tree {
     }
 
     insert_fix(z);
+    TNULL->root = root;
   }
 
   void delete_fix(Node_ptr x) {
@@ -364,6 +365,7 @@ class Rb_tree {
     if (y_original_color == BLACK) {
       delete_fix(x);
     }
+    TNULL->root = root;
   }
 
   void insert_fix(Node_ptr z) {
