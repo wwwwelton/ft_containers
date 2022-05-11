@@ -459,20 +459,20 @@ int main(void) {
 
   {
     std::cout << "\n[ DIFFERENT != (TRUE) ]\n";
-    RB_TREE::iterator it1(bst.begin());
-    RB_TREE::iterator it2(bst.begin());
-    RB_TREE::const_iterator itc1(bst.begin());
-    RB_TREE::const_iterator itc2(bst.begin());
+    RB_TREE::reverse_iterator it1(bst.begin());
+    RB_TREE::reverse_iterator it2(bst.begin());
+    RB_TREE::const_reverse_iterator itc1(bst.begin());
+    RB_TREE::const_reverse_iterator itc2(bst.begin());
     std::cout << "Normal:           " << (--it1 != it2) << "\n";
     std::cout << "Const:            " << (--itc1 != itc2) << "\n";
     std::cout << "Normal != Const:  " << (--it1 != itc1) << "\n";
   }
   {
     std::cout << "\n[ DIFFERENT != (FALSE) ]\n";
-    RB_TREE::iterator it1(bst.begin());
-    RB_TREE::iterator it2(bst.begin());
-    RB_TREE::const_iterator itc1(bst.begin());
-    RB_TREE::const_iterator itc2(bst.begin());
+    RB_TREE::reverse_iterator it1(bst.begin());
+    RB_TREE::reverse_iterator it2(bst.begin());
+    RB_TREE::const_reverse_iterator itc1(bst.begin());
+    RB_TREE::const_reverse_iterator itc2(bst.begin());
     std::cout << "Normal:           " << (it1 != it2) << "\n";
     std::cout << "Const:            " << (itc1 != itc2) << "\n";
     std::cout << "Normal != Const:  " << (it2 != itc2) << "\n";
