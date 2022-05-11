@@ -39,6 +39,10 @@ struct _Rb_tree_node {
         right(_right),
         color(_color) {}
 
+  static Node_ptr get_root(Node_ptr node) {
+    return (node->leaf->root);
+  }
+
   static Node_ptr minimum(Node_ptr node) {
     while (node->left != node->leaf) {
       node = node->left;
