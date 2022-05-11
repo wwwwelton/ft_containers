@@ -76,6 +76,8 @@ class Rb_tree {
 
   const_reverse_iterator rend(void) const;
 
+  bool empty(void) const;
+
   // Base
   Node_ptr search(Key k);
 
