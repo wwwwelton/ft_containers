@@ -61,6 +61,7 @@ void RB_TREE_CLASS::insert_node_helper(value_type data) {
 
   insert_fix(z);
   TNULL->root = root;
+  _size++;
 }
 
 template <RB_TREE_TEMPLATE>
@@ -172,6 +173,7 @@ void RB_TREE_CLASS::delete_node_helper(Node_ptr z) {
     delete_fix(x);
   }
   TNULL->root = root;
+  _size--;
 }
 
 template <RB_TREE_TEMPLATE>

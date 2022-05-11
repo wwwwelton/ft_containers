@@ -78,6 +78,8 @@ class Rb_tree {
 
   bool empty(void) const;
 
+  size_type size(void) const;
+
   // Base
   Node_ptr search(Key k);
 
@@ -103,6 +105,7 @@ class Rb_tree {
   allocator_type _alloc;
   Node_ptr root;
   Node_ptr TNULL;
+  size_type _size;
   key_compare _comp;
 
   // Helper

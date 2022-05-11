@@ -14,6 +14,7 @@ RB_TREE_CLASS::Rb_tree(const key_compare& comp,
   TNULL = _alloc.allocate(1);
   _alloc.construct(TNULL, create_node(value_type(), BLACK));
   root = TNULL;
+  _size = 0;
   _comp = comp;
 }
 
@@ -24,6 +25,7 @@ RB_TREE_CLASS::Rb_tree(const Rb_tree& src) {
   _alloc.construct(TNULL, create_node(value_type(), BLACK));
   root = TNULL;
   copy_rb_tree(src.root);
+  _size = src.size();
   _comp = src._comp;
 }
 
@@ -36,6 +38,7 @@ RB_TREE_CLASS& RB_TREE_CLASS::operator=(const Rb_tree& rhs) {
     _alloc.construct(TNULL, create_node(value_type(), BLACK));
     root = TNULL;
     copy_rb_tree(rhs.root);
+    _size = rhs.size();
     _comp = rhs._comp;
   }
   return (*this);
@@ -46,6 +49,7 @@ RB_TREE_CLASS::~Rb_tree(void) {
   destructor_helper(root);
   _alloc.destroy(TNULL);
   _alloc.deallocate(TNULL, 1);
+  _size = 0;
 }
 
 template <RB_TREE_TEMPLATE>
@@ -91,6 +95,11 @@ typename RB_TREE_CLASS::const_reverse_iterator RB_TREE_CLASS::rend(void) const {
 template <RB_TREE_TEMPLATE>
 bool RB_TREE_CLASS::empty(void) const {
   return (root == TNULL);
+}
+
+template <RB_TREE_TEMPLATE>
+typename RB_TREE_CLASS::size_type RB_TREE_CLASS::size(void) const {
+  return (_size);
 }
 
 }  // namespace ft
