@@ -123,7 +123,7 @@ int main(void) {
   std::cout << "Postorder: ", postorder_print(bst.get_root());
   NEWLINE
 
-  std::cout << "\n\n===========[ MEMBER FUNCTIONS ]===========\n";
+  std::cout << "\n\n===========[ ITERATORS ]===========\n";
   {
     std::cout << "\n[ BEGIN ]\n";
     RB_TREE::iterator it(bst.begin());
@@ -160,7 +160,7 @@ int main(void) {
     std::cout << "Begin Const:  " << KOV<TYPE>()(*itc) << "\n";
   }
 
-  std::cout << "\n\n================[ ITERATOR ]================\n";
+  std::cout << "\n\n================[ BTREE ITERATOR ]================\n";
   {
     std::cout << "\n[ TAG ]\n";
     std::cout << "Normal: ";
@@ -312,7 +312,7 @@ int main(void) {
     std::cout << "Normal != Const:  " << (it2 != itc2) << "\n";
   }
 
-  std::cout << "\n\n================[ REVERSE ITERATOR ]================\n";
+  std::cout << "\n\n===============[ BTREE REVERSE ITERATOR ]===============\n";
   {
     std::cout << "\n[ TAG ]\n";
     std::cout << "Normal: ";
