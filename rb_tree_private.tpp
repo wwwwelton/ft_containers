@@ -1,11 +1,57 @@
 // Copyright (c) 2022 Welton Leite, wleite. All rights reserved.
 
-#ifndef RB_TREE_BASE_HELPER_TPP_
-#define RB_TREE_BASE_HELPER_TPP_
+#ifndef RB_TREE_PRIVATE_TPP_
+#define RB_TREE_PRIVATE_TPP_
 
 #include "rb_tree.hpp"
 
 namespace ft {
+
+template <RB_TREE_TEMPLATE>
+void RB_TREE_CLASS::left_rotate(Node_ptr x) {
+  Node_ptr y;
+
+  y = x->right;
+  x->right = y->left;
+  if (y->left != TNULL) {
+    y->left->parent = x;
+  }
+
+  y->parent = x->parent;
+  if (x->parent == TNULL) {
+    root = y;
+  } else if (x == x->parent->left) {
+    x->parent->left = y;
+  } else {
+    x->parent->right = y;
+  }
+
+  y->left = x;
+  x->parent = y;
+}
+
+template <RB_TREE_TEMPLATE>
+void RB_TREE_CLASS::right_rotate(Node_ptr x) {
+  Node_ptr y;
+
+  y = x->left;
+  x->left = y->right;
+  if (y->right != TNULL) {
+    y->right->parent = x;
+  }
+
+  y->parent = x->parent;
+  if (x->parent == TNULL) {
+    root = y;
+  } else if (x == x->parent->right) {
+    x->parent->right = y;
+  } else {
+    x->parent->left = y;
+  }
+
+  y->right = x;
+  x->parent = y;
+}
 
 template <RB_TREE_TEMPLATE>
 void RB_TREE_CLASS::destructor_helper(Node_ptr node) {
@@ -244,4 +290,4 @@ typename RB_TREE_CLASS::Rb_tree_node RB_TREE_CLASS::create_node(value_type data,
 
 }  // namespace ft
 
-#endif  // RB_TREE_BASE_HELPER_TPP_
+#endif  // RB_TREE_PRIVATE_TPP_

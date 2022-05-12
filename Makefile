@@ -18,9 +18,8 @@ HEADERS				=	algorithm.hpp \
 						allocator.hpp \
 						rb_tree.hpp \
 						rb_tree.tpp \
+						rb_tree_private.tpp \
 						rb_tree_node.hpp \
-						rb_tree_base.tpp \
-						rb_tree_base_helper.tpp \
 						rb_tree_iterator.hpp \
 						rb_tree_iterator_reverse.hpp \
 

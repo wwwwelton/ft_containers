@@ -82,7 +82,6 @@ class Rb_tree {
 
   size_type max_size(void) const;
 
-  // Base
   Node_ptr search(Key k);
 
   Node_ptr minimum(Node_ptr node);
@@ -92,10 +91,6 @@ class Rb_tree {
   Node_ptr successor(Node_ptr x);
 
   Node_ptr predecessor(Node_ptr x);
-
-  void left_rotate(Node_ptr x);
-
-  void right_rotate(Node_ptr x);
 
   void insert(value_type data);
 
@@ -110,7 +105,10 @@ class Rb_tree {
   size_type _size;
   key_compare _comp;
 
-  // Helper
+  void left_rotate(Node_ptr x);
+
+  void right_rotate(Node_ptr x);
+
   void destructor_helper(Node_ptr node);
 
   Node_ptr search_helper(Node_ptr node, Key key);
@@ -133,7 +131,6 @@ class Rb_tree {
 }  // namespace ft
 
 #include "rb_tree.tpp"
-#include "rb_tree_base.tpp"
-#include "rb_tree_base_helper.tpp"
+#include "rb_tree_private.tpp"
 
 #endif  // RB_TREE_HPP_
