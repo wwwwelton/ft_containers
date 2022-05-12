@@ -17,8 +17,12 @@ HEADERS				=	algorithm.hpp \
 						utility.hpp \
 						allocator.hpp \
 						rb_tree.hpp \
+						rb_tree.tpp \
 						rb_tree_node.hpp \
+						rb_tree_base.tpp \
+						rb_tree_base_helper.tpp \
 						rb_tree_iterator.hpp \
+						rb_tree_iterator_reverse.hpp \
 
 VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
 VECTOR_TEST_2		=	test/vector/vector_test_2.cpp
