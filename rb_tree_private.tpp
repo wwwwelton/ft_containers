@@ -7,6 +7,8 @@
 
 namespace ft {
 
+// red–black tree helper functions
+
 template <RB_TREE_TEMPLATE>
 void RB_TREE_CLASS::left_rotate(Node_ptr x) {
   Node_ptr y;
