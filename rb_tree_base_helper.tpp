@@ -229,7 +229,17 @@ void RB_TREE_CLASS::copy_rb_tree(Node_ptr node) {
 
 template <RB_TREE_TEMPLATE>
 typename RB_TREE_CLASS::Rb_tree_node RB_TREE_CLASS::create_node(value_type data, Rb_tree_color color) {
-  return (Rb_tree_node(data, root, TNULL, TNULL, TNULL, TNULL, color));
+  Rb_tree_node node;
+
+  node.data = data;
+  node.root = root;
+  node.leaf = TNULL;
+  node.parent = TNULL;
+  node.left = TNULL;
+  node.right = TNULL;
+  node.color = color;
+
+  return (node);
 }
 
 }  // namespace ft
