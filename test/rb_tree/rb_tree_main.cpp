@@ -86,27 +86,27 @@ int main(void) {
 
   bst = bst1;
   pretty_print(bst.get_root());
-  bst.delete_node("h");
+  bst.erase("h");
 
   std::cout << "\nDelete \"h\"\n";
 
-  // bst.delete_node(18);
-  // bst.delete_node(5);
-  // bst.delete_node(15);
-  // bst.delete_node(17);
-  // bst.delete_node(25);
-  // bst.delete_node(40);
-  // bst.delete_node(80);
-  // bst.delete_node(1);
-  // bst.delete_node(25);
-  // bst.delete_node(40);
-  // bst.delete_node(2);
-  // bst.delete_node(17);
-  // bst.delete_node(15);
-  //   bst.delete_node(15);
-  //   bst.delete_node(8);
+  // bst.erase(18);
+  // bst.erase(5);
+  // bst.erase(15);
+  // bst.erase(17);
+  // bst.erase(25);
+  // bst.erase(40);
+  // bst.erase(80);
+  // bst.erase(1);
+  // bst.erase(25);
+  // bst.erase(40);
+  // bst.erase(2);
+  // bst.erase(17);
+  // bst.erase(15);
+  //   bst.erase(15);
+  //   bst.erase(8);
   // kkk
-  //   bst.delete_node(25);
+  //   bst.erase(25);
   std::cout << "\n";
   std::cout << "After delete: \n";
   pretty_print(bst.get_root());
