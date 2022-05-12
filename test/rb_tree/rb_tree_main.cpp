@@ -159,7 +159,7 @@ int main(void) {
     bst_swap_1.insert(TYPE("c", 3)), bst_swap_2.insert(TYPE("g", 7));
     bst_swap_1.insert(TYPE("d", 4)), bst_swap_2.insert(TYPE("h", 8));
 
-    std::cout << "\n[ BEFORE ]\n";
+    std::cout << "\n[ BEFORE SWAP ]\n";
     RB_TREE::iterator it_swap_1 = bst_swap_1.begin();
     RB_TREE::iterator it_swap_2 = bst_swap_2.begin();
     std::cout << "TREE 1: ";
@@ -176,7 +176,7 @@ int main(void) {
 
     NEWLINE
 
-    std::cout << "\n[ AFTER ]\n";
+    std::cout << "\n[ AFTER SWAP ]\n";
     it_swap_1 = bst_swap_1.begin();
     it_swap_2 = bst_swap_2.begin();
     std::cout << "TREE 1: ";
@@ -188,6 +188,41 @@ int main(void) {
     for (; it_swap_2 != bst_swap_2.end(); it_swap_2++) {
       std::cout << KOV<TYPE>()(*it_swap_2) << " ";
     }
+    NEWLINE
+  }
+
+  std::cout << "\n[ CLEAR ]\n";
+  {
+    RB_TREE bst_clear;
+
+    bst_clear.insert(TYPE("a", 1));
+    bst_clear.insert(TYPE("b", 2));
+    bst_clear.insert(TYPE("c", 3));
+    bst_clear.insert(TYPE("d", 4));
+
+    RB_TREE::iterator it_clear = bst_clear.begin();
+    std::cout << "Before clear: ";
+    for (; it_clear != bst_clear.end(); it_clear++) {
+      std::cout << KOV<TYPE>()(*it_clear) << " ";
+    }
+    std::cout << " | size: " << bst_clear.size();
+
+    bst_clear.clear();
+
+    NEWLINE
+
+    bst_clear.insert(TYPE("e", 5));
+    bst_clear.insert(TYPE("f", 6));
+    bst_clear.insert(TYPE("g", 7));
+    bst_clear.insert(TYPE("h", 8));
+
+    it_clear = bst_clear.begin();
+    std::cout << "After clear:  ";
+    for (; it_clear != bst_clear.end(); it_clear++) {
+      std::cout << KOV<TYPE>()(*it_clear) << " ";
+    }
+    std::cout << " | size: " << bst_clear.size();
+
     NEWLINE
   }
 
