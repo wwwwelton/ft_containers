@@ -99,7 +99,7 @@ class Rb_tree {
 
   void insert(value_type data);
 
-  void delete_node(Key key);
+  void erase(Key key);
 
   Node_ptr get_root(void);
 
@@ -117,11 +117,11 @@ class Rb_tree {
 
   void insert_node_helper(value_type data);
 
-  void delete_fix(Node_ptr x);
+  void erase_fix(Node_ptr x);
 
   void transplant(Node_ptr u, Node_ptr v);
 
-  void delete_node_helper(Node_ptr z);
+  void erase_node_helper(Node_ptr z);
 
   void insert_fix(Node_ptr z);
 

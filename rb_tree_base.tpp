@@ -82,18 +82,18 @@ template <RB_TREE_TEMPLATE>
 void RB_TREE_CLASS::insert(value_type data) {
   Node_ptr z = search(KeyOfValue()(data));
   if (z != TNULL) {
-    delete_node_helper(z);
+    erase_node_helper(z);
   }
   insert_node_helper(data);
 }
 
 template <RB_TREE_TEMPLATE>
-void RB_TREE_CLASS::delete_node(Key key) {
+void RB_TREE_CLASS::erase(Key key) {
   Node_ptr z = search(key);
   if (z == TNULL) {
     return;
   }
-  delete_node_helper(z);
+  erase_node_helper(z);
 }
 
 template <RB_TREE_TEMPLATE>

@@ -65,7 +65,7 @@ void RB_TREE_CLASS::insert_node_helper(value_type data) {
 }
 
 template <RB_TREE_TEMPLATE>
-void RB_TREE_CLASS::delete_fix(Node_ptr x) {
+void RB_TREE_CLASS::erase_fix(Node_ptr x) {
   Node_ptr w;
 
   while (x != root && x->color == BLACK) {
@@ -137,7 +137,7 @@ void RB_TREE_CLASS::transplant(Node_ptr u, Node_ptr v) {
 }
 
 template <RB_TREE_TEMPLATE>
-void RB_TREE_CLASS::delete_node_helper(Node_ptr z) {
+void RB_TREE_CLASS::erase_node_helper(Node_ptr z) {
   Node_ptr x, y;
   Rb_tree_color y_original_color;
 
@@ -170,7 +170,7 @@ void RB_TREE_CLASS::delete_node_helper(Node_ptr z) {
   _alloc.deallocate(z, 1);
 
   if (y_original_color == BLACK) {
-    delete_fix(x);
+    erase_fix(x);
   }
   TNULL->root = root;
   _size--;
