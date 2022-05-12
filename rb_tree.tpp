@@ -128,6 +128,13 @@ void RB_TREE_CLASS::swap(Rb_tree& x) {
   _comp = tmp_comp;
 }
 
+template <RB_TREE_TEMPLATE>
+void RB_TREE_CLASS::clear(void) {
+  destructor_helper(root);
+  root = TNULL;
+  _size = 0;
+}
+
 // red–black tree functions
 
 template <RB_TREE_TEMPLATE>

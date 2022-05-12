@@ -84,6 +84,8 @@ class Rb_tree {
 
   void swap(Rb_tree& x);
 
+  void clear(void);
+
   // red–black tree functions
 
   Node_ptr search(Key k);
