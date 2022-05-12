@@ -80,6 +80,8 @@ class Rb_tree {
 
   size_type size(void) const;
 
+  size_type max_size(void) const;
+
   // Base
   Node_ptr search(Key k);
 

@@ -102,6 +102,11 @@ typename RB_TREE_CLASS::size_type RB_TREE_CLASS::size(void) const {
   return (_size);
 }
 
+template <RB_TREE_TEMPLATE>
+typename RB_TREE_CLASS::size_type RB_TREE_CLASS::max_size(void) const {
+  return (_alloc.max_size());
+}
+
 }  // namespace ft
 
 #endif  // RB_TREE_TPP_
