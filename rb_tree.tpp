@@ -108,6 +108,29 @@ typename RB_TREE_CLASS::size_type RB_TREE_CLASS::max_size(void) const {
 }
 
 template <RB_TREE_TEMPLATE>
+void RB_TREE_CLASS::swap(Rb_tree& x) {
+  allocator_type tmp_alloc = x._alloc;
+  Node_ptr tmp_root = x.root;
+  Node_ptr tmp_TNULL = x.TNULL;
+  size_type tmp_size = x._size;
+  key_compare tmp_comp = x._comp;
+
+  x._alloc = _alloc;
+  x.root = root;
+  x.TNULL = TNULL;
+  x._size = _size;
+  x._comp = _comp;
+
+  _alloc = tmp_alloc;
+  root = tmp_root;
+  TNULL = tmp_TNULL;
+  _size = tmp_size;
+  _comp = tmp_comp;
+}
+
+// red–black tree functions
+
+template <RB_TREE_TEMPLATE>
 typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search(Key k) {
   return (search_helper(root, k));
 }

@@ -82,6 +82,10 @@ class Rb_tree {
 
   size_type max_size(void) const;
 
+  void swap(Rb_tree& x);
+
+  // red–black tree functions
+
   Node_ptr search(Key k);
 
   Node_ptr minimum(Node_ptr node);
@@ -104,6 +108,8 @@ class Rb_tree {
   Node_ptr TNULL;
   size_type _size;
   key_compare _comp;
+
+  // red–black tree helper functions
 
   void left_rotate(Node_ptr x);
 
