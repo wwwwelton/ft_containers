@@ -79,7 +79,7 @@ class map {
       const key_compare& comp = key_compare(),
       const allocator_type& alloc = allocator_type());
 
-  //   map(const map& x);
+  map(const map& x);
 
   //   ~map(void);
 
