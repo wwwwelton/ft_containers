@@ -16,6 +16,21 @@ struct _Rb_tree_node {
   typedef Rb_tree_node* Node_ptr;
   typedef const Rb_tree_node* Const_node_ptr;
 
+  explicit _Rb_tree_node(const T& _data,
+                         Node_ptr _root,
+                         Node_ptr _leaf,
+                         Node_ptr _parent = NULL,
+                         Node_ptr _left = NULL,
+                         Node_ptr _right = NULL,
+                         Rb_tree_color _color = BLACK)
+      : data(_data),
+        root(_root),
+        leaf(_leaf),
+        parent(_parent),
+        left(_left),
+        right(_right),
+        color(_color) {}
+
   T data;
   Node_ptr root;
   Node_ptr leaf;
