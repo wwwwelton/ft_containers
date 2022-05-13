@@ -86,7 +86,7 @@ pair2:				$(HEADERS)
 					diff pair_test_FT_2_out pair_test_STD_2_out
 
 map1:				$(HEADERS)
-					$(CC) $(CFLAGS) $(MAP_TEST_1) -o map_test_1
+					clear && $(CC) $(CFLAGS) $(MAP_TEST_1) -o map_test_1
 					valgrind ./map_test_1
 
 rbtree:
