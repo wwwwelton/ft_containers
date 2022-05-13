@@ -13,6 +13,7 @@
 
 #include <memory>
 
+#include "./algorithm.hpp"
 #include "./rb_tree_iterator.hpp"
 #include "./rb_tree_iterator_reverse.hpp"
 #include "./rb_tree_node.hpp"
@@ -90,13 +91,13 @@ class Rb_tree {
 
   Node_ptr search(Key k);
 
-  Node_ptr minimum(Node_ptr node);
+  Node_ptr minimum(Node_ptr node) const;
 
-  Node_ptr maximum(Node_ptr node);
+  Node_ptr maximum(Node_ptr node) const;
 
-  Node_ptr successor(Node_ptr x);
+  Node_ptr successor(Node_ptr x) const;
 
-  Node_ptr predecessor(Node_ptr x);
+  Node_ptr predecessor(Node_ptr x) const;
 
   void insert(value_type data);
 
@@ -135,6 +136,39 @@ class Rb_tree {
 
   Rb_tree_node create_node(value_type data, Rb_tree_color color);
 };
+
+template <RB_TREE_TEMPLATE>
+inline bool operator==(const RB_TREE_CLASS& x, const RB_TREE_CLASS& y) {
+  return (x.size() == y.size() &&
+          ft::equal(x.begin(), x.end(), y.begin()));
+}
+
+template <RB_TREE_TEMPLATE>
+inline bool operator!=(const RB_TREE_CLASS& x, const RB_TREE_CLASS& y) {
+  return (!(x == y));
+}
+
+template <RB_TREE_TEMPLATE>
+inline bool operator<(const RB_TREE_CLASS& x, const RB_TREE_CLASS& y) {
+  return (ft::lexicographical_compare(x.begin(), x.end(),
+                                      y.begin(), y.end()));
+}
+
+template <RB_TREE_TEMPLATE>
+inline bool operator<=(const RB_TREE_CLASS& x, const RB_TREE_CLASS& y) {
+  return (!(y < x));
+}
+
+template <RB_TREE_TEMPLATE>
+inline bool operator>(const RB_TREE_CLASS& x, const RB_TREE_CLASS& y) {
+  return (y < x);
+}
+
+template <RB_TREE_TEMPLATE>
+inline bool operator>=(const RB_TREE_CLASS& x,
+                       const RB_TREE_CLASS& y) {
+  return (!(x < y));
+}
 
 }  // namespace ft
 

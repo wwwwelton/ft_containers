@@ -143,22 +143,22 @@ typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search(Key k) {
 }
 
 template <RB_TREE_TEMPLATE>
-typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::minimum(Node_ptr node) {
+typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::minimum(Node_ptr node) const {
   return (Rb_tree_node::minimum(node));
 }
 
 template <RB_TREE_TEMPLATE>
-typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::maximum(Node_ptr node) {
+typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::maximum(Node_ptr node) const {
   return (Rb_tree_node::maximum(node));
 }
 
 template <RB_TREE_TEMPLATE>
-typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::successor(Node_ptr x) {
+typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::successor(Node_ptr x) const {
   return (Rb_tree_node::successor(x));
 }
 
 template <RB_TREE_TEMPLATE>
-typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::predecessor(Node_ptr x) {
+typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::predecessor(Node_ptr x) const {
   return (Rb_tree_node::predecessor(x));
 }
 
