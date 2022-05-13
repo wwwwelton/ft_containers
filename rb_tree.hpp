@@ -103,6 +103,8 @@ class Rb_tree {
 
   void insert(value_type data);
 
+  void insert(value_type data, Node_ptr _root);
+
   void erase(Key key);
 
   Node_ptr get_root(void);

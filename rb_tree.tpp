@@ -177,6 +177,15 @@ void RB_TREE_CLASS::insert(value_type data) {
 }
 
 template <RB_TREE_TEMPLATE>
+void RB_TREE_CLASS::insert(value_type data, Node_ptr _root) {
+  Node_ptr z = search(KeyOfValue()(data), _root);
+  if (z != TNULL) {
+    erase_node_helper(z);
+  }
+  insert_node_helper(data);
+}
+
+template <RB_TREE_TEMPLATE>
 void RB_TREE_CLASS::erase(Key key) {
   Node_ptr z = search(key);
   if (z == TNULL) {
