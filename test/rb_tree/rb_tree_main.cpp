@@ -74,7 +74,7 @@ int main(void) {
 
   std::cout << "\nBefore delete: \n";
 
-  bst1.insert(TYPE("a", 8));
+  bst1.insert(TYPE("a", 8), bst1.get_root());
   bst1.insert(TYPE("b", 18));
   bst1.insert(TYPE("c", 5));
   bst1.insert(TYPE("d", 15));
@@ -82,7 +82,7 @@ int main(void) {
   bst1.insert(TYPE("f", 25));
   bst1.insert(TYPE("g", 40));
   bst1.insert(TYPE("h", 80));
-  bst1.insert(TYPE("i", 1));
+  bst1.insert(TYPE("i", 1), bst1.get_root());
 
   bst = bst1;
   pretty_print(bst.get_root());
