@@ -226,6 +226,163 @@ int main(void) {
     NEWLINE
   }
 
+  std::cout << "\n\n================[ RELATIONAL OPERATORS ]================\n";
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("a", 1));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("b", 2));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("c", 3));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("d", 4));
+
+    std::cout << "\n[ EQUAL == (TRUE) ]\n";
+    std::cout << "Result:           " << (bst_rel_1 == bst_rel_2) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("e", 5));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("f", 6));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("g", 7));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("h", 8));
+
+    std::cout << "\n[ EQUAL == (FALSE) ]\n";
+    std::cout << "Result:           " << (bst_rel_1 == bst_rel_2) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("e", 5));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("f", 6));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("g", 7));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("h", 8));
+
+    std::cout << "\n[ DIFFERENT != (TRUE) ]\n";
+    std::cout << "Result:           " << (bst_rel_1 != bst_rel_2) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("a", 1));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("b", 2));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("c", 3));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("d", 4));
+
+    std::cout << "\n[ DIFFERENT == (FALSE) ]\n";
+    std::cout << "Result:           " << (bst_rel_1 != bst_rel_2) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("e", 5));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("f", 6));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("g", 7));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("d", 4));
+
+    std::cout << "\n[ SMALLER < (TRUE) ]\n";
+    std::cout << "Result:           " << (bst_rel_1 < bst_rel_2) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("e", 5));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("f", 6));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("g", 7));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("d", 4));
+
+    std::cout << "\n[ SMALLER < (FALSE) ]\n";
+    std::cout << "Result:           " << (bst_rel_2 < bst_rel_1) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("a", 1));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("b", 2));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("c", 3));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("d", 4));
+
+    std::cout << "\n[ SMALLER OR EQUAL <= (TRUE) ]\n";
+    std::cout << "Result:           " << (bst_rel_1 <= bst_rel_2) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("e", 5));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("f", 6));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("g", 7));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("h", 8));
+
+    std::cout << "\n[ SMALLER OR EQUAL <= (FALSE) ]\n";
+    std::cout << "Result:           " << (bst_rel_2 <= bst_rel_1) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("e", 5));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("f", 6));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("g", 7));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("d", 4));
+
+    std::cout << "\n[ BIGGER > (TRUE) ]\n";
+    std::cout << "Result:           " << (bst_rel_2 > bst_rel_1) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("e", 5));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("f", 6));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("g", 7));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("d", 4));
+
+    std::cout << "\n[ BIGGER > (FALSE) ]\n";
+    std::cout << "Result:           " << (bst_rel_1 > bst_rel_2) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("a", 1));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("b", 2));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("c", 3));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("d", 4));
+
+    std::cout << "\n[ BIGGER OR EQUAL >= (TRUE) ]\n";
+    std::cout << "Result:           " << (bst_rel_2 >= bst_rel_1) << "\n";
+  }
+
+  {
+    RB_TREE bst_rel_1;
+    RB_TREE bst_rel_2;
+
+    bst_rel_1.insert(TYPE("a", 1)), bst_rel_2.insert(TYPE("e", 5));
+    bst_rel_1.insert(TYPE("b", 2)), bst_rel_2.insert(TYPE("f", 6));
+    bst_rel_1.insert(TYPE("c", 3)), bst_rel_2.insert(TYPE("g", 7));
+    bst_rel_1.insert(TYPE("d", 4)), bst_rel_2.insert(TYPE("h", 8));
+
+    std::cout << "\n[ BIGGER OR EQUAL >= (FALSE) ]\n";
+    std::cout << "Result:           " << (bst_rel_1 >= bst_rel_2) << "\n";
+  }
+
   std::cout << "\n\n===========[ ITERATORS ]===========\n";
   {
     std::cout << "\n[ BEGIN ]\n";
