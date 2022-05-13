@@ -12,6 +12,18 @@ MAP_CLASS::map(const key_compare& comp, const allocator_type& alloc)
     : _rb_tree(), _comp(comp), _alloc(alloc) {}
 
 template <MAP_TEMPLATE>
+template <class InputIterator>
+MAP_CLASS::map(InputIterator first, InputIterator last,
+               const key_compare& comp,
+               const allocator_type& alloc)
+    : _rb_tree(), _comp(comp), _alloc(alloc) {
+  while (first != last) {
+    insert(*first);
+    ++first;
+  }
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::iterator MAP_CLASS::begin(void) {
   return (_rb_tree.begin());
 }
