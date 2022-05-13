@@ -20,6 +20,11 @@ void print_map(T& map) {
   std::cout << std::endl;
 }
 
+template <typename T, typename U>
+bool pred(T x, U y) {
+  return ((x.first == y.first) && (x.second == y.second));
+}
+
 // NEWLINE
 // print_map<FT_PRINT>(FTmap);
 // print_map<OR_PRINT>(ORmap);
@@ -41,6 +46,7 @@ void print_map(T& map) {
 
 #include <map>
 
+#include "../../algorithm.hpp"
 #include "../../map.hpp"
 
 int main(void) {
@@ -53,6 +59,28 @@ int main(void) {
     ft::map<MAP_T>::iterator FTite = FTmap.end();
 
     if ((FTit->first == "") && (FTite->first == "") && (FTit == FTite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    std::cout << "\n[ CONSTRUCTOR RANGE ]\n";
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
+
+    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+
+    if (ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
+                  pred<FT_TYPE, OR_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("d", 15));
+
+    if (!ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
+                  pred<FT_TYPE, OR_TYPE>))
       std::cout << OK " ";
     else
       std::cout << KO " ";
