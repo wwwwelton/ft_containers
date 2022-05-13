@@ -143,6 +143,11 @@ typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search(Key k) {
 }
 
 template <RB_TREE_TEMPLATE>
+typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search(Key k, Node_ptr _root) {
+  return (search_helper(_root, k));
+}
+
+template <RB_TREE_TEMPLATE>
 typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::minimum(Node_ptr node) const {
   return (Rb_tree_node::minimum(node));
 }

@@ -91,6 +91,8 @@ class Rb_tree {
 
   Node_ptr search(Key k);
 
+  Node_ptr search(Key k, Node_ptr _root);
+
   Node_ptr minimum(Node_ptr node) const;
 
   Node_ptr maximum(Node_ptr node) const;
