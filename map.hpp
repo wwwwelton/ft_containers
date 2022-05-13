@@ -86,7 +86,7 @@ class map {
 
   const_iterator end(void) const;
 
-  //   ft::pair<iterator, bool> insert(const value_type& val);
+  ft::pair<iterator, bool> insert(const value_type& val);
 
   //   iterator insert(iterator position, const value_type& val);
 
