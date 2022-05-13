@@ -23,6 +23,7 @@ HEADERS				=	algorithm.hpp \
 						rb_tree_iterator.hpp \
 						rb_tree_iterator_reverse.hpp \
 						map.hpp \
+						map.tpp \
 
 VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
 VECTOR_TEST_2		=	test/vector/vector_test_2.cpp

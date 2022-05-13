@@ -3,6 +3,13 @@
 #ifndef MAP_HPP_
 #define MAP_HPP_
 
+#define MAP_TEMPLATE typename Key,     \
+                     typename T,       \
+                     typename Compare, \
+                     typename Alloc
+
+#define MAP_CLASS map<Key, T, Compare, Alloc>
+
 #include <functional>
 #include <memory>
 
@@ -62,9 +69,36 @@ class map {
   typedef typename Rb_tree_type::size_type size_type;
   typedef typename Rb_tree_type::difference_type difference_type;
 
+  explicit map(const key_compare& comp = key_compare(),
+               const allocator_type& alloc = allocator_type());
+
+//   template <class InputIterator>
+//   map(InputIterator first, InputIterator last,
+//       const key_compare& comp = key_compare(),
+//       const allocator_type& alloc = allocator_type());
+
+//   map(const map& x);
+
+//   ~map(void);
+
+//   map& operator=(const map& x);
+
+  iterator begin(void);
+
+  const_iterator begin(void) const;
+
+  iterator end(void);
+
+  const_iterator end(void) const;
+
  private:
+  Rb_tree_type _rb_tree;
+  key_compare _comp;
+  allocator_type _alloc;
 };
 
 }  // namespace ft
+
+#include "map.tpp"
 
 #endif  // MAP_HPP_
