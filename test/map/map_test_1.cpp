@@ -80,7 +80,32 @@ int main(void) {
     FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("d", 15));
 
     if (!ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
-                  pred<FT_TYPE, OR_TYPE>))
+                   pred<FT_TYPE, OR_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    std::cout << "\n[ CONSTRUCTOR COPY ]\n";
+    ft::map<MAP_T> FTmap_copy;
+
+    FTmap_copy.insert(FT_TYPE("a", 8));
+    FTmap_copy.insert(FT_TYPE("b", 18));
+    FTmap_copy.insert(FT_TYPE("c", 5));
+    FTmap_copy.insert(FT_TYPE("d", 15));
+
+    ft::map<MAP_T> FTmap(FTmap_copy);
+
+    if (ft::equal(FTmap.begin(), FTmap.end(), FTmap_copy.begin(),
+                  pred<FT_TYPE, FT_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTmap.insert(FT_TYPE("e", 17));
+
+    if (!ft::equal(FTmap.begin(), FTmap.end(), FTmap_copy.begin(),
+                  pred<FT_TYPE, FT_TYPE>))
       std::cout << OK " ";
     else
       std::cout << KO " ";
