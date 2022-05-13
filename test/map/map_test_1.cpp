@@ -26,7 +26,7 @@ int main(void) {
     ft::map<_MAP_T>::iterator FTit = FTmap.begin();
     ft::map<_MAP_T>::iterator FTite = FTmap.end();
 
-    if ((FTit->first == "") && (FTite->first == ""))
+    if ((FTit->first == "") && (FTite->first == "") && (FTit == FTite))
       std::cout << OK " ";
     else
       std::cout << KO " ";
