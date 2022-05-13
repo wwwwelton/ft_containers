@@ -72,6 +72,8 @@ class map {
   explicit map(const key_compare& comp = key_compare(),
                const allocator_type& alloc = allocator_type());
 
+  iterator insert(iterator position, const value_type& val);
+
   //   map(const map& x);
 
   //   ~map(void);

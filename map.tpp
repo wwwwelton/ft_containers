@@ -44,6 +44,18 @@ ft::pair<typename MAP_CLASS::iterator, bool> MAP_CLASS::insert(const value_type&
 }
 
 template <MAP_TEMPLATE>
+typename MAP_CLASS::iterator MAP_CLASS::insert(iterator position, const value_type& val) {
+  iterator x = find(val.first);
+  if (x != end()) {
+    return (x);
+  } else {
+    _rb_tree.insert(val, position.base());
+    iterator y = find(val.first);
+    return (y);
+  }
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::iterator MAP_CLASS::find(const key_type& k) {
   iterator it(_rb_tree.search(k));
   return (it);
