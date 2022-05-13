@@ -22,6 +22,7 @@ HEADERS				=	algorithm.hpp \
 						rb_tree_node.hpp \
 						rb_tree_iterator.hpp \
 						rb_tree_iterator_reverse.hpp \
+						map.hpp \
 
 VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
 VECTOR_TEST_2		=	test/vector/vector_test_2.cpp
@@ -31,6 +32,8 @@ STACK_TEST_2		=	test/stack/stack_test_2.cpp
 
 PAIR_TEST_1			=	test/pair/pair_test_1.cpp
 PAIR_TEST_2			=	test/pair/pair_test_2.cpp
+
+MAP_TEST_1			=	test/map/map_test_1.cpp
 
 RB_TREE_TEST		=	test/rb_tree/rb_tree_main.cpp
 
@@ -81,6 +84,10 @@ pair2:				$(HEADERS)
 					diff -y pair_test_FT_2_out pair_test_STD_2_out
 					diff pair_test_FT_2_out pair_test_STD_2_out
 
+map1:				$(HEADERS)
+					$(CC) $(CFLAGS) $(MAP_TEST_1) -o map_test_1
+					valgrind ./map_test_1
+
 rbtree:
 					clear && $(CC) $(CFLAGS) $(RB_TREE_TEST) -o btree.out \
 					&& ./btree.out
@@ -104,6 +111,8 @@ clean:
 					$(RM) pair_test_1
 					$(RM) pair_test_STD_2 pair_test_STD_2_out
 					$(RM) pair_test_FT_2 pair_test_FT_2_out
+
+					$(RM) map_test_1
 
 					$(RM) btree.out
 

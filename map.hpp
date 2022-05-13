@@ -1,0 +1,70 @@
+// Copyright (c) 2022 Welton Leite, wleite. All rights reserved.
+
+#ifndef MAP_HPP_
+#define MAP_HPP_
+
+#include <functional>
+#include <memory>
+
+#include "./rb_tree.hpp"
+#include "./utility.hpp"
+
+namespace ft {
+
+template <class Key,
+          class T,
+          class Compare = std::less<Key>,
+          class Alloc = std::allocator<ft::pair<const Key, T> > >
+class map {
+  template <typename P>
+  struct _Select1st {
+    Key operator()(const P& x) const {
+      return (x.first);
+    }
+  };
+
+ public:
+  typedef Key key_type;
+  typedef T mapped_type;
+  typedef ft::pair<const Key, T> value_type;
+  typedef Compare key_compare;
+  typedef Alloc allocator_type;
+  typedef typename Alloc::reference reference;
+  typedef typename Alloc::const_reference const_reference;
+  typedef typename Alloc::pointer pointer;
+  typedef typename Alloc::const_pointer const_pointer;
+
+  class value_compare
+      : public std::binary_function<value_type, value_type, bool> {
+    friend class map<Key, T, Compare, Alloc>;
+
+   protected:
+    Compare comp;
+
+    explicit value_compare(Compare c) : comp(c) {}
+
+   public:
+    bool operator()(const value_type& x, const value_type& y) const {
+      return (comp(x.first, y.first));
+    }
+  };
+
+ private:
+  typedef Rb_tree<key_type, value_type,
+                  _Select1st<value_type>, key_compare, Alloc>
+      Rb_tree_type;
+
+ public:
+  typedef typename Rb_tree_type::iterator iterator;
+  typedef typename Rb_tree_type::const_iterator const_iterator;
+  typedef typename Rb_tree_type::reverse_iterator reverse_iterator;
+  typedef typename Rb_tree_type::const_reverse_iterator const_reverse_iterator;
+  typedef typename Rb_tree_type::size_type size_type;
+  typedef typename Rb_tree_type::difference_type difference_type;
+
+ private:
+};
+
+}  // namespace ft
+
+#endif  // MAP_HPP_
