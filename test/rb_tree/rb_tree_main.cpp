@@ -112,6 +112,7 @@ int main(void) {
   pretty_print(bst.get_root());
   std::cout << "\n";
   std::cout << "Search \"h\": " << VOV<TYPE>()(bst.search("h")->data) << "\n";
+  std::cout << "Search \"a | root\": " << VOV<TYPE>()(bst.search("a", bst.get_root())->data) << "\n";
   std::cout << "Minimum: " << KOV<TYPE>()(bst.minimum(bst.get_root())->data);
   NEWLINE
   std::cout << "Maximum: " << KOV<TYPE>()(bst.maximum(bst.get_root())->data);
