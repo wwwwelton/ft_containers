@@ -262,7 +262,6 @@ int main(void) {
     else
       std::cout << KO " ";
   }
-
   {
     std::cout << "\n[ SIZE ]\n";
     ft::map<MAP_T> FTmap;
@@ -279,6 +278,15 @@ int main(void) {
     FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
 
     if (FTmap.size() == ORmap.size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    std::cout << "\n[ MAX_SIZE ]\n";
+    ft::map<MAP_T> FTmap;
+
+    if (FTmap.max_size())
       std::cout << OK " ";
     else
       std::cout << KO " ";
