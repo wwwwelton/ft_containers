@@ -87,6 +87,8 @@ class Rb_tree {
 
   void clear(void);
 
+  key_compare key_comp(void) const;
+
   // red–black tree functions
 
   Node_ptr search(Key k);

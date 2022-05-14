@@ -135,6 +135,11 @@ void RB_TREE_CLASS::clear(void) {
   _size = 0;
 }
 
+template <RB_TREE_TEMPLATE>
+typename RB_TREE_CLASS::key_compare RB_TREE_CLASS::key_comp(void) const {
+  return (_comp);
+}
+
 // red–black tree functions
 
 template <RB_TREE_TEMPLATE>
