@@ -191,9 +191,9 @@ template <MAP_TEMPLATE>
 typename MAP_CLASS::size_type MAP_CLASS::count(const key_type& k) const {
   const_iterator it = find(k);
   if (it != end()) {
-    return (true);
+    return (1);
   }
-  return (false);
+  return (0);
 }
 
 template <MAP_TEMPLATE>
