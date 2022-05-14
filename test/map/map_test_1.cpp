@@ -564,6 +564,22 @@ int main(void) {
 
   std::cout << "\n\n===========[ OPERATIONS ]===========\n";
   {
+    std::cout << "\n[ FIND ]\n";
+    ft::map<MAP_T> FTmap;
+
+    FTmap.insert(FT_TYPE("a", 8));
+
+    if (FTmap.find("a") == FTmap.begin())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (FTmap.find("b") == FTmap.end())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
     std::cout << "\n[ COUNT ]\n";
     ft::map<MAP_T> FTmap;
 
