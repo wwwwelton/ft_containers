@@ -134,6 +134,10 @@ class map {
 
   size_type count(const key_type& k) const;
 
+  iterator lower_bound(const key_type& k);
+
+  const_iterator lower_bound(const key_type& k) const;
+
   allocator_type get_allocator(void) const;
 
  private:

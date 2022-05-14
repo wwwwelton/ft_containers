@@ -197,6 +197,16 @@ typename MAP_CLASS::size_type MAP_CLASS::count(const key_type& k) const {
 }
 
 template <MAP_TEMPLATE>
+typename MAP_CLASS::iterator MAP_CLASS::lower_bound(const key_type& k) {
+  return (_rb_tree.lower_bound(k));
+}
+
+template <MAP_TEMPLATE>
+typename MAP_CLASS::const_iterator MAP_CLASS::lower_bound(const key_type& k) const {
+  return (_rb_tree.lower_bound(k));
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::allocator_type MAP_CLASS::get_allocator(void) const {
   return (_rb_tree.get_allocator());
 }
