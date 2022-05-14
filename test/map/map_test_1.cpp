@@ -292,6 +292,34 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ ELEMENT ACCESS ]===========\n";
+  {
+    std::cout << "\n[ OPERATOR [] ]\n";
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
+
+    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
+
+    FTmap["z"] = 42;
+    ORmap["z"] = 42;
+
+    ft::map<MAP_T>::iterator FTit = FTmap.begin();
+    std::map<MAP_T>::iterator ORit = ORmap.begin();
+
+    if ((FTit->first == ORit->first) && (FTit->second == ORit->second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if ((FTmap["z"] == ORmap["z"]) && (FTmap["y"] == ORmap["y"]))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   std::cout << "\n\n===========[ MAP MODIFIERS ]===========\n";
   {
     std::cout << "\n[ INSERT VAL ]\n";
