@@ -105,7 +105,7 @@ class map {
 
   size_type max_size(void) const;
 
-  mapped_type& operator[] (const key_type& k);
+  mapped_type& operator[](const key_type& k);
 
   ft::pair<iterator, bool> insert(const value_type& val);
 
@@ -113,6 +113,8 @@ class map {
 
   template <class InputIterator>
   void insert(InputIterator first, InputIterator last);
+
+  void erase(iterator position);
 
   void clear(void);
 

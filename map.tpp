@@ -134,6 +134,11 @@ void MAP_CLASS::insert(InputIterator first, InputIterator last) {
 }
 
 template <MAP_TEMPLATE>
+void MAP_CLASS::erase(iterator position) {
+  _rb_tree.erase(position->first);
+}
+
+template <MAP_TEMPLATE>
 void MAP_CLASS::clear(void) {
   _rb_tree.clear();
 }
