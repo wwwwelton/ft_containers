@@ -148,12 +148,12 @@ typename RB_TREE_CLASS::allocator_type RB_TREE_CLASS::get_allocator(void) const 
 // red–black tree functions
 
 template <RB_TREE_TEMPLATE>
-typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search(Key k) {
+typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search(Key k) const {
   return (search_helper(root, k));
 }
 
 template <RB_TREE_TEMPLATE>
-typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search(Key k, Node_ptr _root) {
+typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search(Key k, Node_ptr _root) const {
   return (search_helper(_root, k));
 }
 

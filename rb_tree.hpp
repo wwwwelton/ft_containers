@@ -93,9 +93,9 @@ class Rb_tree {
 
   // red–black tree functions
 
-  Node_ptr search(Key k);
+  Node_ptr search(Key k) const;
 
-  Node_ptr search(Key k, Node_ptr _root);
+  Node_ptr search(Key k, Node_ptr _root) const;
 
   Node_ptr minimum(Node_ptr node) const;
 
@@ -128,7 +128,7 @@ class Rb_tree {
 
   void destructor_helper(Node_ptr node);
 
-  Node_ptr search_helper(Node_ptr node, Key key);
+  Node_ptr search_helper(Node_ptr node, Key key) const;
 
   void insert_node_helper(value_type data);
 

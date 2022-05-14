@@ -66,7 +66,7 @@ void RB_TREE_CLASS::destructor_helper(Node_ptr node) {
 }
 
 template <RB_TREE_TEMPLATE>
-typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search_helper(Node_ptr node, Key key) {
+typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search_helper(Node_ptr node, Key key) const {
   if (node == TNULL || (!_comp(key, KeyOfValue()(node->data)) &&
                         !_comp(KeyOfValue()(node->data), key))) {
     return (node);
