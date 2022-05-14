@@ -124,6 +124,8 @@ class map {
 
   void clear(void);
 
+  key_compare key_comp(void) const;
+
   iterator find(const key_type& k);
 
   const_iterator find(const key_type& k) const;
