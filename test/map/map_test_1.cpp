@@ -399,6 +399,61 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ ERASE POS ]\n";
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
+
+    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
+
+    FTmap.erase(FTmap.begin());
+    ORmap.erase(ORmap.begin());
+
+    if (ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
+                  pred<FT_TYPE, OR_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTmap.erase(FTmap.begin());
+
+    if (!ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
+                   pred<FT_TYPE, OR_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    std::cout << "\n[ ERASE KEY ]\n";
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
+
+    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
+
+    FTmap.erase("a");
+    ORmap.erase("a");
+
+    if (ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
+                  pred<FT_TYPE, OR_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTmap.erase("b");
+    ORmap.erase("d");
+
+    if (!ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
+                   pred<FT_TYPE, OR_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   {
     std::cout << "\n[ CLEAR ]\n";
