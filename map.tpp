@@ -81,6 +81,11 @@ void MAP_CLASS::insert(InputIterator first, InputIterator last) {
 }
 
 template <MAP_TEMPLATE>
+void MAP_CLASS::clear(void) {
+  _rb_tree.clear();
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::iterator MAP_CLASS::find(const key_type& k) {
   iterator it(_rb_tree.search(k));
   return (it);

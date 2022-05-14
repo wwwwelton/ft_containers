@@ -98,6 +98,8 @@ class map {
   template <class InputIterator>
   void insert(InputIterator first, InputIterator last);
 
+  void clear(void);
+
   iterator find(const key_type& k);
 
   const_iterator find(const key_type& k) const;
