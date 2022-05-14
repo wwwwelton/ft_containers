@@ -169,6 +169,34 @@ typename RB_TREE_CLASS::const_iterator RB_TREE_CLASS::lower_bound(const key_type
 }
 
 template <RB_TREE_TEMPLATE>
+typename RB_TREE_CLASS::iterator RB_TREE_CLASS::upper_bound(const key_type& k) {
+  Node_ptr x = root;   // Current node.
+  Node_ptr y = TNULL;  // Last node which is greater than k.
+
+  while (x != TNULL)
+    if (_comp(k, KeyOfValue()(x->data)))
+      y = x, x = x->left;
+    else
+      x = x->right;
+
+  return (iterator(y));
+}
+
+template <RB_TREE_TEMPLATE>
+typename RB_TREE_CLASS::const_iterator RB_TREE_CLASS::upper_bound(const key_type& k) const {
+  Node_ptr x = root;   // Current node.
+  Node_ptr y = TNULL;  // Last node which is greater than k.
+
+  while (x != TNULL)
+    if (_comp(k, KeyOfValue()(x->data)))
+      y = x, x = x->left;
+    else
+      x = x->right;
+
+  return (const_iterator(y));
+}
+
+template <RB_TREE_TEMPLATE>
 typename RB_TREE_CLASS::allocator_type RB_TREE_CLASS::get_allocator(void) const {
   return (_alloc);
 }
