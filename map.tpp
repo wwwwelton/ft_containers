@@ -171,6 +171,11 @@ typename MAP_CLASS::key_compare MAP_CLASS::key_comp(void) const {
 }
 
 template <MAP_TEMPLATE>
+typename MAP_CLASS::value_compare MAP_CLASS::value_comp(void) const {
+  return (value_compare(_rb_tree.key_comp()));
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::iterator MAP_CLASS::find(const key_type& k) {
   iterator it(_rb_tree.search(k));
   return (it);
