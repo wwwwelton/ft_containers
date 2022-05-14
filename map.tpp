@@ -188,6 +188,15 @@ typename MAP_CLASS::const_iterator MAP_CLASS::find(const key_type& k) const {
 }
 
 template <MAP_TEMPLATE>
+typename MAP_CLASS::size_type MAP_CLASS::count(const key_type& k) const {
+  const_iterator it = find(k);
+  if (it != end()) {
+    return (true);
+  }
+  return (false);
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::allocator_type MAP_CLASS::get_allocator(void) const {
   return (_rb_tree.get_allocator());
 }

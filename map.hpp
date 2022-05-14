@@ -132,6 +132,8 @@ class map {
 
   const_iterator find(const key_type& k) const;
 
+  size_type count(const key_type& k) const;
+
   allocator_type get_allocator(void) const;
 
  private:
