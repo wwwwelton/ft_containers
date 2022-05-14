@@ -621,6 +621,40 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ UPPER BOUND ]\n";
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
+
+    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
+
+    ft::map<MAP_T>::iterator FTit = FTmap.upper_bound("a");
+    std::map<MAP_T>::iterator ORit = ORmap.upper_bound("a");
+
+    if ((FTit->first == ORit->first) && (FTit->second == ORit->second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTit = FTmap.upper_bound("c");
+    ORit = ORmap.upper_bound("c");
+
+    if ((FTit->first == ORit->first) && (FTit->second == ORit->second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTit = FTmap.upper_bound("z");
+    ORit = ORmap.upper_bound("z");
+
+    if ((FTit == FTmap.end()) && (ORit == ORmap.end()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   std::cout << "\n\n===========[ ALLOCATOR ]===========\n";
   {
