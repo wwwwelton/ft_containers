@@ -158,6 +158,20 @@ void MAP_CLASS::erase(iterator first, iterator last) {
 }
 
 template <MAP_TEMPLATE>
+void MAP_CLASS::swap(map& x) {
+  key_compare tmp_comp = x._comp;
+  allocator_type tmp_alloc = x._alloc;
+
+  x._comp = _comp;
+  x._alloc = _alloc;
+
+  _comp = tmp_comp;
+  _alloc = tmp_alloc;
+
+  _rb_tree.swap(x._rb_tree);
+}
+
+template <MAP_TEMPLATE>
 void MAP_CLASS::clear(void) {
   _rb_tree.clear();
 }

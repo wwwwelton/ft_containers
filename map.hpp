@@ -120,6 +120,8 @@ class map {
 
   void erase(iterator first, iterator last);
 
+  void swap (map& x);
+
   void clear(void);
 
   iterator find(const key_type& k);
