@@ -543,6 +543,24 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ VALUE COMP ]\n";
+    ft::map<MAP_T> FTmap_copy;
+    ft::map<MAP_T> FTmap;
+
+    FTmap.insert(FT_TYPE("a", 8));
+    FTmap_copy.insert(FT_TYPE("b", 18));
+
+    if (FTmap.value_comp()(*FTmap.begin(), *FTmap_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (!FTmap.value_comp()(*FTmap_copy.begin(), *FTmap.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   std::cout << "\n\n===========[ ALLOCATOR ]===========\n";
   {
