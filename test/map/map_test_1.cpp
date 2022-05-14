@@ -263,6 +263,27 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  {
+    std::cout << "\n[ SIZE ]\n";
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
+
+    if (FTmap.size() == ORmap.size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
+
+    if (FTmap.size() == ORmap.size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   std::cout << "\n\n===========[ MAP MODIFIERS ]===========\n";
   {
     std::cout << "\n[ INSERT VAL ]\n";
