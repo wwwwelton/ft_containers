@@ -103,6 +103,8 @@ class map {
 
   size_type size(void) const;
 
+  size_type max_size(void) const;
+
   ft::pair<iterator, bool> insert(const value_type& val);
 
   iterator insert(iterator position, const value_type& val);

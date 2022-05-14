@@ -90,6 +90,11 @@ typename MAP_CLASS::size_type MAP_CLASS::size(void) const {
 }
 
 template <MAP_TEMPLATE>
+typename MAP_CLASS::size_type MAP_CLASS::max_size(void) const {
+  return (_rb_tree.max_size());
+}
+
+template <MAP_TEMPLATE>
 ft::pair<typename MAP_CLASS::iterator, bool> MAP_CLASS::insert(const value_type& val) {
   iterator x = find(val.first);
   if (x != end()) {
