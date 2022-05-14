@@ -522,6 +522,28 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ OBSERVERS ]===========\n";
+  {
+    std::cout << "\n[ KEY COMP ]\n";
+    ft::map<MAP_T> FTmap_copy;
+    ft::map<MAP_T> FTmap;
+
+    ft::map<MAP_T>::key_compare FTmap_comp = FTmap.key_comp();
+
+    FTmap.insert(FT_TYPE("a", 8));
+    FTmap_copy.insert(FT_TYPE("b", 18));
+
+    if (FTmap_comp(FTmap.begin()->first, FTmap_copy.begin()->first))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (!FTmap_comp(FTmap_copy.begin()->first, FTmap.begin()->first))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
