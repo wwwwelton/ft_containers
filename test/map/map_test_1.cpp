@@ -562,6 +562,24 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ OPERATIONS ]===========\n";
+  {
+    std::cout << "\n[ COUNT ]\n";
+    ft::map<MAP_T> FTmap;
+
+    FTmap.insert(FT_TYPE("a", 8));
+
+    if (FTmap.count("a"))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (!FTmap.count("b"))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   std::cout << "\n\n===========[ ALLOCATOR ]===========\n";
   {
     std::cout << "\n[ GET_ALLOCATOR ]\n";
