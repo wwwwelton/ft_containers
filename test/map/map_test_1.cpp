@@ -176,6 +176,31 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ RBEGIN ]\n";
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
+
+    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
+
+    ft::map<MAP_T>::reverse_iterator FTit = FTmap.rbegin();
+    std::map<MAP_T>::reverse_iterator ORit = ORmap.rbegin();
+    ft::map<MAP_T>::const_reverse_iterator FTitC = FTmap.rbegin();
+    std::map<MAP_T>::const_reverse_iterator ORitC = ORmap.rbegin();
+
+    if ((FTit->first == ORit->first) && (FTit->second == ORit->second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if ((FTitC->first == ORitC->first) && (FTitC->second == ORitC->second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   std::cout << "\n\n===========[ MAP MODIFIERS ]===========\n";
   {
