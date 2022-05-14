@@ -207,6 +207,16 @@ typename MAP_CLASS::const_iterator MAP_CLASS::lower_bound(const key_type& k) con
 }
 
 template <MAP_TEMPLATE>
+typename MAP_CLASS::iterator MAP_CLASS::upper_bound(const key_type& k) {
+  return (_rb_tree.upper_bound(k));
+}
+
+template <MAP_TEMPLATE>
+typename MAP_CLASS::const_iterator MAP_CLASS::upper_bound(const key_type& k) const {
+  return (_rb_tree.upper_bound(k));
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::allocator_type MAP_CLASS::get_allocator(void) const {
   return (_rb_tree.get_allocator());
 }
