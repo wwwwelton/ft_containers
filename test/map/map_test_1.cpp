@@ -200,17 +200,17 @@ int main(void) {
     FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("c", 5));
     FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
 
-    ft::map<MAP_T>::reverse_iterator FTit = FTmap.rbegin();
-    std::map<MAP_T>::reverse_iterator ORit = ORmap.rbegin();
-    ft::map<MAP_T>::const_reverse_iterator FTitC = FTmap.rbegin();
-    std::map<MAP_T>::const_reverse_iterator ORitC = ORmap.rbegin();
+    ft::map<MAP_T>::reverse_iterator FTitR = FTmap.rbegin();
+    std::map<MAP_T>::reverse_iterator ORitR = ORmap.rbegin();
+    ft::map<MAP_T>::const_reverse_iterator FTitCR = FTmap.rbegin();
+    std::map<MAP_T>::const_reverse_iterator ORitCR = ORmap.rbegin();
 
-    if ((FTit->first == ORit->first) && (FTit->second == ORit->second))
+    if ((FTitR->first == ORitR->first) && (FTitR->second == ORitR->second))
       std::cout << OK " ";
     else
       std::cout << KO " ";
 
-    if ((FTitC->first == ORitC->first) && (FTitC->second == ORitC->second))
+    if ((FTitCR->first == ORitCR->first) && (FTitCR->second == ORitCR->second))
       std::cout << OK " ";
     else
       std::cout << KO " ";
