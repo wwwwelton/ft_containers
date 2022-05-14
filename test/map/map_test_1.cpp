@@ -194,6 +194,23 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  {
+    std::cout << "\n[ CLEAR ]\n";
+    ft::map<MAP_T> FTmap;
+
+    FTmap.insert(FT_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15));
+
+    FTmap.clear();
+
+    if (FTmap.begin() == FTmap.end())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
