@@ -473,7 +473,38 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ SWAP ]\n";
+    ft::map<MAP_T> FTmap_copy;
+    std::map<MAP_T> ORmap_copy;
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
 
+    FTmap_copy.insert(FT_TYPE("a", 8)), ORmap_copy.insert(OR_TYPE("a", 8));
+    FTmap_copy.insert(FT_TYPE("b", 18)), ORmap_copy.insert(OR_TYPE("b", 18));
+    FTmap_copy.insert(FT_TYPE("c", 5)), ORmap_copy.insert(OR_TYPE("c", 5));
+    FTmap_copy.insert(FT_TYPE("d", 15)), ORmap_copy.insert(OR_TYPE("d", 15));
+
+    FTmap.insert(FT_TYPE("e", 17)), ORmap.insert(OR_TYPE("e", 17));
+    FTmap.insert(FT_TYPE("f", 25)), ORmap.insert(OR_TYPE("f", 25));
+    FTmap.insert(FT_TYPE("g", 40)), ORmap.insert(OR_TYPE("g", 40));
+    FTmap.insert(FT_TYPE("h", 80)), ORmap.insert(OR_TYPE("h", 80));
+
+    FTmap.swap(FTmap_copy);
+    ORmap.swap(ORmap_copy);
+
+    if (ft::equal(FTmap_copy.begin(), FTmap_copy.end(), ORmap_copy.begin(),
+                  pred<FT_TYPE, OR_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
+                  pred<FT_TYPE, OR_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
   {
     std::cout << "\n[ CLEAR ]\n";
     ft::map<MAP_T> FTmap;
