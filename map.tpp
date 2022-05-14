@@ -95,6 +95,12 @@ typename MAP_CLASS::size_type MAP_CLASS::max_size(void) const {
 }
 
 template <MAP_TEMPLATE>
+typename MAP_CLASS::mapped_type& MAP_CLASS::operator[](const key_type& k) {
+  iterator x = insert(begin(), ft::make_pair(k, mapped_type()));
+  return (x->second);
+}
+
+template <MAP_TEMPLATE>
 ft::pair<typename MAP_CLASS::iterator, bool> MAP_CLASS::insert(const value_type& val) {
   iterator x = find(val.first);
   if (x != end()) {
