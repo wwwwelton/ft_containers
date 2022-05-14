@@ -72,8 +72,6 @@ class map {
   explicit map(const key_compare& comp = key_compare(),
                const allocator_type& alloc = allocator_type());
 
-  iterator insert(iterator position, const value_type& val);
-
   template <class InputIterator>
   map(InputIterator first, InputIterator last,
       const key_compare& comp = key_compare(),
@@ -95,10 +93,10 @@ class map {
 
   ft::pair<iterator, bool> insert(const value_type& val);
 
-  //   iterator insert(iterator position, const value_type& val);
+  iterator insert(iterator position, const value_type& val);
 
-  //   template <class InputIterator>
-  //   void insert(InputIterator first, InputIterator last);
+  template <class InputIterator>
+  void insert(InputIterator first, InputIterator last);
 
   iterator find(const key_type& k);
 
