@@ -9,14 +9,14 @@ namespace ft {
 
 template <MAP_TEMPLATE>
 MAP_CLASS::map(const key_compare& comp, const allocator_type& alloc)
-    : _rb_tree(), _comp(comp), _alloc(alloc) {}
+    : _rb_tree(comp), _alloc(alloc) {}
 
 template <MAP_TEMPLATE>
 template <class InputIterator>
 MAP_CLASS::map(InputIterator first, InputIterator last,
                const key_compare& comp,
                const allocator_type& alloc)
-    : _rb_tree(), _comp(comp), _alloc(alloc) {
+    : _rb_tree(comp), _alloc(alloc) {
   while (first != last) {
     insert(*first);
     ++first;
@@ -25,7 +25,7 @@ MAP_CLASS::map(InputIterator first, InputIterator last,
 
 template <MAP_TEMPLATE>
 MAP_CLASS::map(const map& x)
-    : _rb_tree(x._rb_tree), _comp(x._comp), _alloc(x._alloc) {}
+    : _rb_tree(x._rb_tree), _alloc(x._alloc) {}
 
 template <MAP_TEMPLATE>
 MAP_CLASS::~map(void) {
@@ -35,7 +35,6 @@ MAP_CLASS::~map(void) {
 template <MAP_TEMPLATE>
 MAP_CLASS& MAP_CLASS::operator=(const map& x) {
   _rb_tree = x._rb_tree;
-  _comp = x._comp;
   _alloc = x._alloc;
 }
 
@@ -159,13 +158,9 @@ void MAP_CLASS::erase(iterator first, iterator last) {
 
 template <MAP_TEMPLATE>
 void MAP_CLASS::swap(map& x) {
-  key_compare tmp_comp = x._comp;
   allocator_type tmp_alloc = x._alloc;
 
-  x._comp = _comp;
   x._alloc = _alloc;
-
-  _comp = tmp_comp;
   _alloc = tmp_alloc;
 
   _rb_tree.swap(x._rb_tree);

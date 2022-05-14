@@ -132,7 +132,6 @@ class map {
 
  private:
   Rb_tree_type _rb_tree;
-  key_compare _comp;
   allocator_type _alloc;
 };
 
