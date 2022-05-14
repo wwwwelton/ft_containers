@@ -190,7 +190,7 @@ typename MAP_CLASS::const_iterator MAP_CLASS::find(const key_type& k) const {
 
 template <MAP_TEMPLATE>
 typename MAP_CLASS::allocator_type MAP_CLASS::get_allocator(void) const {
-  return (_alloc);
+  return (_rb_tree.get_allocator());
 }
 
 }  // namespace ft
