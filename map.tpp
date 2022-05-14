@@ -188,6 +188,11 @@ typename MAP_CLASS::const_iterator MAP_CLASS::find(const key_type& k) const {
   return (it);
 }
 
+template <MAP_TEMPLATE>
+typename MAP_CLASS::allocator_type MAP_CLASS::get_allocator(void) const {
+  return (_alloc);
+}
+
 }  // namespace ft
 
 #endif  // MAP_TPP_

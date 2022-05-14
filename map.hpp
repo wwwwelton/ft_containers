@@ -130,6 +130,8 @@ class map {
 
   const_iterator find(const key_type& k) const;
 
+  allocator_type get_allocator(void) const;
+
  private:
   Rb_tree_type _rb_tree;
   allocator_type _alloc;
