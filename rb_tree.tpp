@@ -140,6 +140,11 @@ typename RB_TREE_CLASS::key_compare RB_TREE_CLASS::key_comp(void) const {
   return (_comp);
 }
 
+template <RB_TREE_TEMPLATE>
+typename RB_TREE_CLASS::allocator_type RB_TREE_CLASS::get_allocator(void) const {
+  return (_alloc);
+}
+
 // red–black tree functions
 
 template <RB_TREE_TEMPLATE>

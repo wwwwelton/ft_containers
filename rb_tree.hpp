@@ -89,6 +89,8 @@ class Rb_tree {
 
   key_compare key_comp(void) const;
 
+  allocator_type get_allocator(void) const;
+
   // red–black tree functions
 
   Node_ptr search(Key k);
