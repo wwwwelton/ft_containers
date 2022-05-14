@@ -79,7 +79,7 @@ class map {
 
   map(const map& x);
 
-  //   ~map(void);
+  ~map(void);
 
   //   map& operator=(const map& x);
 

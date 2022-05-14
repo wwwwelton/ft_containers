@@ -28,6 +28,11 @@ MAP_CLASS::map(const map& x)
     : _rb_tree(x._rb_tree), _comp(x._comp), _alloc(x._alloc) {}
 
 template <MAP_TEMPLATE>
+MAP_CLASS::~map(void) {
+  clear();
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::iterator MAP_CLASS::begin(void) {
   return (_rb_tree.begin());
 }
