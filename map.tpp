@@ -148,6 +148,16 @@ typename MAP_CLASS::size_type MAP_CLASS::erase(const key_type& k) {
 }
 
 template <MAP_TEMPLATE>
+void MAP_CLASS::erase(iterator first, iterator last) {
+  iterator it;
+  while (first != last) {
+    it = first;
+    ++first;
+    _rb_tree.erase(it->first);
+  }
+}
+
+template <MAP_TEMPLATE>
 void MAP_CLASS::clear(void) {
   _rb_tree.clear();
 }
