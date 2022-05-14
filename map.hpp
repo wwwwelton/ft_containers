@@ -81,7 +81,7 @@ class map {
 
   ~map(void);
 
-  //   map& operator=(const map& x);
+  map& operator=(const map& x);
 
   iterator begin(void);
 
