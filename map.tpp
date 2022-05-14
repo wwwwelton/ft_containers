@@ -80,6 +80,11 @@ typename MAP_CLASS::const_reverse_iterator MAP_CLASS::rend(void) const {
 }
 
 template <MAP_TEMPLATE>
+bool MAP_CLASS::empty(void) const {
+  return (_rb_tree.empty());
+}
+
+template <MAP_TEMPLATE>
 ft::pair<typename MAP_CLASS::iterator, bool> MAP_CLASS::insert(const value_type& val) {
   iterator x = find(val.first);
   if (x != end()) {
