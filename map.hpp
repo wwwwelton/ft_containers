@@ -95,6 +95,10 @@ class map {
 
   const_reverse_iterator rbegin(void) const;
 
+  reverse_iterator rend(void);
+
+  const_reverse_iterator rend(void) const;
+
   ft::pair<iterator, bool> insert(const value_type& val);
 
   iterator insert(iterator position, const value_type& val);
