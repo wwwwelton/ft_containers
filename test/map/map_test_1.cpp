@@ -65,22 +65,25 @@ int main(void) {
   }
   {
     std::cout << "\n[ CONSTRUCTOR RANGE ]\n";
-    ft::map<MAP_T> FTmap;
-    std::map<MAP_T> ORmap;
+    ft::map<MAP_T> FTmap_copy;
 
-    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
-    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+    FTmap_copy.insert(FT_TYPE("a", 8));
+    FTmap_copy.insert(FT_TYPE("b", 18));
+    FTmap_copy.insert(FT_TYPE("c", 5));
+    FTmap_copy.insert(FT_TYPE("d", 15));
 
-    if (ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
-                  pred<FT_TYPE, OR_TYPE>))
+    ft::map<MAP_T> FTmap(FTmap_copy.begin(), FTmap_copy.end());
+
+    if (ft::equal(FTmap.begin(), FTmap.end(), FTmap_copy.begin(),
+                  pred<FT_TYPE, FT_TYPE>))
       std::cout << OK " ";
     else
       std::cout << KO " ";
 
-    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("d", 15));
+    FTmap.insert(FT_TYPE("e", 17));
 
-    if (!ft::equal(FTmap.begin(), FTmap.end(), ORmap.begin(),
-                   pred<FT_TYPE, OR_TYPE>))
+    if (!ft::equal(FTmap.begin(), FTmap.end(), FTmap_copy.begin(),
+                   pred<FT_TYPE, FT_TYPE>))
       std::cout << OK " ";
     else
       std::cout << KO " ";
