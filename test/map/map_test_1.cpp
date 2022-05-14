@@ -585,12 +585,12 @@ int main(void) {
 
     FTmap.insert(FT_TYPE("a", 8));
 
-    if (FTmap.count("a"))
+    if (FTmap.count("a") == 1)
       std::cout << OK " ";
     else
       std::cout << KO " ";
 
-    if (!FTmap.count("b"))
+    if (FTmap.count("b") == 0)
       std::cout << OK " ";
     else
       std::cout << KO " ";
