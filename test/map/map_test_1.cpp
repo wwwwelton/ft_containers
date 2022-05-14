@@ -152,8 +152,15 @@ int main(void) {
 
     ft::map<MAP_T>::iterator FTit = FTmap.begin();
     std::map<MAP_T>::iterator ORit = ORmap.begin();
+    ft::map<MAP_T>::const_iterator FTitC = FTmap.begin();
+    std::map<MAP_T>::const_iterator ORitC = ORmap.begin();
 
     if ((FTit->first == ORit->first) && (FTit->second == ORit->second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if ((FTitC->first == ORitC->first) && (FTitC->second == ORitC->second))
       std::cout << OK " ";
     else
       std::cout << KO " ";
