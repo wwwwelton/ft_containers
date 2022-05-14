@@ -89,6 +89,10 @@ class Rb_tree {
 
   key_compare key_comp(void) const;
 
+  iterator lower_bound(const key_type& k);
+
+  const_iterator lower_bound(const key_type& k) const;
+
   allocator_type get_allocator(void) const;
 
   // red–black tree functions
