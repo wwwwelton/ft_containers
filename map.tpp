@@ -178,7 +178,7 @@ void MAP_CLASS::clear(void) {
 
 template <MAP_TEMPLATE>
 typename MAP_CLASS::key_compare MAP_CLASS::key_comp(void) const {
-  return (_comp);
+  return (_rb_tree.key_comp());
 }
 
 template <MAP_TEMPLATE>
