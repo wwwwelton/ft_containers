@@ -134,7 +134,6 @@ class map {
 
  private:
   Rb_tree_type _rb_tree;
-  allocator_type _alloc;
 };
 
 }  // namespace ft
