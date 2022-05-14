@@ -544,6 +544,30 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ ALLOCATOR ]===========\n";
+  {
+    std::cout << "\n[ GET_ALLOCATOR ]\n";
+    ft::map<MAP_T> FTmap_copy;
+
+    FTmap_copy.insert(FT_TYPE("a", 8));
+    FTmap_copy.insert(FT_TYPE("b", 18));
+    FTmap_copy.insert(FT_TYPE("c", 5));
+    FTmap_copy.insert(FT_TYPE("d", 15));
+
+    ft::map<MAP_T> FTmap(FTmap_copy.key_comp(), FTmap_copy.get_allocator());
+
+    FTmap.insert(FT_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15));
+
+    if (ft::equal(FTmap.begin(), FTmap.end(), FTmap_copy.begin(),
+                  pred<FT_TYPE, FT_TYPE>))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
