@@ -139,6 +139,15 @@ void MAP_CLASS::erase(iterator position) {
 }
 
 template <MAP_TEMPLATE>
+typename MAP_CLASS::size_type MAP_CLASS::erase(const key_type& k) {
+  if (find(k) != end()) {
+    _rb_tree.erase(k);
+    return (0);
+  }
+  return (1);
+}
+
+template <MAP_TEMPLATE>
 void MAP_CLASS::clear(void) {
   _rb_tree.clear();
 }

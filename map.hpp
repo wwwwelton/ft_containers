@@ -116,6 +116,8 @@ class map {
 
   void erase(iterator position);
 
+  size_type erase(const key_type& k);
+
   void clear(void);
 
   iterator find(const key_type& k);
