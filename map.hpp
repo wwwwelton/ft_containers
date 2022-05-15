@@ -185,6 +185,12 @@ bool operator<=(const map<Key, T, Compare, Alloc>& lhs,
   return (!(rhs < lhs));
 }
 
+template <class Key, class T, class Compare, class Alloc>
+bool operator>(const map<Key, T, Compare, Alloc>& lhs,
+               const map<Key, T, Compare, Alloc>& rhs) {
+  return (rhs < lhs);
+}
+
 }  // namespace ft
 
 #include "map.tpp"
