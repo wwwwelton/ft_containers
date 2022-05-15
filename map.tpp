@@ -217,6 +217,22 @@ typename MAP_CLASS::const_iterator MAP_CLASS::upper_bound(const key_type& k) con
 }
 
 template <MAP_TEMPLATE>
+ft::pair<typename MAP_CLASS::iterator, typename MAP_CLASS::iterator>
+MAP_CLASS::equal_range(const key_type& k) {
+  iterator lowerBound = lower_bound(k);
+  iterator upperBound = upper_bound(k);
+  return (ft::make_pair(lowerBound, upperBound));
+}
+
+template <MAP_TEMPLATE>
+ft::pair<typename MAP_CLASS::const_iterator, typename MAP_CLASS::const_iterator>
+MAP_CLASS::equal_range(const key_type& k) const {
+  const_iterator lowerBound = lower_bound(k);
+  const_iterator upperBound = upper_bound(k);
+  return (ft::make_pair(lowerBound, upperBound));
+}
+
+template <MAP_TEMPLATE>
 typename MAP_CLASS::allocator_type MAP_CLASS::get_allocator(void) const {
   return (_rb_tree.get_allocator());
 }
