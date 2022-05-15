@@ -141,9 +141,9 @@ template <MAP_TEMPLATE>
 typename MAP_CLASS::size_type MAP_CLASS::erase(const key_type& k) {
   if (find(k) != end()) {
     _rb_tree.erase(k);
-    return (0);
+    return (1);
   }
-  return (1);
+  return (0);
 }
 
 template <MAP_TEMPLATE>
