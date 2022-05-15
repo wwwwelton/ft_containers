@@ -35,6 +35,7 @@ MAP_CLASS::~map(void) {
 template <MAP_TEMPLATE>
 MAP_CLASS& MAP_CLASS::operator=(const map& x) {
   _rb_tree = x._rb_tree;
+  return (*this);
 }
 
 template <MAP_TEMPLATE>
