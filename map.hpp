@@ -61,6 +61,8 @@ class map {
                   _Select1st<value_type>, key_compare, Alloc>
       Rb_tree_type;
 
+  Rb_tree_type _rb_tree;
+
  public:
   typedef typename Rb_tree_type::iterator iterator;
   typedef typename Rb_tree_type::const_iterator const_iterator;
@@ -148,9 +150,22 @@ class map {
 
   allocator_type get_allocator(void) const;
 
- private:
-  Rb_tree_type _rb_tree;
+  template <typename K1, typename T1, typename C1, typename A1>
+  friend bool
+  operator==(const map<K1, T1, C1, A1>&,
+             const map<K1, T1, C1, A1>&);
+
+  template <typename K1, typename T1, typename C1, typename A1>
+  friend bool
+  operator<(const map<K1, T1, C1, A1>&,
+            const map<K1, T1, C1, A1>&);
 };
+
+template <class Key, class T, class Compare, class Alloc>
+bool operator==(const map<Key, T, Compare, Alloc>& lhs,
+                const map<Key, T, Compare, Alloc>& rhs) {
+  return (lhs._rb_tree == rhs._rb_tree);
+}
 
 }  // namespace ft
 
