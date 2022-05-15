@@ -41,7 +41,7 @@ class rb_tree_iterator : public iterator<std::bidirectional_iterator_tag,
     return (*this);
   }
 
-  const Node_ptr& base(void) const {
+  const Node_ptr base(void) const {
     return (node);
   }
 

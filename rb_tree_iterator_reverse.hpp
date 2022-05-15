@@ -50,7 +50,7 @@ class rb_tree_reverse_iterator
     return (*this);
   }
 
-  const Node_ptr& base(void) const {
+  const Node_ptr base(void) const {
     return (node);
   }
 
