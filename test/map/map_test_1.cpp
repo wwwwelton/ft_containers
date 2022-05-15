@@ -724,6 +724,23 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ RELATIONAL OPERATORS ]===========\n";
+  {
+    std::cout << "\n[ EQUAL (==) ]\n";
+    ft::map<MAP_T> FTmap_copy;
+    ft::map<MAP_T> FTmap;
+
+    FTmap_copy.insert(FT_TYPE("a", 8)), FTmap.insert(FT_TYPE("a", 8));
+    FTmap_copy.insert(FT_TYPE("b", 18)), FTmap.insert(FT_TYPE("b", 18));
+    FTmap_copy.insert(FT_TYPE("c", 5)), FTmap.insert(FT_TYPE("c", 5));
+    FTmap_copy.insert(FT_TYPE("d", 15)), FTmap.insert(FT_TYPE("d", 15));
+
+    if (FTmap == FTmap_copy)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
