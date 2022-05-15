@@ -655,6 +655,50 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ EQUAL RANGE ]\n";
+    ft::map<MAP_T> FTmap;
+    std::map<MAP_T> ORmap;
+
+    FTmap.insert(FT_TYPE("a", 8)), ORmap.insert(OR_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18)), ORmap.insert(OR_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5)), ORmap.insert(OR_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15)), ORmap.insert(OR_TYPE("d", 15));
+
+    ft::pair<ft::map<MAP_T>::iterator, ft::map<MAP_T>::iterator> FTPit;
+    std::pair<std::map<MAP_T>::iterator, std::map<MAP_T>::iterator> ORPit;
+
+    FTPit = FTmap.equal_range("a");
+    ORPit = ORmap.equal_range("a");
+
+    if ((FTPit.first->first == ORPit.first->first) &&
+        (FTPit.first->second == ORPit.first->second) &&
+        (FTPit.second->first == ORPit.second->first) &&
+        (FTPit.second->second == ORPit.second->second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTPit = FTmap.equal_range("c");
+    ORPit = ORmap.equal_range("c");
+
+    if ((FTPit.first->first == ORPit.first->first) &&
+        (FTPit.first->second == ORPit.first->second) &&
+        (FTPit.second->first == ORPit.second->first) &&
+        (FTPit.second->second == ORPit.second->second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTPit = FTmap.equal_range("z");
+    ORPit = ORmap.equal_range("z");
+
+    if ((FTPit.first == FTmap.end()) && (ORPit.first == ORmap.end()) &&
+        (FTPit.second == FTmap.end()) && (ORPit.second == ORmap.end()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   std::cout << "\n\n===========[ ALLOCATOR ]===========\n";
   {
