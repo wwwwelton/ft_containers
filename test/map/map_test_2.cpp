@@ -156,66 +156,66 @@ int main(void) {
       FTitC++;
     }
   }
-  //   {
-  //     std::cout << "\n[ RBEGIN ]\n";
-  //     ft::map<MAP_T> FTmap;
+  {
+    std::cout << "\n[ RBEGIN ]\n";
+    ft::map<MAP_T> FTmap;
 
-  //     FTmap.insert(TYPE("a", 8));
-  //     FTmap.insert(TYPE("b", 18));
-  //     FTmap.insert(TYPE("c", 5));
-  //     FTmap.insert(TYPE("d", 15));
+    FTmap.insert(TYPE("a", 8));
+    FTmap.insert(TYPE("b", 18));
+    FTmap.insert(TYPE("c", 5));
+    FTmap.insert(TYPE("d", 15));
 
-  //     ft::map<MAP_T> const FTmapC(FTmap);
+    ft::map<MAP_T> const FTmapC(FTmap);
 
-  //     ft::map<MAP_T>::reverse_iterator FTitR = FTmap.rbegin();
-  //     ft::map<MAP_T>::const_reverse_iterator FTitCR = FTmap.rbegin();
-  //     ft::map<MAP_T>::reverse_iterator FTitRE = FTmap.rend();
-  //     ft::map<MAP_T>::const_reverse_iterator FTitCRE = FTmap.rend();
+    ft::map<MAP_T>::reverse_iterator FTitR = FTmap.rbegin();
+    ft::map<MAP_T>::const_reverse_iterator FTitCR = FTmap.rbegin();
+    ft::map<MAP_T>::reverse_iterator FTitRE = --FTmap.rend();
+    ft::map<MAP_T>::const_reverse_iterator FTitCRE = --FTmap.rend();
 
-  //     while (FTitRE != FTitR) {
-  //       std::cout << "[" << FTitRE->first << "]"
-  //                 << "(" << FTitRE->second << ")"
-  //                 << " ";
-  //       FTitRE--;
-  //     }
+    while (FTitRE != FTitR) {
+      std::cout << "[" << FTitRE->first << "]"
+                << "(" << FTitRE->second << ")"
+                << " ";
+      FTitRE--;
+    }
 
-  //     while (FTitCR != FTitCRE) {
-  //       std::cout << "[" << FTitCR->first << "]"
-  //                 << "(" << FTitCR->second << ")"
-  //                 << " ";
-  //       FTitCR--;
-  //     }
-  //   }
-  //   {
-  //     std::cout << "\n[ REND ]\n";
-  //     ft::map<MAP_T> FTmap;
+    while (FTitCRE != FTitCR) {
+      std::cout << "[" << FTitCRE->first << "]"
+                << "(" << FTitCRE->second << ")"
+                << " ";
+      FTitCRE--;
+    }
+  }
+  {
+    std::cout << "\n[ REND ]\n";
+    ft::map<MAP_T> FTmap;
 
-  //     FTmap.insert(TYPE("a", 8));
-  //     FTmap.insert(TYPE("b", 18));
-  //     FTmap.insert(TYPE("c", 5));
-  //     FTmap.insert(TYPE("d", 15));
+    FTmap.insert(TYPE("a", 8));
+    FTmap.insert(TYPE("b", 18));
+    FTmap.insert(TYPE("c", 5));
+    FTmap.insert(TYPE("d", 15));
 
-  //     ft::map<MAP_T> const FTmapC(FTmap);
+    ft::map<MAP_T> const FTmapC(FTmap);
 
-  //     ft::map<MAP_T>::reverse_iterator FTitR = FTmap.rbegin();
-  //     ft::map<MAP_T>::const_reverse_iterator FTitCR = FTmap.rbegin();
-  //     ft::map<MAP_T>::reverse_iterator FTitRE = FTmap.rend();
-  //     ft::map<MAP_T>::const_reverse_iterator FTitCRE = FTmap.rend();
+    ft::map<MAP_T>::reverse_iterator FTitR = FTmap.rbegin();
+    ft::map<MAP_T>::const_reverse_iterator FTitCR = FTmap.rbegin();
+    ft::map<MAP_T>::reverse_iterator FTitRE = --FTmap.rend();
+    ft::map<MAP_T>::const_reverse_iterator FTitCRE = --FTmap.rend();
 
-  //     while (FTitR != FTitRE) {
-  //       std::cout << "[" << FTitR->first << "]"
-  //                 << "(" << FTitR->second << ")"
-  //                 << " ";
-  //       FTitRE--;
-  //     }
+    while (FTitRE != FTitR) {
+      std::cout << "[" << FTitRE->first << "]"
+                << "(" << FTitRE->second << ")"
+                << " ";
+      FTitRE--;
+    }
 
-  //     while (FTitCR != FTitCRE) {
-  //       std::cout << "[" << FTitCR->first << "]"
-  //                 << "(" << FTitCR->second << ")"
-  //                 << " ";
-  //       FTitCR--;
-  //     }
-  //   }
+    while (FTitCRE != FTitCR) {
+      std::cout << "[" << FTitCRE->first << "]"
+                << "(" << FTitCRE->second << ")"
+                << " ";
+      FTitCRE--;
+    }
+  }
 
   std::cout << "\n\n===========[ CAPACITY ]===========\n";
   {
