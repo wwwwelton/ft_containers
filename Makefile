@@ -35,6 +35,7 @@ PAIR_TEST_1			=	test/pair/pair_test_1.cpp
 PAIR_TEST_2			=	test/pair/pair_test_2.cpp
 
 MAP_TEST_1			=	test/map/map_test_1.cpp
+MAP_TEST_2			=	test/map/map_test_2.cpp
 
 RB_TREE_TEST		=	test/rb_tree/rb_tree_main.cpp
 
@@ -86,8 +87,17 @@ pair2:				$(HEADERS)
 					diff pair_test_FT_2_out pair_test_STD_2_out
 
 map1:				$(HEADERS)
-					clear && $(CC) $(CFLAGS) $(MAP_TEST_1) -o map_test_1
-					valgrind ./map_test_1
+					$(CC) $(CFLAGS) $(MAP_TEST_1) -o map_test_1
+					./map_test_1
+
+map2:				$(HEADERS)
+					$(CC) $(CFLAGS) -DSTD=1 $(MAP_TEST_2) -o  map_test_STD_2
+					$(CC) $(CFLAGS) -DSTD=0 $(MAP_TEST_2) -o  map_test_FT_2
+					./map_test_FT_2 >  map_test_FT_2_out
+					./map_test_STD_2 >  map_test_STD_2_out
+					diff -y  map_test_FT_2_out  map_test_STD_2_out
+					# delta -s  map_test_FT_2_out  map_test_STD_2_out
+					diff  map_test_FT_2_out  map_test_STD_2_out
 
 rbtree:
 					clear && $(CC) $(CFLAGS) $(RB_TREE_TEST) -o btree.out \
@@ -114,6 +124,8 @@ clean:
 					$(RM) pair_test_FT_2 pair_test_FT_2_out
 
 					$(RM) map_test_1
+					$(RM) map_test_STD_2 map_test_STD_2_out
+					$(RM) map_test_FT_2 map_test_FT_2_out
 
 					$(RM) btree.out
 
