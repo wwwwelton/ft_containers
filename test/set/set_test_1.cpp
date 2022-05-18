@@ -119,6 +119,33 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ ITERATORS ]===========\n";
+  {
+    std::cout << "\n[ BEGIN ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    ft::set<SET_T>::iterator FTit = FTset.begin();
+    std::set<SET_T>::iterator ORit = ORset.begin();
+    ft::set<SET_T>::const_iterator FTitC = FTset.begin();
+    std::set<SET_T>::const_iterator ORitC = ORset.begin();
+
+    if (*FTit == *ORit)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (*FTitC == *ORitC)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
