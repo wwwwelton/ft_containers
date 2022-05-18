@@ -397,6 +397,24 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ ERASE RANGE ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    FTset.erase(++FTset.begin(), FTset.end());
+    ORset.erase(++ORset.begin(), ORset.end());
+
+    if (ft::equal(FTset.begin(), FTset.end(), ORset.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
