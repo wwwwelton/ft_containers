@@ -114,6 +114,8 @@ class set {
   iterator find(const value_type& val);
 
   size_type count(const value_type& val) const;
+
+  iterator lower_bound(const value_type& val);
 };
 
 }  // namespace ft

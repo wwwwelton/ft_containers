@@ -185,6 +185,11 @@ typename SET_CLASS::size_type SET_CLASS::count(const value_type& val) const {
   return (0);
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::iterator SET_CLASS::lower_bound(const value_type& val) {
+  return (_rb_tree.lower_bound(val));
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
