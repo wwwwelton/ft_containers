@@ -176,6 +176,15 @@ typename SET_CLASS::iterator SET_CLASS::find(const value_type& val) {
   return (it);
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::size_type SET_CLASS::count(const value_type& val) const {
+  const_iterator it = find(val);
+  if (it != end()) {
+    return (1);
+  }
+  return (0);
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_

@@ -112,6 +112,8 @@ class set {
   value_compare value_comp(void) const;
 
   iterator find(const value_type& val);
+
+  size_type count(const value_type& val) const;
 };
 
 }  // namespace ft
