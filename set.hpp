@@ -79,6 +79,10 @@ class set {
   reverse_iterator rbegin(void);
 
   const_reverse_iterator rbegin(void) const;
+
+  reverse_iterator rend(void);
+
+  const_reverse_iterator rend(void) const;
 };
 
 }  // namespace ft

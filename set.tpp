@@ -68,6 +68,16 @@ typename SET_CLASS::const_reverse_iterator SET_CLASS::rbegin(void) const {
   return (_rb_tree.rbegin());
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::reverse_iterator SET_CLASS::rend(void) {
+  return (_rb_tree.rend());
+}
+
+template <SET_TEMPLATE>
+typename SET_CLASS::const_reverse_iterator SET_CLASS::rend(void) const {
+  return (_rb_tree.rend());
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
