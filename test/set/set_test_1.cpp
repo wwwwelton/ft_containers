@@ -320,6 +320,30 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ INSERT RANGE ]\n";
+    ft::set<SET_T> FTset_copy;
+    ft::set<SET_T> FTset;
+
+    FTset_copy.insert("a");
+    FTset_copy.insert("b");
+    FTset_copy.insert("c");
+    FTset_copy.insert("d");
+
+    FTset.insert(FTset_copy.begin(), FTset_copy.end());
+
+    if (ft::equal(FTset.begin(), FTset.end(), FTset_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTset.insert("e");
+
+    if (!ft::equal(FTset.begin(), FTset.end(), FTset_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
