@@ -165,6 +165,11 @@ typename SET_CLASS::key_compare SET_CLASS::key_comp(void) const {
   return (_rb_tree.key_comp());
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::value_compare SET_CLASS::value_comp(void) const {
+  return (value_compare(_rb_tree.key_comp()));
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
