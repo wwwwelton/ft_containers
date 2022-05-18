@@ -445,6 +445,22 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ CLEAR ]\n";
+    ft::set<SET_T> FTset;
+
+    FTset.insert("a");
+    FTset.insert("b");
+    FTset.insert("c");
+    FTset.insert("d");
+
+    FTset.clear();
+
+    if (FTset.begin() == FTset.end())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
