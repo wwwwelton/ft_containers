@@ -150,6 +150,11 @@ void SET_CLASS::erase(iterator first, iterator last) {
   }
 }
 
+template <SET_TEMPLATE>
+void SET_CLASS::swap(set& x) {
+  _rb_tree.swap(x._rb_tree);
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_

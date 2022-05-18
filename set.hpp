@@ -102,6 +102,8 @@ class set {
   size_type erase(const value_type& val);
 
   void erase(iterator first, iterator last);
+
+  void swap(set& x);
 };
 
 }  // namespace ft
