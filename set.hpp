@@ -116,6 +116,8 @@ class set {
   size_type count(const value_type& val) const;
 
   iterator lower_bound(const value_type& val);
+
+  iterator upper_bound(const value_type& val);
 };
 
 }  // namespace ft

@@ -190,6 +190,11 @@ typename SET_CLASS::iterator SET_CLASS::lower_bound(const value_type& val) {
   return (_rb_tree.lower_bound(val));
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::iterator SET_CLASS::upper_bound(const value_type& val) {
+  return (_rb_tree.upper_bound(k));
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
