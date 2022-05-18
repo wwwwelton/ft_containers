@@ -271,6 +271,31 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  std::cout << "\n\n===========[ SET MODIFIERS ]===========\n";
+  {
+    std::cout << "\n[ INSERT VAL ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    ft::pair<ft::set<SET_T>::iterator, bool> FTit;
+    std::pair<std::set<SET_T>::iterator, bool> ORit;
+
+    FTit = FTset.insert("a");
+    ORit = ORset.insert("a");
+
+    if ((*FTit.first == *ORit.first) && (FTit.second == ORit.second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTit = FTset.insert("a");
+    ORit = ORset.insert("a");
+
+    if ((*FTit.first == *ORit.first) && (FTit.second == ORit.second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
