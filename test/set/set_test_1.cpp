@@ -502,6 +502,24 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ OPERATIONS ]===========\n";
+  {
+    std::cout << "\n[ FIND ]\n";
+    ft::set<SET_T> FTset;
+
+    FTset.insert("a");
+
+    if (FTset.find("a") == FTset.begin())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (FTset.find("b") == FTset.end())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
