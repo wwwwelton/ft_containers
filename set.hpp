@@ -61,6 +61,8 @@ class set {
   set(InputIterator first, InputIterator last,
       const key_compare& comp = key_compare(),
       const allocator_type& alloc = allocator_type());
+
+  set(const set& x);
 };
 
 }  // namespace ft

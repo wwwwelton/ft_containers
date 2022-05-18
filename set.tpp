@@ -23,6 +23,10 @@ SET_CLASS::set(InputIterator first, InputIterator last,
   }
 }
 
+template <SET_TEMPLATE>
+SET_CLASS::set(const set& x)
+    : _rb_tree(x._rb_tree) {}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
