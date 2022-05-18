@@ -104,6 +104,8 @@ class set {
   void erase(iterator first, iterator last);
 
   void swap(set& x);
+
+  void clear(void);
 };
 
 }  // namespace ft

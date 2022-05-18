@@ -155,6 +155,11 @@ void SET_CLASS::swap(set& x) {
   _rb_tree.swap(x._rb_tree);
 }
 
+template <SET_TEMPLATE>
+void SET_CLASS::clear(void) {
+  _rb_tree.clear();
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
