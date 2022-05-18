@@ -117,6 +117,15 @@ typename SET_CLASS::iterator SET_CLASS::insert(iterator position, const value_ty
   }
 }
 
+template <SET_TEMPLATE>
+template <class InputIterator>
+void SET_CLASS::insert(InputIterator first, InputIterator last) {
+  while (first != last) {
+    insert(*first);
+    ++first;
+  }
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
