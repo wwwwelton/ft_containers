@@ -344,6 +344,31 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ ERASE POS ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    FTset.erase(FTset.begin());
+    ORset.erase(ORset.begin());
+
+    if (ft::equal(FTset.begin(), FTset.end(), ORset.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTset.erase(FTset.begin());
+
+    if (!ft::equal(FTset.begin(), FTset.end(), ORset.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
