@@ -519,6 +519,22 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ COUNT ]\n";
+    ft::set<SET_T> FTset;
+
+    FTset.insert("a");
+
+    if (FTset.count("a") == 1)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (FTset.count("b") == 0)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
