@@ -85,6 +85,8 @@ class set {
   const_reverse_iterator rend(void) const;
 
   bool empty(void) const;
+
+  size_type size(void) const;
 };
 
 }  // namespace ft

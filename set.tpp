@@ -83,6 +83,11 @@ bool SET_CLASS::empty(void) const {
   return (_rb_tree.empty());
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::size_type SET_CLASS::size(void) const {
+  return (_rb_tree.size());
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
