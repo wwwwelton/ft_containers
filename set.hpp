@@ -65,6 +65,8 @@ class set {
   set(const set& x);
 
   ~set(void);
+
+  set& operator=(const set& x);
 };
 
 }  // namespace ft

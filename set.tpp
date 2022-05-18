@@ -32,6 +32,12 @@ SET_CLASS::~set(void) {
   clear();
 }
 
+template <SET_TEMPLATE>
+SET_CLASS& SET_CLASS::operator=(const set& x) {
+  _rb_tree = x._rb_tree;
+  return (*this);
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
