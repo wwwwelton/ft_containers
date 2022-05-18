@@ -633,6 +633,29 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ ALLOCATOR ]===========\n";
+  {
+    std::cout << "\n[ GET_ALLOCATOR ]\n";
+    ft::set<SET_T> FTset_copy;
+
+    FTset_copy.insert("a");
+    FTset_copy.insert("b");
+    FTset_copy.insert("c");
+    FTset_copy.insert("d");
+
+    ft::set<SET_T> FTset(FTset_copy.key_comp(), FTset_copy.get_allocator());
+
+    FTset.insert("a");
+    FTset.insert("b");
+    FTset.insert("c");
+    FTset.insert("d");
+
+    if (ft::equal(FTset.begin(), FTset.end(), FTset_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
