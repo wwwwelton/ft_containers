@@ -262,6 +262,15 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ MAX_SIZE ]\n";
+    ft::set<SET_T> FTset;
+
+    if (FTset.max_size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
