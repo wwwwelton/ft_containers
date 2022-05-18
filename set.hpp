@@ -146,6 +146,12 @@ bool operator!=(const set<Key, Compare, Alloc>& lhs,
   return (!(lhs == rhs));
 }
 
+template <class Key, class Compare, class Alloc>
+bool operator<(const set<Key, Compare, Alloc>& lhs,
+               const set<Key, Compare, Alloc>& rhs) {
+  return (lhs._rb_tree < rhs._rb_tree);
+}
+
 }  // namespace ft
 
 #include "set.tpp"
