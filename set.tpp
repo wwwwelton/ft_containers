@@ -93,6 +93,18 @@ typename SET_CLASS::size_type SET_CLASS::max_size(void) const {
   return (_rb_tree.max_size());
 }
 
+template <SET_TEMPLATE>
+ft::pair<typename SET_CLASS::iterator, bool> SET_CLASS::insert(const value_type& val) {
+  iterator x = find(val);
+  if (x != end()) {
+    return (ft::make_pair(x, false));
+  } else {
+    _rb_tree.insert(val);
+    iterator y = find(val);
+    return (ft::make_pair(y, true));
+  }
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_

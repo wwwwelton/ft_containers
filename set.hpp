@@ -89,6 +89,8 @@ class set {
   size_type size(void) const;
 
   size_type max_size(void) const;
+
+  ft::pair<iterator, bool> insert(const value_type& val);
 };
 
 }  // namespace ft
