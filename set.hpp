@@ -67,6 +67,10 @@ class set {
   ~set(void);
 
   set& operator=(const set& x);
+
+  iterator begin(void);
+
+  const_iterator begin(void) const;
 };
 
 }  // namespace ft

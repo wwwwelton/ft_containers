@@ -38,6 +38,16 @@ SET_CLASS& SET_CLASS::operator=(const set& x) {
   return (*this);
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::iterator SET_CLASS::begin(void) {
+  return (_rb_tree.begin());
+}
+
+template <SET_TEMPLATE>
+typename SET_CLASS::const_iterator SET_CLASS::begin(void) const {
+  return (_rb_tree.begin());
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
