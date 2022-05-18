@@ -111,13 +111,13 @@ class set {
 
   value_compare value_comp(void) const;
 
-  iterator find(const value_type& val);
+  iterator find(const value_type& val) const;
 
   size_type count(const value_type& val) const;
 
-  iterator lower_bound(const value_type& val);
+  iterator lower_bound(const value_type& val) const;
 
-  iterator upper_bound(const value_type& val);
+  iterator upper_bound(const value_type& val) const;
 
   ft::pair<iterator, iterator> equal_range(const value_type& val) const;
 

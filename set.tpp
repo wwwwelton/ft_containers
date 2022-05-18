@@ -171,7 +171,7 @@ typename SET_CLASS::value_compare SET_CLASS::value_comp(void) const {
 }
 
 template <SET_TEMPLATE>
-typename SET_CLASS::iterator SET_CLASS::find(const value_type& val) {
+typename SET_CLASS::iterator SET_CLASS::find(const value_type& val) const {
   iterator it(_rb_tree.search(val));
   return (it);
 }
@@ -186,13 +186,13 @@ typename SET_CLASS::size_type SET_CLASS::count(const value_type& val) const {
 }
 
 template <SET_TEMPLATE>
-typename SET_CLASS::iterator SET_CLASS::lower_bound(const value_type& val) {
+typename SET_CLASS::iterator SET_CLASS::lower_bound(const value_type& val) const {
   return (_rb_tree.lower_bound(val));
 }
 
 template <SET_TEMPLATE>
-typename SET_CLASS::iterator SET_CLASS::upper_bound(const value_type& val) {
-  return (_rb_tree.upper_bound(k));
+typename SET_CLASS::iterator SET_CLASS::upper_bound(const value_type& val) const {
+  return (_rb_tree.upper_bound(val));
 }
 
 template <SET_TEMPLATE>
