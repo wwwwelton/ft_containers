@@ -131,6 +131,15 @@ void SET_CLASS::erase(iterator position) {
   _rb_tree.erase(*position);
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::size_type SET_CLASS::erase(const value_type& val) {
+  if (find(val) != end()) {
+    _rb_tree.erase(val);
+    return (1);
+  }
+  return (0);
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
