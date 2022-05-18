@@ -37,6 +37,7 @@ MAP_TEST_1			=	test/map/map_test_1.cpp
 MAP_TEST_2			=	test/map/map_test_2.cpp
 
 SET_TEST_1			=	test/set/set_test_1.cpp
+SET_TEST_2			=	test/set/set_test_2.cpp
 
 RB_TREE_TEST		=	test/rb_tree/rb_tree_main.cpp
 
@@ -92,17 +93,24 @@ map1:				$(HEADERS)
 					./map_test_1
 
 map2:				$(HEADERS)
-					$(CC) $(CFLAGS) -DSTD=1 $(MAP_TEST_2) -o  map_test_STD_2
-					$(CC) $(CFLAGS) -DSTD=0 $(MAP_TEST_2) -o  map_test_FT_2
-					./map_test_FT_2 >  map_test_FT_2_out
-					./map_test_STD_2 >  map_test_STD_2_out
-					diff -y  map_test_FT_2_out  map_test_STD_2_out
-					# delta -s  map_test_FT_2_out  map_test_STD_2_out
-					diff  map_test_FT_2_out  map_test_STD_2_out
+					$(CC) $(CFLAGS) -DSTD=1 $(MAP_TEST_2) -o map_test_STD_2
+					$(CC) $(CFLAGS) -DSTD=0 $(MAP_TEST_2) -o map_test_FT_2
+					./map_test_FT_2 > map_test_FT_2_out
+					./map_test_STD_2 > map_test_STD_2_out
+					diff -y map_test_FT_2_out map_test_STD_2_out
+					diff map_test_FT_2_out  map_test_STD_2_out
 
 set1:				$(HEADERS)
 					$(CC) $(CFLAGS) $(SET_TEST_1) -o set_test_1
 					./set_test_1
+
+set2:				$(HEADERS)
+					$(CC) $(CFLAGS) -DSTD=1 $(SET_TEST_2) -o set_test_STD_2
+					$(CC) $(CFLAGS) -DSTD=0 $(SET_TEST_2) -o set_test_FT_2
+					./set_test_FT_2 > set_test_FT_2_out
+					./set_test_STD_2 > set_test_STD_2_out
+					diff -y set_test_FT_2_out set_test_STD_2_out
+					diff set_test_FT_2_out  set_test_STD_2_out
 
 rbtree:
 					clear && $(CC) $(CFLAGS) $(RB_TREE_TEST) -o btree.out \
@@ -133,6 +141,8 @@ clean:
 					$(RM) map_test_FT_2 map_test_FT_2_out
 
 					$(RM) set_test_1
+					$(RM) set_test_STD_2 set_test_STD_2_out
+					$(RM) set_test_FT_2 set_test_FT_2_out
 
 					$(RM) btree.out
 
