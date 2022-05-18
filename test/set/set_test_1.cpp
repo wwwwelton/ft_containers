@@ -271,6 +271,7 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+
   std::cout << "\n\n===========[ SET MODIFIERS ]===========\n";
   {
     std::cout << "\n[ INSERT VAL ]\n";
