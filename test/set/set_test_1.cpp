@@ -462,6 +462,28 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ OBSERVERS ]===========\n";
+  {
+    std::cout << "\n[ KEY COMP ]\n";
+    ft::set<SET_T> FTset_copy;
+    ft::set<SET_T> FTset;
+
+    ft::set<SET_T>::key_compare FTset_comp = FTset.key_comp();
+
+    FTset.insert("a");
+    FTset_copy.insert("b");
+
+    if (FTset_comp(*FTset.begin(), *FTset_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (!FTset_comp(*FTset_copy.begin(), *FTset.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
