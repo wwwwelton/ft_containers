@@ -35,7 +35,6 @@ class map {
   typedef T mapped_type;
   typedef ft::pair<const Key, T> value_type;
   typedef Compare key_compare;
-  typedef Alloc allocator_type;
   typedef typename Alloc::reference reference;
   typedef typename Alloc::const_reference const_reference;
   typedef typename Alloc::pointer pointer;
@@ -64,6 +63,7 @@ class map {
   Rb_tree_type _rb_tree;
 
  public:
+  typedef typename Rb_tree_type::allocator_type allocator_type;
   typedef typename Rb_tree_type::iterator iterator;
   typedef typename Rb_tree_type::const_iterator const_iterator;
   typedef typename Rb_tree_type::reverse_iterator reverse_iterator;
