@@ -369,6 +369,34 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ ERASE VALUE ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    // print_set<FT_PRINT>(FTset);
+
+    FTset.erase("a");
+    ORset.erase("a");
+
+    if (ft::equal(FTset.begin(), FTset.end(), ORset.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTset.erase("b");
+    ORset.erase("d");
+
+    if (!ft::equal(FTset.begin(), FTset.end(), ORset.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
