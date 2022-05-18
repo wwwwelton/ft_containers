@@ -242,6 +242,26 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ SIZE ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    if (FTset.size() == ORset.size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    if (FTset.size() == ORset.size())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
