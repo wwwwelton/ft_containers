@@ -170,6 +170,12 @@ typename SET_CLASS::value_compare SET_CLASS::value_comp(void) const {
   return (value_compare(_rb_tree.key_comp()));
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::iterator SET_CLASS::find(const value_type& val) {
+  iterator it(_rb_tree.search(val));
+  return (it);
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_

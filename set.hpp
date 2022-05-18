@@ -110,6 +110,8 @@ class set {
   key_compare key_comp(void) const;
 
   value_compare value_comp(void) const;
+
+  iterator find(const value_type& val);
 };
 
 }  // namespace ft
