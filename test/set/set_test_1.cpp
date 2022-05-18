@@ -656,6 +656,23 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ RELATIONAL OPERATORS ]===========\n";
+  {
+    std::cout << "\n[ EQUAL (==) ]\n";
+    ft::set<SET_T> FTset_copy;
+    ft::set<SET_T> FTset;
+
+    FTset_copy.insert("a"), FTset.insert("a");
+    FTset_copy.insert("b"), FTset.insert("b");
+    FTset_copy.insert("c"), FTset.insert("c");
+    FTset_copy.insert("d"), FTset.insert("d");
+
+    if (FTset == FTset_copy)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
