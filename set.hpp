@@ -53,6 +53,9 @@ class set {
   typedef typename Rb_tree_type::const_reverse_iterator const_reverse_iterator;
   typedef typename Rb_tree_type::size_type size_type;
   typedef typename Rb_tree_type::difference_type difference_type;
+
+  explicit set(const key_compare& comp = key_compare(),
+               const allocator_type& alloc = allocator_type());
 };
 
 }  // namespace ft

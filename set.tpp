@@ -7,6 +7,10 @@
 
 namespace ft {
 
+template <SET_TEMPLATE>
+SET_CLASS::set(const key_compare& comp, const allocator_type& alloc)
+    : _rb_tree(comp, alloc) {}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
