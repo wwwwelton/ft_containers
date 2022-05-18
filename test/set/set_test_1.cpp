@@ -483,6 +483,24 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ VALUE COMP ]\n";
+    ft::set<SET_T> FTset_copy;
+    ft::set<SET_T> FTset;
+
+    FTset.insert("a");
+    FTset_copy.insert("b");
+
+    if (FTset.value_comp()(*FTset.begin(), *FTset_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (!FTset.value_comp()(*FTset_copy.begin(), *FTset.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
