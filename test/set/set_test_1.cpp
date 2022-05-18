@@ -145,6 +145,31 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ END ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    ft::set<SET_T>::iterator FTit = --FTset.end();
+    std::set<SET_T>::iterator ORit = --ORset.end();
+    ft::set<SET_T>::const_iterator FTitC = --FTset.end();
+    std::set<SET_T>::const_iterator ORitC = --ORset.end();
+
+    if (*FTit == *ORit)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (*FTitC == *ORitC)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
