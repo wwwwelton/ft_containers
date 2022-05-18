@@ -105,6 +105,18 @@ ft::pair<typename SET_CLASS::iterator, bool> SET_CLASS::insert(const value_type&
   }
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::iterator SET_CLASS::insert(iterator position, const value_type& val) {
+  iterator x = find(val);
+  if (x != end()) {
+    return (x);
+  } else {
+    _rb_tree.insert(val, position.base());
+    iterator y = find(val);
+    return (y);
+  }
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
