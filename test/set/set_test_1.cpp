@@ -595,6 +595,43 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ EQUAL RANGE ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    ft::pair<ft::set<SET_T>::iterator, ft::set<SET_T>::iterator> FTPit;
+    std::pair<std::set<SET_T>::iterator, std::set<SET_T>::iterator> ORPit;
+
+    FTPit = FTset.equal_range("a");
+    ORPit = ORset.equal_range("a");
+
+    if ((*FTPit.first == *ORPit.first) && (*FTPit.second == *ORPit.second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTPit = FTset.equal_range("c");
+    ORPit = ORset.equal_range("c");
+
+    if ((*FTPit.first == *ORPit.first) && (*FTPit.second == *ORPit.second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTPit = FTset.equal_range("z");
+    ORPit = ORset.equal_range("z");
+
+    if ((*FTPit.first == *ORPit.first) && (*FTPit.second == *ORPit.second))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
