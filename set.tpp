@@ -88,6 +88,11 @@ typename SET_CLASS::size_type SET_CLASS::size(void) const {
   return (_rb_tree.size());
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::size_type SET_CLASS::max_size(void) const {
+  return (_rb_tree.max_size());
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_

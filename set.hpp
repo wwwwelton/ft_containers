@@ -87,6 +87,8 @@ class set {
   bool empty(void) const;
 
   size_type size(void) const;
+
+  size_type max_size(void) const;
 };
 
 }  // namespace ft
