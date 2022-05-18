@@ -95,6 +95,29 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ ASSIGNMENT OPERATOR (=) ]\n";
+    ft::set<SET_T> FTset_copy;
+
+    FTset_copy.insert("a");
+    FTset_copy.insert("b");
+    FTset_copy.insert("c");
+    FTset_copy.insert("d");
+
+    ft::set<SET_T> FTset = FTset_copy;
+
+    if (ft::equal(FTset.begin(), FTset.end(), FTset_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTset.insert("e");
+
+    if (!ft::equal(FTset.begin(), FTset.end(), FTset_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
