@@ -296,6 +296,30 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ INSERT POS ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    ft::set<SET_T>::iterator FTit;
+    std::set<SET_T>::iterator ORit;
+
+    FTit = FTset.insert(FTset.begin(), "a");
+    ORit = ORset.insert(ORset.begin(), "a");
+
+    if (*FTit == *ORit)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTit = FTset.insert(FTset.end(), "b");
+    ORit = ORset.insert(ORset.end(), "b");
+
+    if (*FTit == *ORit)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
