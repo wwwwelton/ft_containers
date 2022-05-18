@@ -96,6 +96,8 @@ class set {
 
   template <class InputIterator>
   void insert(InputIterator first, InputIterator last);
+
+  void erase(iterator position);
 };
 
 }  // namespace ft

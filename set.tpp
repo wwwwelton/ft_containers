@@ -126,6 +126,11 @@ void SET_CLASS::insert(InputIterator first, InputIterator last) {
   }
 }
 
+template <SET_TEMPLATE>
+void SET_CLASS::erase(iterator position) {
+  _rb_tree.erase(*position);
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
