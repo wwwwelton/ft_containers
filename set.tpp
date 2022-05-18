@@ -11,6 +11,18 @@ template <SET_TEMPLATE>
 SET_CLASS::set(const key_compare& comp, const allocator_type& alloc)
     : _rb_tree(comp, alloc) {}
 
+template <SET_TEMPLATE>
+template <class InputIterator>
+SET_CLASS::set(InputIterator first, InputIterator last,
+               const key_compare& comp,
+               const allocator_type& alloc)
+    : _rb_tree(comp, alloc) {
+  while (first != last) {
+    insert(*first);
+    ++first;
+  }
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
