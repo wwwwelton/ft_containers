@@ -140,6 +140,16 @@ typename SET_CLASS::size_type SET_CLASS::erase(const value_type& val) {
   return (0);
 }
 
+template <SET_TEMPLATE>
+void SET_CLASS::erase(iterator first, iterator last) {
+  iterator it;
+  while (first != last) {
+    it = first;
+    ++first;
+    _rb_tree.erase(*it);
+  }
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
