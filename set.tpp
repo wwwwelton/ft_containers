@@ -195,6 +195,14 @@ typename SET_CLASS::iterator SET_CLASS::upper_bound(const value_type& val) {
   return (_rb_tree.upper_bound(k));
 }
 
+template <SET_TEMPLATE>
+ft::pair<typename SET_CLASS::iterator, typename SET_CLASS::iterator>
+SET_CLASS::equal_range(const value_type& val) const {
+  iterator lowerBound = lower_bound(val);
+  iterator upperBound = upper_bound(val);
+  return (ft::make_pair(lowerBound, upperBound));
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_

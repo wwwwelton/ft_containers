@@ -118,6 +118,8 @@ class set {
   iterator lower_bound(const value_type& val);
 
   iterator upper_bound(const value_type& val);
+
+  ft::pair<iterator, iterator> equal_range(const value_type& val) const;
 };
 
 }  // namespace ft
