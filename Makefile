@@ -37,6 +37,8 @@ PAIR_TEST_2			=	test/pair/pair_test_2.cpp
 MAP_TEST_1			=	test/map/map_test_1.cpp
 MAP_TEST_2			=	test/map/map_test_2.cpp
 
+SET_TEST_1			=	test/set/set_test_1.cpp
+
 RB_TREE_TEST		=	test/rb_tree/rb_tree_main.cpp
 
 CC					=	clang++
@@ -99,6 +101,10 @@ map2:				$(HEADERS)
 					# delta -s  map_test_FT_2_out  map_test_STD_2_out
 					diff  map_test_FT_2_out  map_test_STD_2_out
 
+set1:				$(HEADERS)
+					$(CC) $(CFLAGS) $(SET_TEST_1) -o set_test_1
+					./set_test_1
+
 rbtree:
 					clear && $(CC) $(CFLAGS) $(RB_TREE_TEST) -o btree.out \
 					&& ./btree.out
@@ -126,6 +132,8 @@ clean:
 					$(RM) map_test_1
 					$(RM) map_test_STD_2 map_test_STD_2_out
 					$(RM) map_test_FT_2 map_test_FT_2_out
+
+					$(RM) set_test_1
 
 					$(RM) btree.out
 
