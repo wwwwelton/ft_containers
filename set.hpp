@@ -106,6 +106,8 @@ class set {
   void swap(set& x);
 
   void clear(void);
+
+  key_compare key_comp(void) const;
 };
 
 }  // namespace ft

@@ -160,6 +160,11 @@ void SET_CLASS::clear(void) {
   _rb_tree.clear();
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::key_compare SET_CLASS::key_comp(void) const {
+  return (_rb_tree.key_comp());
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_
