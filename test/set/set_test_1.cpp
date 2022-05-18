@@ -36,6 +36,20 @@ void print_set(T& set) {
 #include "../../set.hpp"
 
 int main(void) {
+  std::cout << "\n===========[ CONSTRUCTORS ]===========\n";
+  {
+    std::cout << "\n[ CONSTRUCTOR VOID ]\n";
+    ft::set<SET_T> FTset;
+
+    ft::set<SET_T>::iterator FTit = FTset.begin();
+    ft::set<SET_T>::iterator FTite = FTset.end();
+
+    if ((*FTit == "") && (*FTite == "") && (FTit == FTite))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
