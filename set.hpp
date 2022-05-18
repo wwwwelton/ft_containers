@@ -75,6 +75,10 @@ class set {
   iterator end(void);
 
   const_iterator end(void) const;
+
+  reverse_iterator rbegin(void);
+
+  const_reverse_iterator rbegin(void) const;
 };
 
 }  // namespace ft
