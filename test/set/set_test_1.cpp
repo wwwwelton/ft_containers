@@ -221,6 +221,28 @@ int main(void) {
       std::cout << KO " ";
   }
 
+  std::cout << "\n\n===========[ CAPACITY ]===========\n";
+  {
+    std::cout << "\n[ EMPTY ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    if (FTset.empty() == ORset.empty())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    if (FTset.empty() == ORset.empty())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   NEWLINE
 
   return (0);
