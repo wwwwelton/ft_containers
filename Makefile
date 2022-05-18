@@ -15,7 +15,6 @@ HEADERS				=	algorithm.hpp \
 						stack.hpp \
 						stack.tpp \
 						utility.hpp \
-						allocator.hpp \
 						rb_tree.hpp \
 						rb_tree.tpp \
 						rb_tree_private.tpp \
