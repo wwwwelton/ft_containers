@@ -122,6 +122,16 @@ class set {
   ft::pair<iterator, iterator> equal_range(const value_type& val) const;
 
   allocator_type get_allocator(void) const;
+
+  template <typename K1, typename C1, typename A1>
+  friend bool
+  operator==(const set<K1, C1, A1>&,
+             const set<K1, C1, A1>&);
+
+  template <typename K1, typename C1, typename A1>
+  friend bool
+  operator<(const set<K1, C1, A1>&,
+            const set<K1, C1, A1>&);
 };
 
 }  // namespace ft
