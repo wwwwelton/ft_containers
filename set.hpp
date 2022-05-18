@@ -63,6 +63,8 @@ class set {
       const allocator_type& alloc = allocator_type());
 
   set(const set& x);
+
+  ~set(void);
 };
 
 }  // namespace ft
