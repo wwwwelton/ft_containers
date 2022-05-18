@@ -415,6 +415,36 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ SWAP ]\n";
+    ft::set<SET_T> FTset_copy;
+    std::set<SET_T> ORset_copy;
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    FTset_copy.insert("a"), ORset_copy.insert("a");
+    FTset_copy.insert("b"), ORset_copy.insert("b");
+    FTset_copy.insert("c"), ORset_copy.insert("c");
+    FTset_copy.insert("d"), ORset_copy.insert("d");
+
+    FTset.insert("e"), ORset.insert("e");
+    FTset.insert("f"), ORset.insert("f");
+    FTset.insert("g"), ORset.insert("g");
+    FTset.insert("h"), ORset.insert("h");
+
+    FTset.swap(FTset_copy);
+    ORset.swap(ORset_copy);
+
+    if (ft::equal(FTset_copy.begin(), FTset_copy.end(), ORset_copy.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    if (ft::equal(FTset.begin(), FTset.end(), ORset.begin()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
