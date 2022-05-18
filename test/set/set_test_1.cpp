@@ -535,6 +535,32 @@ int main(void) {
     else
       std::cout << KO " ";
   }
+  {
+    std::cout << "\n[ LOWER BOUND ]\n";
+    ft::set<SET_T> FTset;
+    std::set<SET_T> ORset;
+
+    FTset.insert("a"), ORset.insert("a");
+    FTset.insert("b"), ORset.insert("b");
+    FTset.insert("c"), ORset.insert("c");
+    FTset.insert("d"), ORset.insert("d");
+
+    ft::set<SET_T>::iterator FTit = FTset.lower_bound("b");
+    std::set<SET_T>::iterator ORit = ORset.lower_bound("b");
+
+    if (*FTit == *ORit)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    FTit = FTset.lower_bound("z");
+    ORit = ORset.lower_bound("z");
+
+    if ((FTit == FTset.end()) && (ORit == ORset.end()))
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
 
   NEWLINE
 
