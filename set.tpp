@@ -203,6 +203,11 @@ SET_CLASS::equal_range(const value_type& val) const {
   return (ft::make_pair(lowerBound, upperBound));
 }
 
+template <SET_TEMPLATE>
+typename SET_CLASS::allocator_type SET_CLASS::get_allocator(void) const {
+  return (_rb_tree.get_allocator());
+}
+
 }  // namespace ft
 
 #endif  // SET_TPP_

@@ -120,6 +120,8 @@ class set {
   iterator upper_bound(const value_type& val);
 
   ft::pair<iterator, iterator> equal_range(const value_type& val) const;
+
+  allocator_type get_allocator(void) const;
 };
 
 }  // namespace ft
