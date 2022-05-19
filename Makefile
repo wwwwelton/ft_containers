@@ -26,6 +26,7 @@ HEADERS				=	algorithm.hpp \
 
 VECTOR_TEST_1		=	test/vector/vector_test_1.cpp
 VECTOR_TEST_2		=	test/vector/vector_test_2.cpp
+VECTOR_TEST_3		=	test/vector/vector_test_3.cpp
 
 STACK_TEST_1		=	test/stack/stack_test_1.cpp
 STACK_TEST_2		=	test/stack/stack_test_2.cpp
@@ -63,6 +64,10 @@ vector2:			$(HEADERS)
 					./vector_test_STD_2 > vector_test_STD_2_out
 					diff -y vector_test_FT_2_out vector_test_STD_2_out
 					diff vector_test_FT_2_out vector_test_STD_2_out
+
+vector3:			$(HEADERS)
+					$(CC) $(CFLAGS) $(VECTOR_TEST_3) -o vector_test_3
+					./vector_test_3
 
 stack1:				$(HEADERS)
 					$(CC) $(CFLAGS) $(STACK_TEST_1) -o stack_test_1
@@ -127,6 +132,7 @@ clean:
 					$(RM) vector_test_1
 					$(RM) vector_test_STD_2 vector_test_STD_2_out
 					$(RM) vector_test_FT_2 vector_test_FT_2_out
+					$(RM) vector_test_3
 
 					$(RM) stack_test_1
 					$(RM) stack_test_STD_2 stack_test_STD_2_out
