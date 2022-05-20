@@ -312,8 +312,6 @@ void vector<T, Alloc>::push_back(const value_type& val) {
     }
     for (size_t i = 0; i < _size; i++) {
       _alloc.construct(tmp + i, _data[i]);
-    }
-    for (size_t i = 0; i < _size; i++) {
       _alloc.destroy(_data + i);
     }
     _alloc.deallocate(_data, _capacity);
