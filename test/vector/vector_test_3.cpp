@@ -185,6 +185,31 @@ int main(void) {
     print_time(MAX);
   }
 
+  {
+    std::cout << "\n[ ERASE ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec.push_back(i);
+      ORvec.push_back(i);
+    }
+
+    print_time(1, FT);
+    while (!FTvec.empty()) {
+      FTvec.erase(FTvec.begin());
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    while (!ORvec.empty()) {
+      ORvec.erase(ORvec.begin());
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
   print_time(4);
   std::cout << "\n";
 
