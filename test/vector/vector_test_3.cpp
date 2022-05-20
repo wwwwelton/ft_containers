@@ -80,6 +80,28 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ RESERVE ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec.insert(FTvec.begin(), i);
+    }
+    print_time(1, FT);
+    FTvec.reserve(AMOUNT * 2);
+    print_time(2, FT);
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ORvec.insert(ORvec.begin(), i);
+    }
+    print_time(1, STD);
+    ORvec.reserve(AMOUNT * 2);
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ INSERT ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
