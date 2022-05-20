@@ -2,16 +2,12 @@
 
 #include <iostream>
 
-#define KO "\033[1;31mKO\033[0m"
-#define OK "\033[1;32mOK\033[0m"
-
 #include <climits>
 #include <ctime>
 #include <iomanip>
 #include <list>
 #include <vector>
 
-#include "../../algorithm.hpp"
 #include "../../vector.hpp"
 
 #define AMOUNT 100000
