@@ -203,8 +203,6 @@ void vector<T, Alloc>::reserve(size_type n) {
     }
     for (size_t i = 0; i < _size; i++) {
       _alloc.construct(tmp + i, _data[i]);
-    }
-    for (size_t i = 0; i < _size; i++) {
       _alloc.destroy(_data + i);
     }
     _alloc.deallocate(_data, _capacity);
