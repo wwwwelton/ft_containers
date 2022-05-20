@@ -343,6 +343,10 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator position, 
   if (_capacity < (_size + 1)) {
     reserve(_capacity * 2);
   }
+  if (position == end()) {
+    push_back(val);
+    return (iterator(&_data[distance]));
+  }
   for (size_t i = _size; i > distance; i--) {
     _alloc.construct(&_data[i], _data[i - 1]);
     _alloc.destroy(&_data[i - 1]);
@@ -371,16 +375,6 @@ template <typename T, class Alloc>
 template <class Integer>
 void vector<T, Alloc>::insert_dispatch(iterator position, size_type n, const Integer& val, true_type) {
   size_type distance = ft::distance(begin(), position);
-  if (_capacity == 0) {
-    reserve(n);
-    _size = n;
-    for (size_t i = 0; i < n; i++)
-      _alloc.construct(&_data[distance + i], val);
-    return;
-  }
-  if (_capacity < (_size + 1)) {
-    reserve(_capacity * 2);
-  }
   for (size_t i = 0; i < n; i++) {
     insert(begin() + distance, val);
   }
