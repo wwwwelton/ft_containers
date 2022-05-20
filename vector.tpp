@@ -342,7 +342,7 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator position, 
     _size++;
     return (iterator(&_data[distance]));
   }
-  if (_size >= _capacity) {
+  if (_capacity < (_size + 1)) {
     reserve(_capacity * 2);
   }
   for (size_t i = _size; i > distance; i--) {
@@ -357,17 +357,6 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator position, 
 template <typename T, class Alloc>
 void vector<T, Alloc>::insert(iterator position, size_type n, const value_type& val) {
   size_type distance = ft::distance(begin(), position);
-  if (_capacity == 0) {
-    reserve(n);
-    _size = n;
-    for (size_t i = 0; i < n; i++)
-      _alloc.construct(&_data[distance + i], val);
-    return;
-  }
-  if (n > _size)
-    reserve(_size + n);
-  else
-    reserve(_capacity * 2);
   for (size_t i = 0; i < n; i++) {
     insert(begin() + distance, val);
   }
@@ -391,10 +380,9 @@ void vector<T, Alloc>::insert_dispatch(iterator position, size_type n, const Int
       _alloc.construct(&_data[distance + i], val);
     return;
   }
-  if (n > _size)
-    reserve(_size + n);
-  else
+  if (_capacity < (_size + 1)) {
     reserve(_capacity * 2);
+  }
   for (size_t i = 0; i < n; i++) {
     insert(begin() + distance, val);
   }
@@ -414,9 +402,7 @@ void vector<T, Alloc>::insert_dispatch(iterator position, InputIterator first, I
     }
     return;
   }
-  if (n > _size) {
-    reserve(_size + n);
-  } else {
+  if (_capacity < (_size + 1)) {
     reserve(_capacity * 2);
   }
   for (size_t i = 0; i < n; i++) {
