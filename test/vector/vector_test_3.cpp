@@ -146,6 +146,26 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ PUSH_BACK ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec.push_back(i);
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      ORvec.push_back(i);
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ INSERT ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
