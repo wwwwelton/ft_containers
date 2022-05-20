@@ -8,6 +8,7 @@
 #include <climits>
 #include <ctime>
 #include <iomanip>
+#include <list>
 #include <vector>
 
 #include "../../algorithm.hpp"
@@ -118,6 +119,27 @@ int main(void) {
     }
     print_time(1, STD);
     ORvec.reserve(AMOUNT * 2);
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ ASSIGN ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+
+    std::list<int> ORlist;
+    for (int i = 0; i < AMOUNT; i++) {
+      ORlist.push_back(i);
+    }
+
+    print_time(1, FT);
+    FTvec.assign(ORlist.begin(), ORlist.end());
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORvec.assign(ORlist.begin(), ORlist.end());
     print_time(2, STD);
 
     print_time(MAX);
