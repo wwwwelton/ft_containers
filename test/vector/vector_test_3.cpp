@@ -12,62 +12,48 @@
 #include "../../algorithm.hpp"
 #include "../../vector.hpp"
 
-#define K10 10000
+#define K10 100000
+
+void print_time(int option) {
+  static clock_t t = 0;
+  static double time_taken = 0;
+
+  if (option == 1) {
+    t = clock();
+  }
+  if (option == 2) {
+    t = clock() - t;
+    time_taken = static_cast<double>(t) / CLOCKS_PER_SEC;
+    std::cout << std::setprecision(3) << time_taken << std::endl;
+  }
+  if (option == 3) {
+    std::cout << std::setprecision(3) << (time_taken * 20) << std::endl;
+  }
+}
 
 int main(void) {
-  clock_t t;
-  double time_taken;
-
   std::cout << "\n===========[ VECTOR ]===========\n";
   {
-    std::cout << "\n[ INSERT 1 - 10K ]\n";
+    std::cout << "\n[ INSERT ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
 
     std::cout << "FT : ";
-    t = clock();
+    print_time(1);
     for (int i = 0; i < K10; i++) {
       FTvec.insert(FTvec.begin(), i);
     }
-    t = clock() - t;
-    time_taken = static_cast<double>(t) / CLOCKS_PER_SEC;
-    std::cout << std::setprecision(3) << time_taken << std::endl;
+    print_time(2);
 
     std::cout << "STD: ";
-    t = clock();
+    print_time(1);
     for (int i = 0; i < K10; i++) {
       ORvec.insert(ORvec.begin(), i);
     }
-    t = clock() - t;
-    time_taken = static_cast<double>(t) / CLOCKS_PER_SEC;
-    std::cout << std::setprecision(3) << time_taken;
-    std::cout << " | Max: => " << std::setprecision(3)
-              << time_taken * 20 << std::endl;
-  }
-  {
-    std::cout << "\n[ PUSH BACK - 10K ]\n";
-    ft::vector<int> FTvec;
-    std::vector<int> ORvec;
+    print_time(2);
 
-    std::cout << "FT : ";
-    t = clock();
-    for (int i = 0; i < K10; i++) {
-      FTvec.push_back(i);
-    }
-    t = clock() - t;
-    time_taken = static_cast<double>(t) / CLOCKS_PER_SEC;
-    std::cout << std::setprecision(3) << time_taken << std::endl;
-
-    std::cout << "STD: ";
-    t = clock();
-    for (int i = 0; i < K10; i++) {
-      ORvec.push_back(i);
-    }
-    t = clock() - t;
-    time_taken = static_cast<double>(t) / CLOCKS_PER_SEC;
-    std::cout << std::setprecision(3) << time_taken;
-    std::cout << " | Max: => " << std::setprecision(3)
-              << time_taken * 20 << std::endl;
+    std::cout << "MAX: ";
+    print_time(3);
   }
 
   std::cout << "\n";
