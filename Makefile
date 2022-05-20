@@ -30,6 +30,7 @@ VECTOR_TEST_3		=	test/vector/vector_test_3.cpp
 
 STACK_TEST_1		=	test/stack/stack_test_1.cpp
 STACK_TEST_2		=	test/stack/stack_test_2.cpp
+STACK_TEST_3		=	test/stack/stack_test_3.cpp
 
 PAIR_TEST_1			=	test/pair/pair_test_1.cpp
 PAIR_TEST_2			=	test/pair/pair_test_2.cpp
@@ -80,6 +81,10 @@ stack2:				$(HEADERS)
 					./stack_test_STD_2 > stack_test_STD_2_out
 					diff -y stack_test_FT_2_out stack_test_STD_2_out
 					diff stack_test_FT_2_out stack_test_STD_2_out
+
+stack3:				$(HEADERS)
+					$(CC) $(CFLAGS) $(STACK_TEST_3) -o stack_test_3
+					./stack_test_3
 
 pair1:				$(HEADERS)
 					$(CC) $(CFLAGS) $(PAIR_TEST_1) -o pair_test_1
@@ -137,6 +142,7 @@ clean:
 					$(RM) stack_test_1
 					$(RM) stack_test_STD_2 stack_test_STD_2_out
 					$(RM) stack_test_FT_2 stack_test_FT_2_out
+					$(RM) stack_test_3
 
 					$(RM) pair_test_1
 					$(RM) pair_test_STD_2 pair_test_STD_2_out
