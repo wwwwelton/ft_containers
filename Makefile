@@ -44,7 +44,7 @@ RB_TREE_TEST		=	test/rb_tree/rb_tree_main.cpp
 
 CC					=	clang++
 CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
-CFLAGS				+=	-std=c++98 -pedantic-errors -g
+CFLAGS				+=	-std=c++98 -pedantic-errors -O3
 
 RM					=	rm -rf
 
