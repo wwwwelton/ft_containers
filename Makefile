@@ -37,6 +37,7 @@ PAIR_TEST_2			=	test/pair/pair_test_2.cpp
 
 MAP_TEST_1			=	test/map/map_test_1.cpp
 MAP_TEST_2			=	test/map/map_test_2.cpp
+MAP_TEST_3			=	test/map/map_test_3.cpp
 
 SET_TEST_1			=	test/set/set_test_1.cpp
 SET_TEST_2			=	test/set/set_test_2.cpp
@@ -110,6 +111,10 @@ map2:				$(HEADERS)
 					diff -y map_test_FT_2_out map_test_STD_2_out
 					diff map_test_FT_2_out  map_test_STD_2_out
 
+map3:				$(HEADERS)
+					$(CC) $(CFLAGS) $(MAP_TEST_3) -o map_test_3
+					./map_test_3
+
 set1:				$(HEADERS)
 					$(CC) $(CFLAGS) $(SET_TEST_1) -o set_test_1
 					./set_test_1
@@ -151,6 +156,7 @@ clean:
 					$(RM) map_test_1
 					$(RM) map_test_STD_2 map_test_STD_2_out
 					$(RM) map_test_FT_2 map_test_FT_2_out
+					$(RM) map_test_3
 
 					$(RM) set_test_1
 					$(RM) set_test_STD_2 set_test_STD_2_out
