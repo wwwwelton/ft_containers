@@ -1,8 +1,12 @@
-NAME				=	container
+NAME				=	ft_container
+
+SRC_DIR				=	./
 
 OBJ_DIR				=	objects
 
-SRC_DIR				=	./
+SOURCES				=	main.cpp
+
+OBJECTS				=	$(SOURCES:$(SOURCES_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 HEADERS				=	algorithm.hpp \
 						iterator_funcs.hpp \
@@ -45,6 +49,9 @@ SET_TEST_3			=	test/set/set_test_3.cpp
 
 RB_TREE_TEST		=	test/rb_tree/rb_tree_main.cpp
 
+$(OBJ_DIR)/%.o:			$(SOURCES_DIR)/%.cpp $(HEADERS)
+						$(CC) $(CFLAGS) -c $< -o $@
+
 CC					=	clang++
 CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
 CFLAGS				+=	-std=c++98 -pedantic-errors
@@ -53,8 +60,13 @@ RM					=	rm -rf
 
 all:				$(NAME)
 
-$(NAME):			$(OBJ_DIR) $(OBJS) $(HEADERS)
-					$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+bonus:				$(NAME)
+
+$(NAME):			$(OBJ_DIR) $(OBJECTS) $(HEADERS)
+					$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+
+$(OBJ_DIR):
+					mkdir -p $(OBJ_DIR)
 
 vector1:			$(HEADERS)
 					$(CC) $(CFLAGS) $(VECTOR_TEST_1) -o vector_test_1
