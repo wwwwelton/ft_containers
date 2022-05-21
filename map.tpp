@@ -105,8 +105,7 @@ ft::pair<typename MAP_CLASS::iterator, bool> MAP_CLASS::insert(const value_type&
   if (x != end()) {
     return (ft::make_pair(x, false));
   } else {
-    _rb_tree.insert(val);
-    iterator y = find(val.first);
+    iterator y = _rb_tree.insert_unique(val);
     return (ft::make_pair(y, true));
   }
 }
