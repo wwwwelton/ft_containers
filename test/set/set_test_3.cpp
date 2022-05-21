@@ -190,6 +190,39 @@ int main(void) {
     print_time(MAX);
   }
 
+  {
+    std::cout << "\n[ LOWER_BOND ]\n";
+
+    ft::set<std::string> FTset;
+    std::set<std::string> ORset;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset.insert(str);
+      ORset.insert(str);
+    }
+
+    print_time(1, FT);
+    ss << AMOUNT << " ", ss >> str;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      ft::set<std::string>::iterator FTit = FTset.lower_bound(str);
+      (void)FTit;
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ss << AMOUNT << " ", ss >> str;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      std::set<std::string>::iterator ORit = ORset.lower_bound(str);
+      (void)ORit;
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
   print_time(4);
   std::cout << "\n";
 
