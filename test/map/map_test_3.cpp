@@ -11,7 +11,7 @@
 #include "../../map.hpp"
 #include "../../utility.hpp"
 
-#define AMOUNT 100000
+#define AMOUNT 10000
 
 #define FT 42
 #define STD 24
@@ -83,29 +83,6 @@ int main(void) {
 
     print_time(1, STD);
     std::map<std::string, int> ORmap(ORmap_source.begin(), ORmap_source.end());
-    print_time(2, STD);
-
-    print_time(MAX);
-  }
-
-  {
-    std::cout << "\n[ INSERT ]\n";
-
-    ft::map<std::string, int> FTmap;
-    std::map<std::string, int> ORmap;
-
-    print_time(1, FT);
-    for (int i = 0; i < AMOUNT; i++) {
-      ss << i << " ", ss >> str;
-      FTmap.insert(ft::make_pair(str, i));
-    }
-    print_time(2, FT);
-
-    print_time(1, STD);
-    for (int i = 0; i < AMOUNT; i++) {
-      ss << i << " ", ss >> str;
-      ORmap.insert(std::make_pair(str, i));
-    }
     print_time(2, STD);
 
     print_time(MAX);
