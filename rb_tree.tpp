@@ -252,6 +252,11 @@ void RB_TREE_CLASS::insert(value_type data, Node_ptr _root) {
 }
 
 template <RB_TREE_TEMPLATE>
+typename RB_TREE_CLASS::iterator RB_TREE_CLASS::insert_unique(value_type data) {
+  return(insert_node_helper(data));
+}
+
+template <RB_TREE_TEMPLATE>
 void RB_TREE_CLASS::erase(Key key) {
   Node_ptr z = search(key);
   if (z == TNULL) {

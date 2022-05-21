@@ -117,6 +117,8 @@ class Rb_tree {
 
   void insert(value_type data, Node_ptr _root);
 
+  iterator insert_unique(value_type data);
+
   void erase(Key key);
 
   Node_ptr get_root(void);
@@ -138,7 +140,7 @@ class Rb_tree {
 
   Node_ptr search_helper(Node_ptr node, Key key) const;
 
-  void insert_node_helper(value_type data);
+  iterator insert_node_helper(value_type data);
 
   void erase_fix(Node_ptr x);
 

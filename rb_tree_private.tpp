@@ -79,7 +79,7 @@ typename RB_TREE_CLASS::Node_ptr RB_TREE_CLASS::search_helper(Node_ptr node, Key
 }
 
 template <RB_TREE_TEMPLATE>
-void RB_TREE_CLASS::insert_node_helper(value_type data) {
+typename RB_TREE_CLASS::iterator RB_TREE_CLASS::insert_node_helper(value_type data) {
   Node_ptr x = root;
   Node_ptr y = TNULL;
   Node_ptr z = _alloc.allocate(1);
@@ -107,9 +107,13 @@ void RB_TREE_CLASS::insert_node_helper(value_type data) {
     z->color = RED;
   }
 
+  iterator it(z);
+
   insert_fix(z);
   TNULL->root = root;
   _size++;
+
+  return(it);
 }
 
 template <RB_TREE_TEMPLATE>
