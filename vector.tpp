@@ -345,9 +345,13 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator position, 
     push_back(val);
     return (iterator(&_data[distance]));
   }
-  for (size_t i = _size; i > distance; i--) {
-    _alloc.construct(&_data[i], _data[i - 1]);
-    _alloc.destroy(&_data[i - 1]);
+  if (ft::is_integral<value_type>::value) {
+    std::copy_backward(&_data[distance], &_data[_size], &_data[_size + 1]);
+  } else {
+    for (size_t i = _size; i > distance; i--) {
+      _alloc.construct(&_data[i], _data[i - 1]);
+      _alloc.destroy(&_data[i - 1]);
+    }
   }
   _alloc.construct(&_data[distance], val);
   _size++;
