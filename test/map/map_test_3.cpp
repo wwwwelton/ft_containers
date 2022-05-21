@@ -256,6 +256,37 @@ int main(void) {
     print_time(MAX);
   }
 
+  {
+    std::cout << "\n[ EQUAL_RANGE ]\n";
+
+    ft::map<std::string, int> FTmap;
+    std::map<std::string, int> ORmap;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap.insert(ft::make_pair(str, i));
+      ORmap.insert(std::make_pair(str, i));
+    }
+
+    print_time(1, FT);
+    ss << AMOUNT << " ", ss >> str;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap.equal_range(str);
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ss << AMOUNT << " ", ss >> str;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      ORmap.equal_range(str);
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
   print_time(4);
   std::cout << "\n";
 
