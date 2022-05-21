@@ -41,12 +41,13 @@ MAP_TEST_3			=	test/map/map_test_3.cpp
 
 SET_TEST_1			=	test/set/set_test_1.cpp
 SET_TEST_2			=	test/set/set_test_2.cpp
+SET_TEST_3			=	test/set/set_test_3.cpp
 
 RB_TREE_TEST		=	test/rb_tree/rb_tree_main.cpp
 
 CC					=	clang++
 CFLAGS				=	-Wall -Wextra -Werror -Wno-long-long
-CFLAGS				+=	-std=c++98 -pedantic-errors -O3
+CFLAGS				+=	-std=c++98 -pedantic-errors
 
 RM					=	rm -rf
 
@@ -127,6 +128,10 @@ set2:				$(HEADERS)
 					diff -y set_test_FT_2_out set_test_STD_2_out
 					diff set_test_FT_2_out  set_test_STD_2_out
 
+set3:				$(HEADERS)
+					$(CC) $(CFLAGS) $(SET_TEST_3) -o set_test_3
+					./set_test_3
+
 rbtree:
 					clear && $(CC) $(CFLAGS) $(RB_TREE_TEST) -o btree.out \
 					&& ./btree.out
@@ -161,6 +166,7 @@ clean:
 					$(RM) set_test_1
 					$(RM) set_test_STD_2 set_test_STD_2_out
 					$(RM) set_test_FT_2 set_test_FT_2_out
+					$(RM) set_test_3
 
 					$(RM) btree.out
 
