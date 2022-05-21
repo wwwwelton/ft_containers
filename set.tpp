@@ -99,8 +99,7 @@ ft::pair<typename SET_CLASS::iterator, bool> SET_CLASS::insert(const value_type&
   if (x != end()) {
     return (ft::make_pair(x, false));
   } else {
-    _rb_tree.insert(val);
-    iterator y = find(val);
+    iterator y = _rb_tree.insert_unique(val);
     return (ft::make_pair(y, true));
   }
 }
