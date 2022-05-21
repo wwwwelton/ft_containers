@@ -107,13 +107,11 @@ typename RB_TREE_CLASS::iterator RB_TREE_CLASS::insert_node_helper(value_type da
     z->color = RED;
   }
 
-  iterator it(z);
-
   insert_fix(z);
   TNULL->root = root;
   _size++;
 
-  return(it);
+  return(iterator(z));
 }
 
 template <RB_TREE_TEMPLATE>
