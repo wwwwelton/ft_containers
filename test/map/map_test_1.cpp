@@ -141,6 +141,33 @@ int main(void) {
 
   std::cout << "\n\n===========[ ITERATORS ]===========\n";
   {
+    std::cout << "\n[ CONST VS NORMAL ]\n";
+    ft::map<MAP_T> FTmap;
+
+    FTmap.insert(FT_TYPE("a", 8));
+    FTmap.insert(FT_TYPE("b", 18));
+    FTmap.insert(FT_TYPE("c", 5));
+    FTmap.insert(FT_TYPE("d", 15));
+
+    ft::map<MAP_T> const FTmapConst(FTmap.begin(), FTmap.end());
+
+    ft::map<MAP_T>::iterator FTit = FTmap.begin();
+    ft::map<MAP_T>::const_iterator FTitConst = FTmapConst.begin();
+
+    if (*FTit == *FTitConst)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    ft::map<MAP_T>::iterator FTitEnd = --FTmap.end();
+    ft::map<MAP_T>::const_iterator FTitConstEnd = --FTmapConst.end();
+
+    if (*FTitEnd == *FTitConstEnd)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
     std::cout << "\n[ BEGIN ]\n";
     ft::map<MAP_T> FTmap;
     std::map<MAP_T> ORmap;
