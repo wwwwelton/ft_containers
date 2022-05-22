@@ -121,6 +121,33 @@ int main(void) {
 
   std::cout << "\n\n===========[ ITERATORS ]===========\n";
   {
+    std::cout << "\n[ CONST VS NORMAL ]\n";
+    ft::set<SET_T> FTset;
+
+    FTset.insert("a");
+    FTset.insert("b");
+    FTset.insert("c");
+    FTset.insert("d");
+
+    ft::set<SET_T> const FTsetConst(FTset.begin(), FTset.end());
+
+    ft::set<SET_T>::iterator FTit = FTset.begin();
+    ft::set<SET_T>::const_iterator FTitConst = FTsetConst.begin();
+
+    if (*FTit == *FTitConst)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    ft::set<SET_T>::iterator FTitEnd = --FTset.end();
+    ft::set<SET_T>::const_iterator FTitConstEnd = --FTsetConst.end();
+
+    if (*FTitEnd == *FTitConstEnd)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
     std::cout << "\n[ BEGIN ]\n";
     ft::set<SET_T> FTset;
     std::set<SET_T> ORset;
