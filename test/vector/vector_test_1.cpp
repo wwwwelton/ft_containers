@@ -14,8 +14,8 @@
 
 #include <vector>
 
-#include "../../vector.hpp"
 #include "../../algorithm.hpp"
+#include "../../vector.hpp"
 
 bool pred(int i, int j) {
   return (i == j);
@@ -53,6 +53,31 @@ int main(void) {
   }
 
   std::cout << "\n===========[ VECTOR ITERATORS ]===========\n";
+  {
+    std::cout << "\n[ CONST VS NORMAL ]\n";
+    ft::vector<int> FTvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+    }
+    ft::vector<int> const FTvecConst(FTvec.begin(), FTvec.end());
+
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    ft::vector<int>::const_iterator FTitConst = FTvecConst.begin();
+
+    if (*FTit == *FTitConst)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+
+    ft::vector<int>::iterator FTitEnd = FTvec.end() - 1;
+    ft::vector<int>::const_iterator FTitConstEnd = FTvecConst.end() - 1;
+
+    if (*FTitEnd == *FTitConstEnd)
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+
   {
     std::cout << "\n[ BEGIN ITERATOR ]\n";
     ft::vector<int> FTvec(10);
@@ -710,8 +735,8 @@ int main(void) {
       FTvec[i] = i;
       ORvec[i] = i;
     }
-	bool result = !ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
-                                     ORvec.begin(), ORvec.end());
+    bool result = !ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
+                                               ORvec.begin(), ORvec.end());
     if (result)
       std::cout << OK " ";
     else
@@ -726,8 +751,8 @@ int main(void) {
       FTvec[i] = i;
       ORvec[i] = i;
     }
-	bool result = ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
-                                     ORvec.begin(), ORvec.end(), pred);
+    bool result = ft::lexicographical_compare(FTvec.begin(), FTvec.end(),
+                                              ORvec.begin(), ORvec.end(), pred);
     if (result)
       std::cout << OK " ";
     else

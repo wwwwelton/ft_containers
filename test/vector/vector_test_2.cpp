@@ -58,6 +58,25 @@ int main(void) {
 
   std::cout << "\n\n===========[ VECTOR ITERATORS ]===========\n";
   {
+    std::cout << "\n[ CONST VS NORMAL ]\n";
+    ft::vector<int> FTvec(10);
+    for (int i = 0; i < 10; i++) {
+      FTvec[i] = i;
+    }
+    ft::vector<int> FTvecConst(FTvec.begin(), FTvec.end());
+
+    ft::vector<int>::iterator FTit = FTvec.begin();
+    ft::vector<int>::const_iterator FTitConst = FTvecConst.begin();
+
+    std::cout << (*FTit == *FTitConst) << "\n";
+
+    ft::vector<int>::iterator FTitEnd = FTvec.end() - 1;
+    ft::vector<int>::const_iterator FTitConstEnd = FTvecConst.end() - 1;
+
+    std::cout << (*FTitEnd == *FTitConstEnd) << "\n";
+  }
+
+  {
     std::cout << "\n[ BEGIN ITERATOR ]\n";
     ft::vector<int> FTvec(10);
     fill_vector(FTvec, 10);
