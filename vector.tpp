@@ -407,14 +407,12 @@ void vector<T, Alloc>::insert_dispatch(iterator position, InputIterator first, I
 
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator position) {
-  iterator it(position);
-  while (position != (end() - 1)) {
-    *position = *(position + 1);
-    position++;
+  if (position + 1 != end()) {
+    std::copy(position.base() + 1, end().base(), position.base());
   }
   --_size;
   _alloc.destroy(_data + _size);
-  return (it);
+  return (position);
 }
 
 template <typename T, class Alloc>
