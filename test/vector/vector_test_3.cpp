@@ -1,10 +1,9 @@
 // Copyright (c) 2022 Welton Leite, wleite. All rights reserved.
 
-#include <iostream>
-
 #include <climits>
 #include <ctime>
 #include <iomanip>
+#include <iostream>
 #include <list>
 #include <vector>
 
@@ -162,7 +161,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ INSERT ]\n";
+    std::cout << "\n[ INSERT 1 ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
 
@@ -176,6 +175,45 @@ int main(void) {
     for (int i = 0; i < AMOUNT; i++) {
       ORvec.insert(ORvec.begin(), i);
     }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ INSERT 2 ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+
+    print_time(1, FT);
+    FTvec.insert(FTvec.begin(), AMOUNT, 1);
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORvec.insert(ORvec.begin(), AMOUNT, 1);
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ INSERT 3 ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+    ft::vector<int> FTvec_copy;
+    std::vector<int> ORvec_copy;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec_copy.push_back(i);
+      ORvec_copy.push_back(i);
+    }
+
+    print_time(1, FT);
+    FTvec.insert(FTvec.begin(), FTvec_copy.begin(), FTvec_copy.end());
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORvec.insert(ORvec.begin(), ORvec_copy.begin(), ORvec_copy.end());
     print_time(2, STD);
 
     print_time(MAX);
