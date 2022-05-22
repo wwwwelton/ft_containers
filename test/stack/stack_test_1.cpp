@@ -5,7 +5,10 @@
 #define KO "\033[1;31mKO\033[0m"
 #define OK "\033[1;32mOK\033[0m"
 
+#include <deque>
+#include <list>
 #include <stack>
+#include <vector>
 
 #include "../../stack.hpp"
 
@@ -15,6 +18,45 @@ int main(void) {
     std::cout << "\n[ CONSTRUCTOR 1 ]\n";
     ft::stack<int> FTsta;
     std::stack<int> ORsta;
+    for (size_t i = 0; i < 10; i++) {
+      FTsta.push(i);
+      ORsta.push(i);
+    }
+    if (FTsta.top() == ORsta.top())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    std::cout << "\n[ CONSTRUCTOR 2 - DEQUE ]\n";
+    ft::stack<int, std::deque<int> > FTsta;
+    std::stack<int, std::deque<int> > ORsta;
+    for (size_t i = 0; i < 10; i++) {
+      FTsta.push(i);
+      ORsta.push(i);
+    }
+    if (FTsta.top() == ORsta.top())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    std::cout << "\n[ CONSTRUCTOR 2 - LIST ]\n";
+    ft::stack<int, std::list<int> > FTsta;
+    std::stack<int, std::list<int> > ORsta;
+    for (size_t i = 0; i < 10; i++) {
+      FTsta.push(i);
+      ORsta.push(i);
+    }
+    if (FTsta.top() == ORsta.top())
+      std::cout << OK " ";
+    else
+      std::cout << KO " ";
+  }
+  {
+    std::cout << "\n[ CONSTRUCTOR 3 - VECTOR ]\n";
+    ft::stack<int, std::list<int> > FTsta;
+    std::stack<int, std::list<int> > ORsta;
     for (size_t i = 0; i < 10; i++) {
       FTsta.push(i);
       ORsta.push(i);

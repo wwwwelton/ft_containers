@@ -9,6 +9,10 @@ namespace ft = std;
 #include "../../stack.hpp"
 #endif
 
+#include <deque>
+#include <list>
+#include <vector>
+
 template <typename T>
 void print_stack(T& stack) {
   for (size_t i = 0; i < stack.size(); i++) {
@@ -31,6 +35,24 @@ int main(void) {
   {
     std::cout << "\n[ CONSTRUCTOR 1 ]\n";
     ft::stack<int> FTsta;
+    fill_stack(FTsta, 10);
+    print_stack(FTsta);
+  }
+  {
+    std::cout << "\n[ CONSTRUCTOR 2 - DEQUE ]\n";
+    ft::stack<int, std::deque<int> > FTsta;
+    fill_stack(FTsta, 10);
+    print_stack(FTsta);
+  }
+  {
+    std::cout << "\n[ CONSTRUCTOR 2 - LIST ]\n";
+    ft::stack<int, std::list<int> > FTsta;
+    fill_stack(FTsta, 10);
+    print_stack(FTsta);
+  }
+  {
+    std::cout << "\n[ CONSTRUCTOR 3 - VECTOR ]\n";
+    ft::stack<int, std::list<int> > FTsta;
     fill_stack(FTsta, 10);
     print_stack(FTsta);
   }
