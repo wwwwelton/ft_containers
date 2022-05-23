@@ -220,7 +220,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ ERASE ]\n";
+    std::cout << "\n[ ERASE POSITION ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
 
@@ -239,6 +239,27 @@ int main(void) {
     while (!ORvec.empty()) {
       ORvec.erase(ORvec.begin());
     }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ ERASE ITERATOR ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+
+    for (int i = 0; i < AMOUNT * 10; i++) {
+      FTvec.push_back(i);
+      ORvec.push_back(i);
+    }
+
+    print_time(1, FT);
+    FTvec.erase(FTvec.begin() + 1, FTvec.end() - 1);
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORvec.erase(ORvec.begin() + 1, ORvec.end() - 1);
     print_time(2, STD);
 
     print_time(MAX);
