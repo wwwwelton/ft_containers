@@ -566,6 +566,29 @@ int main(void) {
     print_time(MAX);
   }
 
+  {
+    std::cout << "\n[ SWAP ]\n";
+    ft::vector<int> FTvec_copy;
+    std::vector<int> ORvec_copy;
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+
+    for (int i = 0; i < AMOUNT * 10; i++) {
+      FTvec_copy.push_back(i);
+      ORvec_copy.push_back(i);
+    }
+
+    print_time(1, FT);
+    FTvec.swap(FTvec_copy);
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORvec.swap(ORvec_copy);
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
   print_time(4);
   std::cout << "\n";
 
