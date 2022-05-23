@@ -67,7 +67,25 @@ int main(void) {
 
   std::cout << "\n===========[ MAP ]===========\n";
   {
-    std::cout << "\n[ CONSTRUCTOR ]\n";
+    std::cout << "\n[ CONSTRUCTOR 1 ]\n";
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      ft::map<std::string, int> FTmap;
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      std::map<std::string, int> ORvec;
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ CONSTRUCTOR 2 ]\n";
 
     ft::map<std::string, int> FTmap_source;
     std::map<std::string, int> ORmap_source;
@@ -83,6 +101,28 @@ int main(void) {
 
     print_time(1, STD);
     std::map<std::string, int> ORmap(ORmap_source.begin(), ORmap_source.end());
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ CONSTRUCTOR 3 ]\n";
+
+    ft::map<std::string, int> FTmap_source;
+    std::map<std::string, int> ORmap_source;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap_source.insert(ft::make_pair(str, i));
+      ORmap_source.insert(std::make_pair(str, i));
+    }
+
+    print_time(1, FT);
+    ft::map<std::string, int> FTmap(FTmap_source);
+    print_time(2, FT);
+
+    print_time(1, STD);
+    std::map<std::string, int> ORmap(ORmap_source);
     print_time(2, STD);
 
     print_time(MAX);
