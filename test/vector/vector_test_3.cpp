@@ -254,6 +254,31 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ OPERATOR [] ]\n";
+    ft::vector<int> FTvec;
+    std::vector<int> ORvec;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec.push_back(i);
+      ORvec.push_back(i);
+    }
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec[0];
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      ORvec[0];
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ RESERVE ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
