@@ -136,6 +136,27 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ ASSIGNMENT OPERATOR = ]\n";
+    ft::vector<int> FTvec_copy;
+    std::vector<int> ORvec_copy;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec_copy.push_back(i);
+      ORvec_copy.push_back(i);
+    }
+
+    print_time(1, FT);
+    ft::vector<int> FTvec = FTvec_copy;
+    print_time(2, FT);
+
+    print_time(1, STD);
+    std::vector<int> ORvec = ORvec_copy;
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ RESIZE ]\n";
     ft::vector<int> FTvec;
     std::vector<int> ORvec;
