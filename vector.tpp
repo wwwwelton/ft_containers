@@ -437,17 +437,13 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator position) {
 
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator first, iterator last) {
-  iterator it(first);
-  while (last != end()) {
-    *first = *last;
-    ++first;
-    ++last;
+  size_type distance = (last - first);
+  std::copy(last, end(), first);
+  for (size_t i = _size; i > distance; i--) {
+    _alloc.destroy(&_data[i]);
   }
-  _size -= ft::distance(first, last);
-  for (size_t i = ft::distance(first, last); i > _size; i--) {
-    _alloc.destroy(_data + i);
-  }
-  return (it);
+  _size -= distance;
+  return (first);
 }
 
 template <typename T, class Alloc>
