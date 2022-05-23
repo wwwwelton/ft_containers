@@ -62,7 +62,25 @@ void print_time(int option = -1, int NAMESPACE = 0) {
 int main(void) {
   std::cout << "\n===========[ VECTOR ]===========\n";
   {
-    std::cout << "\n[ CONSTRUCTOR ]\n";
+    std::cout << "\n[ CONSTRUCTOR 1 ]\n";
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      ft::vector<int> FTvec;
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      ft::vector<int> ORvec;
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ CONSTRUCTOR 2 ]\n";
 
     print_time(1, FT);
     ft::vector<int> FTvec(AMOUNT, INT_MAX);
@@ -70,6 +88,48 @@ int main(void) {
 
     print_time(1, STD);
     ft::vector<int> ORvec(AMOUNT, INT_MAX);
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ CONSTRUCTOR 3 ]\n";
+    ft::vector<int> FTvec_copy;
+    std::vector<int> ORvec_copy;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec_copy.push_back(i);
+      ORvec_copy.push_back(i);
+    }
+
+    print_time(1, FT);
+    ft::vector<int> FTvec(FTvec_copy.begin(), FTvec_copy.end());
+    print_time(2, FT);
+
+    print_time(1, STD);
+    std::vector<int> ORvec(ORvec_copy.begin(), ORvec_copy.end());
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ CONSTRUCTOR 4 ]\n";
+    ft::vector<int> FTvec_copy;
+    std::vector<int> ORvec_copy;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      FTvec_copy.push_back(i);
+      ORvec_copy.push_back(i);
+    }
+
+    print_time(1, FT);
+    ft::vector<int> FTvec(FTvec_copy);
+    print_time(2, FT);
+
+    print_time(1, STD);
+    std::vector<int> ORvec(ORvec_copy);
     print_time(2, STD);
 
     print_time(MAX);
