@@ -271,7 +271,7 @@ void RB_TREE_CLASS::insert_fix(Node_ptr z) {
 template <RB_TREE_TEMPLATE>
 void RB_TREE_CLASS::copy_rb_tree(Node_ptr node) {
   if (node != node->leaf) {
-    insert(node->data);
+    insert_unique(node->data);
     copy_rb_tree(node->left);
     copy_rb_tree(node->right);
   }
