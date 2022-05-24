@@ -379,6 +379,31 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ SWAP ]\n";
+
+    ft::map<std::string, int> FTmap_copy;
+    std::map<std::string, int> ORmap_copy;
+    ft::map<std::string, int> FTmap;
+    std::map<std::string, int> ORmap;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap_copy.insert(ft::make_pair(str, i));
+      ORmap_copy.insert(std::make_pair(str, i));
+    }
+
+    print_time(1, FT);
+    FTmap.swap(FTmap_copy);
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORmap.swap(ORmap_copy);
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ CLEAR ]\n";
 
     ft::map<std::string, int> FTmap;
