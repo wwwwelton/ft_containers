@@ -205,7 +205,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ INSERT ]\n";
+    std::cout << "\n[ INSERT 1 ]\n";
 
     ft::set<std::string> FTset;
     std::set<std::string> ORset;
@@ -222,6 +222,54 @@ int main(void) {
       ss << i << " ", ss >> str;
       ORset.insert(str);
     }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ INSERT 2 ]\n";
+
+    ft::set<std::string> FTset;
+    std::set<std::string> ORset;
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset.insert(FTset.begin(), str);
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      ORset.insert(ORset.begin(), str);
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ INSERT 3 ]\n";
+
+    ft::set<std::string> FTset_copy;
+    std::set<std::string> ORset_copy;
+    ft::set<std::string> FTset;
+    std::set<std::string> ORset;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset_copy.insert(str);
+      ORset_copy.insert(str);
+    }
+
+    print_time(1, FT);
+    FTset.insert(FTset_copy.begin(), FTset_copy.end());
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORset.insert(ORset_copy.begin(), ORset_copy.end());
     print_time(2, STD);
 
     print_time(MAX);
