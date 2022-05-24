@@ -105,6 +105,31 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ SIZE ]\n";
+    ft::stack<int> FTstack;
+    std::stack<int> ORstack;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      FTstack.push(i);
+      ORstack.push(i);
+    }
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      FTstack.size();
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      ORstack.size();
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ PUSH ]\n";
     ft::stack<int> FTstack;
     std::stack<int> ORstack;
