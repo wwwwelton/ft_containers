@@ -352,6 +352,31 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ SWAP ]\n";
+
+    ft::set<std::string> FTset_copy;
+    std::set<std::string> ORset_copy;
+    ft::set<std::string> FTset;
+    std::set<std::string> ORset;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset_copy.insert(str);
+      ORset_copy.insert(str);
+    }
+
+    print_time(1, FT);
+    FTset.swap(FTset_copy);
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORset.swap(ORset_copy);
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ CLEAR ]\n";
 
     ft::set<std::string> FTset;
