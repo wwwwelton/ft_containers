@@ -276,7 +276,33 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ ERASE ]\n";
+    std::cout << "\n[ ERASE POSITION ]\n";
+
+    ft::set<std::string> FTset;
+    std::set<std::string> ORset;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset.insert(str);
+      ORset.insert(str);
+    }
+
+    print_time(1, FT);
+    while (!FTset.empty()) {
+      FTset.erase(FTset.begin());
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    while (!ORset.empty()) {
+      ORset.erase(ORset.begin());
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ ERASE KEY ]\n";
 
     ft::set<std::string> FTset;
     std::set<std::string> ORset;
@@ -298,6 +324,28 @@ int main(void) {
       ss << i << " ", ss >> str;
       ORset.erase(str);
     }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ ERASE ITERATOR ]\n";
+
+    ft::set<std::string> FTset;
+    std::set<std::string> ORset;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset.insert(str);
+      ORset.insert(str);
+    }
+
+    print_time(1, FT);
+    FTset.erase(++FTset.begin(), --FTset.end());
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORset.erase(++ORset.begin(), --ORset.end());
     print_time(2, STD);
 
     print_time(MAX);
