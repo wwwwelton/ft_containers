@@ -62,9 +62,27 @@ void print_time(int option = -1, int NAMESPACE = 0) {
 int main(void) {
   std::cout << "\n===========[ STACK ]===========\n";
   {
+    std::cout << "\n[ CONSTRUCTOR ]\n";
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      ft::stack<int> FTstack;
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      std::stack<int> ORstack;
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ PUSH ]\n";
     ft::stack<int> FTstack;
-    ft::stack<int> ORstack;
+    std::stack<int> ORstack;
 
     print_time(1, FT);
     for (int i = 0; i < AMOUNT; i++) {
