@@ -178,6 +178,33 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ SIZE ]\n";
+
+    ft::set<std::string> FTset;
+    std::set<std::string> ORset;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset.insert(str);
+      ORset.insert(str);
+    }
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      FTset.size();
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      ORset.size();
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ INSERT ]\n";
 
     ft::set<std::string> FTset;
