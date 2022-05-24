@@ -232,7 +232,7 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ INSERT ]\n";
+    std::cout << "\n[ INSERT 1 ]\n";
 
     ft::map<std::string, int> FTmap;
     std::map<std::string, int> ORmap;
@@ -249,6 +249,54 @@ int main(void) {
       ss << i << " ", ss >> str;
       ORmap.insert(std::make_pair(str, i));
     }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ INSERT 2 ]\n";
+
+    ft::map<std::string, int> FTmap;
+    std::map<std::string, int> ORmap;
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap.insert(FTmap.begin(), ft::make_pair(str, i));
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      ORmap.insert(ORmap.begin(), std::make_pair(str, i));
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ INSERT 3 ]\n";
+
+    ft::map<std::string, int> FTmap_copy;
+    std::map<std::string, int> ORmap_copy;
+    ft::map<std::string, int> FTmap;
+    std::map<std::string, int> ORmap;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap_copy.insert(ft::make_pair(str, i));
+      ORmap_copy.insert(std::make_pair(str, i));
+    }
+
+    print_time(1, FT);
+    FTmap.insert(FTmap_copy.begin(), FTmap_copy.end());
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORmap.insert(ORmap_copy.begin(), ORmap_copy.end());
     print_time(2, STD);
 
     print_time(MAX);
