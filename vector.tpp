@@ -431,7 +431,9 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator position) {
     std::copy(position.base() + 1, end().base(), position.base());
   }
   --_size;
-  _alloc.destroy(_data + _size);
+  if (!ft::is_integral<value_type>::value) {
+    _alloc.destroy(_data + _size);
+  }
   return (position);
 }
 
