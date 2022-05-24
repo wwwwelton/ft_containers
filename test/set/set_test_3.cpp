@@ -129,6 +129,28 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ ASSIGNMENT OPERATOR = ]\n";
+
+    ft::set<std::string> FTset_source;
+    std::set<std::string> ORset_source;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset_source.insert(str);
+      ORset_source.insert(str);
+    }
+
+    print_time(1, FT);
+    ft::set<std::string> FTset = FTset_source;
+    print_time(2, FT);
+
+    print_time(1, STD);
+    std::set<std::string> ORset = ORset_source;
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ INSERT ]\n";
 
     ft::set<std::string> FTset;
