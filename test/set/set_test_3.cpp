@@ -67,7 +67,25 @@ int main(void) {
 
   std::cout << "\n===========[ SET ]===========\n";
   {
-    std::cout << "\n[ CONSTRUCTOR ]\n";
+    std::cout << "\n[ CONSTRUCTOR 1 ]\n";
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      ft::set<std::string> FTset;
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      std::set<std::string> ORset;
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ CONSTRUCTOR 2 ]\n";
 
     ft::set<std::string> FTset_source;
     std::set<std::string> ORset_source;
@@ -83,6 +101,28 @@ int main(void) {
 
     print_time(1, STD);
     std::set<std::string> ORset(ORset_source.begin(), ORset_source.end());
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ CONSTRUCTOR 3 ]\n";
+
+    ft::set<std::string> FTset_source;
+    std::set<std::string> ORset_source;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTset_source.insert(str);
+      ORset_source.insert(str);
+    }
+
+    print_time(1, FT);
+    ft::set<std::string> FTset(FTset_source);
+    print_time(2, FT);
+
+    print_time(1, STD);
+    std::set<std::string> ORset(ORset_source);
     print_time(2, STD);
 
     print_time(MAX);
