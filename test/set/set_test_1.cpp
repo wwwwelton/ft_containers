@@ -655,7 +655,7 @@ int main(void) {
     FTPit = FTset.equal_range("z");
     ORPit = ORset.equal_range("z");
 
-    if ((*FTPit.first == *ORPit.first) && (*FTPit.second == *ORPit.second))
+    if ((*FTPit.first == *FTPit.second))
       std::cout << OK " ";
     else
       std::cout << KO " ";
