@@ -77,7 +77,7 @@ int main(void) {
 
     print_time(1, STD);
     for (int i = 0; i < AMOUNT; i++) {
-      std::map<std::string, int> ORvec;
+      std::map<std::string, int> ORmap;
     }
     print_time(2, STD);
 
