@@ -303,7 +303,33 @@ int main(void) {
   }
 
   {
-    std::cout << "\n[ ERASE ]\n";
+    std::cout << "\n[ ERASE POSITION ]\n";
+
+    ft::map<std::string, int> FTmap;
+    std::map<std::string, int> ORmap;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap.insert(ft::make_pair(str, i));
+      ORmap.insert(std::make_pair(str, i));
+    }
+
+    print_time(1, FT);
+    while (!FTmap.empty()) {
+      FTmap.erase(FTmap.begin());
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    while (!ORmap.empty()) {
+      ORmap.erase(ORmap.begin());
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ ERASE KEY ]\n";
 
     ft::map<std::string, int> FTmap;
     std::map<std::string, int> ORmap;
@@ -325,6 +351,28 @@ int main(void) {
       ss << i << " ", ss >> str;
       ORmap.erase(str);
     }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
+    std::cout << "\n[ ERASE ITERATOR ]\n";
+
+    ft::map<std::string, int> FTmap;
+    std::map<std::string, int> ORmap;
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap.insert(ft::make_pair(str, i));
+      ORmap.insert(std::make_pair(str, i));
+    }
+
+    print_time(1, FT);
+    FTmap.erase(++FTmap.begin(), --FTmap.end());
+    print_time(2, FT);
+
+    print_time(1, STD);
+    ORmap.erase(++ORmap.begin(), --ORmap.end());
     print_time(2, STD);
 
     print_time(MAX);
