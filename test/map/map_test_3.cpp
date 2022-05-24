@@ -205,6 +205,33 @@ int main(void) {
   }
 
   {
+    std::cout << "\n[ OPERATOR[] ]\n";
+
+    ft::map<std::string, int> FTmap;
+    std::map<std::string, int> ORmap;
+
+    for (int i = 0; i < AMOUNT; i++) {
+      ss << i << " ", ss >> str;
+      FTmap.insert(ft::make_pair(str, i));
+      ORmap.insert(std::make_pair(str, i));
+    }
+
+    print_time(1, FT);
+    for (int i = 0; i < AMOUNT; i++) {
+      FTmap["1"];
+    }
+    print_time(2, FT);
+
+    print_time(1, STD);
+    for (int i = 0; i < AMOUNT; i++) {
+      ORmap["1"];
+    }
+    print_time(2, STD);
+
+    print_time(MAX);
+  }
+
+  {
     std::cout << "\n[ INSERT ]\n";
 
     ft::map<std::string, int> FTmap;
