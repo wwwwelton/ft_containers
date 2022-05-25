@@ -44,27 +44,29 @@ int main(void) {
 
   std::cout << "\n===========[ STACK ]===========\n";
   {
-    ft::vector<int> FTstack;
-    std::vector<int> STDstack;
+    ft::stack<int> FTstack;
+    std::stack<int> STDstack;
 
-    FTstack.push_back(1);
-    FTstack.push_back(2);
-    FTstack.push_back(3);
-    FTstack.push_back(4);
+    FTstack.push(1);
+    FTstack.push(2);
+    FTstack.push(3);
+    FTstack.push(4);
 
-    STDstack.push_back(1);
-    STDstack.push_back(2);
-    STDstack.push_back(3);
-    STDstack.push_back(4);
+    STDstack.push(1);
+    STDstack.push(2);
+    STDstack.push(3);
+    STDstack.push(4);
 
-    for (size_t i = 0; i < 4; i++) {
-      std::cout << FTstack[i] << " ";
+    while (!FTstack.empty()) {
+      std::cout << FTstack.top() << " ";
+      FTstack.pop();
     }
 
     std::cout << "\n";
 
-    for (size_t i = 0; i < 4; i++) {
-      std::cout << STDstack[i] << " ";
+    while (!STDstack.empty()) {
+      std::cout << STDstack.top() << " ";
+      STDstack.pop();
     }
   }
 
